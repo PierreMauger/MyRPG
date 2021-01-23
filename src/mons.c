@@ -18,11 +18,12 @@ void init_mons(game_t *game)
 {
     sfVector2f p_pos = {200, 800};
     sfVector2f e_pos = {600, 400};
-    char str[3] = "abc";
+    char p_team[3] = "cca";
+    char e_team[3] = "bac";
 
     for (int i = 0; i < 3; i++) {
-        put_in_p_mons_list(&game->p_mons, p_pos, str[i]);
-        put_in_e_mons_list(&game->e_mons, e_pos);
+        put_in_p_mons_list(&game->p_mons, p_pos, p_team[i]);
+        put_in_e_mons_list(&game->e_mons, e_pos, e_team[i]);
         p_pos.x += 200;
         e_pos.x += 200;
     }
@@ -43,6 +44,9 @@ void draw_mons(game_t *game)
         temp = temp->next;
     }
     while (temp2 != NULL) {
+        sfSprite_setTexture(temp2->sprite_color, temp2->texture_color, sfTrue);
+        sfSprite_setTextureRect(temp2->sprite_color, temp2->rect);
+        sfRenderWindow_drawSprite(game->window, temp2->sprite_color, NULL);
         sfSprite_setTexture(temp2->sprite, temp2->texture, sfTrue);
         sfSprite_setTextureRect(temp2->sprite, temp2->rect);
         sfRenderWindow_drawSprite(game->window, temp2->sprite, NULL);

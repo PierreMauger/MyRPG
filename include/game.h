@@ -49,6 +49,8 @@ typedef struct e_mons {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
+    sfTexture *texture_color;
+    sfSprite *sprite_color;
     struct e_mons *next;
 } e_mons_t;
 
@@ -88,6 +90,6 @@ void destroy_mons(p_mons_t *p_mons, e_mons_t *e_mons);
         //mons_list.c
 int find_in_database(char name);
 void put_in_p_mons_list(p_mons_t **p_mons, sfVector2f pos, char name);
-void put_in_e_mons_list(e_mons_t **e_mons, sfVector2f pos);
+void put_in_e_mons_list(e_mons_t **e_mons, sfVector2f pos, char name);
 
 #endif
