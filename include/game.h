@@ -31,13 +31,20 @@ typedef struct {
     sfTime time;
     float seconds;
     int state;
+    int pause;
 } game_t;
 
+        //game.c
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_game(game_t *game);
-void game_loop(game_t *game);
 void main_loop(game_t *game);
 void destroy_game(game_t *game);
 
+        //play.c
+int change_bool(int value);
+void event_loop(game_t *game);
+void update_all(game_t *game);
+void draw_all(game_t *game);
+void game_loop(game_t *game);
 
 #endif

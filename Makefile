@@ -6,6 +6,7 @@
 ##
 
 SRC			=	src/game.c		\
+				src/play.c		\
 
 SRC_MAIN	=	main.c	\
 

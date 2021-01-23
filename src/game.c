@@ -26,11 +26,7 @@ void init_game(game_t *game)
     game->window = create_my_window(game->w_size.width, game->w_size.height);
     game->clock = sfClock_create();
     game->state = 0;
-}
-
-void game_loop(game_t *game)
-{
-
+    game->pause = 0;
 }
 
 void main_loop(game_t *game)
@@ -38,16 +34,13 @@ void main_loop(game_t *game)
     while (sfRenderWindow_isOpen(game->window))
         switch (game->state) {
             case MENU:
-                my_printf("case1, %d\n", game->state);
+                game_loop(game);
                 break;
             case PLAY:
-                my_printf("case2, %d\n", game->state);
                 break;
             case GAME_OVER:
-                my_printf("case3, %d\n", game->state);
                 break;
             case VICTORY:
-                my_printf("case4, %d\n", game->state);
                 break;
         }
 }
