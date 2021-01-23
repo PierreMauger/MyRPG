@@ -9,6 +9,11 @@
 
 int main(void)
 {
-
+    game_t *game = malloc(sizeof(game_t));
+    
+    init_game(game);
+    sfRenderWindow_setFramerateLimit(game->window, 60);
+    main_loop(game);
+    destroy_game(game);
     return 0;
 }

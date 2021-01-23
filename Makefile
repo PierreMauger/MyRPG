@@ -5,7 +5,7 @@
 ## Main Makefile
 ##
 
-SRC			=	
+SRC			=	src/game.c		\
 
 SRC_MAIN	=	main.c	\
 
@@ -21,7 +21,7 @@ OBJ_MAIN	=	$(SRC_MAIN:.c=.o)
 
 OBJ_TEST	=	$(SRC_TEST:.c=.o)
 
-CFLAGS		=	-L lib/my -I include -lmy
+CFLAGS		=	-L lib/my -I include -lmy -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 
 CFLAGS_TEST	=	--coverage -lcriterion -I include
 
