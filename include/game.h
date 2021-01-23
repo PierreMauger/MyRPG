@@ -23,11 +23,15 @@
 #define ANIME_TIME 0.3
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
+#define MONSTER_IMG "ressources/sprites/test_mult_texture.png"
+#define MONSTER_IMG_COLOR "ressources/sprites/test_mult_texture_color.png"
 
 typedef struct p_mons {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
+    sfTexture *texture_color;
+    sfSprite *sprite_color;
     struct p_mons *next;
 } p_mons_t;
 
@@ -74,5 +78,6 @@ void destroy_mons(p_mons_t *p_mons, e_mons_t *e_mons);
         //mons_list.c
 void put_in_p_mons_list(p_mons_t **p_mons, sfVector2f pos);
 void put_in_e_mons_list(e_mons_t **e_mons, sfVector2f pos);
+void change_color(game_t *game, sfColor color);
 
 #endif
