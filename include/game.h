@@ -66,10 +66,13 @@ void game_loop(game_t *game);
 
         //mons.c
 void move_rect(sfIntRect *rect, int offset, int max_offset);
-void put_in_mons_list(p_mons_t **mons, sfVector2f pos);
 void init_mons(game_t *game);
 void draw_mons(game_t *game);
 void anim_mons(game_t *game);
 void destroy_mons(p_mons_t *p_mons, e_mons_t *e_mons);
+
+        //mons_list.c
+void put_in_p_mons_list(p_mons_t **p_mons, sfVector2f pos);
+void put_in_e_mons_list(e_mons_t **e_mons, sfVector2f pos);
 
 #endif

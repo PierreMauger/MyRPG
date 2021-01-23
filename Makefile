@@ -5,11 +5,12 @@
 ## Main Makefile
 ##
 
-SRC			=	src/game.c		\
-				src/play.c		\
-				src/mons.c		\
+SRC			=	src/game.c			\
+				src/play.c			\
+				src/mons.c			\
+				src/mons_list.c		\
 
-SRC_MAIN	=	main.c	\
+SRC_MAIN	=	main.c				\
 
 SRC_TEST	=	tests/test_main.c	\
 
