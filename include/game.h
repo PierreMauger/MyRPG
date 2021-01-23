@@ -47,7 +47,8 @@ typedef struct {
     float seconds;
     int state;
     int pause;
-    p_mons_t *mons;
+    p_mons_t *p_mons;
+    e_mons_t *e_mons;
 } game_t;
 
         //game.c
@@ -69,6 +70,6 @@ void put_in_mons_list(p_mons_t **mons, sfVector2f pos);
 void init_mons(game_t *game);
 void draw_mons(game_t *game);
 void anim_mons(game_t *game);
-void destroy_mons(p_mons_t *mons);
+void destroy_mons(p_mons_t *p_mons, e_mons_t *e_mons);
 
 #endif
