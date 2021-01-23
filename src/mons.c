@@ -14,9 +14,9 @@ void move_rect(sfIntRect *rect, int offset, int max_offset)
         rect->left = 0;
 }
 
-void put_in_mons_list(mons_t **mons, sfVector2f pos)
+void put_in_mons_list(p_mons_t **mons, sfVector2f pos)
 {
-    mons_t *element = malloc(sizeof(mons_t));
+    p_mons_t *element = malloc(sizeof(p_mons_t));
 
     element->texture = sfTexture_createFromFile(DIRT_IMG, NULL);
     element->sprite = sfSprite_create();
@@ -39,7 +39,7 @@ void init_mons(game_t *game)
 
 void draw_mons(game_t *game)
 {
-    mons_t *temp = game->mons;
+    p_mons_t *temp = game->mons;
 
     while (temp != NULL) {
         sfSprite_setTexture(temp->sprite, temp->texture, sfTrue);
@@ -51,7 +51,7 @@ void draw_mons(game_t *game)
 
 void anim_mons(game_t *game)
 {
-    mons_t *temp = game->mons;
+    p_mons_t *temp = game->mons;
 
     game->time = sfClock_getElapsedTime(game->clock);
     game->seconds = game->time.microseconds / 1000000.0;
@@ -64,7 +64,7 @@ void anim_mons(game_t *game)
     }
 }
 
-void destroy_mons(mons_t *mons)
+void destroy_mons(p_mons_t *mons)
 {
     while (mons != NULL) {
         sfTexture_destroy(mons->texture);

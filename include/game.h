@@ -24,12 +24,19 @@
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
 
-typedef struct mons {
+typedef struct p_mons {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
-    struct mons *next;
-} mons_t;
+    struct p_mons *next;
+} p_mons_t;
+
+typedef struct e_mons {
+    sfIntRect rect;
+    sfTexture *texture;
+    sfSprite *sprite;
+    struct e_mons *next;
+} e_mons_t;
 
 typedef struct {
     sfRenderWindow *window;
@@ -40,7 +47,7 @@ typedef struct {
     float seconds;
     int state;
     int pause;
-    mons_t *mons;
+    p_mons_t *mons;
 } game_t;
 
         //game.c
@@ -58,9 +65,10 @@ void game_loop(game_t *game);
 
         //mons.c
 void move_rect(sfIntRect *rect, int offset, int max_offset);
+void put_in_mons_list(p_mons_t **mons, sfVector2f pos);
 void init_mons(game_t *game);
 void draw_mons(game_t *game);
 void anim_mons(game_t *game);
-void destroy_mons(mons_t *mons);
+void destroy_mons(p_mons_t *mons);
 
 #endif
