@@ -26,6 +26,16 @@
 #define MONSTER_IMG "ressources/sprites/test_mult_texture.png"
 #define MONSTER_IMG_COLOR "ressources/sprites/test_mult_texture_color.png"
 
+typedef struct {
+    char name;
+    int hp;
+    int red;
+    int green;
+    int blue;
+    char *sprite;
+    char *sprite_color;
+} data_mons_t;
+
 typedef struct p_mons {
     sfIntRect rect;
     sfTexture *texture;
@@ -76,8 +86,8 @@ void anim_mons(game_t *game);
 void destroy_mons(p_mons_t *p_mons, e_mons_t *e_mons);
 
         //mons_list.c
-void put_in_p_mons_list(p_mons_t **p_mons, sfVector2f pos);
+int find_in_database(char name);
+void put_in_p_mons_list(p_mons_t **p_mons, sfVector2f pos, char name);
 void put_in_e_mons_list(e_mons_t **e_mons, sfVector2f pos);
-void change_color(game_t *game, sfColor color);
 
 #endif

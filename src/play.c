@@ -22,10 +22,6 @@ void event_loop(game_t *game)
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 game->pause = change_bool(game->pause);
-            if (game->event.key.code == sfKeyR)
-                change_color(game, sfColor_fromRGBA(255, 0, 0, 255));
-            if (game->event.key.code == sfKeyG)
-                change_color(game, sfGreen);
         }
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
