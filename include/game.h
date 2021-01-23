@@ -24,10 +24,11 @@
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
 
-typedef struct {
+typedef struct mons {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
+    struct mons *next;
 } mons_t;
 
 typedef struct {
@@ -59,7 +60,7 @@ void game_loop(game_t *game);
 void move_rect(sfIntRect *rect, int offset, int max_offset);
 void init_mons(game_t *game);
 void draw_mons(game_t *game);
-float anim_player(game_t *game);
+void anim_mons(game_t *game);
 void destroy_mons(mons_t *mons);
 
 #endif

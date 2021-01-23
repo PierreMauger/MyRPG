@@ -14,36 +14,61 @@ void move_rect(sfIntRect *rect, int offset, int max_offset)
         rect->left = 0;
 }
 
+void put_in_mons_list(mons_t **mons, sfVector2f pos)
+{
+    mons_t *element = malloc(sizeof(mons_t));
+
+    element->texture = sfTexture_createFromFile(DIRT_IMG, NULL);
+    element->sprite = sfSprite_create();
+    sfSprite_setTexture(element->sprite, element->texture, sfTrue);
+    sfSprite_setPosition(element->sprite, pos);
+    element->rect = (sfIntRect){0, 0, 40, 80};
+    element->next = *mons;
+    *mons = element;
+}
+
 void init_mons(game_t *game)
 {
-    game->mons = malloc(sizeof(mons_t));
-    game->mons->rect = (sfIntRect){0, 0, 40, 80};
-    game->mons->texture = sfTexture_createFromFile(DIRT_IMG, NULL);
-    game->mons->sprite = sfSprite_create();
-    sfSprite_setPosition(game->mons->sprite, (sfVector2f){200, 400});
+    sfVector2f pos = {200, 400};
+
+    for (int i = 0; i < 3; i++) {
+        put_in_mons_list(&game->mons, pos);
+        pos.x += 200;
+    }
 }
 
 void draw_mons(game_t *game)
 {
-    sfSprite_setTexture(game->mons->sprite, game->mons->texture, sfTrue);
-    sfSprite_setTextureRect(game->mons->sprite, game->mons->rect);
-    sfRenderWindow_drawSprite(game->window, game->mons->sprite, NULL);
+    mons_t *temp = game->mons;
+
+    while (temp != NULL) {
+        sfSprite_setTexture(temp->sprite, temp->texture, sfTrue);
+        sfSprite_setTextureRect(temp->sprite, temp->rect);
+        sfRenderWindow_drawSprite(game->window, temp->sprite, NULL);
+        temp = temp->next;
+    }
 }
 
-float anim_player(game_t *game)
+void anim_mons(game_t *game)
 {
+    mons_t *temp = game->mons;
+
     game->time = sfClock_getElapsedTime(game->clock);
     game->seconds = game->time.microseconds / 1000000.0;
     if (game->seconds > ANIME_TIME) {
-        move_rect(&game->mons->rect, 40, 80);
+        while (temp != NULL) {
+            move_rect(&temp->rect, 40, 80);
+            temp = temp->next;
+        }
         sfClock_restart(game->clock);
     }
-    return game->seconds;
 }
 
 void destroy_mons(mons_t *mons)
 {
-    sfTexture_destroy(mons->texture);
-    sfSprite_destroy(mons->sprite);
-    free(mons);
+    while (mons != NULL) {
+        sfTexture_destroy(mons->texture);
+        sfSprite_destroy(mons->sprite);
+        mons = mons->next;
+    }
 }
