@@ -27,6 +27,7 @@ void init_game(game_t *game)
     game->clock = sfClock_create();
     game->state = 0;
     game->pause = 0;
+    init_mons(game);
 }
 
 void main_loop(game_t *game)
@@ -49,5 +50,6 @@ void destroy_game(game_t *game)
 {
     sfRenderWindow_destroy(game->window);
     sfClock_destroy(game->clock);
+    destroy_mons(game->mons);
     free(game);
 }

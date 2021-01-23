@@ -20,8 +20,15 @@
 #define PLAY 1
 #define GAME_OVER 2
 #define VICTORY 3
+#define ANIME_TIME 0.3
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
+
+typedef struct {
+    sfIntRect rect;
+    sfTexture *texture;
+    sfSprite *sprite;
+} mons_t;
 
 typedef struct {
     sfRenderWindow *window;
@@ -32,6 +39,7 @@ typedef struct {
     float seconds;
     int state;
     int pause;
+    mons_t *mons;
 } game_t;
 
         //game.c
@@ -46,5 +54,12 @@ void event_loop(game_t *game);
 void update_all(game_t *game);
 void draw_all(game_t *game);
 void game_loop(game_t *game);
+
+        //mons.c
+void move_rect(sfIntRect *rect, int offset, int max_offset);
+void init_mons(game_t *game);
+void draw_mons(game_t *game);
+float anim_player(game_t *game);
+void destroy_mons(mons_t *mons);
 
 #endif

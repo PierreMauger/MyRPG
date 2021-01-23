@@ -30,12 +30,13 @@ void event_loop(game_t *game)
 
 void update_all(game_t *game)
 {
-
+    anim_player(game);
 }
 
 void draw_all(game_t *game)
 {
     sfRenderWindow_clear(game->window, sfBlack);
+    draw_mons(game);
     sfRenderWindow_display(game->window);
 }
 
