@@ -21,7 +21,7 @@ int find_in_database(char name)
     return 0;
 }
 
-void put_in_mons_list(mons_t **p_mons, sfVector2f pos, char name)
+void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
 {
     mons_t *element = malloc(sizeof(mons_t));
     int i = find_in_database(name);
@@ -36,6 +36,6 @@ void put_in_mons_list(mons_t **p_mons, sfVector2f pos, char name)
     sfSprite_setPosition(element->sprite_color, pos);
     sfSprite_setColor(element->sprite_color, sfColor_fromRGB(data_mons[i].red, data_mons[i].green, data_mons[i].blue));
     element->rect = (sfIntRect){0, 0, 40, 80};
-    element->next = *p_mons;
-    *p_mons = element;
+    element->next = *mons;
+    *mons = element;
 }

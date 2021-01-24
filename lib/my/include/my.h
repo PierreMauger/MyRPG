@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+void change_bool(int *value);
 int my_getnbr(char const *str);
 void my_put_nbr(long int nb);
 void my_put_nbr_uns(unsigned int nb);

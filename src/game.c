@@ -30,6 +30,7 @@ void init_game(game_t *game)
     game->turn = 0;
     game->p_mons = NULL;
     game->e_mons = NULL;
+    game->curr_mons = NULL;
 }
 
 void main_loop(game_t *game)

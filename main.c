@@ -13,6 +13,8 @@ int main(void)
     
     init_game(game);
     init_mons(game);
+        //a la main
+    game->curr_mons = game->p_mons;
     sfRenderWindow_setFramerateLimit(game->window, 60);
     main_loop(game);
     destroy_game(game);

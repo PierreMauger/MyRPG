@@ -57,6 +57,7 @@ typedef struct {
     int turn;
     mons_t *p_mons;
     mons_t *e_mons;
+    mons_t *curr_mons;
 } game_t;
 
         //game.c
@@ -66,7 +67,7 @@ void main_loop(game_t *game);
 void destroy_game(game_t *game);
 
         //play.c
-int change_bool(int value);
+void take_turn(game_t *game);
 void event_loop(game_t *game);
 void update_all(game_t *game);
 void draw_all(game_t *game);
@@ -81,6 +82,6 @@ void destroy_mons(mons_t *mons);
 
         //mons_list.c
 int find_in_database(char name);
-void put_in_mons_list(mons_t **p_mons, sfVector2f pos, char name);
+void put_in_mons_list(mons_t **mons, sfVector2f pos, char name);
 
 #endif

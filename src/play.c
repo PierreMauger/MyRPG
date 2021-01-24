@@ -7,13 +7,20 @@
 
 #include "game.h"
 
-int change_bool(int value)
+void take_turn(game_t *game)
 {
-    if (value == 0)
-        value = 1;
-    else
-        value = 0;
-    return value;
+    if (game->curr_mons->next != NULL)
+        game->curr_mons = game->curr_mons->next;
+    else {
+        if (game->turn == 0) {
+            change_bool(&game->turn);
+            game->curr_mons = game->e_mons;
+        }
+        else {
+            change_bool(&game->turn);
+            game->curr_mons = game->p_mons;
+        }
+    }
 }
 
 void event_loop(game_t *game)
@@ -21,7 +28,11 @@ void event_loop(game_t *game)
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
-                game->pause = change_bool(game->pause);
+                change_bool(&game->pause);
+            if (game->event.key.code == sfKeyO)
+                printf("%f %f\n", sfSprite_getPosition(game->curr_mons->sprite).x, sfSprite_getPosition(game->curr_mons->sprite).y);
+            if (game->event.key.code == sfKeyM)
+                take_turn(game);
         }
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
