@@ -103,8 +103,11 @@ int find_in_database(char name);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name);
 
         //turn.c
-void take_turn(game_t *game);
 void atb_increase(game_t *game, mons_t *mons);
+void atb_reset(game_t *game);
+int check_atb(game_t *game);
+mons_t *get_higher_atb(game_t *game);
+void turn_loop(game_t *game);
 
         //ind.c
 void init_turn_ind(game_t *game);

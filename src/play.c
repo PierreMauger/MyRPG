@@ -13,10 +13,10 @@ void event_loop(game_t *game)
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
-            if (game->event.key.code == sfKeyM)
-                take_turn(game);
             if (game->event.key.code == sfKeyA)
                 atb_increase(game, game->e_mons);
+            if (game->event.key.code == sfKeyR)
+                atb_reset(game);
         }
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
@@ -41,6 +41,7 @@ void game_loop(game_t *game)
 {
     event_loop(game);
     if (game->pause == 0) {
+        turn_loop(game);
         update_all(game);
         draw_all(game);
     }
