@@ -29,10 +29,9 @@ void init_mons(game_t *game)
     }
 }
 
-void draw_mons(game_t *game)
+void draw_mons(game_t *game, mons_t *mons)
 {
-    mons_t *temp = game->p_mons;
-    mons_t *temp2 = game->e_mons;
+    mons_t *temp = mons;
 
     while (temp != NULL) {
         sfSprite_setTexture(temp->sprite_color, temp->texture_color, sfTrue);
@@ -42,15 +41,6 @@ void draw_mons(game_t *game)
         sfSprite_setTextureRect(temp->sprite, temp->rect);
         sfRenderWindow_drawSprite(game->window, temp->sprite, NULL);
         temp = temp->next;
-    }
-    while (temp2 != NULL) {
-        sfSprite_setTexture(temp2->sprite_color, temp2->texture_color, sfTrue);
-        sfSprite_setTextureRect(temp2->sprite_color, temp2->rect);
-        sfRenderWindow_drawSprite(game->window, temp2->sprite_color, NULL);
-        sfSprite_setTexture(temp2->sprite, temp2->texture, sfTrue);
-        sfSprite_setTextureRect(temp2->sprite, temp2->rect);
-        sfRenderWindow_drawSprite(game->window, temp2->sprite, NULL);
-        temp2 = temp2->next;
     }
 }
 

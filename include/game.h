@@ -82,7 +82,7 @@ void game_loop(game_t *game);
         //mons.c
 void move_rect(sfIntRect *rect, int offset, int max_offset);
 void init_mons(game_t *game);
-void draw_mons(game_t *game);
+void draw_mons(game_t *game, mons_t *mons);
 void anim_mons(game_t *game);
 void destroy_mons(mons_t *mons);
 
