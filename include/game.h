@@ -36,23 +36,14 @@ typedef struct {
     char *sprite_color;
 } data_mons_t;
 
-typedef struct p_mons {
+typedef struct mons {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
     sfTexture *texture_color;
     sfSprite *sprite_color;
-    struct p_mons *next;
-} p_mons_t;
-
-typedef struct e_mons {
-    sfIntRect rect;
-    sfTexture *texture;
-    sfSprite *sprite;
-    sfTexture *texture_color;
-    sfSprite *sprite_color;
-    struct e_mons *next;
-} e_mons_t;
+    struct mons *next;
+} mons_t;
 
 typedef struct {
     sfRenderWindow *window;
@@ -63,8 +54,9 @@ typedef struct {
     float seconds;
     int state;
     int pause;
-    p_mons_t *p_mons;
-    e_mons_t *e_mons;
+    int turn;
+    mons_t *p_mons;
+    mons_t *e_mons;
 } game_t;
 
         //game.c
@@ -85,11 +77,10 @@ void move_rect(sfIntRect *rect, int offset, int max_offset);
 void init_mons(game_t *game);
 void draw_mons(game_t *game);
 void anim_mons(game_t *game);
-void destroy_mons(p_mons_t *p_mons, e_mons_t *e_mons);
+void destroy_mons(mons_t *p_mons, mons_t *e_mons);
 
         //mons_list.c
 int find_in_database(char name);
-void put_in_p_mons_list(p_mons_t **p_mons, sfVector2f pos, char name);
-void put_in_e_mons_list(e_mons_t **e_mons, sfVector2f pos, char name);
+void put_in_mons_list(mons_t **p_mons, sfVector2f pos, char name);
 
 #endif

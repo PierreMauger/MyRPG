@@ -27,6 +27,7 @@ void init_game(game_t *game)
     game->clock = sfClock_create();
     game->state = 0;
     game->pause = 0;
+    game->turn = 0;
     game->p_mons = NULL;
     game->e_mons = NULL;
 }

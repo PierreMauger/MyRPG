@@ -22,8 +22,8 @@ void init_mons(game_t *game)
     char e_team[3] = "bac";
 
     for (int i = 0; i < 3; i++) {
-        put_in_p_mons_list(&game->p_mons, p_pos, p_team[i]);
-        put_in_e_mons_list(&game->e_mons, e_pos, e_team[i]);
+        put_in_mons_list(&game->p_mons, p_pos, p_team[i]);
+        put_in_mons_list(&game->e_mons, e_pos, e_team[i]);
         p_pos.x += 200;
         e_pos.x += 200;
     }
@@ -31,8 +31,8 @@ void init_mons(game_t *game)
 
 void draw_mons(game_t *game)
 {
-    p_mons_t *temp = game->p_mons;
-    e_mons_t *temp2 = game->e_mons;
+    mons_t *temp = game->p_mons;
+    mons_t *temp2 = game->e_mons;
 
     while (temp != NULL) {
         sfSprite_setTexture(temp->sprite_color, temp->texture_color, sfTrue);
@@ -56,8 +56,8 @@ void draw_mons(game_t *game)
 
 void anim_mons(game_t *game)
 {
-    p_mons_t *temp = game->p_mons;
-    e_mons_t *temp2 = game->e_mons;
+    mons_t *temp = game->p_mons;
+    mons_t *temp2 = game->e_mons;
 
     game->time = sfClock_getElapsedTime(game->clock);
     game->seconds = game->time.microseconds / 1000000.0;
@@ -74,7 +74,7 @@ void anim_mons(game_t *game)
     }
 }
 
-void destroy_mons(p_mons_t *p_mons, e_mons_t *e_mons)
+void destroy_mons(mons_t *p_mons, mons_t *e_mons)
 {
     while (p_mons != NULL) {
         sfTexture_destroy(p_mons->texture);
