@@ -7,17 +7,6 @@
 
 #include "game.h"
 
-void atb_increase(game_t *game)
-{
-    mons_t *temp = game->p_mons;
-
-    while (temp != NULL) {
-        temp->atb_value += temp->speed;
-        sfRectangleShape_setSize(temp->atb, (sfVector2f){temp->atb_value, 10});
-        temp = temp->next;
-    }
-}
-
 void event_loop(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
@@ -27,7 +16,7 @@ void event_loop(game_t *game)
             if (game->event.key.code == sfKeyM)
                 take_turn(game);
             if (game->event.key.code == sfKeyA)
-                atb_increase(game);
+                atb_increase(game, game->e_mons);
         }
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
