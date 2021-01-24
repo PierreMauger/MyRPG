@@ -26,6 +26,7 @@ void event_loop(game_t *game)
 void update_all(game_t *game)
 {
     anim_mons(game);
+    turn_loop(game);
 }
 
 void draw_all(game_t *game)
@@ -41,7 +42,6 @@ void game_loop(game_t *game)
 {
     event_loop(game);
     if (game->pause == 0) {
-        turn_loop(game);
         update_all(game);
         draw_all(game);
     }

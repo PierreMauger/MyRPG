@@ -7,22 +7,6 @@
 
 #include "game.h"
 
-/* void take_turn(game_t *game)
-{
-    if (game->ind->ptr->next != NULL)
-        game->ind->ptr = game->ind->ptr->next;
-    else {
-        if (game->turn == 0) {
-            change_bool(&game->turn);
-            game->ind->ptr = game->e_mons;
-        }
-        else {
-            change_bool(&game->turn);
-            game->ind->ptr = game->p_mons;
-        }
-    }
-} */
-
 void atb_increase(game_t *game, mons_t *mons)
 {
     mons_t *temp = mons;

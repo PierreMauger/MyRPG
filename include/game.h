@@ -51,6 +51,9 @@ typedef struct mons {
     int width;
     int height;
     int nb_anim;
+    int max_hp;
+    int curr_hp;
+    sfRectangleShape *hp;
     float speed;
     float atb_value;
     sfRectangleShape *atb;

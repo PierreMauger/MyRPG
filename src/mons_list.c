@@ -30,13 +30,6 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
     element->height = data_mons[i].height;
     element->width = data_mons[i].width;
     element->nb_anim = data_mons[i].nb_anim;
-    element->speed = data_mons[i].speed;
-    element->atb_value = 0;
-    element->atb = sfRectangleShape_create();
-    sfRectangleShape_setSize(element->atb, (sfVector2f){0, 10});
-    sfRectangleShape_setFillColor(element->atb, sfCyan);
-    sfRectangleShape_setPosition(element->atb, pos);
-    element->texture = sfTexture_createFromFile(data_mons[i].sprite, NULL);
     element->sprite = sfSprite_create();
     element->texture_color = sfTexture_createFromFile(data_mons[i].sprite_color, NULL);
     element->sprite_color = sfSprite_create();
@@ -45,7 +38,24 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
     sfSprite_setPosition(element->sprite, pos);
     sfSprite_setPosition(element->sprite_color, pos);
     sfSprite_setColor(element->sprite_color, sfColor_fromRGB(data_mons[i].red, data_mons[i].green, data_mons[i].blue));
+    element->texture = sfTexture_createFromFile(data_mons[i].sprite, NULL);
     element->rect = (sfIntRect){0, 0, element->width, element->height};
+        //
+    element->max_hp = data_mons[i].hp;
+    element->curr_hp = element->max_hp;
+    element->hp = sfRectangleShape_create();
+    sfRectangleShape_setOrigin(element->hp, (sfVector2f){(element->width + 50) / 2, 0});
+    sfRectangleShape_setSize(element->hp, (sfVector2f){100, 10});
+    sfRectangleShape_setFillColor(element->hp, sfGreen);
+    sfRectangleShape_setPosition(element->hp, (sfVector2f){pos.x, pos.y + 10});
+    element->speed = data_mons[i].speed;
+    element->atb_value = 0;
+    element->atb = sfRectangleShape_create();
+    sfRectangleShape_setOrigin(element->atb, (sfVector2f){(element->width + 50) / 2, 0});
+    sfRectangleShape_setSize(element->atb, (sfVector2f){0, 10});
+    sfRectangleShape_setFillColor(element->atb, sfCyan);
+    sfRectangleShape_setPosition(element->atb, (sfVector2f){pos.x, pos.y + 30});
+        //
     element->next = *mons;
     *mons = element;
 }
