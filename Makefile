@@ -11,6 +11,7 @@ SRC			=	src/game.c			\
 				src/mons_list.c		\
 				src/turn.c			\
 				src/ind.c			\
+				src/attack.c		\
 
 SRC_MAIN	=	main.c				\
 

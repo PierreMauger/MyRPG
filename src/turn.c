@@ -48,23 +48,29 @@ mons_t *get_higher_atb(game_t *game)
     mons_t *temp2 = game->e_mons;
     mons_t *result = temp;
 
-    while (temp != NULL) {
-        if (temp->atb_value > result->atb_value)
-            result = temp;
-        temp = temp->next;
-    }
     while (temp2 != NULL) {
-        if (temp2->atb_value > result->atb_value)
+        if (temp2->atb_value > result->atb_value) {
             result = temp2;
+            game->turn = 1;
+        }
         temp2 = temp2->next;
+    }
+    while (temp != NULL) {
+        if (temp->atb_value >= result->atb_value) {
+            result = temp;
+            game->turn = 0;
+        }
+        temp = temp->next;
     }
     return result;
 }
 
 void turn_loop(game_t *game)
 {
-    if (check_atb(game) == 1)
+    if (check_atb(game) == 1) {
         game->ind->ptr = get_higher_atb(game);
+        game->attack = 1;
+    }
     else {
         atb_increase(game, game->e_mons);
         atb_increase(game, game->p_mons);

@@ -13,11 +13,11 @@ void event_loop(game_t *game)
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
-            if (game->event.key.code == sfKeyA)
-                atb_increase(game, game->e_mons);
             if (game->event.key.code == sfKeyR)
                 atb_reset(game);
         }
+        if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1)
+            attack(game, sfMouse_getPositionRenderWindow(game->window));
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
     }

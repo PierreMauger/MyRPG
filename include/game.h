@@ -80,41 +80,47 @@ typedef struct {
     mons_t *p_mons;
     mons_t *e_mons;
     indicator_t *ind;
+    int attack;
 } game_t;
 
-        //game.c
+    //game.c
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_game(game_t *game);
 void main_loop(game_t *game);
 void destroy_game(game_t *game);
 
-        //play.c
+    //play.c
 void event_loop(game_t *game);
 void update_all(game_t *game);
 void draw_all(game_t *game);
 void game_loop(game_t *game);
 
-        //mons.c
+    //mons.c
 void move_rect(sfIntRect *rect, int offset, int max_offset);
 void init_mons(game_t *game);
 void draw_mons(game_t *game, mons_t *mons);
 void anim_mons(game_t *game);
 void destroy_mons(mons_t *mons);
 
-        //mons_list.c
+    //mons_list.c
 int find_in_database(char name);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name);
 
-        //turn.c
+    //turn.c
 void atb_increase(game_t *game, mons_t *mons);
 void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
 void turn_loop(game_t *game);
 
-        //ind.c
+    //ind.c
 void init_turn_ind(game_t *game);
 void draw_turn_ind(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
+
+    //attack.c
+int check_collide(mons_t *mons, sfVector2f mouse_pos);
+void attack_hit(game_t *game, mons_t *mons);
+void attack(game_t *game, sfVector2i mouse_pos);
 
 #endif
