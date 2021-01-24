@@ -18,7 +18,7 @@ void init_mons(game_t *game)
 {
     sfVector2f p_pos = {200, 800};
     sfVector2f e_pos = {600, 400};
-    char p_team[3] = "cca";
+    char p_team[3] = "cda";
     char e_team[3] = "bac";
 
     for (int i = 0; i < 3; i++) {
@@ -53,11 +53,11 @@ void anim_mons(game_t *game)
     game->seconds = game->time.microseconds / 1000000.0;
     if (game->seconds > ANIME_TIME) {
         while (temp != NULL) {
-            move_rect(&temp->rect, 40, 80);
+            move_rect(&temp->rect, temp->width, temp->width * temp->nb_anim);
             temp = temp->next;
         }
         while (temp2 != NULL) {
-            move_rect(&temp2->rect, 40, 80);
+            move_rect(&temp2->rect, temp2->width, temp2->width * temp2->nb_anim);
             temp2 = temp2->next;
         }
         move_rect(&game->ind->rect, 40, 80);
