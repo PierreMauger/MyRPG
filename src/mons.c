@@ -40,6 +40,7 @@ void draw_mons(game_t *game, mons_t *mons)
         sfSprite_setTexture(temp->sprite, temp->texture, sfTrue);
         sfSprite_setTextureRect(temp->sprite, temp->rect);
         sfRenderWindow_drawSprite(game->window, temp->sprite, NULL);
+        sfRenderWindow_drawRectangleShape(game->window, temp->atb, NULL);
         temp = temp->next;
     }
 }

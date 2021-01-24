@@ -8,10 +8,10 @@
 #include "game.h"
 
 static data_mons_t data_mons[] = {
-    {'a', 100, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2},
-    {'b', 150, 0, 255, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2},
-    {'c', 150, 0, 0, 255, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2},
-    {'d', 130, 0, 255, 255, MONSTER2_IMG, MONSTER2_IMG_COLOR, 60, 120, 2}
+    {'a', 100, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 3.5},
+    {'b', 150, 0, 255, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 4},
+    {'c', 150, 0, 0, 255, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 3},
+    {'d', 130, 0, 255, 255, MONSTER2_IMG, MONSTER2_IMG_COLOR, 60, 120, 2, 1.5}
 };
 
 int find_in_database(char name)
@@ -30,6 +30,12 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
     element->height = data_mons[i].height;
     element->width = data_mons[i].width;
     element->nb_anim = data_mons[i].nb_anim;
+    element->speed = data_mons[i].speed;
+    element->atb_value = 0;
+    element->atb = sfRectangleShape_create();
+    sfRectangleShape_setSize(element->atb, (sfVector2f){0, 10});
+    sfRectangleShape_setFillColor(element->atb, sfCyan);
+    sfRectangleShape_setPosition(element->atb, pos);
     element->texture = sfTexture_createFromFile(data_mons[i].sprite, NULL);
     element->sprite = sfSprite_create();
     element->texture_color = sfTexture_createFromFile(data_mons[i].sprite_color, NULL);

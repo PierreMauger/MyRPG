@@ -29,6 +29,7 @@ void init_turn_ind(game_t *game)
     game->ind->texture = sfTexture_createFromFile(GRASS_IMG, NULL);
     game->ind->sprite = sfSprite_create();
     game->ind->rect = (sfIntRect){0, 0, 40, 80};
+    game->ind->ptr = NULL;
 }
 
 void draw_turn_ind(game_t *game)
@@ -38,4 +39,11 @@ void draw_turn_ind(game_t *game)
     sfSprite_setTexture(game->ind->sprite, game->ind->texture, sfTrue);
     sfSprite_setTextureRect(game->ind->sprite, game->ind->rect);
     sfRenderWindow_drawSprite(game->window, game->ind->sprite, NULL);
+}
+
+void destroy_turn_ind(indicator_t *ind)
+{
+    sfTexture_destroy(ind->texture);
+    sfSprite_destroy(ind->sprite);
+    free(ind);
 }

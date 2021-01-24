@@ -56,5 +56,6 @@ void destroy_game(game_t *game)
     sfClock_destroy(game->clock);
     destroy_mons(game->p_mons);
     destroy_mons(game->e_mons);
+    destroy_turn_ind(game->ind);
     free(game);
 }

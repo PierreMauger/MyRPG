@@ -39,6 +39,7 @@ typedef struct {
     int width;
     int height;
     int nb_anim;
+    float speed;
 } data_mons_t;
 
 typedef struct mons {
@@ -50,6 +51,9 @@ typedef struct mons {
     int width;
     int height;
     int nb_anim;
+    float speed;
+    float atb_value;
+    sfRectangleShape *atb;
     struct mons *next;
 } mons_t;
 
@@ -102,5 +106,6 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name);
 void take_turn(game_t *game);
 void init_turn_ind(game_t *game);
 void draw_turn_ind(game_t *game);
+void destroy_turn_ind(indicator_t *ind);
 
 #endif
