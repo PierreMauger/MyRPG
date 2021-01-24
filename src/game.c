@@ -52,6 +52,7 @@ void destroy_game(game_t *game)
 {
     sfRenderWindow_destroy(game->window);
     sfClock_destroy(game->clock);
-    destroy_mons(game->p_mons, game->e_mons);
+    destroy_mons(game->p_mons);
+    destroy_mons(game->e_mons);
     free(game);
 }

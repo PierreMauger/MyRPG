@@ -77,7 +77,7 @@ void move_rect(sfIntRect *rect, int offset, int max_offset);
 void init_mons(game_t *game);
 void draw_mons(game_t *game);
 void anim_mons(game_t *game);
-void destroy_mons(mons_t *p_mons, mons_t *e_mons);
+void destroy_mons(mons_t *mons);
 
         //mons_list.c
 int find_in_database(char name);

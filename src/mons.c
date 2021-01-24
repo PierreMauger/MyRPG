@@ -74,16 +74,11 @@ void anim_mons(game_t *game)
     }
 }
 
-void destroy_mons(mons_t *p_mons, mons_t *e_mons)
+void destroy_mons(mons_t *mons)
 {
-    while (p_mons != NULL) {
-        sfTexture_destroy(p_mons->texture);
-        sfSprite_destroy(p_mons->sprite);
-        p_mons = p_mons->next;
-    }
-    while (e_mons != NULL) {
-        sfTexture_destroy(e_mons->texture);
-        sfSprite_destroy(e_mons->sprite);
-        e_mons = e_mons->next;
+    while (mons != NULL) {
+        sfTexture_destroy(mons->texture);
+        sfSprite_destroy(mons->sprite);
+        mons = mons->next;
     }
 }
