@@ -9,6 +9,7 @@ SRC			=	src/game.c			\
 				src/play.c			\
 				src/mons.c			\
 				src/mons_list.c		\
+				src/turn.c			\
 
 SRC_MAIN	=	main.c				\
 

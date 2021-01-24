@@ -46,6 +46,13 @@ typedef struct mons {
 } mons_t;
 
 typedef struct {
+    sfIntRect rect;
+    sfTexture *texture;
+    sfSprite *sprite;
+    mons_t *ptr;
+} indicator_t;
+
+typedef struct {
     sfRenderWindow *window;
     sfVideoMode w_size;
     sfEvent event;
@@ -57,7 +64,7 @@ typedef struct {
     int turn;
     mons_t *p_mons;
     mons_t *e_mons;
-    mons_t *curr_mons;
+    indicator_t *ind;
 } game_t;
 
         //game.c
@@ -67,7 +74,6 @@ void main_loop(game_t *game);
 void destroy_game(game_t *game);
 
         //play.c
-void take_turn(game_t *game);
 void event_loop(game_t *game);
 void update_all(game_t *game);
 void draw_all(game_t *game);
@@ -83,5 +89,10 @@ void destroy_mons(mons_t *mons);
         //mons_list.c
 int find_in_database(char name);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name);
+
+        //turn.c
+void take_turn(game_t *game);
+void init_turn_ind(game_t *game);
+void draw_turn_ind(game_t *game);
 
 #endif

@@ -70,6 +70,7 @@ void anim_mons(game_t *game)
             move_rect(&temp2->rect, 40, 80);
             temp2 = temp2->next;
         }
+        move_rect(&game->ind->rect, 40, 80);
         sfClock_restart(game->clock);
     }
 }
