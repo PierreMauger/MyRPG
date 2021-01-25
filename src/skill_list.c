@@ -23,6 +23,7 @@ int find_in_skill_database(char name)
 void put_in_skill_list(skill_t **skill, char name)
 {
     skill_t *element = malloc(sizeof(skill_t));
+    skill_t *last = *skill;
     int i = find_in_skill_database(name);
 
     element->coef = data_skill[i].coef;
@@ -30,7 +31,15 @@ void put_in_skill_list(skill_t **skill, char name)
     element->sprite = sfSprite_create();
     sfSprite_setTexture(element->sprite, element->texture, sfTrue);
     sfSprite_setPosition(element->sprite, (sfVector2f){0, 0});
+    element->next = NULL;
 
-    element->next = *skill;
-    *skill = element;
+    if (*skill == NULL) {
+        element->next = *skill;
+        *skill = element;
+    }
+    else {
+        while (last->next != NULL)
+            last = last->next;
+        last->next = element;
+    }
 }

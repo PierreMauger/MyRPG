@@ -25,6 +25,7 @@ int find_in_mons_database(char name)
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
 {
     mons_t *element = malloc(sizeof(mons_t));
+    mons_t *last = *mons;
     int i = find_in_mons_database(name);
 
         //basic data
@@ -62,7 +63,16 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
     element->skill = NULL;
     put_in_skill_list(&element->skill, data_mons[i].skill[0]);
     put_in_skill_list(&element->skill, data_mons[i].skill[1]);
+    element->next = NULL;
 
-    element->next = *mons;
-    *mons = element;
+    if (*mons == NULL) {
+        element->next = *mons;
+        *mons = element;
+    }
+    else {
+        while (last->next != NULL)
+            last = last->next;
+        last->next = element;
+    }
+
 }
