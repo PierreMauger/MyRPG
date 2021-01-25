@@ -30,6 +30,12 @@
 
 typedef struct {
     char name;
+    int coef;
+    char *sprite;
+} data_skill_t;
+
+typedef struct {
+    char name;
     int hp;
     int red;
     int green;
@@ -40,7 +46,14 @@ typedef struct {
     int height;
     int nb_anim;
     float speed;
+    char *skill;
 } data_mons_t;
+
+typedef struct skill {
+    char name;
+    int coef;
+    struct skill *next;
+} skill_t;
 
 typedef struct mons {
     sfIntRect rect;
