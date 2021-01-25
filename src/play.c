@@ -31,7 +31,7 @@ void update_all(game_t *game)
 
 void draw_all(game_t *game)
 {
-    sfRenderWindow_clear(game->window, sfYellow);
+    sfRenderWindow_clear(game->window, sfWhite);
     draw_mons(game, game->p_mons);
     draw_mons(game, game->e_mons);
     draw_turn_ind(game);

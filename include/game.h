@@ -120,7 +120,9 @@ void destroy_turn_ind(indicator_t *ind);
 
     //attack.c
 int check_collide(mons_t *mons, sfVector2f mouse_pos);
-void attack_hit(game_t *game, mons_t *mons);
+void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
+mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
+void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void attack(game_t *game, sfVector2i mouse_pos);
 
 #endif
