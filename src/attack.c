@@ -10,9 +10,9 @@
 int check_collide(mons_t *mons, sfVector2f mouse_pos)
 {
     sfVector2f mons_pos = sfSprite_getPosition(mons->sprite);
+
     mons_pos.x -= mons->width / 2;
     mons_pos.y -= mons->height;
-
     if (mouse_pos.x > mons_pos.x && mouse_pos.x < mons_pos.x + mons->width && mouse_pos.y > mons_pos.y && mouse_pos.y < mons_pos.y + mons->height)
         return 1;
     return 0;

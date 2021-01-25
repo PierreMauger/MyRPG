@@ -14,7 +14,7 @@ void event_loop(game_t *game)
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
             if (game->event.key.code == sfKeyR)
-                atb_reset(game);
+                my_printf("%d\n", game->p_mons->skill->coef);
         }
         if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1)
             attack(game, sfMouse_getPositionRenderWindow(game->window));
@@ -35,6 +35,7 @@ void draw_all(game_t *game)
     draw_mons(game, game->p_mons);
     draw_mons(game, game->e_mons);
     draw_turn_ind(game);
+    draw_skill(game);
     sfRenderWindow_display(game->window);
 }
 
