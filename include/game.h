@@ -81,6 +81,7 @@ typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     mons_t *ptr;
+    skill_t *temp;
 } indicator_t;
 
 typedef struct {
@@ -142,9 +143,11 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void attack(game_t *game, sfVector2i mouse_pos);
 
     //skill.c
+void choose_skill(game_t *game, sfVector2i mouse_pos);
 void draw_skill(game_t *game);
 
     //skill_list.c
+int check_collide_skill(skill_t *skill, sfVector2f mouse_pos);
 int find_in_skill_database(char name);
 void put_in_skill_list(skill_t **skill, char name);
 

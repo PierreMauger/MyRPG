@@ -8,13 +8,19 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', 50, DIRT_IMG},
-    {'b', 100, GRASS_IMG}
+    {'a', 10, DIRT_IMG},
+    {'b', 20, DIRT_IMG},
+    {'c', 30, DIRT_IMG},
+    {'d', 40, DIRT_IMG},
+    {'e', 50, GRASS_IMG},
+    {'f', 60, GRASS_IMG},
+    {'g', 70, GRASS_IMG},
+    {'h', 80, GRASS_IMG}
 };
 
 int find_in_skill_database(char name)
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 8; i++)
         if (data_skill[i].name == name)
             return i;
     return 0;

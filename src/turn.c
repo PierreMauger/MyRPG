@@ -69,6 +69,8 @@ void turn_loop(game_t *game)
 {
     if (check_atb(game) == 1) {
         game->ind->ptr = get_higher_atb(game);
+        if (game->attack == 0)
+            game->ind->temp = game->ind->ptr->skill;
         game->attack = 1;
     }
     else {

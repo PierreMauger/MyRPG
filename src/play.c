@@ -14,10 +14,12 @@ void event_loop(game_t *game)
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
             if (game->event.key.code == sfKeyR)
-                my_printf("%d\n", game->p_mons->skill->coef);
+                my_printf("%d\n", game->ind->temp->coef);
         }
-        if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1)
+        if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1) {
+            choose_skill(game, sfMouse_getPositionRenderWindow(game->window));
             attack(game, sfMouse_getPositionRenderWindow(game->window));
+        }
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
     }
