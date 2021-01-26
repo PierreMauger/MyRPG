@@ -7,7 +7,7 @@
 
 #include "game.h"
 
-void atb_increase(game_t *game, mons_t *mons)
+void atb_increase(mons_t *mons)
 {
     mons_t *temp = mons;
 
@@ -20,8 +20,8 @@ void atb_increase(game_t *game, mons_t *mons)
 
 void atb_reset(game_t *game)
 {
-    game->ind->ptr->atb_value = 0;
-    sfRectangleShape_setSize(game->ind->ptr->atb, (sfVector2f){game->ind->ptr->atb_value, 10});
+    game->ind->ptr_mons->atb_value = 0;
+    sfRectangleShape_setSize(game->ind->ptr_mons->atb, (sfVector2f){game->ind->ptr_mons->atb_value, 10});
 }
 
 int check_atb(game_t *game)
@@ -68,13 +68,13 @@ mons_t *get_higher_atb(game_t *game)
 void turn_loop(game_t *game)
 {
     if (check_atb(game) == 1) {
-        game->ind->ptr = get_higher_atb(game);
+        game->ind->ptr_mons = get_higher_atb(game);
         if (game->attack == 0)
-            game->ind->temp = game->ind->ptr->skill;
+            game->ind->ptr_skill = game->ind->ptr_mons->skill;
         game->attack = 1;
     }
     else {
-        atb_increase(game, game->e_mons);
-        atb_increase(game, game->p_mons);
+        atb_increase(game->e_mons);
+        atb_increase(game->p_mons);
     }
 }

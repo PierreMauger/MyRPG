@@ -80,8 +80,8 @@ typedef struct {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
-    mons_t *ptr;
-    skill_t *temp;
+    mons_t *ptr_mons;
+    skill_t *ptr_skill;
 } indicator_t;
 
 typedef struct {
@@ -124,7 +124,7 @@ int find_in_mons_database(char name);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name);
 
     //turn.c
-void atb_increase(game_t *game, mons_t *mons);
+void atb_increase(mons_t *mons);
 void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
@@ -143,11 +143,11 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void attack(game_t *game, sfVector2i mouse_pos);
 
     //skill.c
+int check_collide_skill(skill_t *skill, sfVector2f mouse_pos);
 void choose_skill(game_t *game, sfVector2i mouse_pos);
 void draw_skill(game_t *game);
 
     //skill_list.c
-int check_collide_skill(skill_t *skill, sfVector2f mouse_pos);
 int find_in_skill_database(char name);
 void put_in_skill_list(skill_t **skill, char name);
 

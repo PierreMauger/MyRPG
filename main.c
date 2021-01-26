@@ -13,7 +13,7 @@ int main(void)
     
     init_game(game);
         //a la main
-    game->ind->ptr = game->p_mons;
+    game->ind->ptr_mons = game->p_mons;
     sfRenderWindow_setFramerateLimit(game->window, 60);
     main_loop(game);
     destroy_game(game);

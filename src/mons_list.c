@@ -8,7 +8,7 @@
 #include "game.h"
 
 static data_mons_t data_mons[] = {
-    {'a', 100, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 3.5, "ab"},
+    {'a', 100, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 3.5, "abc"},
     {'b', 150, 0, 255, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 4, "cd"},
     {'c', 150, 0, 0, 255, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 3, "ef"},
     {'d', 130, 0, 255, 255, MONSTER2_IMG, MONSTER2_IMG_COLOR, 60, 120, 2, 1.5, "gh"}
@@ -61,8 +61,8 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
 
         //skill data
     element->skill = NULL;
-    put_in_skill_list(&element->skill, data_mons[i].skill[0]);
-    put_in_skill_list(&element->skill, data_mons[i].skill[1]);
+    for (int j = 0; data_mons[i].skill[j]; j++)
+        put_in_skill_list(&element->skill, data_mons[i].skill[j]);
     element->next = NULL;
 
     if (*mons == NULL) {

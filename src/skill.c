@@ -18,19 +18,19 @@ int check_collide_skill(skill_t *skill, sfVector2f mouse_pos)
 
 void choose_skill(game_t *game, sfVector2i mouse_pos)
 {
-    skill_t *temp = game->ind->temp;
+    skill_t *temp = game->ind->ptr_mons->skill;
 
     while (temp != NULL) {
         if (check_collide_skill(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1)
-            game->ind->temp = temp;
+            game->ind->ptr_skill = temp;
         temp = temp->next;
     }
 }
 
 void draw_skill(game_t *game)
 {
-    skill_t *temp = game->ind->ptr->skill;
-    int x = 1600;
+    skill_t *temp = game->ind->ptr_mons->skill;
+    int x = 1400;
 
     while (temp != NULL) {
         sfSprite_setPosition(temp->sprite, (sfVector2f){x, 900});
