@@ -32,6 +32,7 @@ typedef struct {
     char name;
     int coef;
     int target;
+    int aoe;
     char *sprite;
 } data_skill_t;
 
@@ -54,6 +55,7 @@ typedef struct skill {
     char name;
     int coef;
     int target;
+    int aoe;
     sfTexture *texture;
     sfSprite *sprite;
     struct skill *next;
