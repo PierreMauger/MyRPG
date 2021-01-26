@@ -31,6 +31,7 @@
 typedef struct {
     char name;
     int coef;
+    int target;
     char *sprite;
 } data_skill_t;
 
@@ -52,6 +53,7 @@ typedef struct {
 typedef struct skill {
     char name;
     int coef;
+    int target;
     sfTexture *texture;
     sfSprite *sprite;
     struct skill *next;
@@ -136,9 +138,9 @@ void draw_turn_ind(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
 
     //attack.c
+void target_enemy(game_t *game, mons_t *temp, sfVector2i mouse_pos);
+void target_ally(game_t *game, mons_t *temp, sfVector2i mouse_pos);
 int check_collide(mons_t *mons, sfVector2f mouse_pos);
-void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
-mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
 void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void attack(game_t *game, sfVector2i mouse_pos);
 
@@ -150,5 +152,9 @@ void draw_skill(game_t *game);
     //skill_list.c
 int find_in_skill_database(char name);
 void put_in_skill_list(skill_t **skill, char name);
+
+    //kill.c
+void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
+mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
 
 #endif

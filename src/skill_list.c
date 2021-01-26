@@ -8,14 +8,14 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', 10, DIRT_IMG},
-    {'b', 20, DIRT_IMG},
-    {'c', 30, DIRT_IMG},
-    {'d', 40, DIRT_IMG},
-    {'e', 50, GRASS_IMG},
-    {'f', 60, GRASS_IMG},
-    {'g', 70, GRASS_IMG},
-    {'h', 80, GRASS_IMG}
+    {'a', 10, 0, DIRT_IMG},
+    {'b', 20, 1, DIRT_IMG},
+    {'c', 30, 0, DIRT_IMG},
+    {'d', 40, 0, DIRT_IMG},
+    {'e', 50, 0, GRASS_IMG},
+    {'f', 60, 0, GRASS_IMG},
+    {'g', 70, 0, GRASS_IMG},
+    {'h', 80, 0, GRASS_IMG}
 };
 
 int find_in_skill_database(char name)
@@ -33,6 +33,7 @@ void put_in_skill_list(skill_t **skill, char name)
     int i = find_in_skill_database(name);
 
     element->coef = data_skill[i].coef;
+    element->target = data_skill[i].target;
     element->texture = sfTexture_createFromFile(data_skill[i].sprite, NULL);
     element->sprite = sfSprite_create();
     sfSprite_setTexture(element->sprite, element->texture, sfTrue);

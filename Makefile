@@ -14,6 +14,7 @@ SRC			=	src/game.c			\
 				src/attack.c		\
 				src/skill.c			\
 				src/skill_list.c	\
+				src/kill.c			\
 
 SRC_MAIN	=	main.c				\
 
