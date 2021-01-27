@@ -23,18 +23,32 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
     curr_mons->curr_hp -= game->ind->ptr_skill->coef;
     if (curr_mons->curr_hp <= 0)
         kill_mons(game, mons_list, curr_mons);
+    curr_mons->atb_value += game->ind->ptr_skill->atb_boost;
+    sfRectangleShape_setSize(curr_mons->atb, (sfVector2f){curr_mons->atb_value, 10});
     sfRectangleShape_setSize(curr_mons->hp, (sfVector2f){((float)curr_mons->curr_hp / (float)curr_mons->max_hp) * 100, 10});
-    atb_reset(game);
     game->attack = 0;
+}
+
+void aoe_hit(game_t *game, mons_t *mons)
+{
+    mons_t *temp = mons;
+
+    while (temp != NULL) {
+        attack_hit(game, mons, temp);
+        temp = temp->next;
+    }
 }
 
 void target_enemy(game_t *game, mons_t *temp, sfVector2i mouse_pos)
 {
     while (temp != NULL) {
-        if (game->ind->ptr_skill->aoe == 1)
-            attack_hit(game, game->e_mons, temp);
-        else if (check_collide(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1)
-            attack_hit(game, game->e_mons, temp);
+        if (check_collide(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1) {
+            atb_reset(game);
+            if (game->ind->ptr_skill->aoe == 1)
+                aoe_hit(game, game->e_mons);
+            else
+                attack_hit(game, game->e_mons, temp);
+        }
         temp = temp->next;
     }
 }
@@ -42,8 +56,13 @@ void target_enemy(game_t *game, mons_t *temp, sfVector2i mouse_pos)
 void target_ally(game_t *game, mons_t *temp, sfVector2i mouse_pos)
 {
     while (temp != NULL) {
-        if (check_collide(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1)
-            attack_hit(game, game->p_mons, temp);
+        if (check_collide(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1) {
+            atb_reset(game);
+            if (game->ind->ptr_skill->aoe == 1)
+                aoe_hit(game, game->p_mons);
+            else
+                attack_hit(game, game->p_mons, temp);
+        }
         temp = temp->next;
     }
 }
@@ -55,14 +74,14 @@ void attack(game_t *game, sfVector2i mouse_pos)
 
     if (game->turn == 0) {
         if (game->ind->ptr_skill->target == 0)
-            target_enemy(game, temp2, mouse_pos);
+            target_enemy(game, game->e_mons, mouse_pos);
         else
-            target_ally(game, temp, mouse_pos);
+            target_ally(game, game->p_mons, mouse_pos);
     }
     else {
         if (game->ind->ptr_skill->target == 0)
-            target_ally(game, temp, mouse_pos);
+            target_ally(game, game->p_mons, mouse_pos);
         else
-            target_enemy(game, temp2, mouse_pos);
+            target_enemy(game, game->e_mons, mouse_pos);
     }
 }
