@@ -25,8 +25,8 @@
 #define GRASS_IMG "ressources/sprites/grass.png"
 #define MONSTER_IMG "ressources/sprites/test_mult_texture.png"
 #define MONSTER_IMG_COLOR "ressources/sprites/test_mult_texture_color.png"
-#define MONSTER2_IMG "ressources/sprites/untitled.png"
-#define MONSTER2_IMG_COLOR "ressources/sprites/untitled_color.png"
+#define LANCER_IMG "ressources/sprites/lancer.png"
+#define LANCER_IMG_COLOR "ressources/sprites/lancer_color.png"
 
 typedef struct {
     char name;
