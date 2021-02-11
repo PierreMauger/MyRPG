@@ -7,12 +7,12 @@
 
 #include "game.h"
 
-void single_move_rect(sfIntRect *rect, int offset, int max_offset, int *booleen)
+void single_move_rect(sfIntRect *rect, int offset, int max_offset, game_t *game)
 {
     rect->left += offset;
     if (rect->left >= max_offset) {
         rect->left = 0;
-        *booleen = 0;
+        game->in_anim = 0;
     }
 }
 

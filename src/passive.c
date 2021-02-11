@@ -33,6 +33,7 @@ void passive_action(game_t *game, mons_t *mons_list, mons_t *curr_mons)
     }
     if (temp->name == 'g' && curr_mons->atb_value == 0) {
         game->ind->ptr_skill = game->ind->ptr_mons->skill;
-        attack_hit(game, mons_list, curr_mons);
+        game->in_anim = 1;
+        game->ind->target->atb_value = 31;
     }
 }

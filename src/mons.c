@@ -46,6 +46,20 @@ void draw_mons(game_t *game, mons_t *mons)
     }
 }
 
+void test(game_t *game)
+{
+    mons_t *temp = game->ind->team;
+
+    if (game->ind->ptr_skill->aoe == 1)
+        while (temp != NULL) {
+            game->ind->target = temp;
+            attack_hit(game, game->ind->team, game->ind->target);
+            temp = temp->next;
+        }
+    else
+        attack_hit(game, game->ind->team, game->ind->target);
+}
+
 void anim_mons(game_t *game)
 {
     mons_t *temp = game->p_mons;
@@ -63,8 +77,11 @@ void anim_mons(game_t *game)
             temp2 = temp2->next;
         }
         move_rect(&game->ind->rect, 40, 80);
-        if (game->in_anim == 1)
-            single_move_rect(&game->ind->arect, 80, 320, &game->in_anim);
+        if (game->in_anim == 1) {
+            single_move_rect(&game->ind->arect, 80, 320, game);
+            if (game->in_anim == 0)
+                test(game);
+        }
         sfClock_restart(game->clock);
     }
 }
