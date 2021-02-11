@@ -17,6 +17,7 @@ SRC			=	src/game.c			\
 				src/kill.c			\
 				src/attack_anim.c	\
 				src/passive.c		\
+				src/move_rect.c		\
 
 SRC_MAIN	=	main.c				\
 

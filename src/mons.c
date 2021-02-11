@@ -7,13 +7,6 @@
 
 #include "game.h"
 
-void move_rect(sfIntRect *rect, int offset, int max_offset)
-{
-    rect->left += offset;
-    if (rect->left >= max_offset)
-        rect->left = 0;
-}
-
 void init_mons(game_t *game)
 {
     sfVector2f p_pos = {200, 800};
@@ -46,7 +39,7 @@ void draw_mons(game_t *game, mons_t *mons)
     }
 }
 
-void test(game_t *game)
+void attack_activation(game_t *game)
 {
     mons_t *temp = game->ind->team;
 
@@ -78,7 +71,7 @@ void anim_mons(game_t *game)
         }
         move_rect(&game->ind->rect, 40, 80);
         if (game->in_anim == 1) {
-            single_move_rect(&game->ind->arect, 80, 320, game);
+            single_move_rect(&game->ind->arect, 80, 320, &game->in_anim);
             if (game->in_anim == 0)
                 test(game);
         }

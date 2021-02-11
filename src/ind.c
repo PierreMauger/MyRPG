@@ -7,15 +7,6 @@
 
 #include "game.h"
 
-void single_move_rect(sfIntRect *rect, int offset, int max_offset, game_t *game)
-{
-    rect->left += offset;
-    if (rect->left >= max_offset) {
-        rect->left = 0;
-        game->in_anim = 0;
-    }
-}
-
 void init_turn_ind(game_t *game)
 {
     game->ind = malloc(sizeof(indicator_t));

@@ -10,7 +10,7 @@
 int main(void)
 {
     game_t *game = malloc(sizeof(game_t));
-    
+
     init_game(game);
         //a la main
     game->ind->ptr_mons = game->p_mons;

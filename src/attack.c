@@ -39,11 +39,10 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
     game->attack = 0;
 }
 
-void attack_activation(game_t *game)
+void set_attack(game_t *game)
 {
     game->in_anim = 1;
     set_anim_pos(game, game->ind->target);
-    //attack_hit(game, game->ind->team, game->ind->target);
     //if (check_passive(game) == 1)
     //    passive_action(game, mons_list, curr_mons);
 }
@@ -54,7 +53,7 @@ void aoe_hit(game_t *game)
 
     while (temp != NULL) {
         game->ind->target = temp;
-        attack_activation(game);
+        set_attack(game);
         temp = temp->next;
     }
 }
@@ -75,7 +74,7 @@ void attack(game_t *game, sfVector2i mouse_pos)
             if (game->ind->ptr_skill->aoe == 1)
                 aoe_hit(game);
             else
-                attack_activation(game);
+                set_attack(game);
         }
         if (temp != NULL)
             temp = temp->next;

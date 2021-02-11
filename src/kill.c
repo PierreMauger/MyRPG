@@ -31,7 +31,7 @@ mons_t *kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons)
         if (mons_list == curr_mons) {
             if (last_mons == NULL)
                 head = head->next;
-            else    
+            else
                 last_mons->next = mons_list->next;
         }
         last_mons = mons_list;
