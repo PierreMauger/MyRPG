@@ -10,9 +10,12 @@
 void event_loop(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
-        if (game->event.type == sfEvtKeyPressed)
+        if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
+            if (game->event.key.code == sfKeyM)
+                my_putchar(game->ind->ptr_skill->name);
+        }
         if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1 && game->in_anim != 1) {
             choose_skill(game, sfMouse_getPositionRenderWindow(game->window));
             attack(game, sfMouse_getPositionRenderWindow(game->window));
@@ -25,8 +28,11 @@ void event_loop(game_t *game)
 void update_all(game_t *game)
 {
     anim_mons(game);
-    if (game->in_anim == 0)
+    if (game->in_anim == 0) {
+        if (check_passive(game) == 1)
+            passive_action(game, game->ind->team, game->ind->target);
         turn_loop(game);
+    }
 }
 
 void draw_all(game_t *game)

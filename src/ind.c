@@ -27,6 +27,8 @@ void init_turn_ind(game_t *game)
     game->ind->arect = (sfIntRect){0, 0, 80, 80};
     game->ind->ptr_mons = NULL;
     game->ind->ptr_skill = NULL;
+    game->ind->team = NULL;
+    game->ind->target = NULL;
 }
 
 void draw_turn_ind(game_t *game)

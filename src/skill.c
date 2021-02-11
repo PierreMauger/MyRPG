@@ -22,7 +22,8 @@ void choose_skill(game_t *game, sfVector2i mouse_pos)
 
     while (temp != NULL) {
         if (check_collide_skill(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1)
-            game->ind->ptr_skill = temp;
+            if (temp->passive == 0)
+                game->ind->ptr_skill = temp;
         temp = temp->next;
     }
 }

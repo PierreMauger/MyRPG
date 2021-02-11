@@ -35,6 +35,7 @@ typedef struct {
     int target;
     int aoe;
     float atb_boost;
+    int passive;
     char *sprite;
 } data_skill_t;
 
@@ -59,6 +60,7 @@ typedef struct skill {
     int target;
     int aoe;
     float atb_boost;
+    int passive;
     sfTexture *texture;
     sfSprite *sprite;
     struct skill *next;
@@ -92,6 +94,9 @@ typedef struct {
     sfSprite *asprite;
     mons_t *ptr_mons;
     skill_t *ptr_skill;
+
+    mons_t *target;
+    mons_t *team;
 } indicator_t;
 
 typedef struct {
@@ -150,6 +155,7 @@ void destroy_turn_ind(indicator_t *ind);
     //attack.c
 int check_collide(mons_t *mons, sfVector2f mouse_pos);
 void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
+void attack_activation(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void aoe_hit(game_t *game, mons_t *mons);
 void target_team(game_t *game, mons_t *team, sfVector2i mouse_pos);
 void attack(game_t *game, sfVector2i mouse_pos);
@@ -171,5 +177,9 @@ mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
 void set_anim_pos(game_t *game, mons_t *target);
 void draw_single_attak_target(game_t *game);
 void draw_turn_ind(game_t *game);
+
+    //passive.c
+int check_passive(game_t *game);
+void passive_action(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 
 #endif

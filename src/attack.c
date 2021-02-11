@@ -25,8 +25,10 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
     game->in_anim = 1;
     set_anim_pos(game, curr_mons);
     curr_mons->curr_hp -= game->ind->ptr_skill->coef;
-    if (curr_mons->curr_hp <= 0)
+    if (curr_mons->curr_hp <= 0) {
         kill_mons(game, mons_list, curr_mons);
+        game->ind->target = NULL;
+    }
     curr_mons->atb_value += game->ind->ptr_skill->atb_boost;
     if (curr_mons->atb_value <= 0)
         curr_mons->atb_value = 0;
@@ -38,12 +40,21 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
     game->attack = 0;
 }
 
+void attack_activation(game_t *game, mons_t *mons_list, mons_t *curr_mons)
+{
+    game->ind->team = mons_list;
+    game->ind->target = curr_mons;
+    attack_hit(game, mons_list, curr_mons);
+    //if (check_passive(game) == 1)
+    //    passive_action(game, mons_list, curr_mons);
+}
+
 void aoe_hit(game_t *game, mons_t *mons)
 {
     mons_t *temp = mons;
 
     while (temp != NULL) {
-        attack_hit(game, mons, temp);
+        attack_activation(game, mons, temp);
         temp = temp->next;
     }
 }
@@ -58,7 +69,7 @@ void target_team(game_t *game, mons_t *team, sfVector2i mouse_pos)
             if (game->ind->ptr_skill->aoe == 1)
                 aoe_hit(game, team);
             else
-                attack_hit(game, team, temp);
+                attack_activation(game, team, temp);
         }
         temp = temp->next;
     }
