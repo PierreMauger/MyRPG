@@ -49,11 +49,12 @@ void attack_activation(game_t *game)
 
 void aoe_hit(game_t *game)
 {
-    game->ind->target = game->ind->team;
+    mons_t *temp = game->ind->team;
 
-    while (game->ind->target != NULL) {
+    while (temp != NULL) {
+        game->ind->target = temp;
         attack_activation(game);
-        game->ind->target = game->ind->target->next;
+        temp = temp->next;
     }
 }
 
