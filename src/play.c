@@ -17,7 +17,7 @@ void event_loop(game_t *game)
                 my_printf("%d\n", game->turn);
                 //my_printf("%d %d\n", sfMouse_getPositionRenderWindow(game->window).x, sfMouse_getPositionRenderWindow(game->window).y);
         }
-        if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1) {
+        if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1 && game->in_anim != 1) {
             choose_skill(game, sfMouse_getPositionRenderWindow(game->window));
             attack(game, sfMouse_getPositionRenderWindow(game->window));
         }
