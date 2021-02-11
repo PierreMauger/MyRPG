@@ -144,8 +144,6 @@ void turn_loop(game_t *game);
     //ind.c
 void single_move_rect(sfIntRect *rect, int offset, int max_offset, int *booleen);
 void init_turn_ind(game_t *game);
-void draw_turn_ind(game_t *game);
-void draw_single_attak_target(game_t *game);
 void draw_attak_target(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
 
@@ -169,5 +167,10 @@ void put_in_skill_list(skill_t **skill, char name);
     //kill.c
 void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
+
+    //attack_anim.c
+void set_anim_pos(game_t *game, mons_t *target);
+void draw_single_attak_target(game_t *game);
+void draw_turn_ind(game_t *game);
 
 #endif
