@@ -145,6 +145,7 @@ void turn_loop(game_t *game);
 void single_move_rect(sfIntRect *rect, int offset, int max_offset, int *booleen);
 void init_turn_ind(game_t *game);
 void draw_turn_ind(game_t *game);
+void draw_single_attak_target(game_t *game);
 void draw_attak_target(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
 

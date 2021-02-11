@@ -8,10 +8,10 @@
 #include "game.h"
 
 static data_mons_t data_mons[] = {
-    {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 1.5, "abc"},
+    {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 7, "abc"},
     {'b', 150, 230, 255, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 4, "ade"},
     {'c', 150, 0, 170, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 3, "abf"},
-    {'d', 100, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 3.5, "abc"}
+    {'d', 100, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 2, "abc"}
 };
 
 int find_in_mons_database(char name)

@@ -28,7 +28,8 @@ void event_loop(game_t *game)
 void update_all(game_t *game)
 {
     anim_mons(game);
-    turn_loop(game);
+    if (game->in_anim == 0)
+        turn_loop(game);
 }
 
 void draw_all(game_t *game)
@@ -38,8 +39,7 @@ void draw_all(game_t *game)
     draw_mons(game, game->e_mons);
     draw_turn_ind(game);
     draw_skill(game);
-    if (game->in_anim == 1)
-        draw_attak_target(game);
+    draw_attak_target(game);
     sfRenderWindow_display(game->window);
 }
 
