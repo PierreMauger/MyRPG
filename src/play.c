@@ -10,13 +10,9 @@
 void event_loop(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
-        if (game->event.type == sfEvtKeyPressed) {
+        if (game->event.type == sfEvtKeyPressed)
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
-            if (game->event.key.code == sfKeyM)
-                my_printf("%d\n", game->turn);
-                //my_printf("%d %d\n", sfMouse_getPositionRenderWindow(game->window).x, sfMouse_getPositionRenderWindow(game->window).y);
-        }
         if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1 && game->in_anim != 1) {
             choose_skill(game, sfMouse_getPositionRenderWindow(game->window));
             attack(game, sfMouse_getPositionRenderWindow(game->window));
