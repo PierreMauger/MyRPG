@@ -151,8 +151,7 @@ void destroy_turn_ind(indicator_t *ind);
 int check_collide(mons_t *mons, sfVector2f mouse_pos);
 void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void aoe_hit(game_t *game, mons_t *mons);
-void target_enemy(game_t *game, mons_t *temp, sfVector2i mouse_pos);
-void target_ally(game_t *game, mons_t *temp, sfVector2i mouse_pos);
+void target_team(game_t *game, mons_t *team, sfVector2i mouse_pos);
 void attack(game_t *game, sfVector2i mouse_pos);
 
     //skill.c

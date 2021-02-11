@@ -48,29 +48,17 @@ void aoe_hit(game_t *game, mons_t *mons)
     }
 }
 
-void target_enemy(game_t *game, mons_t *temp, sfVector2i mouse_pos)
+void target_team(game_t *game, mons_t *team, sfVector2i mouse_pos)
 {
-    while (temp != NULL) {
-        if (check_collide(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1) {
-            atb_reset(game);
-            if (game->ind->ptr_skill->aoe == 1)
-                aoe_hit(game, game->e_mons);
-            else
-                attack_hit(game, game->e_mons, temp);
-        }
-        temp = temp->next;
-    }
-}
+    mons_t *temp = team;
 
-void target_ally(game_t *game, mons_t *temp, sfVector2i mouse_pos)
-{
     while (temp != NULL) {
         if (check_collide(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1) {
             atb_reset(game);
             if (game->ind->ptr_skill->aoe == 1)
-                aoe_hit(game, game->p_mons);
+                aoe_hit(game, team);
             else
-                attack_hit(game, game->p_mons, temp);
+                attack_hit(game, team, temp);
         }
         temp = temp->next;
     }
@@ -78,16 +66,8 @@ void target_ally(game_t *game, mons_t *temp, sfVector2i mouse_pos)
 
 void attack(game_t *game, sfVector2i mouse_pos)
 {
-    if (game->turn == 0) {
-        if (game->ind->ptr_skill->target == 0)
-            target_enemy(game, game->e_mons, mouse_pos);
-        else
-            target_ally(game, game->p_mons, mouse_pos);
-    }
-    else {
-        if (game->ind->ptr_skill->target == 0)
-            target_ally(game, game->p_mons, mouse_pos);
-        else
-            target_enemy(game, game->e_mons, mouse_pos);
-    }
+    if (game->turn == game->ind->ptr_skill->target)
+        target_team(game, game->e_mons, mouse_pos);
+    else
+        target_team(game, game->p_mons, mouse_pos);
 }
