@@ -8,11 +8,11 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', 10, 0, 0, 0, DIRT_IMG},
-    {'b', 00, 1, 0, 30, DIRT_IMG},
-    {'c', 30, 0, 0, 0, DIRT_IMG},
-    {'d', 0, 1, 1, 30, DIRT_IMG},
-    {'e', 50, 0, 1, 0, GRASS_IMG},
+    {'a', 40, 0, 0, -30, DIRT_IMG},
+    {'b', 30, 0, 1, 0, DIRT_IMG},
+    {'c',  0, 1, 1, 30, DIRT_IMG},
+    {'d', 50, 0, 0, 0, DIRT_IMG},
+    {'e', 60, 0, 0, -100, GRASS_IMG},
     {'f', 60, 0, 0, 0, GRASS_IMG},
     {'g', 70, 0, 0, 0, GRASS_IMG},
     {'h', 80, 0, 0, 0, GRASS_IMG}

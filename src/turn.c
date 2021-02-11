@@ -10,10 +10,14 @@
 void atb_increase(mons_t *mons)
 {
     mons_t *temp = mons;
+    float temp_atb;
 
     while (temp != NULL) {
         temp->atb_value += temp->speed;
-        sfRectangleShape_setSize(temp->atb, (sfVector2f){temp->atb_value, 10});
+        temp_atb = temp->atb_value;
+        if (temp_atb >= 100)
+            temp_atb = 100;
+        sfRectangleShape_setSize(temp->atb, (sfVector2f){temp_atb, 10});
         temp = temp->next;
     }
 }

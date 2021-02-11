@@ -14,7 +14,7 @@ void event_loop(game_t *game)
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
             if (game->event.key.code == sfKeyR)
-                my_printf("%d\n", game->ind->ptr_skill->coef);
+                my_printf("%d %d\n", sfMouse_getPositionRenderWindow(game->window).x, sfMouse_getPositionRenderWindow(game->window).y);
         }
         if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1) {
             choose_skill(game, sfMouse_getPositionRenderWindow(game->window));
@@ -33,7 +33,7 @@ void update_all(game_t *game)
 
 void draw_all(game_t *game)
 {
-    sfRenderWindow_clear(game->window, sfWhite);
+    sfRenderWindow_clear(game->window, sfBlack);
     draw_mons(game, game->p_mons);
     draw_mons(game, game->e_mons);
     draw_turn_ind(game);

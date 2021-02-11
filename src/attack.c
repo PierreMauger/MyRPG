@@ -20,11 +20,18 @@ int check_collide(mons_t *mons, sfVector2f mouse_pos)
 
 void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
 {
+    float temp_atb;
+
     curr_mons->curr_hp -= game->ind->ptr_skill->coef;
     if (curr_mons->curr_hp <= 0)
         kill_mons(game, mons_list, curr_mons);
     curr_mons->atb_value += game->ind->ptr_skill->atb_boost;
-    sfRectangleShape_setSize(curr_mons->atb, (sfVector2f){curr_mons->atb_value, 10});
+    if (curr_mons->atb_value <= 0)
+        curr_mons->atb_value = 0;
+    temp_atb = curr_mons->atb_value;
+        if (temp_atb >= 100)
+            temp_atb = 100;
+    sfRectangleShape_setSize(curr_mons->atb, (sfVector2f){temp_atb, 10});
     sfRectangleShape_setSize(curr_mons->hp, (sfVector2f){((float)curr_mons->curr_hp / (float)curr_mons->max_hp) * 100, 10});
     game->attack = 0;
 }

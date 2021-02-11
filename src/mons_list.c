@@ -4,13 +4,13 @@
 ** File description:
 ** main
 */
-
+//{'c', 150, 0, 170, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 3, "ef"},
 #include "game.h"
 
 static data_mons_t data_mons[] = {
-    {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 1.5, "gh"},
-    {'b', 150, 180, 255, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 4, "cd"},
-    {'c', 150, 0, 128, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 3, "ef"},
+    {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 1.5, "abc"},
+    {'b', 150, 230, 255, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 4, "ade"},
+    {'c', 150, 0, 170, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 3, "ef"},
     {'d', 100, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 3.5, "abc"}
 };
 
@@ -47,17 +47,17 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
     element->max_hp = data_mons[i].hp;
     element->curr_hp = element->max_hp;
     element->hp = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(element->hp, (sfVector2f){(element->width + 50) / 2, 0});
+    sfRectangleShape_setOrigin(element->hp, (sfVector2f){element->width / 2 + 50, 0});
     sfRectangleShape_setSize(element->hp, (sfVector2f){100, 10});
     sfRectangleShape_setFillColor(element->hp, sfGreen);
-    sfRectangleShape_setPosition(element->hp, (sfVector2f){pos.x, pos.y + 10});
+    sfRectangleShape_setPosition(element->hp, (sfVector2f){pos.x + element->width / 2, pos.y + 10});
     element->speed = data_mons[i].speed;
     element->atb_value = 0;
     element->atb = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(element->atb, (sfVector2f){(element->width + 50) / 2, 0});
+    sfRectangleShape_setOrigin(element->atb, (sfVector2f){element->width / 2 + 50, 0});
     sfRectangleShape_setSize(element->atb, (sfVector2f){0, 10});
     sfRectangleShape_setFillColor(element->atb, sfCyan);
-    sfRectangleShape_setPosition(element->atb, (sfVector2f){pos.x, pos.y + 30});
+    sfRectangleShape_setPosition(element->atb, (sfVector2f){pos.x + element->width / 2, pos.y + 30});
 
         //skill data
     element->skill = NULL;
@@ -74,5 +74,4 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
             last = last->next;
         last->next = element;
     }
-
 }
