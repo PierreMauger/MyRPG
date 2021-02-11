@@ -22,6 +22,9 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
 {
     float temp_atb;
 
+    game->in_anim = 1;
+    sfSprite_setOrigin(game->ind->asprite, (sfVector2f){curr_mons->width / 2 + 40, 0});
+    sfSprite_setPosition(game->ind->asprite, (sfVector2f){sfSprite_getPosition(curr_mons->sprite).x + curr_mons->width / 2, sfSprite_getPosition(curr_mons->sprite).y - 80});
     curr_mons->curr_hp -= game->ind->ptr_skill->coef;
     if (curr_mons->curr_hp <= 0)
         kill_mons(game, mons_list, curr_mons);

@@ -23,6 +23,7 @@
 #define ANIME_TIME 0.3
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
+#define SLASH_IMG "ressources/sprites/test_anim.png"
 #define MONSTER_IMG "ressources/sprites/test_mult_texture.png"
 #define MONSTER_IMG_COLOR "ressources/sprites/test_mult_texture_color.png"
 #define LANCER_IMG "ressources/sprites/lancer.png"
@@ -86,6 +87,9 @@ typedef struct {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
+    sfIntRect arect;
+    sfTexture *atexture;
+    sfSprite *asprite;
     mons_t *ptr_mons;
     skill_t *ptr_skill;
 } indicator_t;
@@ -100,6 +104,7 @@ typedef struct {
     int state;
     int pause;
     int turn;
+    int in_anim;
     mons_t *p_mons;
     mons_t *e_mons;
     indicator_t *ind;
@@ -137,8 +142,10 @@ mons_t *get_higher_atb(game_t *game);
 void turn_loop(game_t *game);
 
     //ind.c
+void single_move_rect(sfIntRect *rect, int offset, int max_offset, int *booleen);
 void init_turn_ind(game_t *game);
 void draw_turn_ind(game_t *game);
+void draw_attak_target(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
 
     //attack.c

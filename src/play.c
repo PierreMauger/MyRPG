@@ -13,7 +13,7 @@ void event_loop(game_t *game)
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
-            if (game->event.key.code == sfKeyR)
+            if (game->event.key.code == sfKeyM)
                 my_printf("%d %d\n", sfMouse_getPositionRenderWindow(game->window).x, sfMouse_getPositionRenderWindow(game->window).y);
         }
         if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1) {
@@ -38,6 +38,8 @@ void draw_all(game_t *game)
     draw_mons(game, game->e_mons);
     draw_turn_ind(game);
     draw_skill(game);
+    if (game->in_anim == 1)
+        draw_attak_target(game);
     sfRenderWindow_display(game->window);
 }
 

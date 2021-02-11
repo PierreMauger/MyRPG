@@ -29,6 +29,7 @@ void init_game(game_t *game)
     game->pause = 0;
     game->turn = 0;
     game->attack = 0;
+    game->in_anim = 0;
     game->p_mons = NULL;
     game->e_mons = NULL;
     init_mons(game);

@@ -63,6 +63,8 @@ void anim_mons(game_t *game)
             temp2 = temp2->next;
         }
         move_rect(&game->ind->rect, 40, 80);
+        if (game->in_anim == 1)
+            single_move_rect(&game->ind->arect, 80, 320, &game->in_anim);
         sfClock_restart(game->clock);
     }
 }
