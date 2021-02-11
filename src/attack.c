@@ -78,9 +78,6 @@ void target_ally(game_t *game, mons_t *temp, sfVector2i mouse_pos)
 
 void attack(game_t *game, sfVector2i mouse_pos)
 {
-    mons_t *temp = game->p_mons;
-    mons_t *temp2 = game->e_mons;
-
     if (game->turn == 0) {
         if (game->ind->ptr_skill->target == 0)
             target_enemy(game, game->e_mons, mouse_pos);
