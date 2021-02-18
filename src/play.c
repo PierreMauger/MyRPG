@@ -13,19 +13,11 @@ void event_loop(game_t *game)
 
     while (sfRenderWindow_pollEvent(game->window, &game->event))
     {
-        if (game->event.type == sfEvtKeyPressed) {
+        if (game->event.type == sfEvtKeyPressed)
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
-            if (game->event.key.code == sfKeyM)
-                my_put_nbr(game->ind->ptr_skill->ini_cd);
-            if (game->event.key.code == sfKeyL) {
-                while (temp != NULL) {
-                    my_put_nbr(temp->act_cd);
-                    temp = temp->next;
-                }
-            }
-        }
-        if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1 && game->in_anim != 1) {
+        if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1
+        && game->in_anim != 1) {
             choose_skill(game, sfMouse_getPositionRenderWindow(game->window));
             attack(game, sfMouse_getPositionRenderWindow(game->window));
         }
@@ -34,9 +26,25 @@ void event_loop(game_t *game)
     }
 }
 
+void anim_all(game_t *game)
+{
+    game->time = sfClock_getElapsedTime(game->clock);
+    game->seconds = game->time.microseconds / 1000000.0;
+    if (game->seconds > ANIME_TIME) {
+        anim_mons(game);
+        move_rect(&game->ind->rect, 40, 80);
+        if (game->in_anim == 1) {
+            single_move_rect(&game->ind->arect, 80, 320, &game->in_anim);
+            if (game->in_anim == 0)
+                attack_activation(game);
+        }
+        sfClock_restart(game->clock);
+    }
+}
+
 void update_all(game_t *game)
 {
-    anim_mons(game);
+    anim_all(game);
     if (game->in_anim == 0) {
         if (check_passive(game) == 1)
             passive_action(game, game->ind->team, game->ind->target);

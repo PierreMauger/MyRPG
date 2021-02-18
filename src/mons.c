@@ -39,43 +39,18 @@ void draw_mons(game_t *game, mons_t *mons)
     }
 }
 
-void attack_activation(game_t *game)
-{
-    mons_t *temp = game->ind->team;
-
-    if (game->ind->ptr_skill->aoe == 1)
-        while (temp != NULL) {
-            game->ind->target = temp;
-            attack_hit(game, game->ind->team, game->ind->target);
-            temp = temp->next;
-        }
-    else
-        attack_hit(game, game->ind->team, game->ind->target);
-}
-
 void anim_mons(game_t *game)
 {
     mons_t *temp = game->p_mons;
     mons_t *temp2 = game->e_mons;
 
-    game->time = sfClock_getElapsedTime(game->clock);
-    game->seconds = game->time.microseconds / 1000000.0;
-    if (game->seconds > ANIME_TIME) {
-        while (temp != NULL) {
-            move_rect(&temp->rect, temp->width, temp->width * temp->nb_anim);
-            temp = temp->next;
-        }
-        while (temp2 != NULL) {
-            move_rect(&temp2->rect, temp2->width, temp2->width * temp2->nb_anim);
-            temp2 = temp2->next;
-        }
-        move_rect(&game->ind->rect, 40, 80);
-        if (game->in_anim == 1) {
-            single_move_rect(&game->ind->arect, 80, 320, &game->in_anim);
-            if (game->in_anim == 0)
-                attack_activation(game);
-        }
-        sfClock_restart(game->clock);
+    while (temp != NULL) {
+        move_rect(&temp->rect, temp->width, temp->width * temp->nb_anim);
+        temp = temp->next;
+    }
+    while (temp2 != NULL) {
+        move_rect(&temp2->rect, temp2->width, temp2->width * temp2->nb_anim);
+        temp2 = temp2->next;
     }
 }
 

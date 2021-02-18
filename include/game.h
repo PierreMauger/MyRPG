@@ -127,6 +127,7 @@ void destroy_game(game_t *game);
 
     //play.c
 void event_loop(game_t *game);
+void anim_all(game_t *game);
 void update_all(game_t *game);
 void draw_all(game_t *game);
 void game_loop(game_t *game);
@@ -134,7 +135,6 @@ void game_loop(game_t *game);
     //mons.c
 void init_mons(game_t *game);
 void draw_mons(game_t *game, mons_t *mons);
-void attack_activation(game_t *game);
 void anim_mons(game_t *game);
 void destroy_mons(mons_t *mons);
 
@@ -150,7 +150,7 @@ mons_t *get_higher_atb(game_t *game);
 void turn_loop(game_t *game);
 void cooldown_reduce(game_t *game);
 
-//ind.c
+    //ind.c
 void init_turn_ind(game_t *game);
 void draw_attak_target(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
@@ -161,6 +161,7 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void set_attack(game_t *game);
 void aoe_hit(game_t *game);
 void attack(game_t *game, sfVector2i mouse_pos);
+void attack_activation(game_t *game);
 
     //skill.c
 int check_collide_skill(skill_t *skill, sfVector2f mouse_pos);

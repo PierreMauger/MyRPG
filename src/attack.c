@@ -81,3 +81,17 @@ void attack(game_t *game, sfVector2i mouse_pos)
     game->ind->ptr_skill->act_cd = game->ind->ptr_skill->ini_cd;
     cooldown_reduce(game);
 }
+
+void attack_activation(game_t *game)
+{
+    mons_t *temp = game->ind->team;
+
+    if (game->ind->ptr_skill->aoe == 1)
+        while (temp != NULL) {
+            game->ind->target = temp;
+            attack_hit(game, game->ind->team, game->ind->target);
+            temp = temp->next;
+        }
+    else
+        attack_hit(game, game->ind->team, game->ind->target);
+}
