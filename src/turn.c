@@ -28,6 +28,18 @@ void atb_reset(game_t *game)
     sfRectangleShape_setSize(game->ind->ptr_mons->atb, (sfVector2f){game->ind->ptr_mons->atb_value, 10});
 }
 
+void cooldown_reduce(game_t *game)
+{
+    skill_t *temp = game->ind->ptr_mons->skill;
+
+    while (temp != NULL) {
+        temp->act_cd -= 1;
+        if (temp->act_cd < 0)
+            temp->act_cd = 0;
+        temp = temp->next;
+    }
+}
+
 int check_atb(game_t *game)
 {
     mons_t *temp = game->p_mons;

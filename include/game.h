@@ -36,6 +36,7 @@ typedef struct {
     int aoe;
     float atb_boost;
     int passive;
+    int cooldown;
     char *sprite;
 } data_skill_t;
 
@@ -61,6 +62,8 @@ typedef struct skill {
     int aoe;
     float atb_boost;
     int passive;
+    int ini_cd;
+    int act_cd;
     sfTexture *texture;
     sfSprite *sprite;
     struct skill *next;
@@ -145,8 +148,9 @@ void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
 void turn_loop(game_t *game);
+void cooldown_reduce(game_t *game);
 
-    //ind.c
+//ind.c
 void init_turn_ind(game_t *game);
 void draw_attak_target(game_t *game);
 void destroy_turn_ind(indicator_t *ind);

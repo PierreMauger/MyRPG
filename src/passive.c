@@ -31,9 +31,9 @@ void passive_action(game_t *game, mons_t *mons_list, mons_t *curr_mons)
         else
             break;
     }
-    if (temp->name == 'g' && curr_mons->atb_value == 0) {
+    if (temp->name == 'g' && curr_mons->atb_value == 0 && temp->act_cd == 0) {
         game->ind->ptr_skill = game->ind->ptr_mons->skill;
         game->in_anim = 1;
-        game->ind->target->atb_value = 31;
+        temp->act_cd = 1;
     }
 }

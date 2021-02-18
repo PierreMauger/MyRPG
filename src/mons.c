@@ -73,7 +73,7 @@ void anim_mons(game_t *game)
         if (game->in_anim == 1) {
             single_move_rect(&game->ind->arect, 80, 320, &game->in_anim);
             if (game->in_anim == 0)
-                test(game);
+                attack_activation(game);
         }
         sfClock_restart(game->clock);
     }

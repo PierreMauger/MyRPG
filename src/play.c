@@ -9,12 +9,21 @@
 
 void event_loop(game_t *game)
 {
-    while (sfRenderWindow_pollEvent(game->window, &game->event)) {
+    skill_t *temp = game->ind->ptr_mons->skill;
+
+    while (sfRenderWindow_pollEvent(game->window, &game->event))
+    {
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 change_bool(&game->pause);
             if (game->event.key.code == sfKeyM)
-                my_putchar(game->ind->ptr_skill->name);
+                my_put_nbr(game->ind->ptr_skill->ini_cd);
+            if (game->event.key.code == sfKeyL) {
+                while (temp != NULL) {
+                    my_put_nbr(temp->act_cd);
+                    temp = temp->next;
+                }
+            }
         }
         if (game->event.type == sfEvtMouseButtonPressed && game->attack == 1 && game->in_anim != 1) {
             choose_skill(game, sfMouse_getPositionRenderWindow(game->window));

@@ -22,7 +22,6 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
 {
     float temp_atb;
 
-    set_anim_pos(game, curr_mons);
     curr_mons->curr_hp -= game->ind->ptr_skill->coef;
     if (curr_mons->curr_hp <= 0) {
         kill_mons(game, mons_list, curr_mons);
@@ -79,4 +78,6 @@ void attack(game_t *game, sfVector2i mouse_pos)
         if (temp != NULL)
             temp = temp->next;
     }
+    game->ind->ptr_skill->act_cd = game->ind->ptr_skill->ini_cd;
+    cooldown_reduce(game);
 }
