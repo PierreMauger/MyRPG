@@ -13,9 +13,6 @@ void init_turn_ind(game_t *game)
     game->ind->texture = sfTexture_createFromFile(GRASS_IMG, NULL);
     game->ind->sprite = sfSprite_create();
     game->ind->rect = (sfIntRect){0, 0, 40, 80};
-    game->ind->atexture = sfTexture_createFromFile(SLASH_IMG, NULL);
-    game->ind->asprite = sfSprite_create();
-    game->ind->arect = (sfIntRect){0, 0, 80, 80};
     game->ind->ptr_mons = NULL;
     game->ind->ptr_skill = NULL;
     game->ind->team = NULL;

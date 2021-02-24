@@ -9,15 +9,15 @@
 
 void set_anim_pos(game_t *game, mons_t *target)
 {
-    sfSprite_setOrigin(game->ind->asprite, (sfVector2f){target->width / 2 + 40, 0});
-    sfSprite_setPosition(game->ind->asprite, (sfVector2f){sfSprite_getPosition(target->sprite).x + target->width / 2, sfSprite_getPosition(target->sprite).y - 80});
+    sfSprite_setOrigin(game->ind->ptr_skill->asprite, (sfVector2f){target->width / 2 + 40, 0});
+    sfSprite_setPosition(game->ind->ptr_skill->asprite, (sfVector2f){sfSprite_getPosition(target->sprite).x + target->width / 2, sfSprite_getPosition(target->sprite).y - 80});
 }
 
 void draw_single_attak_target(game_t *game)
 {
-    sfSprite_setTexture(game->ind->asprite, game->ind->atexture, sfTrue);
-    sfSprite_setTextureRect(game->ind->asprite, game->ind->arect);
-    sfRenderWindow_drawSprite(game->window, game->ind->asprite, NULL);
+    sfSprite_setTexture(game->ind->ptr_skill->asprite, game->ind->ptr_skill->atexture, sfTrue);
+    sfSprite_setTextureRect(game->ind->ptr_skill->asprite, game->ind->ptr_skill->arect);
+    sfRenderWindow_drawSprite(game->window, game->ind->ptr_skill->asprite, NULL);
 }
 
 void draw_attak_target(game_t *game)
