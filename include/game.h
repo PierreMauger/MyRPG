@@ -40,6 +40,8 @@ typedef struct {
     int cooldown;
     char *sprite;
     char *anim;
+    char *desc_img;
+    char *desc;
 } data_skill_t;
 
 typedef struct {
@@ -71,6 +73,8 @@ typedef struct skill {
     sfIntRect arect;
     sfTexture *atexture;
     sfSprite *asprite;
+    sfTexture *dtexture;
+    sfSprite *dsprite;
     struct skill *next;
 } skill_t;
 
@@ -118,6 +122,7 @@ typedef struct {
     mons_t *e_mons;
     indicator_t *ind;
     int attack;
+    sfVector2i mouse_pos;
 } game_t;
 
     //game.c
@@ -157,16 +162,16 @@ void draw_attak_target(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
 
     //attack.c
-int check_collide(mons_t *mons, sfVector2f mouse_pos);
+int check_collide(game_t *game, mons_t *mons);
 void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 void set_attack(game_t *game);
 void aoe_hit(game_t *game);
-void attack(game_t *game, sfVector2i mouse_pos);
+void attack(game_t *game);
 void attack_activation(game_t *game);
 
     //skill.c
-int check_collide_skill(skill_t *skill, sfVector2f mouse_pos);
-void choose_skill(game_t *game, sfVector2i mouse_pos);
+int check_collide_skill(game_t *game, skill_t *skill);
+void choose_skill(game_t *game);
 void draw_skill(game_t *game);
 
     //skill_list.c
@@ -184,7 +189,7 @@ void draw_turn_ind(game_t *game);
 
     //passive.c
 int check_passive(game_t *game);
-void passive_action(game_t *game, mons_t *mons_list, mons_t *curr_mons);
+void passive_action(game_t *game, mons_t *curr_mons);
 
     //move_rect.c
 void move_rect(sfIntRect *rect, int offset, int max_offset);

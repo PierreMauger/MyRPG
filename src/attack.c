@@ -7,13 +7,13 @@
 
 #include "game.h"
 
-int check_collide(mons_t *mons, sfVector2f mouse_pos)
+int check_collide(game_t *game, mons_t *mons)
 {
     sfVector2f mons_pos = sfSprite_getPosition(mons->sprite);
 
     mons_pos.x -= mons->width / 2;
     mons_pos.y -= mons->height;
-    if (mouse_pos.x > mons_pos.x && mouse_pos.x < mons_pos.x + mons->width && mouse_pos.y > mons_pos.y && mouse_pos.y < mons_pos.y + mons->height)
+    if (game->mouse_pos.x > mons_pos.x && game->mouse_pos.x < mons_pos.x + mons->width && game->mouse_pos.y > mons_pos.y && game->mouse_pos.y < mons_pos.y + mons->height)
         return 1;
     return 0;
 }
@@ -57,7 +57,7 @@ void aoe_hit(game_t *game)
     }
 }
 
-void attack(game_t *game, sfVector2i mouse_pos)
+void attack(game_t *game)
 {
     mons_t *temp;
 
@@ -67,7 +67,7 @@ void attack(game_t *game, sfVector2i mouse_pos)
         game->ind->team = game->p_mons;
     temp = game->ind->team;
     while (temp != NULL) {
-        if (check_collide(temp, (sfVector2f){mouse_pos.x, mouse_pos.y}) == 1) {
+        if (check_collide(game, temp) == 1) {
             atb_reset(game);
             game->ind->target = temp;
             if (game->ind->ptr_skill->aoe == 1)

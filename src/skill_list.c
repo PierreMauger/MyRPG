@@ -8,14 +8,14 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', 40, 0, 0,  -30, 0, 1, DIRT_IMG, SLASH_IMG},
-    {'b', 30, 0, 1,    0, 0, 2, DIRT_IMG, SLASH_IMG},
-    {'c',  0, 1, 1,   30, 0, 3, DIRT_IMG, SLASH_IMG},
-    {'d', 50, 0, 0,    0, 0, 2, DIRT_IMG, SLASH_IMG},
-    {'e', 60, 0, 0, -100, 0, 1, GRASS_IMG, SLASH_IMG},
-    {'f', 60, 0, 0,  -50, 0, 4, GRASS_IMG, BONK_IMG},
-    {'g',  0, 0, 0,    0, 1, 5, DIRT_IMG, SLASH_IMG},
-    {'h', 80, 0, 0,    0, 0, 1, GRASS_IMG, SLASH_IMG}
+    {'a', 40, 0, 0,  -30, 0, 1, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'b', 30, 0, 1,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'c',  0, 1, 1,   30, 0, 3, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'d', 50, 0, 0,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'e', 60, 0, 0, -100, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'f', 60, 0, 0,  -50, 0, 4, GRASS_IMG, BONK_IMG, DIRT_IMG, "lol"},
+    {'g',  0, 0, 0,    0, 1, 5, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'h', 80, 0, 0,    0, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"}
 };
 
 int find_in_skill_database(char name)
@@ -47,6 +47,10 @@ void put_in_skill_list(skill_t **skill, char name)
     element->arect = (sfIntRect){0, 0, 80, 80};
     element->atexture = sfTexture_createFromFile(data_skill[i].anim, NULL);
     element->asprite = sfSprite_create();
+    element->dtexture = sfTexture_createFromFile(data_skill[i].desc_img, NULL);
+    element->dsprite = sfSprite_create();
+    sfSprite_setTexture(element->dsprite, element->dtexture, sfTrue);
+    sfSprite_setOrigin(element->dsprite, (sfVector2f){0, 80});
     element->next = NULL;
 
     if (*skill == NULL) {

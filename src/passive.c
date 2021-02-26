@@ -19,7 +19,7 @@ int check_passive(game_t *game)
     return 0;
 }
 
-void passive_action(game_t *game, mons_t *mons_list, mons_t *curr_mons)
+void passive_action(game_t *game, mons_t *curr_mons)
 {
     skill_t *temp = game->ind->ptr_skill;
 

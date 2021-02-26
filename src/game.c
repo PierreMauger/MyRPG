@@ -32,6 +32,7 @@ void init_game(game_t *game)
     game->in_anim = 0;
     game->p_mons = NULL;
     game->e_mons = NULL;
+    game->mouse_pos = (sfVector2i){0, 0};
     init_mons(game);
     init_turn_ind(game);
 }
