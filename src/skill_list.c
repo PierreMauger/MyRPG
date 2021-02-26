@@ -26,7 +26,7 @@ int find_in_skill_database(char name)
     return 0;
 }
 
-void put_in_skill_list(skill_t **skill, char name)
+void put_in_skill_list(skill_t **skill, char name, game_t *game)
 {
     skill_t *element = malloc(sizeof(skill_t));
     skill_t *last = *skill;
@@ -51,6 +51,11 @@ void put_in_skill_list(skill_t **skill, char name)
     element->dsprite = sfSprite_create();
     sfSprite_setTexture(element->dsprite, element->dtexture, sfTrue);
     sfSprite_setOrigin(element->dsprite, (sfVector2f){0, 80});
+    element->text = sfText_create();
+    sfText_setFont(element->text, game->font);
+    sfText_setCharacterSize(element->text, 20);
+    sfText_setString(element->text, data_skill[i].desc);
+    sfText_setColor(element->text, sfWhite);
     element->next = NULL;
 
     if (*skill == NULL) {

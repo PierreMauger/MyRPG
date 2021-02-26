@@ -75,6 +75,7 @@ typedef struct skill {
     sfSprite *asprite;
     sfTexture *dtexture;
     sfSprite *dsprite;
+    sfText *text;
     struct skill *next;
 } skill_t;
 
@@ -123,6 +124,7 @@ typedef struct {
     indicator_t *ind;
     int attack;
     sfVector2i mouse_pos;
+    sfFont *font;
 } game_t;
 
     //game.c
@@ -146,7 +148,7 @@ void destroy_mons(mons_t *mons);
 
     //mons_list.c
 int find_in_mons_database(char name);
-void put_in_mons_list(mons_t **mons, sfVector2f pos, char name);
+void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 
     //turn.c
 void atb_increase(mons_t *mons);
@@ -176,7 +178,7 @@ void draw_skill(game_t *game);
 
     //skill_list.c
 int find_in_skill_database(char name);
-void put_in_skill_list(skill_t **skill, char name);
+void put_in_skill_list(skill_t **skill, char name, game_t *game);
 
     //kill.c
 void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);

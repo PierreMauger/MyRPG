@@ -33,6 +33,7 @@ void init_game(game_t *game)
     game->p_mons = NULL;
     game->e_mons = NULL;
     game->mouse_pos = (sfVector2i){0, 0};
+    game->font = sfFont_createFromFile("ressources/font");
     init_mons(game);
     init_turn_ind(game);
 }

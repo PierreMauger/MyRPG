@@ -22,7 +22,7 @@ int find_in_mons_database(char name)
     return 0;
 }
 
-void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
+void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game)
 {
     mons_t *element = malloc(sizeof(mons_t));
     mons_t *last = *mons;
@@ -62,7 +62,7 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name)
         //skill data
     element->skill = NULL;
     for (int j = 0; data_mons[i].skill[j]; j++)
-        put_in_skill_list(&element->skill, data_mons[i].skill[j]);
+        put_in_skill_list(&element->skill, data_mons[i].skill[j], game);
     element->next = NULL;
 
     if (*mons == NULL) {
