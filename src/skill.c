@@ -35,7 +35,7 @@ void draw_skill(game_t *game)
 
     while (temp != NULL) {
         sfSprite_setPosition(temp->sprite, (sfVector2f){x, 900});
-        sfText_setPosition(temp->text, (sfVector2f){x, 900});
+        sfText_setPosition(temp->text, (sfVector2f){x + 40, 860});
         sfRenderWindow_drawSprite(game->window, temp->sprite, NULL);
         sfSprite_setPosition(temp->dsprite, (sfVector2f){x, 900});
         if (check_collide_skill(game, temp)) {

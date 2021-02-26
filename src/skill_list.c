@@ -56,6 +56,7 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game)
     sfText_setCharacterSize(element->text, 20);
     sfText_setString(element->text, data_skill[i].desc);
     sfText_setColor(element->text, sfWhite);
+    sfText_setOrigin(element->text, (sfVector2f){sfText_getGlobalBounds(element->text).width / 2, 0});
     element->next = NULL;
 
     if (*skill == NULL) {
