@@ -106,6 +106,7 @@ typedef struct {
     skill_t *ptr_skill;
     mons_t *target;
     mons_t *team;
+    sfText *damage;
 } indicator_t;
 
 typedef struct {

@@ -39,5 +39,6 @@ char **str_to_word_array(char *str);
 int my_printf(char *s, ...);
 int simple_arg(char *filepath, struct stat file, int flag);
 int multiple_arg(int argc, char **argv, struct stat file);
+char *nbr_to_str(int nbr);
 
 #endif

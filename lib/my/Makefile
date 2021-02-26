@@ -22,6 +22,7 @@ SRC	=	change_bool.c				\
 		my_strncmp.c				\
 		my_strncpy.c				\
 		my_strndup.c				\
+		nbr_to_str.c				\
 
 OBJ	=	$(SRC:.c=.o)
 

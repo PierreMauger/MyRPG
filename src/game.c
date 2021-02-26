@@ -17,6 +17,7 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int height)
     video_mode.bitsPerPixel = 32;
     window = sfRenderWindow_create(video_mode, "game",
     sfVideoMode_isValid(video_mode) ? sfDefaultStyle : sfClose, NULL);
+    sfRenderWindow_setFramerateLimit(window, 60);
     return window;
 }
 
