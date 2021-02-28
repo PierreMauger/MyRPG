@@ -21,6 +21,7 @@ void init_turn_ind(game_t *game)
     game->ind->ptr_skill = NULL;
     game->ind->team = NULL;
     game->ind->target = NULL;
+    game->ind->curr_attack = 0;
 }
 
 void draw_turn_ind(game_t *game)

@@ -45,6 +45,9 @@ void update_all(game_t *game)
 {
     anim_all(game);
     if (game->in_anim == false) {
+        if (game->ind->ptr_skill != NULL)
+            if (game->ind->ptr_skill->name == 'd')
+                multi_hit(game, game->ind->target);
         if (check_passive(game) == true)
             passive_action(game, game->ind->target);
     }
