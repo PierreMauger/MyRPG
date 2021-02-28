@@ -44,13 +44,11 @@ void anim_all(game_t *game)
 void update_all(game_t *game)
 {
     anim_all(game);
-    if (game->in_anim == false) {
-        if (game->ind->ptr_skill != NULL)
-            if (game->ind->ptr_skill->name == 'b')
-                multi_hit(game, game->ind->target);
+    if (game->in_anim == false)
+        multi_hit(game, game->ind->target);
+    if (game->in_anim == false)
         if (check_passive(game) == true)
             passive_action(game, game->ind->target);
-    }
     if (game->in_anim == false)
         turn_loop(game);
 }

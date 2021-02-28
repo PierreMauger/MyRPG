@@ -22,7 +22,7 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
 {
     float temp_atb;
 
-    curr_mons->curr_hp -= game->ind->ptr_skill->coef;
+    curr_mons->curr_hp -= game->ind->ptr_skill->coef[game->ind->curr_attack];
     if (curr_mons->curr_hp <= 0) {
         kill_mons(game, mons_list, curr_mons);
         game->ind->target = NULL;

@@ -8,14 +8,14 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', 40, 0, 0,  -30, 0, 1, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'b', 30, 0, 1,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'c',  0, 1, 1,   30, 0, 3, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'d', 50, 0, 0,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'e', 70, 0, 0, -100, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'f', 60, 0, 0,  -50, 0, 4, GRASS_IMG, BONK_IMG, DIRT_IMG, "lol"},
-    {'g',  0, 0, 0,    0, 1, 5, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'h', 80, 0, 0,    0, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"}
+    {'a', (int[]){40}, 1, 0, 0,  -30, 0, 1, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'b', (int[]){30}, 1, 0, 1,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'c', (int[]){ 0}, 1, 1, 1,   30, 0, 3, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'d', (int[]){50, 100}, 2, 0, 0,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'e', (int[]){70}, 1, 0, 0, -100, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'f', (int[]){60}, 1, 0, 0,  -50, 0, 4, GRASS_IMG, BONK_IMG, DIRT_IMG, "lol"},
+    {'g', (int[]){ 0}, 1, 0, 0,    0, 1, 5, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'h', (int[]){80}, 1, 0, 0,    0, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"}
 };
 
 int find_in_skill_database(char name)
@@ -33,6 +33,8 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game)
     int i = find_in_skill_database(name);
 
     element->name = data_skill[i].name;
+    element->nbr_hit = data_skill[i].nbr_hit;
+    element->coef = malloc(sizeof(int) * (element->nbr_hit + 1));
     element->coef = data_skill[i].coef;
     element->target = data_skill[i].target;
     element->aoe = data_skill[i].aoe;

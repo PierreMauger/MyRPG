@@ -33,7 +33,8 @@
 
 typedef struct {
     char name;
-    int coef;
+    int *coef;
+    int nbr_hit;
     int target;
     int aoe;
     float atb_boost;
@@ -62,8 +63,9 @@ typedef struct {
 
 typedef struct skill {
     char name;
-    int coef;
+    int *coef;
     int target;
+    int nbr_hit;
     int aoe;
     float atb_boost;
     int passive;

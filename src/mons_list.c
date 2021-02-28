@@ -11,7 +11,7 @@ static data_mons_t data_mons[] = {
     {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 5, "abc"},
     {'b', 150, 230, 255, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 8, "ade"},
     {'c', 150, 0, 170, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 7, "afg"},
-    {'d', 500, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 2, "abc"}
+    {'d', 150, 255, 0, 0, MONSTER_IMG, MONSTER_IMG_COLOR, 40, 80, 2, 2, "abc"}
 };
 
 int find_in_mons_database(char name)
