@@ -196,10 +196,12 @@ void draw_turn_ind(game_t *game);
     //passive.c
 int check_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
-void multi_hit(game_t *game, mons_t *target);
 
     //move_rect.c
 void move_rect(sfIntRect *rect, int offset, int max_offset);
 void single_move_rect(sfIntRect *rect, int offset, int max_offset, int *boolean);
+
+    //multi_hit.c
+void multi_hit(game_t *game, mons_t *target);
 
 #endif
