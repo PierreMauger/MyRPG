@@ -47,8 +47,9 @@ void update_all(game_t *game)
     if (game->in_anim == 0) {
         if (check_passive(game) == 1)
             passive_action(game, game->ind->target);
-        turn_loop(game);
     }
+    if (game->in_anim == 0)
+        turn_loop(game);
 }
 
 void draw_all(game_t *game)
@@ -57,7 +58,8 @@ void draw_all(game_t *game)
     draw_mons(game, game->p_mons);
     draw_mons(game, game->e_mons);
     draw_turn_ind(game);
-    draw_skill(game);
+    if (game->in_anim == 0 && game->attack == 1)
+        draw_skill(game);
     draw_attak_target(game);
     sfRenderWindow_display(game->window);
 }

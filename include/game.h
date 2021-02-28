@@ -76,6 +76,7 @@ typedef struct skill {
     sfTexture *dtexture;
     sfSprite *dsprite;
     sfText *text;
+    sfText *cd_text;
     struct skill *next;
 } skill_t;
 

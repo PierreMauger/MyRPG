@@ -74,12 +74,11 @@ void attack(game_t *game)
                 aoe_hit(game);
             else
                 set_attack(game);
+            game->ind->ptr_skill->act_cd = game->ind->ptr_skill->ini_cd;
         }
         if (temp != NULL)
             temp = temp->next;
     }
-    game->ind->ptr_skill->act_cd = game->ind->ptr_skill->ini_cd;
-    cooldown_reduce(game);
 }
 
 void attack_activation(game_t *game)

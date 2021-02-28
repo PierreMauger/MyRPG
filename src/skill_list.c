@@ -12,7 +12,7 @@ static data_skill_t data_skill[] = {
     {'b', 30, 0, 1,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
     {'c',  0, 1, 1,   30, 0, 3, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
     {'d', 50, 0, 0,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'e', 60, 0, 0, -100, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'e', 70, 0, 0, -100, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
     {'f', 60, 0, 0,  -50, 0, 4, GRASS_IMG, BONK_IMG, DIRT_IMG, "lol"},
     {'g',  0, 0, 0,    0, 1, 5, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
     {'h', 80, 0, 0,    0, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"}
@@ -57,6 +57,12 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game)
     sfText_setString(element->text, data_skill[i].desc);
     sfText_setColor(element->text, sfWhite);
     sfText_setOrigin(element->text, (sfVector2f){sfText_getGlobalBounds(element->text).width / 2, 0});
+    element->cd_text = sfText_create();
+    sfText_setFont(element->cd_text, game->font);
+    sfText_setCharacterSize(element->cd_text, 20);
+    sfText_setString(element->cd_text, nbr_to_str(data_skill[i].cooldown));
+    sfText_setColor(element->cd_text, sfYellow);
+    sfText_setOrigin(element->cd_text, (sfVector2f){sfText_getGlobalBounds(element->text).width / 2, 0});
     element->next = NULL;
 
     if (*skill == NULL) {
