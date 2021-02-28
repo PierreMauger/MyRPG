@@ -22,6 +22,7 @@
 #define GAME_OVER 2
 #define VICTORY 3
 #define ANIME_TIME 0.3
+#define CURR_ATT game->ind->curr_attack
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
 #define SLASH_IMG "ressources/sprites/test_anim.png"
@@ -35,9 +36,9 @@ typedef struct {
     char name;
     int *coef;
     int nbr_hit;
-    int target;
-    int aoe;
-    float atb_boost;
+    int *target;
+    int *aoe;
+    float *atb_boost;
     int passive;
     int cooldown;
     char *sprite;
@@ -64,10 +65,10 @@ typedef struct {
 typedef struct skill {
     char name;
     int *coef;
-    int target;
+    int *target;
     int nbr_hit;
-    int aoe;
-    float atb_boost;
+    int *aoe;
+    float *atb_boost;
     int passive;
     int ini_cd;
     int act_cd;
@@ -176,6 +177,7 @@ void set_attack(game_t *game);
 void aoe_hit(game_t *game);
 void attack(game_t *game);
 void attack_activation(game_t *game);
+void target_team(game_t *game);
 
     //skill.c
 int check_collide_skill(game_t *game, skill_t *skill);

@@ -8,14 +8,14 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', (int[]){40}, 1, 0, 0,  -30, 0, 1, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'b', (int[]){30}, 1, 0, 1,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'c', (int[]){ 0}, 1, 1, 1,   30, 0, 3, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'d', (int[]){50, 100}, 2, 0, 0,    0, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'e', (int[]){70}, 1, 0, 0, -100, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'f', (int[]){60}, 1, 0, 0,  -50, 0, 4, GRASS_IMG, BONK_IMG, DIRT_IMG, "lol"},
-    {'g', (int[]){ 0}, 1, 0, 0,    0, 1, 5, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'h', (int[]){80}, 1, 0, 0,    0, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"}
+    {'a', (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'b', (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'c', (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'d', (int[]){50, 100}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'e', (int[]){70, 0},   2, (int[]){0, 1}, (int[]){0, 1}, (float[]){0, 100}, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'f', (int[]){60},      1, (int[]){0}, (int[]){0},  (float[]){-50}, 0, 4, GRASS_IMG, BONK_IMG, DIRT_IMG, "lol"},
+    {'g', (int[]){ 0},      1, (int[]){0}, (int[]){0},    (float[]){0}, 1, 5, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
+    {'h', (int[]){80},      1, (int[]){0}, (int[]){0},    (float[]){0}, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"}
 };
 
 int find_in_skill_database(char name)

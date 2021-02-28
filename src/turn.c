@@ -87,7 +87,7 @@ void turn_loop(game_t *game)
         game->ind->ptr_mons = get_higher_atb(game);
         if (game->attack == false) {
             game->ind->target = NULL;
-            game->ind->curr_attack = 0;
+            CURR_ATT = 0;
             cooldown_reduce(game);
             game->ind->ptr_skill = game->ind->ptr_mons->skill;
         }
