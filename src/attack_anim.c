@@ -21,7 +21,8 @@ void draw_single_attak_target(game_t *game)
     sfRenderWindow_drawSprite(game->window, game->ind->ptr_skill->asprite, NULL);
     sfText_setString(game->ind->damage, nbr_to_str(game->ind->ptr_skill->coef));
     sfText_setOrigin(game->ind->damage, (sfVector2f){sfText_getGlobalBounds(game->ind->damage).width / 2, 0});
-    sfRenderWindow_drawText(game->window, game->ind->damage, NULL);
+    if (game->ind->ptr_skill->coef != 0 && game->ind->ptr_skill->arect.left == 320 - 80) //add image width to struct
+        sfRenderWindow_drawText(game->window, game->ind->damage, NULL);
 }
 
 void draw_attak_target(game_t *game)
