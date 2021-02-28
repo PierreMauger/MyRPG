@@ -9,6 +9,7 @@
 #define GAME_H
 
 #include "my.h"
+#include <stdbool.h>
 #include <time.h>
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics.h>

@@ -27,10 +27,10 @@ void init_game(game_t *game)
     game->window = create_my_window(game->w_size.width, game->w_size.height);
     game->clock = sfClock_create();
     game->state = 0;
-    game->pause = 0;
+    game->pause = false;
     game->turn = 0;
-    game->attack = 0;
-    game->in_anim = 0;
+    game->attack = false;
+    game->in_anim = false;
     game->p_mons = NULL;
     game->e_mons = NULL;
     game->mouse_pos = (sfVector2i){0, 0};

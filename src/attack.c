@@ -35,14 +35,14 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
             temp_atb = 100;
     sfRectangleShape_setSize(curr_mons->atb, (sfVector2f){temp_atb, 10});
     sfRectangleShape_setSize(curr_mons->hp, (sfVector2f){((float)curr_mons->curr_hp / (float)curr_mons->max_hp) * 100, 10});
-    game->attack = 0;
+    game->attack = false;
 }
 
 void set_attack(game_t *game)
 {
-    game->in_anim = 1;
+    game->in_anim = true;
     set_anim_pos(game, game->ind->target);
-    //if (check_passive(game) == 1)
+    //if (check_passive(game) == true)
     //    passive_action(game, mons_list, curr_mons);
 }
 

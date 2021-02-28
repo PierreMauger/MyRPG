@@ -29,8 +29,8 @@ void draw_attak_target(game_t *game)
 {
     mons_t *temp;
 
-    if (game->in_anim == 1) {
-        if (game->ind->ptr_skill->aoe == 1) {
+    if (game->in_anim == true) {
+        if (game->ind->ptr_skill->aoe == true) {
             if (game->ind->ptr_skill->target == game->turn)
                 temp = game->e_mons;
             else
