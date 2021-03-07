@@ -25,22 +25,6 @@ void event_loop(game_t *game)
     }
 }
 
-void anim_all(game_t *game)
-{
-    game->time = sfClock_getElapsedTime(game->clock);
-    game->seconds = game->time.microseconds / 1000000.0;
-    if (game->seconds > ANIME_TIME) {
-        anim_mons(game);
-        move_rect(&game->ind->rect, 40, 80);
-        if (game->in_anim == true) {
-            single_move_rect(&game->ind->ptr_skill->arect, 80, 320, &game->in_anim);
-            if (game->in_anim == false)
-                attack_activation(game);
-        }
-        sfClock_restart(game->clock);
-    }
-}
-
 void update_all(game_t *game)
 {
     anim_all(game);
@@ -51,18 +35,6 @@ void update_all(game_t *game)
             passive_action(game, game->ind->target);
     if (game->in_anim == false)
         turn_loop(game);
-}
-
-void draw_all(game_t *game)
-{
-    sfRenderWindow_clear(game->window, sfBlack);
-    draw_mons(game, game->p_mons);
-    draw_mons(game, game->e_mons);
-    draw_turn_ind(game);
-    if (game->in_anim == false && game->attack == true)
-        draw_skill(game);
-    draw_attak_target(game);
-    sfRenderWindow_display(game->window);
 }
 
 void game_loop(game_t *game)

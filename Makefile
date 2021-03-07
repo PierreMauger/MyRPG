@@ -5,20 +5,31 @@
 ## Main Makefile
 ##
 
-SRC			=	src/game.c			\
-				src/play.c			\
-				src/mons.c			\
-				src/mons_list.c		\
-				src/turn.c			\
-				src/ind.c			\
-				src/attack.c		\
-				src/skill.c			\
-				src/skill_list.c	\
-				src/kill.c			\
-				src/attack_anim.c	\
-				src/passive.c		\
-				src/move_rect.c		\
-				src/multi_hit.c		\
+SRC			=	src/anim_elems/anim_all.c			\
+				src/anim_elems/anim_mons.c			\
+				src/destroy_elems/destroy_game.c	\
+				src/destroy_elems/destroy_ind.c		\
+				src/destroy_elems/destroy_mons.c	\
+				src/draw_elems/draw_all.c			\
+				src/draw_elems/draw_attack.c		\
+				src/draw_elems/draw_ind.c			\
+				src/draw_elems/draw_mons.c			\
+				src/draw_elems/draw_skill.c			\
+				src/init_elems/init_game.c			\
+				src/init_elems/init_ind.c			\
+				src/init_elems/init_mons.c			\
+				src/attack_anim.c					\
+				src/attack.c						\
+				src/game.c							\
+				src/kill.c							\
+				src/mons_list.c						\
+				src/move_rect.c						\
+				src/multi_hit.c						\
+				src/passive.c						\
+				src/play.c							\
+				src/skill_list.c					\
+				src/skill.c							\
+				src/turn.c							\
 
 SRC_MAIN	=	main.c				\
 
