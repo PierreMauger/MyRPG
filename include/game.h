@@ -123,13 +123,13 @@ typedef struct {
     sfTime time;
     float seconds;
     int state;
-    int pause;
+    bool pause;
     int turn;
-    int in_anim;
+    bool in_anim;
     mons_t *p_mons;
     mons_t *e_mons;
     indicator_t *ind;
-    int attack;
+    bool attack;
     sfVector2i mouse_pos;
     sfFont *font;
 } game_t;
@@ -173,9 +173,9 @@ void destroy_turn_ind(indicator_t *ind);
     //attack.c
 int check_collide(game_t *game, mons_t *mons);
 void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
-void set_attack(game_t *game);
+void set_attack_anim(game_t *game);
 void aoe_hit(game_t *game);
-void attack(game_t *game);
+void set_attack(game_t *game);
 void attack_activation(game_t *game);
 void target_team(game_t *game);
 
@@ -193,7 +193,7 @@ void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
 
     //attack_anim.c
-void set_anim_pos(game_t *game, mons_t *target);
+void set_attack_anim_pos(game_t *game, mons_t *target);
 void draw_single_attak_target(game_t *game);
 void draw_turn_ind(game_t *game);
 
@@ -203,7 +203,7 @@ void passive_action(game_t *game, mons_t *target);
 
     //move_rect.c
 void move_rect(sfIntRect *rect, int offset, int max_offset);
-void single_move_rect(sfIntRect *rect, int offset, int max_offset, int *boolean);
+void single_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean);
 
     //multi_hit.c
 void multi_hit(game_t *game, mons_t *target);

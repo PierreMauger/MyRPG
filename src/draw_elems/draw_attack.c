@@ -29,13 +29,13 @@ void draw_attak_target(game_t *game)
             else
                 temp = game->p_mons;
             while (temp != NULL) {
-                set_anim_pos(game, temp);
+                set_attack_anim_pos(game, temp);
                 draw_single_attak_target(game);
                 temp = temp->next;
             }
         }
         else {
-            set_anim_pos(game, game->ind->target);
+            set_attack_anim_pos(game, game->ind->target);
             draw_single_attak_target(game);
         }
     }

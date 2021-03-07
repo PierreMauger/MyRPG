@@ -38,54 +38,6 @@ void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
     game->attack = false;
 }
 
-void set_attack(game_t *game)
-{
-    game->in_anim = true;
-    set_anim_pos(game, game->ind->target);
-    //if (check_passive(game) == true)
-    //    passive_action(game, mons_list, curr_mons);
-}
-
-void aoe_hit(game_t *game)
-{
-    mons_t *temp = game->ind->team;
-
-    while (temp != NULL) {
-        game->ind->target = temp;
-        set_attack(game);
-        temp = temp->next;
-    }
-}
-
-void target_team(game_t *game)
-{
-    if (game->turn == game->ind->ptr_skill->target[CURR_ATT])
-        game->ind->team = game->e_mons;
-    else
-        game->ind->team = game->p_mons;
-}
-
-void attack(game_t *game)
-{
-    mons_t *temp;
-
-    target_team(game);
-    temp = game->ind->team;
-    while (temp != NULL) {
-        if (check_collide(game, temp) == 1) {
-            atb_reset(game);
-            game->ind->target = temp;
-            if (game->ind->ptr_skill->aoe[CURR_ATT] == 1)
-                aoe_hit(game);
-            else
-                set_attack(game);
-            game->ind->ptr_skill->act_cd = game->ind->ptr_skill->ini_cd;
-        }
-        if (temp != NULL)
-            temp = temp->next;
-    }
-}
-
 void attack_activation(game_t *game)
 {
     mons_t *temp = game->ind->team;

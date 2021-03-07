@@ -10,15 +10,14 @@
 void event_loop(game_t *game)
 {
     game->mouse_pos = sfMouse_getPositionRenderWindow(game->window);
-    while (sfRenderWindow_pollEvent(game->window, &game->event))
-    {
+    while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtKeyPressed)
             if (game->event.key.code == sfKeyP)
-                change_bool(&game->pause);
+                game->pause = !game->pause;
         if (game->event.type == sfEvtMouseButtonPressed && game->attack == true
         && game->in_anim != true) {
             choose_skill(game);
-            attack(game);
+            set_attack(game);
         }
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
