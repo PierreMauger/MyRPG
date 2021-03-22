@@ -5,8 +5,7 @@
 ## Makefile lib
 ##
 
-SRC	=	change_bool.c				\
-		my_getnbr.c					\
+SRC	=	my_getnbr.c					\
 		my_printf.c					\
 		my_put_nbr.c				\
 		my_put_nbr_base.c			\
