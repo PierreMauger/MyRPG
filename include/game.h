@@ -134,24 +134,50 @@ typedef struct {
     sfFont *font;
 } game_t;
 
+//ANIM_ELEMS
+void anim_all(game_t *game);
+void anim_mons(game_t *game);
+void move_rect(sfIntRect *rect, int offset, int max_offset);
+void single_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean);
+
+//DESTROY_ELEMS
+void destroy_game(game_t *game);
+void destroy_turn_ind(indicator_t *ind);
+void destroy_mons(mons_t *mons);
+
+//DRAW_ELEMS
+void draw_all(game_t *game);
+void draw_single_attak_target(game_t *game);
+void draw_attak_target(game_t *game);
+void draw_turn_ind(game_t *game);
+void draw_mons(game_t *game, mons_t *mons);
+void draw_skill(game_t *game);
+
+//GET_ELEMS
+void event_pause(game_t *game);
+void event_click(game_t *game);
+void event_loop(game_t *game);
+
+//INIT_ELEMS
+void init_game(game_t *game);
+void init_turn_ind(game_t *game);
+void init_mons(game_t *game);
+
+//SET_ELEMS
+void aoe_hit(game_t *game);
+void set_attack_anim(game_t *game);
+void set_attack_anim_pos(game_t *game, mons_t *target);
+void multi_hit(game_t *game, mons_t *target);
+void target_team(game_t *game);
+void set_attack(game_t *game);
+
     //game.c
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
-void init_game(game_t *game);
 void main_loop(game_t *game);
-void destroy_game(game_t *game);
 
     //play.c
-void event_loop(game_t *game);
-void anim_all(game_t *game);
 void update_all(game_t *game);
-void draw_all(game_t *game);
 void game_loop(game_t *game);
-
-    //mons.c
-void init_mons(game_t *game);
-void draw_mons(game_t *game, mons_t *mons);
-void anim_mons(game_t *game);
-void destroy_mons(mons_t *mons);
 
     //mons_list.c
 int find_in_mons_database(char name);
@@ -165,24 +191,14 @@ mons_t *get_higher_atb(game_t *game);
 void turn_loop(game_t *game);
 void cooldown_reduce(game_t *game);
 
-    //ind.c
-void init_turn_ind(game_t *game);
-void draw_attak_target(game_t *game);
-void destroy_turn_ind(indicator_t *ind);
-
     //attack.c
 int check_collide(game_t *game, mons_t *mons);
 void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
-void set_attack_anim(game_t *game);
-void aoe_hit(game_t *game);
-void set_attack(game_t *game);
 void attack_activation(game_t *game);
-void target_team(game_t *game);
 
     //skill.c
 int check_collide_skill(game_t *game, skill_t *skill);
 void choose_skill(game_t *game);
-void draw_skill(game_t *game);
 
     //skill_list.c
 int find_in_skill_database(char name);
@@ -192,20 +208,8 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game);
 void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
 mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
 
-    //attack_anim.c
-void set_attack_anim_pos(game_t *game, mons_t *target);
-void draw_single_attak_target(game_t *game);
-void draw_turn_ind(game_t *game);
-
     //passive.c
 int check_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
-
-    //move_rect.c
-void move_rect(sfIntRect *rect, int offset, int max_offset);
-void single_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean);
-
-    //multi_hit.c
-void multi_hit(game_t *game, mons_t *target);
 
 #endif
