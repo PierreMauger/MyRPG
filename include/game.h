@@ -25,7 +25,7 @@
 #define CURR_ATT game->ind->curr_attack
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
-#define SLASH_IMG "ressources/sprites/test_anim.png"
+#define SLASH_IMG "ressources/sprites/slash_anim.png"
 #define BONK_IMG "ressources/sprites/lol_anim.png"
 #define SLIME_IMG "ressources/sprites/slime.png"
 #define SLIME_IMG_COLOR "ressources/sprites/slime.png"
@@ -43,6 +43,9 @@ typedef struct {
     int cooldown;
     char *sprite;
     char *anim;
+    int anim_x;
+    int anim_y;
+    int anim_nb;
     char *desc_img;
     char *desc;
 } data_skill_t;
@@ -72,6 +75,7 @@ typedef struct skill {
     int passive;
     int ini_cd;
     int act_cd;
+    int anim_nb;
     sfTexture *texture;
     sfSprite *sprite;
     sfIntRect arect;

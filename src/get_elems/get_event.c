@@ -29,6 +29,8 @@ void event_loop(game_t *game)
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         event_pause(game);
         event_click(game);
+        if (game->event.type == sfEvtMouseButtonPressed)
+            printf("%d %d\n", game->mouse_pos.x, game->mouse_pos.y);
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
     }

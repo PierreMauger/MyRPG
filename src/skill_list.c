@@ -8,14 +8,14 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'b', (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'c', (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'d', (int[]){50, 100}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 2, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'e', (int[]){70, 0},   2, (int[]){0, 1}, (int[]){0, 1}, (float[]){0, 100}, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'f', (int[]){60},      1, (int[]){0}, (int[]){0},  (float[]){-50}, 0, 4, GRASS_IMG, BONK_IMG, DIRT_IMG, "lol"},
-    {'g', (int[]){ 0},      1, (int[]){0}, (int[]){0},    (float[]){0}, 1, 5, DIRT_IMG, SLASH_IMG, DIRT_IMG, "lol"},
-    {'h', (int[]){80},      1, (int[]){0}, (int[]){0},    (float[]){0}, 0, 1, GRASS_IMG, SLASH_IMG, DIRT_IMG, "lol"}
+    {'a', (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
+    {'b', (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
+    {'c', (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
+    {'d', (int[]){50, 100}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
+    {'e', (int[]){70, 0},   2, (int[]){0, 1}, (int[]){0, 1}, (float[]){0, 100}, 0, 1, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
+    {'f', (int[]){60},      1, (int[]){0}, (int[]){0},  (float[]){-50}, 0, 4, GRASS_IMG, BONK_IMG, 80, 80, 4, DIRT_IMG, "lol"},
+    {'g', (int[]){ 0},      1, (int[]){0}, (int[]){0},    (float[]){0}, 1, 5, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
+    {'h', (int[]){80},      1, (int[]){0}, (int[]){0},    (float[]){0}, 0, 1, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"}
 };
 
 int find_in_skill_database(char name)
@@ -42,11 +42,12 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game)
     element->passive = data_skill[i].passive;
     element->ini_cd = data_skill[i].cooldown;
     element->act_cd = 0;
+    element->anim_nb = data_skill[i].anim_nb;
     element->texture = sfTexture_createFromFile(data_skill[i].sprite, NULL);
     element->sprite = sfSprite_create();
     sfSprite_setTexture(element->sprite, element->texture, sfTrue);
     sfSprite_setPosition(element->sprite, (sfVector2f){0, 0});
-    element->arect = (sfIntRect){0, 0, 80, 80};
+    element->arect = (sfIntRect){0, 0, data_skill[i].anim_x, data_skill[i].anim_y};
     element->atexture = sfTexture_createFromFile(data_skill[i].anim, NULL);
     element->asprite = sfSprite_create();
     element->dtexture = sfTexture_createFromFile(data_skill[i].desc_img, NULL);
