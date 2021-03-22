@@ -16,21 +16,23 @@ SRC			=	src/anim_elems/anim_all.c			\
 				src/draw_elems/draw_ind.c			\
 				src/draw_elems/draw_mons.c			\
 				src/draw_elems/draw_skill.c			\
+				src/game_elems/atb.c				\
+				src/game_elems/cooldown.c			\
+				src/game_elems/kill.c				\
+				src/game_elems/passive.c			\
+				src/game_elems/turn.c				\
+				src/get_elems/get_event.c			\
 				src/init_elems/init_game.c			\
 				src/init_elems/init_ind.c			\
 				src/init_elems/init_mons.c			\
 				src/set_elems/set_attack_anim_pos.c	\
 				src/set_elems/set_attack.c			\
-				src/get_elems/get_event.c			\
 				src/attack_hit.c					\
 				src/game.c							\
-				src/kill.c							\
 				src/mons_list.c						\
-				src/passive.c						\
 				src/play.c							\
 				src/skill_list.c					\
 				src/skill.c							\
-				src/turn.c							\
 
 SRC_MAIN	=	main.c				\
 

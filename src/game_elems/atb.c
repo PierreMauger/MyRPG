@@ -28,18 +28,6 @@ void atb_reset(game_t *game)
     sfRectangleShape_setSize(game->ind->ptr_mons->atb, (sfVector2f){game->ind->ptr_mons->atb_value, 10});
 }
 
-void cooldown_reduce(game_t *game)
-{
-    skill_t *temp = game->ind->ptr_mons->skill;
-
-    while (temp != NULL) {
-        temp->act_cd -= 1;
-        if (temp->act_cd < 0)
-            temp->act_cd = 0;
-        temp = temp->next;
-    }
-}
-
 int check_atb(game_t *game)
 {
     mons_t *temp = game->p_mons;
@@ -79,22 +67,4 @@ mons_t *get_higher_atb(game_t *game)
         temp = temp->next;
     }
     return result;
-}
-
-void turn_loop(game_t *game)
-{
-    if (check_atb(game) == true) {
-        game->ind->ptr_mons = get_higher_atb(game);
-        if (game->attack == false) {
-            game->ind->target = NULL;
-            CURR_ATT = 0;
-            cooldown_reduce(game);
-            game->ind->ptr_skill = game->ind->ptr_mons->skill;
-        }
-        game->attack = true;
-    }
-    else {
-        atb_increase(game->e_mons);
-        atb_increase(game->p_mons);
-    }
 }

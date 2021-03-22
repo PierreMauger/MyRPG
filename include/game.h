@@ -153,6 +153,18 @@ void draw_turn_ind(game_t *game);
 void draw_mons(game_t *game, mons_t *mons);
 void draw_skill(game_t *game);
 
+//GAME_ELEMS
+void atb_increase(mons_t *mons);
+void atb_reset(game_t *game);
+int check_atb(game_t *game);
+mons_t *get_higher_atb(game_t *game);
+void cooldown_reduce(game_t *game);
+void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
+mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
+int check_passive(game_t *game);
+void passive_action(game_t *game, mons_t *target);
+void turn_loop(game_t *game);
+
 //GET_ELEMS
 void event_pause(game_t *game);
 void event_click(game_t *game);
@@ -171,45 +183,29 @@ void multi_hit(game_t *game, mons_t *target);
 void target_team(game_t *game);
 void set_attack(game_t *game);
 
+    //attack_hit.c
+int check_collide(game_t *game, mons_t *mons);
+void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
+void attack_activation(game_t *game);
+
     //game.c
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void main_loop(game_t *game);
-
-    //play.c
-void update_all(game_t *game);
-void game_loop(game_t *game);
 
     //mons_list.c
 int find_in_mons_database(char name);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 
-    //turn.c
-void atb_increase(mons_t *mons);
-void atb_reset(game_t *game);
-int check_atb(game_t *game);
-mons_t *get_higher_atb(game_t *game);
-void turn_loop(game_t *game);
-void cooldown_reduce(game_t *game);
-
-    //attack.c
-int check_collide(game_t *game, mons_t *mons);
-void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
-void attack_activation(game_t *game);
-
-    //skill.c
-int check_collide_skill(game_t *game, skill_t *skill);
-void choose_skill(game_t *game);
+    //play.c
+void update_all(game_t *game);
+void game_loop(game_t *game);
 
     //skill_list.c
 int find_in_skill_database(char name);
 void put_in_skill_list(skill_t **skill, char name, game_t *game);
 
-    //kill.c
-void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
-mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
-
-    //passive.c
-int check_passive(game_t *game);
-void passive_action(game_t *game, mons_t *target);
+    //skill.c
+int check_collide_skill(game_t *game, skill_t *skill);
+void choose_skill(game_t *game);
 
 #endif
