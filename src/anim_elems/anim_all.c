@@ -9,8 +9,7 @@
 
 void anim_all(game_t *game)
 {
-    game->time->time = sfClock_getElapsedTime(game->time->clock);
-    game->time->seconds = game->time->time.microseconds / 1000000.0;
+    game->time->seconds = sfTime_asSeconds(sfClock_getElapsedTime(game->time->clock));
     if (game->time->seconds > ANIME_TIME) {
         anim_mons(game);
         move_rect(&game->ind->rect, 40, 80);

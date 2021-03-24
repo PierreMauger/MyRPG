@@ -9,7 +9,10 @@
 
 void destroy_mons(mons_t *mons)
 {
+    mons_t *temp = NULL;
+
     while (mons != NULL) {
+        temp = mons;
         sfTexture_destroy(mons->texture);
         sfSprite_destroy(mons->sprite);
         sfTexture_destroy(mons->texture_color);
@@ -18,5 +21,6 @@ void destroy_mons(mons_t *mons)
         sfRectangleShape_destroy(mons->atb);
         destroy_skill(mons->skill);
         mons = mons->next;
+        free(temp);
     }
 }

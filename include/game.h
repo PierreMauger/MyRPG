@@ -126,7 +126,6 @@ typedef struct {
 
 typedef struct {
     sfClock *clock;
-    sfTime time;
     float seconds;
 } time_elapsed_t;
 

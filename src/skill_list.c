@@ -34,7 +34,6 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game)
 
     element->name = data_skill[i].name;
     element->nbr_hit = data_skill[i].nbr_hit;
-    element->coef = malloc(sizeof(int) * (element->nbr_hit + 1));
     element->coef = data_skill[i].coef;
     element->target = data_skill[i].target;
     element->aoe = data_skill[i].aoe;

@@ -9,7 +9,10 @@
 
 void destroy_skill(skill_t *skill)
 {
+    skill_t *temp = NULL;
+
     while (skill != NULL) {
+        temp = skill;
         sfTexture_destroy(skill->texture);
         sfSprite_destroy(skill->sprite);
         sfTexture_destroy(skill->atexture);
@@ -19,5 +22,6 @@ void destroy_skill(skill_t *skill)
         sfText_destroy(skill->text);
         sfText_destroy(skill->cd_text);
         skill = skill->next;
+        free(temp);
     }
 }
