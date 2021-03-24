@@ -11,6 +11,10 @@ SRC			=	src/anim_elems/anim_all.c			\
 				src/destroy_elems/destroy_game.c	\
 				src/destroy_elems/destroy_ind.c		\
 				src/destroy_elems/destroy_mons.c	\
+				src/destroy_elems/destroy_set.c		\
+				src/destroy_elems/destroy_skill.c	\
+				src/destroy_elems/destroy_time.c	\
+				src/destroy_elems/destroy_window.c	\
 				src/draw_elems/draw_all.c			\
 				src/draw_elems/draw_attack.c		\
 				src/draw_elems/draw_ind.c			\

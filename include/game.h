@@ -160,6 +160,10 @@ void single_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean
 void destroy_game(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
 void destroy_mons(mons_t *mons);
+void destroy_set(settings_t *set);
+void destroy_skill(skill_t *skill);
+void destroy_time(time_elapsed_t *time);
+void destroy_window(window_t *window);
 
 //DRAW_ELEMS
 void draw_all(game_t *game);

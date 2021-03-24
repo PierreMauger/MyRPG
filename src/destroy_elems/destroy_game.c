@@ -9,10 +9,12 @@
 
 void destroy_game(game_t *game)
 {
-    sfRenderWindow_destroy(game->window->window);
-    sfClock_destroy(game->time->clock);
+    destroy_window(game->window);
+    destroy_time(game->time);
+    destroy_set(game->set);
     destroy_mons(game->p_mons);
     destroy_mons(game->e_mons);
     destroy_turn_ind(game->ind);
+    sfFont_destroy(game->font);
     free(game);
 }
