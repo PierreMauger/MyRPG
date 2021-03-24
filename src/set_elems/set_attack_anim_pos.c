@@ -7,7 +7,6 @@
 
 #include "game.h"
 
-
 void aoe_hit(game_t *game)
 {
     mons_t *temp = game->ind->team;

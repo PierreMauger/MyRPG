@@ -22,19 +22,19 @@ void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons)
 {
     float temp_atb;
 
-    curr_mons->mons_stat->curr_hp -= game->ind->ptr_skill->coef[CURR_ATT];
-    if (curr_mons->mons_stat->curr_hp <= 0) {
+    MONS_CURR_HP(curr_mons) -= game->ind->ptr_skill->coef[CURR_ATT];
+    if (MONS_CURR_HP(curr_mons) <= 0) {
         kill_mons(game, team, curr_mons);
         game->ind->target = NULL;
     }
-    curr_mons->mons_stat->atb_value += game->ind->ptr_skill->atb_boost[CURR_ATT];
-    if (curr_mons->mons_stat->atb_value <= 0)
-        curr_mons->mons_stat->atb_value = 0;
-    temp_atb = curr_mons->mons_stat->atb_value;
+    MONS_CURR_ATB(curr_mons) += game->ind->ptr_skill->atb_boost[CURR_ATT];
+    if (MONS_CURR_ATB(curr_mons) <= 0)
+        MONS_CURR_ATB(curr_mons) = 0;
+    temp_atb = MONS_CURR_ATB(curr_mons);
         if (temp_atb >= 100)
             temp_atb = 100;
     sfRectangleShape_setSize(curr_mons->mons_stat->atb, (sfVector2f){temp_atb, 10});
-    sfRectangleShape_setSize(curr_mons->mons_stat->hp, (sfVector2f){((float)curr_mons->mons_stat->curr_hp / (float)curr_mons->mons_stat->max_hp) * 100, 10});
+    sfRectangleShape_setSize(MONS_HP(curr_mons), (sfVector2f){((float)MONS_CURR_HP(curr_mons) / (float)MONS_MAX_HP(curr_mons)) * 100, 10});
     game->set->attack = false;
 }
 

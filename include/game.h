@@ -17,6 +17,14 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
+#define MONS_MAX_HP(elem) elem->mons_stat->max_hp
+#define MONS_CURR_HP(elem) elem->mons_stat->curr_hp
+#define MONS_HP(elem) elem->mons_stat->hp
+#define MONS_SPEED(elem) elem->mons_stat->speed
+#define MONS_CURR_ATB(elem) elem->mons_stat->curr_atb
+#define MONS_ATB(elem) elem->mons_stat->atb
+
+
 #define MENU 0
 #define PLAY 1
 #define GAME_OVER 2
@@ -101,7 +109,7 @@ typedef struct {
     float speed;
     int max_hp;
     int curr_hp;
-    float atb_value;
+    float curr_atb;
     sfRectangleShape *hp;
     sfRectangleShape *atb;
 } mons_stat_t;
