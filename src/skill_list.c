@@ -8,13 +8,13 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
-    {'b', (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
-    {'c', (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
-    {'d', (int[]){50, 100}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
-    {'e', (int[]){70, 0},   2, (int[]){0, 1}, (int[]){0, 1}, (float[]){0, 100}, 0, 1, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
-    {'f', (int[]){60},      1, (int[]){0}, (int[]){0},  (float[]){-50}, 0, 4, GRASS_IMG, BONK_IMG, 80, 80, 4, DIRT_IMG, "lol"},
-    {'g', (int[]){ 0},      1, (int[]){0}, (int[]){0},    (float[]){0}, 1, 5, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"},
+    {'a', (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "-30% atb"},
+    {'b', (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "basic aoe"},
+    {'c', (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "speed boost"},
+    {'d', (int[]){35, 50}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "double hit"},
+    {'e', (int[]){70, 0},   2, (int[]){0, 1}, (int[]){0, 1}, (float[]){0, 15}, 0, 1, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "hit + boost\n  atb aoe"},
+    {'f', (int[]){60},      1, (int[]){0}, (int[]){0},  (float[]){-50}, 0, 4, GRASS_IMG, BONK_IMG, 80, 80, 4, DIRT_IMG, "-50% atb"},
+    {'g', (int[]){ 0},      1, (int[]){0}, (int[]){0},    (float[]){0}, 1, 5, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "attack one more\n time if atb = 0"},
     {'h', (int[]){80},      1, (int[]){0}, (int[]){0},    (float[]){0}, 0, 1, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"}
 };
 
@@ -57,7 +57,7 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game)
     element->text = sfText_create();
     sfText_setFont(element->text, game->font);
     sfText_setCharacterSize(element->text, 20);
-    sfText_setString(element->text, nbr_to_str(data_skill[i].coef[0]));
+    sfText_setString(element->text, data_skill[i].desc);
     sfText_setColor(element->text, sfWhite);
     sfText_setOrigin(element->text, (sfVector2f){sfText_getGlobalBounds(element->text).width / 2, 0});
     element->cd_text = sfText_create();
@@ -65,7 +65,7 @@ void put_in_skill_list(skill_t **skill, char name, game_t *game)
     sfText_setCharacterSize(element->cd_text, 20);
     sfText_setString(element->cd_text, nbr_to_str(data_skill[i].cooldown));
     sfText_setColor(element->cd_text, sfYellow);
-    sfText_setOrigin(element->cd_text, (sfVector2f){sfText_getGlobalBounds(element->text).width / 2, 0});
+    sfText_setOrigin(element->cd_text, (sfVector2f){sfText_getGlobalBounds(element->cd_text).width / 2, 0});
     element->next = NULL;
 
     if (*skill == NULL) {

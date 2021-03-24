@@ -7,9 +7,9 @@
 
 #include "game.h"
 
-void atb_increase(mons_t *mons)
+void atb_increase(mons_t *team)
 {
-    mons_t *temp = mons;
+    mons_t *temp = team;
     float temp_atb;
 
     while (temp != NULL) {

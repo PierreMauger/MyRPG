@@ -158,13 +158,13 @@ void draw_mons(game_t *game, mons_t *mons);
 void draw_skill(game_t *game);
 
 //GAME_ELEMS
-void atb_increase(mons_t *mons);
+void atb_increase(mons_t *team);
 void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
 void cooldown_reduce(game_t *game);
-void kill_mons(game_t *game, mons_t *mons_list, mons_t *curr_mons);
-mons_t * kill_func(mons_t *head, mons_t *mons_list, mons_t *curr_mons);
+void kill_mons(game_t *game, mons_t *team, mons_t *curr_mons);
+mons_t * kill_func(mons_t *head, mons_t *team, mons_t *curr_mons);
 int check_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
 void turn_loop(game_t *game);
@@ -189,7 +189,7 @@ void set_attack(game_t *game);
 
     //attack_hit.c
 int check_collide(game_t *game, mons_t *mons);
-void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons);
+void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons);
 void attack_activation(game_t *game);
 
     //game.c

@@ -18,13 +18,13 @@ int check_collide(game_t *game, mons_t *mons)
     return 0;
 }
 
-void attack_hit(game_t *game, mons_t *mons_list, mons_t *curr_mons)
+void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons)
 {
     float temp_atb;
 
     curr_mons->curr_hp -= game->ind->ptr_skill->coef[CURR_ATT];
     if (curr_mons->curr_hp <= 0) {
-        kill_mons(game, mons_list, curr_mons);
+        kill_mons(game, team, curr_mons);
         game->ind->target = NULL;
     }
     curr_mons->atb_value += game->ind->ptr_skill->atb_boost[CURR_ATT];
