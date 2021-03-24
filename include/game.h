@@ -17,13 +17,12 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
-#define MONS_MAX_HP(elem) elem->mons_stat->max_hp
-#define MONS_CURR_HP(elem) elem->mons_stat->curr_hp
-#define MONS_HP(elem) elem->mons_stat->hp
-#define MONS_SPEED(elem) elem->mons_stat->speed
-#define MONS_CURR_ATB(elem) elem->mons_stat->curr_atb
-#define MONS_ATB(elem) elem->mons_stat->atb
-
+#define MONS_MAX_HP(elem) elem->stat->max_hp
+#define MONS_CURR_HP(elem) elem->stat->curr_hp
+#define MONS_HP(elem) elem->stat->hp
+#define MONS_SPEED(elem) elem->stat->speed
+#define MONS_CURR_ATB(elem) elem->stat->curr_atb
+#define MONS_ATB(elem) elem->stat->atb
 
 #define MENU 0
 #define PLAY 1
@@ -73,7 +72,18 @@ typedef struct {
     char *skill;
 } data_mons_t;
 
-typedef struct skill {
+typedef struct {
+    sfTexture *texture;
+    sfSprite *sprite;
+} skill_texture_t;
+
+typedef struct {
+    sfIntRect arect;
+    sfTexture *atexture;
+    sfSprite *asprite;
+} skill_anim_t;
+
+typedef struct {
     char name;
     int *coef;
     int *target;
@@ -84,15 +94,20 @@ typedef struct skill {
     int ini_cd;
     int act_cd;
     int anim_nb;
-    sfTexture *texture;
-    sfSprite *sprite;
-    sfIntRect arect;
-    sfTexture *atexture;
-    sfSprite *asprite;
+} skill_stat_t;
+
+typedef struct {
     sfTexture *dtexture;
     sfSprite *dsprite;
     sfText *text;
     sfText *cd_text;
+} skill_desc_t;
+
+typedef struct skill {
+    skill_texture_t *texture;
+    skill_anim_t *anim;
+    skill_stat_t *stat;
+    skill_desc_t *desc;
     struct skill *next;
 } skill_t;
 
@@ -115,8 +130,8 @@ typedef struct {
 } mons_stat_t;
 
 typedef struct mons {
-    mons_texture_t *mons_tex;
-    mons_stat_t *mons_stat;
+    mons_texture_t *texture;
+    mons_stat_t *stat;
     skill_t *skill;
     struct mons *next;
 } mons_t;

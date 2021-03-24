@@ -14,7 +14,7 @@ void anim_all(game_t *game)
         anim_mons(game);
         move_rect(&game->ind->rect, 40, 80);
         if (game->set->in_anim == true) {
-            single_move_rect(&game->ind->ptr_skill->arect, game->ind->ptr_skill->arect.width, game->ind->ptr_skill->arect.width * game->ind->ptr_skill->anim_nb, &game->set->in_anim);
+            single_move_rect(&game->ind->ptr_skill->anim->arect, game->ind->ptr_skill->anim->arect.width, game->ind->ptr_skill->anim->arect.width * game->ind->ptr_skill->stat->anim_nb, &game->set->in_anim);
             if (game->set->in_anim == false)
                 attack_activation(game);
         }

@@ -28,16 +28,16 @@ void set_attack_anim(game_t *game)
 
 void set_attack_anim_pos(game_t *game, mons_t *target)
 {
-    sfSprite_setOrigin(game->ind->ptr_skill->asprite, (sfVector2f){game->ind->ptr_skill->arect.width / 2, 0});
-    sfSprite_setPosition(game->ind->ptr_skill->asprite, (sfVector2f){sfSprite_getPosition(target->mons_tex->sprite).x, sfSprite_getPosition(target->mons_tex->sprite).y - 80});
-    sfText_setPosition(game->ind->damage, (sfVector2f){sfSprite_getPosition(target->mons_tex->sprite).x, sfSprite_getPosition(target->mons_tex->sprite).y - 80});
+    sfSprite_setOrigin(game->ind->ptr_skill->anim->asprite, (sfVector2f){game->ind->ptr_skill->anim->arect.width / 2, 0});
+    sfSprite_setPosition(game->ind->ptr_skill->anim->asprite, (sfVector2f){sfSprite_getPosition(target->texture->sprite).x, sfSprite_getPosition(target->texture->sprite).y - 80});
+    sfText_setPosition(game->ind->damage, (sfVector2f){sfSprite_getPosition(target->texture->sprite).x, sfSprite_getPosition(target->texture->sprite).y - 80});
 }
 
 void multi_hit(game_t *game, mons_t *target)
 {
     if (target == NULL || game->ind->ptr_skill == NULL)
         return;
-    if (CURR_ATT < game->ind->ptr_skill->nbr_hit - 1) {
+    if (CURR_ATT < game->ind->ptr_skill->stat->nbr_hit - 1) {
         set_attack_anim_pos(game, game->ind->target);
         game->set->in_anim = true;
         CURR_ATT += 1;

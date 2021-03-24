@@ -17,7 +17,7 @@ void atb_increase(mons_t *team)
         temp_atb = MONS_CURR_ATB(temp);
         if (temp_atb >= 100)
             temp_atb = 100;
-        sfRectangleShape_setSize(temp->mons_stat->atb, (sfVector2f){temp_atb, 10});
+        sfRectangleShape_setSize(temp->stat->atb, (sfVector2f){temp_atb, 10});
         temp = temp->next;
     }
 }
@@ -25,7 +25,7 @@ void atb_increase(mons_t *team)
 void atb_reset(game_t *game)
 {
     MONS_CURR_ATB(game->ind->ptr_mons) = 0;
-    sfRectangleShape_setSize(game->ind->ptr_mons->mons_stat->atb, (sfVector2f){MONS_CURR_ATB(game->ind->ptr_mons), 10});
+    sfRectangleShape_setSize(game->ind->ptr_mons->stat->atb, (sfVector2f){MONS_CURR_ATB(game->ind->ptr_mons), 10});
 }
 
 int check_atb(game_t *game)

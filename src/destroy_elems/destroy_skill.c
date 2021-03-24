@@ -13,14 +13,14 @@ void destroy_skill(skill_t *skill)
 
     while (skill != NULL) {
         temp = skill;
-        sfTexture_destroy(skill->texture);
-        sfSprite_destroy(skill->sprite);
-        sfTexture_destroy(skill->atexture);
-        sfSprite_destroy(skill->asprite);
-        sfTexture_destroy(skill->dtexture);
-        sfSprite_destroy(skill->dsprite);
-        sfText_destroy(skill->text);
-        sfText_destroy(skill->cd_text);
+        sfTexture_destroy(skill->texture->texture);
+        sfSprite_destroy(skill->texture->sprite);
+        sfTexture_destroy(skill->anim->atexture);
+        sfSprite_destroy(skill->anim->asprite);
+        sfTexture_destroy(skill->desc->dtexture);
+        sfSprite_destroy(skill->desc->dsprite);
+        sfText_destroy(skill->desc->text);
+        sfText_destroy(skill->desc->cd_text);
         skill = skill->next;
         free(temp);
     }

@@ -13,12 +13,12 @@ void destroy_mons(mons_t *mons)
 
     while (mons != NULL) {
         temp = mons;
-        sfTexture_destroy(mons->mons_tex->texture);
-        sfSprite_destroy(mons->mons_tex->sprite);
-        sfTexture_destroy(mons->mons_tex->texture_color);
-        sfSprite_destroy(mons->mons_tex->sprite_color);
+        sfTexture_destroy(mons->texture->texture);
+        sfSprite_destroy(mons->texture->sprite);
+        sfTexture_destroy(mons->texture->texture_color);
+        sfSprite_destroy(mons->texture->sprite_color);
         sfRectangleShape_destroy(MONS_HP(mons));
-        sfRectangleShape_destroy(mons->mons_stat->atb);
+        sfRectangleShape_destroy(mons->stat->atb);
         destroy_skill(mons->skill);
         mons = mons->next;
         free(temp);

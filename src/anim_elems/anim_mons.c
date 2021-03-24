@@ -13,11 +13,11 @@ void anim_mons(game_t *game)
     mons_t *temp2 = game->e_mons;
 
     while (temp != NULL) {
-        move_rect(&temp->mons_tex->rect, temp->mons_tex->rect.width, temp->mons_tex->rect.width * temp->mons_tex->nb_anim);
+        move_rect(&temp->texture->rect, temp->texture->rect.width, temp->texture->rect.width * temp->texture->nb_anim);
         temp = temp->next;
     }
     while (temp2 != NULL) {
-        move_rect(&temp2->mons_tex->rect, temp2->mons_tex->rect.width, temp2->mons_tex->rect.width * temp2->mons_tex->nb_anim);
+        move_rect(&temp2->texture->rect, temp2->texture->rect.width, temp2->texture->rect.width * temp2->texture->nb_anim);
         temp2 = temp2->next;
     }
 }
