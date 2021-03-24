@@ -22,44 +22,49 @@ int find_in_mons_database(char name)
     return 0;
 }
 
+void init_mons_texture(mons_t *element, sfVector2f pos, int i)
+{
+    element->mons_tex = malloc(sizeof(mons_texture_t));
+    element->mons_tex->rect = (sfIntRect){0, 0, data_mons[i].width, data_mons[i].height};
+    element->mons_tex->nb_anim = data_mons[i].nb_anim;
+    element->mons_tex->texture = sfTexture_createFromFile(data_mons[i].sprite, NULL);
+    element->mons_tex->sprite = sfSprite_create();
+    element->mons_tex->texture_color = sfTexture_createFromFile(data_mons[i].sprite_color, NULL);
+    element->mons_tex->sprite_color = sfSprite_create();
+    sfSprite_setOrigin(element->mons_tex->sprite, (sfVector2f){element->mons_tex->rect.width / 2, element->mons_tex->rect.height});
+    sfSprite_setOrigin(element->mons_tex->sprite_color, (sfVector2f){element->mons_tex->rect.width / 2, element->mons_tex->rect.height});
+    sfSprite_setPosition(element->mons_tex->sprite, pos);
+    sfSprite_setPosition(element->mons_tex->sprite_color, pos);
+    sfSprite_setColor(element->mons_tex->sprite_color, sfColor_fromRGB(data_mons[i].red, data_mons[i].green, data_mons[i].blue));
+}
+
+void init_mons_stat(mons_t *element, sfVector2f pos, int i)
+{
+    element->mons_stat = malloc(sizeof(mons_stat_t));
+    element->mons_stat->max_hp = data_mons[i].hp;
+    element->mons_stat->curr_hp = element->mons_stat->max_hp;
+    element->mons_stat->hp = sfRectangleShape_create();
+    sfRectangleShape_setOrigin(element->mons_stat->hp, (sfVector2f){element->mons_tex->rect.width / 2 + 50, 0});
+    sfRectangleShape_setSize(element->mons_stat->hp, (sfVector2f){100, 10});
+    sfRectangleShape_setFillColor(element->mons_stat->hp, sfGreen);
+    sfRectangleShape_setPosition(element->mons_stat->hp, (sfVector2f){pos.x + element->mons_tex->rect.width / 2, pos.y + 10});
+    element->mons_stat->speed = data_mons[i].speed;
+    element->mons_stat->atb_value = 0;
+    element->mons_stat->atb = sfRectangleShape_create();
+    sfRectangleShape_setOrigin(element->mons_stat->atb, (sfVector2f){element->mons_tex->rect.width / 2 + 50, 0});
+    sfRectangleShape_setSize(element->mons_stat->atb, (sfVector2f){0, 10});
+    sfRectangleShape_setFillColor(element->mons_stat->atb, sfCyan);
+    sfRectangleShape_setPosition(element->mons_stat->atb, (sfVector2f){pos.x + element->mons_tex->rect.width / 2, pos.y + 30});
+}
+
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game)
 {
     mons_t *element = malloc(sizeof(mons_t));
     mons_t *last = *mons;
     int i = find_in_mons_database(name);
 
-        //basic data
-    element->height = data_mons[i].height;
-    element->width = data_mons[i].width;
-    element->nb_anim = data_mons[i].nb_anim;
-    element->texture = sfTexture_createFromFile(data_mons[i].sprite, NULL);
-    element->sprite = sfSprite_create();
-    element->texture_color = sfTexture_createFromFile(data_mons[i].sprite_color, NULL);
-    element->sprite_color = sfSprite_create();
-    sfSprite_setOrigin(element->sprite, (sfVector2f){element->width / 2, element->height});
-    sfSprite_setOrigin(element->sprite_color, (sfVector2f){element->width / 2, element->height});
-    sfSprite_setPosition(element->sprite, pos);
-    sfSprite_setPosition(element->sprite_color, pos);
-    sfSprite_setColor(element->sprite_color, sfColor_fromRGB(data_mons[i].red, data_mons[i].green, data_mons[i].blue));
-    element->rect = (sfIntRect){0, 0, element->width, element->height};
-
-        //bars data
-    element->max_hp = data_mons[i].hp;
-    element->curr_hp = element->max_hp;
-    element->hp = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(element->hp, (sfVector2f){element->width / 2 + 50, 0});
-    sfRectangleShape_setSize(element->hp, (sfVector2f){100, 10});
-    sfRectangleShape_setFillColor(element->hp, sfGreen);
-    sfRectangleShape_setPosition(element->hp, (sfVector2f){pos.x + element->width / 2, pos.y + 10});
-    element->speed = data_mons[i].speed;
-    element->atb_value = 0;
-    element->atb = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(element->atb, (sfVector2f){element->width / 2 + 50, 0});
-    sfRectangleShape_setSize(element->atb, (sfVector2f){0, 10});
-    sfRectangleShape_setFillColor(element->atb, sfCyan);
-    sfRectangleShape_setPosition(element->atb, (sfVector2f){pos.x + element->width / 2, pos.y + 30});
-
-        //skill data
+    init_mons_texture(element, pos, i);
+    init_mons_stat(element, pos, i);
     element->skill = NULL;
     for (int j = 0; data_mons[i].skill[j]; j++)
         put_in_skill_list(&element->skill, data_mons[i].skill[j], game);

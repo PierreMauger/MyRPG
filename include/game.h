@@ -88,21 +88,27 @@ typedef struct skill {
     struct skill *next;
 } skill_t;
 
-typedef struct mons {
-    sfIntRect rect;
+typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     sfTexture *texture_color;
     sfSprite *sprite_color;
-    int width;
-    int height;
+    sfIntRect rect;
     int nb_anim;
+} mons_texture_t;
+
+typedef struct {
+    float speed;
     int max_hp;
     int curr_hp;
-    sfRectangleShape *hp;
-    float speed;
     float atb_value;
+    sfRectangleShape *hp;
     sfRectangleShape *atb;
+} mons_stat_t;
+
+typedef struct mons {
+    mons_texture_t *mons_tex;
+    mons_stat_t *mons_stat;
     skill_t *skill;
     struct mons *next;
 } mons_t;
@@ -216,6 +222,8 @@ void main_loop(game_t *game);
 
     //mons_list.c
 int find_in_mons_database(char name);
+void init_mons_texture(mons_t *element, sfVector2f pos, int i);
+void init_mons_stat(mons_t *element, sfVector2f pos, int i);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 
     //play.c
