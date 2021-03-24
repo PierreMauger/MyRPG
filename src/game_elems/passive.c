@@ -34,7 +34,7 @@ void passive_action(game_t *game, mons_t *target)
     if (temp->name == 'g' && target->atb_value == 0 && temp->act_cd == 0) {
         game->ind->ptr_skill = game->ind->ptr_mons->skill;
         set_attack_anim_pos(game, game->ind->target);
-        game->in_anim = true;
+        game->set->in_anim = true;
         temp->act_cd = 1;
     }
 }

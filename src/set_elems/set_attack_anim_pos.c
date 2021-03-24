@@ -21,7 +21,7 @@ void aoe_hit(game_t *game)
 
 void set_attack_anim(game_t *game)
 {
-    game->in_anim = true;
+    game->set->in_anim = true;
     set_attack_anim_pos(game, game->ind->target);
     //if (check_passive(game) == true)
     //    passive_action(game, mons_list, curr_mons);
@@ -40,7 +40,7 @@ void multi_hit(game_t *game, mons_t *target)
         return;
     if (CURR_ATT < game->ind->ptr_skill->nbr_hit - 1) {
         set_attack_anim_pos(game, game->ind->target);
-        game->in_anim = true;
+        game->set->in_anim = true;
         CURR_ATT += 1;
     }
     target_team(game);

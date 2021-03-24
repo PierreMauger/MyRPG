@@ -122,18 +122,30 @@ typedef struct {
 typedef struct {
     sfRenderWindow *window;
     sfVideoMode w_size;
-    sfEvent event;
+} window_t;
+
+typedef struct {
     sfClock *clock;
     sfTime time;
     float seconds;
+} time_elapsed_t;
+
+typedef struct {
     int state;
     bool pause;
     int turn;
     bool in_anim;
+    bool attack;
+} settings_t;
+
+typedef struct {
+    window_t *window;
+    time_elapsed_t *time;
+    settings_t *set;
+    sfEvent event;
     mons_t *p_mons;
     mons_t *e_mons;
     indicator_t *ind;
-    bool attack;
     sfVector2i mouse_pos;
     sfFont *font;
 } game_t;
@@ -178,6 +190,9 @@ void event_loop(game_t *game);
 void init_game(game_t *game);
 void init_turn_ind(game_t *game);
 void init_mons(game_t *game);
+void init_set(game_t *game);
+void init_time(game_t *game);
+void init_window(game_t *game);
 
 //SET_ELEMS
 void aoe_hit(game_t *game);

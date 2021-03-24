@@ -35,7 +35,7 @@ void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons)
             temp_atb = 100;
     sfRectangleShape_setSize(curr_mons->atb, (sfVector2f){temp_atb, 10});
     sfRectangleShape_setSize(curr_mons->hp, (sfVector2f){((float)curr_mons->curr_hp / (float)curr_mons->max_hp) * 100, 10});
-    game->attack = false;
+    game->set->attack = false;
 }
 
 void attack_activation(game_t *game)

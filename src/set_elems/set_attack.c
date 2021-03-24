@@ -9,7 +9,7 @@
 
 void target_team(game_t *game)
 {
-    if (game->turn == game->ind->ptr_skill->target[CURR_ATT])
+    if (game->set->turn == game->ind->ptr_skill->target[CURR_ATT])
         game->ind->team = game->e_mons;
     else
         game->ind->team = game->p_mons;

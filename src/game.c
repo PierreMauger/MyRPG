@@ -23,8 +23,8 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int height)
 
 void main_loop(game_t *game)
 {
-    while (sfRenderWindow_isOpen(game->window))
-        switch (game->state) {
+    while (sfRenderWindow_isOpen(game->window->window))
+        switch (game->set->state) {
             case MENU:
                 game_loop(game);
                 break;

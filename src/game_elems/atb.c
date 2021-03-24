@@ -55,14 +55,14 @@ mons_t *get_higher_atb(game_t *game)
     while (temp2 != NULL) {
         if (temp2->atb_value > result->atb_value) {
             result = temp2;
-            game->turn = 1;
+            game->set->turn = 1;
         }
         temp2 = temp2->next;
     }
     while (temp != NULL) {
         if (temp->atb_value >= result->atb_value) {
             result = temp;
-            game->turn = 0;
+            game->set->turn = 0;
         }
         temp = temp->next;
     }

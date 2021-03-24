@@ -11,13 +11,13 @@ void turn_loop(game_t *game)
 {
     if (check_atb(game) == true) {
         game->ind->ptr_mons = get_higher_atb(game);
-        if (game->attack == false) {
+        if (game->set->attack == false) {
             game->ind->target = NULL;
             CURR_ATT = 0;
             cooldown_reduce(game);
             game->ind->ptr_skill = game->ind->ptr_mons->skill;
         }
-        game->attack = true;
+        game->set->attack = true;
     }
     else {
         atb_increase(game->e_mons);

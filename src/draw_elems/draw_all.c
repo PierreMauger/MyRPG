@@ -9,12 +9,12 @@
 
 void draw_all(game_t *game)
 {
-    sfRenderWindow_clear(game->window, sfBlack);
+    sfRenderWindow_clear(game->window->window, sfBlack);
     draw_mons(game, game->p_mons);
     draw_mons(game, game->e_mons);
     draw_turn_ind(game);
-    if (game->in_anim == false && game->attack == true)
+    if (game->set->in_anim == false && game->set->attack == true)
         draw_skill(game);
     draw_attak_target(game);
-    sfRenderWindow_display(game->window);
+    sfRenderWindow_display(game->window->window);
 }
