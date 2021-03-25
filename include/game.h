@@ -37,6 +37,7 @@
 
 #define PTR_MONS_SPRITE game->ind->ptr_mons->texture->sprite
 #define PTR_MONS_WIDTH game->ind->ptr_mons->texture->rect.width
+#define PTR_MONS_RECT game->ind->ptr_mons->texture->rect
 
 #define GET_WINDOW game->window->window
 #define GET_CLOCK game->time->clock
@@ -65,7 +66,7 @@
 #define sfGrey (sfColor){128, 128, 128, 255}
 
 typedef struct {
-    char name;
+    char *name;
     int *coef;
     int nbr_hit;
     int *target;
@@ -94,7 +95,7 @@ typedef struct {
     int height;
     int nb_anim;
     float speed;
-    char *skill;
+    char **skill;
 } data_mons_t;
 
 typedef struct {
@@ -109,7 +110,7 @@ typedef struct {
 } skill_anim_t;
 
 typedef struct {
-    char name;
+    char *name;
     int *coef;
     int *target;
     int nbr_hit;
@@ -174,6 +175,7 @@ typedef struct {
     mons_t *target;
     mons_t *team;
     sfText *damage;
+    sfText *att_name;
     int curr_attack;
 } indicator_t;
 
@@ -221,7 +223,7 @@ void bool_move_rect(sfIntRect *rect, int offset, int anim_nb, bool *boolean);
 int find_in_mons_database(char name);
 void init_mons_texture(mons_t *elem, sfVector2f pos, int i);
 void init_mons_stat(mons_t *elem, sfVector2f pos, int i);
-int find_in_skill_database(char name);
+int find_in_skill_database(char *name);
 void init_skill_stat(skill_t *elem, int i);
 void init_skill_texture(skill_t *elem, int i);
 void init_skill_anim(skill_t *elem, int i);
@@ -259,8 +261,7 @@ void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
 void cooldown_reduce(game_t *game);
-void kill_mons(game_t *game, mons_t *team, mons_t *curr_mons);
-mons_t * kill_func(mons_t *head, mons_t *team, mons_t *curr_mons);
+mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
 int check_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
@@ -282,7 +283,7 @@ void init_mons(game_t *game);
 void init_set(game_t *game);
 void init_time(game_t *game);
 void init_window(game_t *game);
-void put_in_skill_list(skill_t **skill, game_t *game, char name);
+void put_in_skill_list(skill_t **skill, game_t *game, char *name);
 
 //SET_ELEMS
 void aoe_hit(game_t *game);
@@ -295,7 +296,7 @@ void set_attack(game_t *game);
     //attack_hit.c
 int check_collide(game_t *game, mons_t *mons);
 void atb_calc(game_t *game, mons_t *curr_mons);
-void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons);
+void attack_hit(game_t *game, mons_t *curr_mons);
 void attack_activation(game_t *game);
 
     //game.c

@@ -8,20 +8,20 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {'a', (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "-30% atb"},
-    {'b', (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "basic aoe"},
-    {'c', (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "speed boost"},
-    {'d', (int[]){35, 50}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "double hit"},
-    {'e', (int[]){70, 0},   2, (int[]){0, 1}, (int[]){0, 1}, (float[]){0, 15}, 0, 4, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "hit + boost\n  atb aoe"},
-    {'f', (int[]){60},      1, (int[]){0}, (int[]){0},  (float[]){-50}, 0, 4, GRASS_IMG, BONK_IMG, 80, 80, 4, DIRT_IMG, "-50% atb"},
-    {'g', (int[]){ 0},      1, (int[]){0}, (int[]){0},    (float[]){0}, 1, 5, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "attack one more\n time if atb = 0"},
-    {'h', (int[]){80},      1, (int[]){0}, (int[]){0},    (float[]){0}, 0, 1, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"}
+    {"Morsure", (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "-30% atb"},
+    {"AOE", (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "basic aoe"},
+    {"Ralliement", (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "speed boost"},
+    {"Ruee sauvage", (int[]){35, 50}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "double hit"},
+    {"Course", (int[]){70, 0},   2, (int[]){0, 1}, (int[]){0, 1}, (float[]){0, 15}, 0, 4, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "hit + boost\n  atb aoe"},
+    {"Belier", (int[]){60},      1, (int[]){0}, (int[]){0},  (float[]){-50}, 0, 4, GRASS_IMG, BONK_IMG, 80, 80, 4, DIRT_IMG, "-50% atb"},
+    {"Chasseur", (int[]){ 0},      1, (int[]){0}, (int[]){0},    (float[]){0}, 1, 5, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "attack one more\n time if atb = 0"},
+    {"lol", (int[]){80},      1, (int[]){0}, (int[]){0},    (float[]){0}, 0, 1, GRASS_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "lol"}
 };
 
-int find_in_skill_database(char name)
+int find_in_skill_database(char *name)
 {
     for (int i = 0; i < 8; i++)
-        if (data_skill[i].name == name)
+        if (!my_strcmp(data_skill[i].name, name))
             return i;
     return 0;
 }

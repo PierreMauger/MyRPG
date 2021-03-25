@@ -8,10 +8,10 @@
 #include "game.h"
 
 static data_mons_t data_mons[] = {
-    {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 5, "abc"},
-    {'b', 150, 230, 255, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 8, "ade"},
-    {'c', 150, 0, 170, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 7, "afg"},
-    {'d', 150, 255, 255, 255, SLIME_IMG, SLIME_IMG_COLOR, 66, 50, 3, 2, "abc"}
+    {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 5, (char *[]){"Morsure", "AOE", "Ralliement"}},
+    {'b', 150, 230, 255, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 8, (char *[]){"Morsure", "Ruee sauvage", "Course"}},
+    {'c', 150, 0, 170, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 7, (char *[]){"Morsure", "Belier", "Chasseur"}},
+    {'d', 150, 255, 255, 255, SLIME_IMG, SLIME_IMG_COLOR, 66, 50, 3, 8, (char *[]){"Morsure", "AOE", "Ralliement"}}
 };
 
 int find_in_mons_database(char name)

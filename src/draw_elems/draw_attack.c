@@ -23,6 +23,10 @@ void draw_single_attak_target(game_t *game)
     nbr_to_str(game->ind->ptr_skill->stat->coef[CURR_ATT]));
     sfText_setOrigin(game->ind->damage, (sfVector2f)
     {sfText_getGlobalBounds(game->ind->damage).width / 2, 0});
+    sfText_setString(game->ind->att_name, game->ind->ptr_skill->stat->name);
+    sfText_setOrigin(game->ind->att_name, (sfVector2f)
+    {sfText_getGlobalBounds(game->ind->att_name).width / 2, 0});
+    sfRenderWindow_drawText(GET_WINDOW, game->ind->att_name, NULL);
     if (game->ind->ptr_skill->stat->coef[CURR_ATT] != 0 &&
     last_anim_frame(PTR_SKILL_ANIM_RECT, PTR_SKILL_ANIM_NB))
         sfRenderWindow_drawText(GET_WINDOW, game->ind->damage, NULL);

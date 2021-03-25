@@ -7,61 +7,32 @@
 
 #include "game.h"
 
-void kill_mons(game_t *game, mons_t *team, mons_t *curr_mons)
+mons_t *kill_func(game_t *game, mons_t *head)
 {
-    mons_t *head = NULL;
+    mons_t *last = NULL;
+    mons_t *act = head;
 
-    if (game->p_mons == team) {
-        head = game->p_mons;
-        head = kill_func(head, team, curr_mons);
-        game->p_mons = head;
-    }
-    else {
-        head = game->e_mons;
-        head = kill_func(head, team, curr_mons);
-        game->e_mons = head;
-    }
-}
-
-mons_t *kill_func(mons_t *head, mons_t *team, mons_t *curr_mons)
-{
-    mons_t *last_mons = NULL;
-
-    while (team != NULL) {
-        if (team == curr_mons) {
-            if (last_mons == NULL)
+    while (act != NULL) {
+        if (MONS_CURR_HP(act) == 0) {
+            if (last == NULL)
                 head = head->next;
             else
-                last_mons->next = team->next;
-            destroy_mons_texture(team->texture);
-            destroy_mons_stat(team->stat);
-            destroy_skill(team->skill);
-            free(team);
+                last->next = act->next;
+            destroy_mons_texture(act->texture);
+            destroy_mons_stat(act->stat);
+            destroy_skill(act->skill);
+            free(act);
+            game->ind->target = NULL;
             break;
         }
-        last_mons = team;
-        team = team->next;
+        last = act;
+        act = act->next;
     }
     return head;
 }
 
 void check_kill(game_t *game)
 {
-    mons_t *temp = game->p_mons;
-    mons_t *temp2 = game->e_mons;
-
-    while (temp2 != NULL) {
-        if (MONS_CURR_HP(temp2) == 0) {
-            kill_mons(game, game->e_mons, temp2);
-            game->ind->target = NULL;
-        }
-        temp2 = temp2->next;
-    }
-    while (temp != NULL) {
-        if (MONS_CURR_HP(temp) == 0) {
-            kill_mons(game, game->p_mons, temp);
-            game->ind->target = NULL;
-        }
-        temp = temp->next;
-    }
+    game->e_mons = kill_func(game, game->e_mons);
+    game->p_mons = kill_func(game, game->p_mons);
 }

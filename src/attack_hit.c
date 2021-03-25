@@ -34,7 +34,7 @@ void atb_calc(game_t *game, mons_t *curr_mons)
     sfRectangleShape_setSize(curr_mons->stat->atb, (sfVector2f){temp_atb, 10});
 }
 
-void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons)
+void attack_hit(game_t *game, mons_t *curr_mons)
 {
     atb_calc(game, curr_mons);
     MONS_CURR_HP(curr_mons) -= game->ind->ptr_skill->stat->coef[CURR_ATT];
@@ -52,9 +52,9 @@ void attack_activation(game_t *game)
     if (game->ind->ptr_skill->stat->aoe[CURR_ATT] == 1)
         while (temp != NULL) {
             game->ind->target = temp;
-            attack_hit(game, game->ind->team, game->ind->target);
+            attack_hit(game, game->ind->target);
             temp = temp->next;
         }
     else
-        attack_hit(game, game->ind->team, game->ind->target);
+        attack_hit(game, game->ind->target);
 }
