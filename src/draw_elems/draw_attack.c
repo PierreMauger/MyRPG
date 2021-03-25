@@ -28,21 +28,26 @@ void draw_single_attak_target(game_t *game)
         sfRenderWindow_drawText(GET_WINDOW, game->ind->damage, NULL);
 }
 
-void draw_attak_target(game_t *game)
+void draw_attack_aoe(game_t *game)
 {
     mons_t *temp;
 
+    if (game->ind->ptr_skill->stat->target[CURR_ATT] == game->set->turn)
+        temp = game->e_mons;
+    else
+        temp = game->p_mons;
+    while (temp != NULL) {
+        set_attack_anim_pos(game, temp);
+        draw_single_attak_target(game);
+        temp = temp->next;
+    }
+}
+
+void draw_attak_target(game_t *game)
+{
     if (game->set->in_anim == true) {
         if (game->ind->ptr_skill->stat->aoe[CURR_ATT] == true) {
-            if (game->ind->ptr_skill->stat->target[CURR_ATT] == game->set->turn)
-                temp = game->e_mons;
-            else
-                temp = game->p_mons;
-            while (temp != NULL) {
-                set_attack_anim_pos(game, temp);
-                draw_single_attak_target(game);
-                temp = temp->next;
-            }
+            draw_attack_aoe(game);
         }
         else {
             set_attack_anim_pos(game, game->ind->target);

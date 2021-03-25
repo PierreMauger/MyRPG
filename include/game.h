@@ -33,6 +33,7 @@
 #define PTR_SKILL_ANIM_TEX game->ind->ptr_skill->anim->texture
 #define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
 #define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->anim_nb
+#define PTR_SKILL_HIT_NB game->ind->ptr_skill->stat->nbr_hit
 
 #define PTR_MONS_SPRITE game->ind->ptr_mons->texture->sprite
 #define PTR_MONS_WIDTH game->ind->ptr_mons->texture->rect.width
@@ -210,6 +211,7 @@ typedef struct {
 } game_t;
 
 //ANIM_ELEMS
+void animate(game_t *game);
 void anim_all(game_t *game);
 void anim_mons(game_t *game);
 void move_rect(sfIntRect *rect, int offset, int anim_nb);
@@ -244,6 +246,7 @@ void destroy_window(window_t *window);
 //DRAW_ELEMS
 void draw_all(game_t *game);
 void draw_single_attak_target(game_t *game);
+void draw_attack_aoe(game_t *game);
 void draw_attak_target(game_t *game);
 void draw_turn_ind(game_t *game);
 void draw_mons(game_t *game, mons_t *mons);
@@ -258,6 +261,7 @@ mons_t *get_higher_atb(game_t *game);
 void cooldown_reduce(game_t *game);
 void kill_mons(game_t *game, mons_t *team, mons_t *curr_mons);
 mons_t * kill_func(mons_t *head, mons_t *team, mons_t *curr_mons);
+void check_kill(game_t *game);
 int check_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
 void turn_loop(game_t *game);

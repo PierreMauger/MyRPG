@@ -15,8 +15,10 @@ void update_all(game_t *game)
     if (game->set->in_anim == false)
         if (check_passive(game) == true)
             passive_action(game, game->ind->target);
-    if (game->set->in_anim == false)
+    if (game->set->in_anim == false) {
+        check_kill(game);
         turn_loop(game);
+    }
 }
 
 void game_loop(game_t *game)

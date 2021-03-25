@@ -7,6 +7,19 @@
 
 #include "game.h"
 
+void animate(game_t *game)
+{
+    anim_mons(game);
+    move_rect(&ARR_RECT, ARR_RECT.width, ARR_ANIM_NB);
+    if (game->set->in_anim == true) {
+        bool_move_rect(&PTR_SKILL_ANIM_RECT, PTR_SKILL_ANIM_RECT.width,
+        PTR_SKILL_ANIM_NB, &game->set->in_anim);
+        if (game->set->in_anim == false)
+            attack_activation(game);
+    }
+    GET_SECONDS = 0;
+}
+
 void anim_all(game_t *game)
 {
     float temp = sfTime_asSeconds(sfClock_restart(GET_CLOCK));
@@ -15,14 +28,6 @@ void anim_all(game_t *game)
     GET_SECONDS += temp;
     sfShader_setFloatUniform(game->shader, "time", GET_TOTAL_TIME);
     if (GET_SECONDS > ANIME_TIME) {
-        anim_mons(game);
-        move_rect(&ARR_RECT, ARR_RECT.width, ARR_ANIM_NB);
-        if (game->set->in_anim == true) {
-            bool_move_rect(&PTR_SKILL_ANIM_RECT, PTR_SKILL_ANIM_RECT.width,
-            PTR_SKILL_ANIM_NB, &game->set->in_anim);
-            if (game->set->in_anim == false)
-                attack_activation(game);
-        }
-        GET_SECONDS = 0;
+        animate(game);
     }
 }

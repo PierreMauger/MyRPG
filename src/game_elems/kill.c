@@ -44,3 +44,24 @@ mons_t *kill_func(mons_t *head, mons_t *team, mons_t *curr_mons)
     }
     return head;
 }
+
+void check_kill(game_t *game)
+{
+    mons_t *temp = game->p_mons;
+    mons_t *temp2 = game->e_mons;
+
+    while (temp2 != NULL) {
+        if (MONS_CURR_HP(temp2) == 0) {
+            kill_mons(game, game->e_mons, temp2);
+            game->ind->target = NULL;
+        }
+        temp2 = temp2->next;
+    }
+    while (temp != NULL) {
+        if (MONS_CURR_HP(temp) == 0) {
+            kill_mons(game, game->p_mons, temp);
+            game->ind->target = NULL;
+        }
+        temp = temp->next;
+    }
+}
