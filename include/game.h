@@ -78,9 +78,9 @@ typedef struct {
 } skill_texture_t;
 
 typedef struct {
-    sfIntRect arect;
-    sfTexture *atexture;
-    sfSprite *asprite;
+    sfIntRect rect;
+    sfTexture *texture;
+    sfSprite *sprite;
 } skill_anim_t;
 
 typedef struct {
@@ -97,8 +97,8 @@ typedef struct {
 } skill_stat_t;
 
 typedef struct {
-    sfTexture *dtexture;
-    sfSprite *dsprite;
+    sfTexture *texture;
+    sfSprite *sprite;
     sfText *text;
     sfText *cd_text;
 } skill_desc_t;
@@ -191,6 +191,10 @@ void destroy_mons_texture(mons_texture_t *texture);
 void destroy_mons_stat(mons_stat_t *stat);
 void destroy_mons(mons_t *mons);
 void destroy_set(settings_t *set);
+void destroy_skill_texture(skill_texture_t *texture);
+void destroy_skill_anim(skill_anim_t *anim);
+void destroy_skill_stat(skill_stat_t *stat);
+void destroy_skill_desc(skill_desc_t *desc);
 void destroy_skill(skill_t *skill);
 void destroy_time(time_elapsed_t *time);
 void destroy_window(window_t *window);
@@ -257,7 +261,11 @@ void game_loop(game_t *game);
 
     //skill_list.c
 int find_in_skill_database(char name);
-void put_in_skill_list(skill_t **skill, char name, game_t *game);
+void init_skill_stat(skill_t *elem, int i);
+void init_skill_texture(skill_t *elem, int i);
+void init_skill_anim(skill_t *elem, int i);
+void init_skill_desc(skill_t *elem, game_t *game, int i);
+void put_in_skill_list(skill_t **skill, game_t *game, char name);
 
     //skill.c
 int check_collide_skill(game_t *game, skill_t *skill);

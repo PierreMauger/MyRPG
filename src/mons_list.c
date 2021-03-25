@@ -67,7 +67,7 @@ void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game)
     init_mons_stat(elem, pos, i);
     elem->skill = NULL;
     for (int j = 0; data_mons[i].skill[j]; j++)
-        put_in_skill_list(&elem->skill, data_mons[i].skill[j], game);
+        put_in_skill_list(&elem->skill, game, data_mons[i].skill[j]);
     elem->next = NULL;
 
     if (*mons == NULL) {

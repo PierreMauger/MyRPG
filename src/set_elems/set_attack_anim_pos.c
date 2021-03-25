@@ -28,8 +28,8 @@ void set_attack_anim(game_t *game)
 
 void set_attack_anim_pos(game_t *game, mons_t *target)
 {
-    sfSprite_setOrigin(game->ind->ptr_skill->anim->asprite, (sfVector2f){game->ind->ptr_skill->anim->arect.width / 2, 0});
-    sfSprite_setPosition(game->ind->ptr_skill->anim->asprite, (sfVector2f){sfSprite_getPosition(target->texture->sprite).x, sfSprite_getPosition(target->texture->sprite).y - 80});
+    sfSprite_setOrigin(game->ind->ptr_skill->anim->sprite, (sfVector2f){game->ind->ptr_skill->anim->rect.width / 2, 0});
+    sfSprite_setPosition(game->ind->ptr_skill->anim->sprite, (sfVector2f){sfSprite_getPosition(target->texture->sprite).x, sfSprite_getPosition(target->texture->sprite).y - 80});
     sfText_setPosition(game->ind->damage, (sfVector2f){sfSprite_getPosition(target->texture->sprite).x, sfSprite_getPosition(target->texture->sprite).y - 80});
 }
 

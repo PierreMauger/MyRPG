@@ -7,20 +7,44 @@
 
 #include "game.h"
 
+void destroy_skill_texture(skill_texture_t *texture)
+{
+    sfTexture_destroy(texture->texture);
+    sfSprite_destroy(texture->sprite);
+    free(texture);
+}
+
+void destroy_skill_anim(skill_anim_t *anim)
+{
+    sfTexture_destroy(anim->texture);
+    sfSprite_destroy(anim->sprite);
+    free(anim);
+}
+
+void destroy_skill_stat(skill_stat_t *stat)
+{
+    free(stat);
+}
+
+void destroy_skill_desc(skill_desc_t *desc)
+{
+    sfTexture_destroy(desc->texture);
+    sfSprite_destroy(desc->sprite);
+    sfText_destroy(desc->text);
+    sfText_destroy(desc->cd_text);
+    free(desc);
+}
+
 void destroy_skill(skill_t *skill)
 {
     skill_t *temp = NULL;
 
     while (skill != NULL) {
         temp = skill;
-        sfTexture_destroy(skill->texture->texture);
-        sfSprite_destroy(skill->texture->sprite);
-        sfTexture_destroy(skill->anim->atexture);
-        sfSprite_destroy(skill->anim->asprite);
-        sfTexture_destroy(skill->desc->dtexture);
-        sfSprite_destroy(skill->desc->dsprite);
-        sfText_destroy(skill->desc->text);
-        sfText_destroy(skill->desc->cd_text);
+        destroy_skill_texture(skill->texture);
+        destroy_skill_anim(skill->anim);
+        destroy_skill_stat(skill->stat);
+        destroy_skill_desc(skill->desc);
         skill = skill->next;
         free(temp);
     }

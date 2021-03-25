@@ -21,10 +21,10 @@ void draw_skill(game_t *game)
         else
             sfSprite_setColor(temp->texture->sprite, sfColor_fromRGB(255, 255, 255));
         sfRenderWindow_drawSprite(game->window->window, temp->texture->sprite, NULL);
-        sfSprite_setPosition(temp->desc->dsprite, (sfVector2f){x, 900});
+        sfSprite_setPosition(temp->desc->sprite, (sfVector2f){x, 900});
         sfText_setString(temp->desc->cd_text, nbr_to_str(temp->stat->act_cd));
         if (check_collide_skill(game, temp)) {
-            sfRenderWindow_drawSprite(game->window->window, temp->desc->dsprite, NULL);
+            sfRenderWindow_drawSprite(game->window->window, temp->desc->sprite, NULL);
             sfRenderWindow_drawText(game->window->window, temp->desc->text, NULL);
             if (temp->stat->act_cd != 0)
                 sfRenderWindow_drawText(game->window->window, temp->desc->cd_text, NULL);
