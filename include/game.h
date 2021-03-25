@@ -56,6 +56,7 @@
 #define SLIME_IMG_COLOR "ressources/sprites/slime.png"
 #define LANCER_IMG "ressources/sprites/lancer.png"
 #define LANCER_IMG_COLOR "ressources/sprites/lancer_color.png"
+#define FONT "ressources/font.ttf"
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 

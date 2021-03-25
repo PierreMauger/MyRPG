@@ -16,8 +16,8 @@ void event_pause(game_t *game)
 
 void event_click(game_t *game)
 {
-    if (game->event.type == sfEvtMouseButtonPressed && game->set->attack == true
-    && game->set->in_anim != true) {
+    if (game->event.type == sfEvtMouseButtonPressed &&
+    game->set->attack == true && game->set->in_anim != true) {
         choose_skill(game);
         set_attack(game);
     }

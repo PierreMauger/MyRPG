@@ -25,7 +25,8 @@ void atb_increase(mons_t *team)
 void atb_reset(game_t *game)
 {
     MONS_CURR_ATB(game->ind->ptr_mons) = 0;
-    sfRectangleShape_setSize(game->ind->ptr_mons->stat->atb, (sfVector2f){MONS_CURR_ATB(game->ind->ptr_mons), 10});
+    sfRectangleShape_setSize(game->ind->ptr_mons->stat->atb,
+    (sfVector2f){MONS_CURR_ATB(game->ind->ptr_mons), 10});
 }
 
 int check_atb(game_t *game)
