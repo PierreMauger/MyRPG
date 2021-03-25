@@ -40,8 +40,11 @@
 #define GET_WINDOW game->window->window
 #define GET_CLOCK game->time->clock
 #define GET_SECONDS game->time->seconds
+#define GET_TOTAL_TIME game->time->total_time
 
 #define CURR_ATT game->ind->curr_attack
+#define ARR_RECT game->ind->arr->rect
+#define ARR_ANIM_NB 2
 
 #define MENU 0
 #define PLAY 1
@@ -181,6 +184,7 @@ typedef struct {
 typedef struct {
     sfClock *clock;
     float seconds;
+    float total_time;
 } time_elapsed_t;
 
 typedef struct {
@@ -201,6 +205,8 @@ typedef struct {
     indicator_t *ind;
     sfVector2i mouse_pos;
     sfFont *font;
+    sfRenderStates render;
+    sfShader *shader;
 } game_t;
 
 //ANIM_ELEMS
