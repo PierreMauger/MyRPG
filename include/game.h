@@ -187,6 +187,8 @@ void single_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
+void destroy_mons_texture(mons_texture_t *texture);
+void destroy_mons_stat(mons_stat_t *stat);
 void destroy_mons(mons_t *mons);
 void destroy_set(settings_t *set);
 void destroy_skill(skill_t *skill);
