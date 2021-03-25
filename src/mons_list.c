@@ -22,20 +22,26 @@ int find_in_mons_database(char name)
     return 0;
 }
 
-void init_mons_texture(mons_t *element, sfVector2f pos, int i)
+void init_mons_texture(mons_t *elem, sfVector2f pos, int i)
 {
-    element->texture = malloc(sizeof(mons_texture_t));
-    element->texture->rect = (sfIntRect){0, 0, data_mons[i].width, data_mons[i].height};
-    element->texture->nb_anim = data_mons[i].nb_anim;
-    element->texture->texture = sfTexture_createFromFile(data_mons[i].sprite, NULL);
-    element->texture->sprite = sfSprite_create();
-    element->texture->texture_color = sfTexture_createFromFile(data_mons[i].sprite_color, NULL);
-    element->texture->sprite_color = sfSprite_create();
-    sfSprite_setOrigin(element->texture->sprite, (sfVector2f){element->texture->rect.width / 2, element->texture->rect.height});
-    sfSprite_setOrigin(element->texture->sprite_color, (sfVector2f){element->texture->rect.width / 2, element->texture->rect.height});
-    sfSprite_setPosition(element->texture->sprite, pos);
-    sfSprite_setPosition(element->texture->sprite_color, pos);
-    sfSprite_setColor(element->texture->sprite_color, sfColor_fromRGB(data_mons[i].red, data_mons[i].green, data_mons[i].blue));
+    elem->texture = malloc(sizeof(mons_texture_t));
+    elem->texture->rect = (sfIntRect){0, 0, data_mons[i].width,
+    data_mons[i].height};
+    elem->texture->nb_anim = data_mons[i].nb_anim;
+    elem->texture->texture = sfTexture_createFromFile(
+    data_mons[i].sprite, NULL);
+    MONS_SPRITE(elem) = sfSprite_create();
+    elem->texture->texture_color = sfTexture_createFromFile(
+    data_mons[i].sprite_color, NULL);
+    MONS_SPRITE_COLOR(elem) = sfSprite_create();
+    sfSprite_setOrigin(MONS_SPRITE(elem),
+    (sfVector2f){MONS_WIDTH(elem) / 2, MONS_HEIGHT(elem)});
+    sfSprite_setOrigin(MONS_SPRITE_COLOR(elem),
+    (sfVector2f){MONS_WIDTH(elem) / 2, MONS_HEIGHT(elem)});
+    sfSprite_setPosition(MONS_SPRITE(elem), pos);
+    sfSprite_setPosition(MONS_SPRITE_COLOR(elem), pos);
+    sfSprite_setColor(MONS_SPRITE_COLOR(elem), sfColor_fromRGB(
+    data_mons[i].red, data_mons[i].green, data_mons[i].blue));
 }
 
 void init_mons_stat(mons_t *elem, sfVector2f pos, int i)
@@ -44,17 +50,21 @@ void init_mons_stat(mons_t *elem, sfVector2f pos, int i)
     MONS_MAX_HP(elem) = data_mons[i].hp;
     MONS_CURR_HP(elem) = MONS_MAX_HP(elem);
     MONS_HP(elem) = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(MONS_HP(elem), (sfVector2f){elem->texture->rect.width / 2 + 50, 0});
+    sfRectangleShape_setOrigin(MONS_HP(elem),
+    (sfVector2f){MONS_WIDTH(elem) / 2+ 50, 0});
     sfRectangleShape_setSize(MONS_HP(elem), (sfVector2f){100, 10});
     sfRectangleShape_setFillColor(MONS_HP(elem), sfGreen);
-    sfRectangleShape_setPosition(MONS_HP(elem), (sfVector2f){pos.x + elem->texture->rect.width / 2, pos.y + 10});
+    sfRectangleShape_setPosition(MONS_HP(elem),
+    (sfVector2f){pos.x + MONS_WIDTH(elem) / 2, pos.y + 10});
     MONS_SPEED(elem) = data_mons[i].speed;
     MONS_CURR_ATB(elem) = 0;
     elem->stat->atb = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(elem->stat->atb, (sfVector2f){elem->texture->rect.width / 2 + 50, 0});
+    sfRectangleShape_setOrigin(elem->stat->atb,
+    (sfVector2f){MONS_WIDTH(elem) / 2 + 50, 0});
     sfRectangleShape_setSize(elem->stat->atb, (sfVector2f){0, 10});
     sfRectangleShape_setFillColor(elem->stat->atb, sfCyan);
-    sfRectangleShape_setPosition(elem->stat->atb, (sfVector2f){pos.x + elem->texture->rect.width / 2, pos.y + 30});
+    sfRectangleShape_setPosition(elem->stat->atb,
+    (sfVector2f){pos.x + MONS_WIDTH(elem) / 2, pos.y + 30});
 }
 
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game)

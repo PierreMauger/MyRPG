@@ -17,19 +17,29 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
+#define MONS_SPEED(elem) elem->stat->speed
 #define MONS_MAX_HP(elem) elem->stat->max_hp
 #define MONS_CURR_HP(elem) elem->stat->curr_hp
-#define MONS_HP(elem) elem->stat->hp
-#define MONS_SPEED(elem) elem->stat->speed
 #define MONS_CURR_ATB(elem) elem->stat->curr_atb
+#define MONS_HP(elem) elem->stat->hp
 #define MONS_ATB(elem) elem->stat->atb
+
+#define MONS_WIDTH(elem) elem->texture->rect.width
+#define MONS_HEIGHT(elem) elem->texture->rect.height
+#define MONS_SPRITE(elem) elem->texture->sprite
+#define MONS_SPRITE_COLOR(elem) elem->texture->sprite_color
+
+#define GET_WINDOW game->window->window
+#define GET_CLOCK game->time->clock
+#define GET_SECONDS game->time->seconds
+
+#define CURR_ATT game->ind->curr_attack
 
 #define MENU 0
 #define PLAY 1
 #define GAME_OVER 2
 #define VICTORY 3
 #define ANIME_TIME 0.3
-#define CURR_ATT game->ind->curr_attack
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
 #define SLASH_IMG "ressources/sprites/slash_anim.png"
@@ -182,7 +192,7 @@ typedef struct {
 void anim_all(game_t *game);
 void anim_mons(game_t *game);
 void move_rect(sfIntRect *rect, int offset, int max_offset);
-void single_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean);
+void bool_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean);
 
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
@@ -251,8 +261,8 @@ void main_loop(game_t *game);
 
     //mons_list.c
 int find_in_mons_database(char name);
-void init_mons_texture(mons_t *element, sfVector2f pos, int i);
-void init_mons_stat(mons_t *element, sfVector2f pos, int i);
+void init_mons_texture(mons_t *elem, sfVector2f pos, int i);
+void init_mons_stat(mons_t *elem, sfVector2f pos, int i);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 
     //play.c

@@ -14,6 +14,6 @@ void draw_turn_ind(game_t *game)
         sfSprite_setPosition(game->ind->sprite, (sfVector2f){sfSprite_getPosition(game->ind->ptr_mons->texture->sprite).x + (game->ind->ptr_mons->texture->rect.width - 40) / 2, sfSprite_getPosition(game->ind->ptr_mons->texture->sprite).y - 80});
         sfSprite_setTexture(game->ind->sprite, game->ind->texture, sfTrue);
         sfSprite_setTextureRect(game->ind->sprite, game->ind->rect);
-        sfRenderWindow_drawSprite(game->window->window, game->ind->sprite, NULL);
+        sfRenderWindow_drawSprite(GET_WINDOW, game->ind->sprite, NULL);
     }
 }

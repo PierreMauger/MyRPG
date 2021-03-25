@@ -44,7 +44,8 @@ void init_skill_stat(skill_t *elem, int i)
 void init_skill_texture(skill_t *elem, int i)
 {
     elem->texture = malloc(sizeof(skill_texture_t));
-    elem->texture->texture = sfTexture_createFromFile(data_skill[i].sprite, NULL);
+    elem->texture->texture = sfTexture_createFromFile(
+    data_skill[i].sprite, NULL);
     elem->texture->sprite = sfSprite_create();
     sfSprite_setTexture(elem->texture->sprite, elem->texture->texture, sfTrue);
     sfSprite_setPosition(elem->texture->sprite, (sfVector2f){0, 0});
@@ -53,7 +54,8 @@ void init_skill_texture(skill_t *elem, int i)
 void init_skill_anim(skill_t *elem, int i)
 {
     elem->anim = malloc(sizeof(skill_anim_t));
-    elem->anim->rect = (sfIntRect){0, 0, data_skill[i].anim_x, data_skill[i].anim_y};
+    elem->anim->rect = (sfIntRect){0, 0, data_skill[i].anim_x,
+    data_skill[i].anim_y};
     elem->anim->texture = sfTexture_createFromFile(data_skill[i].anim, NULL);
     elem->anim->sprite = sfSprite_create();
 }

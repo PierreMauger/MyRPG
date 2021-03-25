@@ -25,11 +25,11 @@ void event_click(game_t *game)
 
 void event_loop(game_t *game)
 {
-    game->mouse_pos = sfMouse_getPositionRenderWindow(game->window->window);
-    while (sfRenderWindow_pollEvent(game->window->window, &game->event)) {
+    game->mouse_pos = sfMouse_getPositionRenderWindow(GET_WINDOW);
+    while (sfRenderWindow_pollEvent(GET_WINDOW, &game->event)) {
         event_pause(game);
         event_click(game);
         if (game->event.type == sfEvtClosed)
-            sfRenderWindow_close(game->window->window);
+            sfRenderWindow_close(GET_WINDOW);
     }
 }

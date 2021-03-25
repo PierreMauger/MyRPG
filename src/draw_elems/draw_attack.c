@@ -11,11 +11,11 @@ void draw_single_attak_target(game_t *game)
 {
     sfSprite_setTexture(game->ind->ptr_skill->anim->sprite, game->ind->ptr_skill->anim->texture, sfTrue);
     sfSprite_setTextureRect(game->ind->ptr_skill->anim->sprite, game->ind->ptr_skill->anim->rect);
-    sfRenderWindow_drawSprite(game->window->window, game->ind->ptr_skill->anim->sprite, NULL);
+    sfRenderWindow_drawSprite(GET_WINDOW, game->ind->ptr_skill->anim->sprite, NULL);
     sfText_setString(game->ind->damage, nbr_to_str(game->ind->ptr_skill->stat->coef[CURR_ATT]));
     sfText_setOrigin(game->ind->damage, (sfVector2f){sfText_getGlobalBounds(game->ind->damage).width / 2, 0});
     if (game->ind->ptr_skill->stat->coef[CURR_ATT] != 0 && game->ind->ptr_skill->anim->rect.left == game->ind->ptr_skill->anim->rect.width * (game->ind->ptr_skill->stat->anim_nb - 1))
-        sfRenderWindow_drawText(game->window->window, game->ind->damage, NULL);
+        sfRenderWindow_drawText(GET_WINDOW, game->ind->damage, NULL);
 }
 
 void draw_attak_target(game_t *game)

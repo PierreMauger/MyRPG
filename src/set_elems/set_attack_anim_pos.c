@@ -22,15 +22,15 @@ void set_attack_anim(game_t *game)
 {
     game->set->in_anim = true;
     set_attack_anim_pos(game, game->ind->target);
+}
     //if (check_passive(game) == true)
     //    passive_action(game, mons_list, curr_mons);
-}
 
 void set_attack_anim_pos(game_t *game, mons_t *target)
 {
     sfSprite_setOrigin(game->ind->ptr_skill->anim->sprite, (sfVector2f){game->ind->ptr_skill->anim->rect.width / 2, 0});
-    sfSprite_setPosition(game->ind->ptr_skill->anim->sprite, (sfVector2f){sfSprite_getPosition(target->texture->sprite).x, sfSprite_getPosition(target->texture->sprite).y - 80});
-    sfText_setPosition(game->ind->damage, (sfVector2f){sfSprite_getPosition(target->texture->sprite).x, sfSprite_getPosition(target->texture->sprite).y - 80});
+    sfSprite_setPosition(game->ind->ptr_skill->anim->sprite, (sfVector2f){sfSprite_getPosition(MONS_SPRITE(target)).x, sfSprite_getPosition(MONS_SPRITE(target)).y - 80});
+    sfText_setPosition(game->ind->damage, (sfVector2f){sfSprite_getPosition(MONS_SPRITE(target)).x, sfSprite_getPosition(MONS_SPRITE(target)).y - 80});
 }
 
 void multi_hit(game_t *game, mons_t *target)
