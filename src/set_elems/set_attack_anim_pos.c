@@ -28,9 +28,13 @@ void set_attack_anim(game_t *game)
 
 void set_attack_anim_pos(game_t *game, mons_t *target)
 {
-    sfSprite_setOrigin(game->ind->ptr_skill->anim->sprite, (sfVector2f){game->ind->ptr_skill->anim->rect.width / 2, 0});
-    sfSprite_setPosition(game->ind->ptr_skill->anim->sprite, (sfVector2f){sfSprite_getPosition(MONS_SPRITE(target)).x, sfSprite_getPosition(MONS_SPRITE(target)).y - 80});
-    sfText_setPosition(game->ind->damage, (sfVector2f){sfSprite_getPosition(MONS_SPRITE(target)).x, sfSprite_getPosition(MONS_SPRITE(target)).y - 80});
+    sfVector2f sprite_center = {sfSprite_getPosition(MONS_SPRITE(target)).x,
+    sfSprite_getPosition(MONS_SPRITE(target)).y - 80};
+
+    sfSprite_setOrigin(PTR_SKILL_ANIM_SPRITE,
+    (sfVector2f){PTR_SKILL_ANIM_RECT.width / 2, 0});
+    sfSprite_setPosition(PTR_SKILL_ANIM_SPRITE, sprite_center);
+    sfText_setPosition(game->ind->damage, sprite_center);
 }
 
 void multi_hit(game_t *game, mons_t *target)

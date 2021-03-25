@@ -11,7 +11,8 @@ int check_collide_skill(game_t *game, skill_t *skill)
 {
     sfVector2f skill_pos = sfSprite_getPosition(skill->texture->sprite);
 
-    if (game->mouse_pos.x > skill_pos.x && game->mouse_pos.x < skill_pos.x + 80 && game->mouse_pos.y > skill_pos.y && game->mouse_pos.y < skill_pos.y + 80)
+    if (game->mouse_pos.x > skill_pos.x && game->mouse_pos.x < skill_pos.x + 80
+    && game->mouse_pos.y > skill_pos.y && game->mouse_pos.y < skill_pos.y + 80)
         return 1;
     return 0;
 }

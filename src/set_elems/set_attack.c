@@ -29,7 +29,8 @@ void set_attack(game_t *game)
                 aoe_hit(game);
             else
                 set_attack_anim(game);
-            game->ind->ptr_skill->stat->act_cd = game->ind->ptr_skill->stat->ini_cd;
+            game->ind->ptr_skill->stat->act_cd =
+            game->ind->ptr_skill->stat->ini_cd;
         }
         if (temp != NULL)
             temp = temp->next;

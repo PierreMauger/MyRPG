@@ -63,7 +63,8 @@ void init_skill_anim(skill_t *elem, int i)
 void init_skill_desc(skill_t *elem, game_t *game, int i)
 {
     elem->desc = malloc(sizeof(skill_desc_t));
-    elem->desc->texture = sfTexture_createFromFile(data_skill[i].desc_img, NULL);
+    elem->desc->texture = sfTexture_createFromFile(data_skill[i].desc_img,
+    NULL);
     elem->desc->sprite = sfSprite_create();
     sfSprite_setTexture(elem->desc->sprite, elem->desc->texture, sfTrue);
     sfSprite_setOrigin(elem->desc->sprite, (sfVector2f){0, 80});
@@ -72,33 +73,13 @@ void init_skill_desc(skill_t *elem, game_t *game, int i)
     sfText_setCharacterSize(elem->desc->text, 20);
     sfText_setString(elem->desc->text, data_skill[i].desc);
     sfText_setColor(elem->desc->text, sfWhite);
-    sfText_setOrigin(elem->desc->text, (sfVector2f){sfText_getGlobalBounds(elem->desc->text).width / 2, 0});
+    sfText_setOrigin(elem->desc->text, (sfVector2f)
+    {sfText_getGlobalBounds(elem->desc->text).width / 2, 0});
     elem->desc->cd_text = sfText_create();
     sfText_setFont(elem->desc->cd_text, game->font);
     sfText_setCharacterSize(elem->desc->cd_text, 20);
     sfText_setString(elem->desc->cd_text, nbr_to_str(data_skill[i].cooldown));
     sfText_setColor(elem->desc->cd_text, sfYellow);
-    sfText_setOrigin(elem->desc->cd_text, (sfVector2f){sfText_getGlobalBounds(elem->desc->cd_text).width / 2, 0});
-}
-
-void put_in_skill_list(skill_t **skill, game_t *game, char name)
-{
-    skill_t *elem = malloc(sizeof(skill_t));
-    skill_t *last = *skill;
-    int i = find_in_skill_database(name);
-
-    init_skill_stat(elem, i);
-    init_skill_texture(elem, i);
-    init_skill_anim(elem, i);
-    init_skill_desc(elem, game, i);
-    elem->next = NULL;
-    if (*skill == NULL) {
-        elem->next = *skill;
-        *skill = elem;
-    }
-    else {
-        while (last->next != NULL)
-            last = last->next;
-        last->next = elem;
-    }
+    sfText_setOrigin(elem->desc->cd_text, (sfVector2f)
+    {sfText_getGlobalBounds(elem->desc->cd_text).width / 2, 0});
 }

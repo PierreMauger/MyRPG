@@ -8,6 +8,8 @@
 SRC			=	src/anim_elems/anim_all.c			\
 				src/anim_elems/anim_mons.c			\
 				src/anim_elems/move_rect.c			\
+				src/db_elems/db_mons.c				\
+				src/db_elems/db_skill.c				\
 				src/destroy_elems/destroy_game.c	\
 				src/destroy_elems/destroy_ind.c		\
 				src/destroy_elems/destroy_mons.c	\
@@ -26,20 +28,19 @@ SRC			=	src/anim_elems/anim_all.c			\
 				src/game_elems/passive.c			\
 				src/game_elems/turn.c				\
 				src/get_elems/get_event.c			\
+				src/get_elems/get_skill.c			\
 				src/init_elems/init_game.c			\
 				src/init_elems/init_ind.c			\
 				src/init_elems/init_mons.c			\
 				src/init_elems/init_set.c			\
+				src/init_elems/init_skill.c			\
 				src/init_elems/init_time.c			\
 				src/init_elems/init_window.c		\
 				src/set_elems/set_attack_anim_pos.c	\
 				src/set_elems/set_attack.c			\
 				src/attack_hit.c					\
 				src/game.c							\
-				src/mons_list.c						\
 				src/play.c							\
-				src/skill_list.c					\
-				src/skill.c							\
 
 SRC_MAIN	=	main.c				\
 

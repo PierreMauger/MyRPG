@@ -34,6 +34,9 @@
 #define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
 #define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->anim_nb
 
+#define PTR_MONS_SPRITE game->ind->ptr_mons->texture->sprite
+#define PTR_MONS_WIDTH game->ind->ptr_mons->texture->rect.width
+
 #define GET_WINDOW game->window->window
 #define GET_CLOCK game->time->clock
 #define GET_SECONDS game->time->seconds
@@ -201,6 +204,16 @@ void anim_mons(game_t *game);
 void move_rect(sfIntRect *rect, int offset, int anim_nb);
 void bool_move_rect(sfIntRect *rect, int offset, int anim_nb, bool *boolean);
 
+//DB_ELEMS
+int find_in_mons_database(char name);
+void init_mons_texture(mons_t *elem, sfVector2f pos, int i);
+void init_mons_stat(mons_t *elem, sfVector2f pos, int i);
+int find_in_skill_database(char name);
+void init_skill_stat(skill_t *elem, int i);
+void init_skill_texture(skill_t *elem, int i);
+void init_skill_anim(skill_t *elem, int i);
+void init_skill_desc(skill_t *elem, game_t *game, int i);
+
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
 void destroy_turn_ind(indicator_t *ind);
@@ -241,14 +254,18 @@ void turn_loop(game_t *game);
 void event_pause(game_t *game);
 void event_click(game_t *game);
 void event_loop(game_t *game);
+int check_collide_skill(game_t *game, skill_t *skill);
+void choose_skill(game_t *game);
 
 //INIT_ELEMS
 void init_game(game_t *game);
 void init_turn_ind(game_t *game);
+void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 void init_mons(game_t *game);
 void init_set(game_t *game);
 void init_time(game_t *game);
 void init_window(game_t *game);
+void put_in_skill_list(skill_t **skill, game_t *game, char name);
 
 //SET_ELEMS
 void aoe_hit(game_t *game);
@@ -267,26 +284,8 @@ void attack_activation(game_t *game);
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void main_loop(game_t *game);
 
-    //mons_list.c
-int find_in_mons_database(char name);
-void init_mons_texture(mons_t *elem, sfVector2f pos, int i);
-void init_mons_stat(mons_t *elem, sfVector2f pos, int i);
-void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
-
     //play.c
 void update_all(game_t *game);
 void game_loop(game_t *game);
-
-    //skill_list.c
-int find_in_skill_database(char name);
-void init_skill_stat(skill_t *elem, int i);
-void init_skill_texture(skill_t *elem, int i);
-void init_skill_anim(skill_t *elem, int i);
-void init_skill_desc(skill_t *elem, game_t *game, int i);
-void put_in_skill_list(skill_t **skill, game_t *game, char name);
-
-    //skill.c
-int check_collide_skill(game_t *game, skill_t *skill);
-void choose_skill(game_t *game);
 
 #endif
