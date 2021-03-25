@@ -290,6 +290,7 @@ void set_attack(game_t *game);
 
     //attack_hit.c
 int check_collide(game_t *game, mons_t *mons);
+void atb_calc(game_t *game, mons_t *curr_mons);
 void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons);
 void attack_activation(game_t *game);
 

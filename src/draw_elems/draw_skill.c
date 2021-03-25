@@ -33,7 +33,8 @@ void draw_skill(game_t *game)
         else
             sfSprite_setColor(temp->texture->sprite, sfWhite);
         if (temp == game->ind->ptr_skill)
-            sfRenderWindow_drawSprite(GET_WINDOW, temp->texture->sprite, &game->render);
+            sfRenderWindow_drawSprite(GET_WINDOW, temp->texture->sprite,
+            &game->render);
         else
             sfRenderWindow_drawSprite(GET_WINDOW, temp->texture->sprite, NULL);
         draw_skill_desc(temp, game, x);
