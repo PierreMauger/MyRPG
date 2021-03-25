@@ -14,12 +14,12 @@ void anim_mons(game_t *game)
 
     while (temp != NULL) {
         move_rect(&temp->texture->rect, MONS_WIDTH(temp),
-        MONS_WIDTH(temp) * temp->texture->nb_anim);
+        temp->texture->nb_anim);
         temp = temp->next;
     }
     while (temp2 != NULL) {
         move_rect(&temp2->texture->rect, MONS_WIDTH(temp2),
-        MONS_WIDTH(temp2) * temp2->texture->nb_anim);
+        temp2->texture->nb_anim);
         temp2 = temp2->next;
     }
 }

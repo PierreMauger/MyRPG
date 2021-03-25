@@ -29,6 +29,11 @@
 #define MONS_SPRITE(elem) elem->texture->sprite
 #define MONS_SPRITE_COLOR(elem) elem->texture->sprite_color
 
+#define PTR_SKILL_ANIM_SPRITE game->ind->ptr_skill->anim->sprite
+#define PTR_SKILL_ANIM_TEX game->ind->ptr_skill->anim->texture
+#define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
+#define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->anim_nb
+
 #define GET_WINDOW game->window->window
 #define GET_CLOCK game->time->clock
 #define GET_SECONDS game->time->seconds
@@ -48,6 +53,8 @@
 #define SLIME_IMG_COLOR "ressources/sprites/slime.png"
 #define LANCER_IMG "ressources/sprites/lancer.png"
 #define LANCER_IMG_COLOR "ressources/sprites/lancer_color.png"
+
+#define sfGrey (sfColor){128, 128, 128, 255}
 
 typedef struct {
     char name;
@@ -191,8 +198,8 @@ typedef struct {
 //ANIM_ELEMS
 void anim_all(game_t *game);
 void anim_mons(game_t *game);
-void move_rect(sfIntRect *rect, int offset, int max_offset);
-void bool_move_rect(sfIntRect *rect, int offset, int max_offset, bool *boolean);
+void move_rect(sfIntRect *rect, int offset, int anim_nb);
+void bool_move_rect(sfIntRect *rect, int offset, int anim_nb, bool *boolean);
 
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
@@ -215,6 +222,7 @@ void draw_single_attak_target(game_t *game);
 void draw_attak_target(game_t *game);
 void draw_turn_ind(game_t *game);
 void draw_mons(game_t *game, mons_t *mons);
+void draw_skill_desc(skill_t *temp, game_t *game, int x);
 void draw_skill(game_t *game);
 
 //GAME_ELEMS
