@@ -7,10 +7,16 @@
 
 #include "game.h"
 
+void destroy_turn_arrow(arrow_t *arr)
+{
+    sfTexture_destroy(arr->texture);
+    sfSprite_destroy(arr->sprite);
+    free(arr);
+}
+
 void destroy_turn_ind(indicator_t *ind)
 {
-    sfTexture_destroy(ind->texture);
-    sfSprite_destroy(ind->sprite);
+    destroy_turn_arrow(ind->arr);
     sfText_destroy(ind->damage);
     free(ind);
 }

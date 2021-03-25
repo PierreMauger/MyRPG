@@ -33,6 +33,11 @@ mons_t *kill_func(mons_t *head, mons_t *team, mons_t *curr_mons)
                 head = head->next;
             else
                 last_mons->next = team->next;
+            destroy_mons_texture(team->texture);
+            destroy_mons_stat(team->stat);
+            destroy_skill(team->skill);
+            free(team);
+            break;
         }
         last_mons = team;
         team = team->next;

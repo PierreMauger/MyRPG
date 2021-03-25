@@ -161,6 +161,10 @@ typedef struct {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
+} arrow_t;
+
+typedef struct {
+    arrow_t *arr;
     mons_t *ptr_mons;
     skill_t *ptr_skill;
     mons_t *target;
@@ -217,6 +221,7 @@ void init_skill_desc(skill_t *elem, game_t *game, int i);
 
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
+void destroy_turn_arrow(arrow_t *arr);
 void destroy_turn_ind(indicator_t *ind);
 void destroy_mons_texture(mons_texture_t *texture);
 void destroy_mons_stat(mons_stat_t *stat);
@@ -260,6 +265,7 @@ void choose_skill(game_t *game);
 
 //INIT_ELEMS
 void init_game(game_t *game);
+void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 void init_mons(game_t *game);

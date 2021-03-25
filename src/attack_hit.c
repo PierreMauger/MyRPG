@@ -25,10 +25,6 @@ void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons)
     float temp_atb;
 
     MONS_CURR_HP(curr_mons) -= game->ind->ptr_skill->stat->coef[CURR_ATT];
-    if (MONS_CURR_HP(curr_mons) <= 0) {
-        kill_mons(game, team, curr_mons);
-        game->ind->target = NULL;
-    }
     MONS_CURR_ATB(curr_mons) +=
     game->ind->ptr_skill->stat->atb_boost[CURR_ATT];
     if (MONS_CURR_ATB(curr_mons) <= 0)
@@ -39,6 +35,10 @@ void attack_hit(game_t *game, mons_t *team, mons_t *curr_mons)
     sfRectangleShape_setSize(curr_mons->stat->atb, (sfVector2f){temp_atb, 10});
     sfRectangleShape_setSize(MONS_HP(curr_mons), (sfVector2f){(float)
     MONS_CURR_HP(curr_mons) / (float)MONS_MAX_HP(curr_mons) * 100, 10});
+    if (MONS_CURR_HP(curr_mons) <= 0) {
+        kill_mons(game, team, curr_mons);
+        game->ind->target = NULL;
+    }
     game->set->attack = false;
 }
 

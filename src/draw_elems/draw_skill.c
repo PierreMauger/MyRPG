@@ -9,11 +9,11 @@
 
 void draw_skill_desc(skill_t *temp, game_t *game, int x)
 {
-    sfText_setPosition(temp->desc->text, (sfVector2f){x + 40, 860});
-    sfText_setPosition(temp->desc->cd_text, (sfVector2f){x + 40, 880});
-    sfText_setString(temp->desc->cd_text, nbr_to_str(temp->stat->act_cd));
-    sfSprite_setPosition(temp->desc->sprite, (sfVector2f){x, 900});
     if (check_collide_skill(game, temp)) {
+        sfText_setPosition(temp->desc->text, (sfVector2f){x + 40, 860});
+        sfText_setPosition(temp->desc->cd_text, (sfVector2f){x + 40, 880});
+        sfText_setString(temp->desc->cd_text, nbr_to_str(temp->stat->act_cd));
+        sfSprite_setPosition(temp->desc->sprite, (sfVector2f){x, 900});
         sfRenderWindow_drawSprite(GET_WINDOW, temp->desc->sprite, NULL);
         sfRenderWindow_drawText(GET_WINDOW, temp->desc->text, NULL);
         if (temp->stat->act_cd != 0)
