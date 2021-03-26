@@ -35,6 +35,7 @@ SRC			=	src/anim_elems/anim_all.c			\
 				src/init_elems/init_set.c			\
 				src/init_elems/init_skill.c			\
 				src/init_elems/init_time.c			\
+				src/init_elems/init_text.c			\
 				src/init_elems/init_window.c		\
 				src/set_elems/set_attack_anim_pos.c	\
 				src/set_elems/set_attack.c			\

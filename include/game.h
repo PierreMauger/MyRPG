@@ -127,6 +127,7 @@ typedef struct {
     sfSprite *sprite;
     sfText *text;
     sfText *cd_text;
+    sfText *name_text;
 } skill_desc_t;
 
 typedef struct skill {
@@ -281,6 +282,7 @@ void init_turn_ind(game_t *game);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 void init_mons(game_t *game);
 void init_set(game_t *game);
+sfText *init_text(game_t *game, char *string, sfColor color);
 void init_time(game_t *game);
 void init_window(game_t *game);
 void put_in_skill_list(skill_t **skill, game_t *game, char *name);

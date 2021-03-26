@@ -68,18 +68,8 @@ void init_skill_desc(skill_t *elem, game_t *game, int i)
     elem->desc->sprite = sfSprite_create();
     sfSprite_setTexture(elem->desc->sprite, elem->desc->texture, sfTrue);
     sfSprite_setOrigin(elem->desc->sprite, (sfVector2f){0, 80});
-    elem->desc->text = sfText_create();
-    sfText_setFont(elem->desc->text, game->font);
-    sfText_setCharacterSize(elem->desc->text, 20);
-    sfText_setString(elem->desc->text, data_skill[i].desc);
-    sfText_setColor(elem->desc->text, sfWhite);
-    sfText_setOrigin(elem->desc->text, (sfVector2f)
-    {sfText_getGlobalBounds(elem->desc->text).width / 2, 0});
-    elem->desc->cd_text = sfText_create();
-    sfText_setFont(elem->desc->cd_text, game->font);
-    sfText_setCharacterSize(elem->desc->cd_text, 20);
-    sfText_setString(elem->desc->cd_text, nbr_to_str(data_skill[i].cooldown));
-    sfText_setColor(elem->desc->cd_text, sfYellow);
-    sfText_setOrigin(elem->desc->cd_text, (sfVector2f)
-    {sfText_getGlobalBounds(elem->desc->cd_text).width / 2, 0});
+    elem->desc->text = init_text(game, data_skill[i].desc, sfWhite);
+    elem->desc->cd_text = init_text(game, nbr_to_str(data_skill[i].cooldown),
+    sfYellow);
+    elem->desc->name_text = init_text(game, data_skill[i].name, sfYellow);
 }

@@ -32,6 +32,7 @@ void destroy_skill_desc(skill_desc_t *desc)
     sfSprite_destroy(desc->sprite);
     sfText_destroy(desc->text);
     sfText_destroy(desc->cd_text);
+    sfText_destroy(desc->name_text);
     free(desc);
 }
 
