@@ -62,6 +62,7 @@
 #define LANCER_IMG "ressources/sprites/lancer.png"
 #define LANCER_IMG_COLOR "ressources/sprites/lancer_color.png"
 #define FONT "ressources/font.ttf"
+#define SKILL_SHADER "ressources/skill_shader.frag"
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 
@@ -200,6 +201,11 @@ typedef struct {
 } settings_t;
 
 typedef struct {
+    sfRenderStates render;
+    sfShader *select;
+} shader_t;
+
+typedef struct {
     window_t *window;
     time_elapsed_t *time;
     settings_t *set;
@@ -209,8 +215,7 @@ typedef struct {
     indicator_t *ind;
     sfVector2i mouse_pos;
     sfFont *font;
-    sfRenderStates render;
-    sfShader *shader;
+    shader_t *shader;
 } game_t;
 
 //ANIM_ELEMS
@@ -238,6 +243,7 @@ void destroy_mons_texture(mons_texture_t *texture);
 void destroy_mons_stat(mons_stat_t *stat);
 void destroy_mons(mons_t *mons);
 void destroy_set(settings_t *set);
+void destroy_shader(shader_t *shader);
 void destroy_skill_texture(skill_texture_t *texture);
 void destroy_skill_anim(skill_anim_t *anim);
 void destroy_skill_stat(skill_stat_t *stat);
@@ -281,6 +287,7 @@ void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
 void init_mons(game_t *game);
+void init_shader(game_t *game);
 void init_set(game_t *game);
 sfText *init_text(game_t *game, char *string, sfColor color);
 void init_time(game_t *game);

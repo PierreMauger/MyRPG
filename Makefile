@@ -14,6 +14,7 @@ SRC			=	src/anim_elems/anim_all.c			\
 				src/destroy_elems/destroy_ind.c		\
 				src/destroy_elems/destroy_mons.c	\
 				src/destroy_elems/destroy_set.c		\
+				src/destroy_elems/destroy_shader.c	\
 				src/destroy_elems/destroy_skill.c	\
 				src/destroy_elems/destroy_time.c	\
 				src/destroy_elems/destroy_window.c	\
@@ -32,6 +33,7 @@ SRC			=	src/anim_elems/anim_all.c			\
 				src/init_elems/init_game.c			\
 				src/init_elems/init_ind.c			\
 				src/init_elems/init_mons.c			\
+				src/init_elems/init_shader.c		\
 				src/init_elems/init_set.c			\
 				src/init_elems/init_skill.c			\
 				src/init_elems/init_time.c			\

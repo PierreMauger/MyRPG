@@ -16,11 +16,5 @@ void init_game(game_t *game)
     game->font = sfFont_createFromFile(FONT);
     init_mons(game);
     init_turn_ind(game);
-    game->shader = sfShader_createFromFile(NULL, NULL, "ressources/example_005.frag");
-    game->render = (sfRenderStates){
-        .shader = game->shader,
-        .blendMode = sfBlendAlpha,
-        .transform = sfTransform_Identity,
-        .texture = NULL,
-    };
+    init_shader(game);
 }

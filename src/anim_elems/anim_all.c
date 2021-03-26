@@ -26,7 +26,7 @@ void anim_all(game_t *game)
 
     GET_TOTAL_TIME += temp;
     GET_SECONDS += temp;
-    sfShader_setFloatUniform(game->shader, "time", GET_TOTAL_TIME);
+    sfShader_setFloatUniform(game->shader->select, "time", GET_TOTAL_TIME);
     if (GET_SECONDS > ANIME_TIME) {
         animate(game);
     }
