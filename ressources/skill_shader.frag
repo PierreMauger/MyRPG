@@ -5,7 +5,7 @@ uniform float time;
 void main(void)
 {
     vec2 position = gl_TexCoord[0].xy;
-    float factor = 0.04 * cos(2. * time);
+    float factor = 0.08 * cos(2. * time);
     position.x = (position.x + factor) / (1. + 2. * factor);
     position.y = (position.y + factor) / (1. + 2. * factor);
 

@@ -11,9 +11,9 @@ void draw_mons_sprites(game_t *game, mons_t *mons)
 {
     if (mons == game->ind->ptr_mons) {
         sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE(mons),
-        &TURN_RENDER);
+        &RENDER_TURN);
         sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE_COLOR(mons),
-        &TURN_RENDER);
+        &RENDER_TURN);
     }
     else {
         sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE(mons), NULL);

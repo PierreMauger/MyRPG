@@ -64,7 +64,8 @@
 #define FONT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/skill_shader.frag"
 #define TURN_SHADER "ressources/turn_shader.frag"
-#define TURN_RENDER game->shader->render
+#define RENDER_SKILL game->shader->render_skill
+#define RENDER_TURN game->shader->render_turn
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 
@@ -200,7 +201,8 @@ typedef struct {
 } settings_t;
 
 typedef struct {
-    sfRenderStates render;
+    sfRenderStates render_skill;
+    sfRenderStates render_turn;
     sfShader *skill;
     sfShader *turn;
 } shader_t;

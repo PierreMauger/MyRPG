@@ -9,8 +9,6 @@ void main(void)
 
     pixel_color.x += (position.y - 0.25 + 0.25 * cos(2. * time)) / 2;
     pixel_color.y += (position.y - 0.25 + 0.25 * cos(2. * time)) / 2;
-    // pixel_color.x += (position.y + cos((time - position.x) * 2)) / 8;
-    // pixel_color.y += (position.y + cos((time - position.x) * 2)) / 8;
 
     gl_FragColor = pixel_color;
 }
