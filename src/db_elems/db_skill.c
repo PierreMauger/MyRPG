@@ -8,7 +8,7 @@
 #include "game.h"
 
 static data_skill_t data_skill[] = {
-    {"Morsure", (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "-30% atb"},
+    {"Morsure", (int[]){40},      1, (int[]){0}, (int[]){0},  (float[]){-30}, 0, 1, "ressources/sprites/white.png", SLASH_IMG, 32, 88, 4, DIRT_IMG, "-30% atb"},
     {"AOE", (int[]){30},      1, (int[]){0}, (int[]){1},    (float[]){0}, 0, 2, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "basic aoe"},
     {"Ralliement", (int[]){ 0},      1, (int[]){1}, (int[]){1},   (float[]){30}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "speed boost"},
     {"Ruee sauvage", (int[]){35, 50}, 2, (int[]){0, 0}, (int[]){0, 0},    (float[]){0, 0}, 0, 3, DIRT_IMG, SLASH_IMG, 32, 88, 4, DIRT_IMG, "double hit"},
@@ -47,6 +47,7 @@ void init_skill_texture(skill_t *elem, int i)
     elem->texture->texture = sfTexture_createFromFile(
     data_skill[i].sprite, NULL);
     elem->texture->sprite = sfSprite_create();
+    sfTexture_setSmooth(elem->texture->texture, sfTrue);
     sfSprite_setTexture(elem->texture->sprite, elem->texture->texture, sfTrue);
     sfSprite_setPosition(elem->texture->sprite, (sfVector2f){0, 0});
 }

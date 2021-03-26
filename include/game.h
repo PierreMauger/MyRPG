@@ -63,6 +63,7 @@
 #define LANCER_IMG_COLOR "ressources/sprites/lancer_color.png"
 #define FONT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/skill_shader.frag"
+#define TURN_SHADER "ressources/turn_shader.frag"
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 
@@ -202,7 +203,8 @@ typedef struct {
 
 typedef struct {
     sfRenderStates render;
-    sfShader *select;
+    sfShader *skill;
+    sfShader *turn;
 } shader_t;
 
 typedef struct {

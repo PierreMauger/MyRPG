@@ -9,6 +9,7 @@
 
 void destroy_shader(shader_t *shader)
 {
-    sfShader_destroy(shader->select);
+    sfShader_destroy(shader->skill);
+    sfShader_destroy(shader->turn);
     free(shader);
 }

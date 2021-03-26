@@ -4,14 +4,15 @@ uniform float time;
 
 void main(void)
 {
-    vec2 coord = gl_TexCoord[0].xy;
-
+    vec2 position = gl_TexCoord[0].xy;
     float factor = 0.04 * cos(2. * time);
-    float brightness =  0.7 + 0.3 * cos(2 * time);
-    coord.x = (coord.x + factor) / (1. + 2. * factor);
-    coord.y = (coord.y + factor) / (1. + 2. * factor);
-    vec4 pixel_color = texture2D(currentTexture, coord);
-    pixel_color.w = min(brightness, pixel_color.w);
+    position.x = (position.x + factor) / (1. + 2. * factor);
+    position.y = (position.y + factor) / (1. + 2. * factor);
+
+    float brightness = 0.1 + 0.1 * cos(2 * time);
+    vec4 pixel_color = texture2D(currentTexture, position);
+    pixel_color.x += brightness;
+    pixel_color.y += brightness;
 
     gl_FragColor = pixel_color;
 }
