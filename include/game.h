@@ -64,6 +64,7 @@
 #define FONT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/skill_shader.frag"
 #define TURN_SHADER "ressources/turn_shader.frag"
+#define TURN_RENDER game->shader->render
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 
@@ -88,9 +89,6 @@ typedef struct {
 typedef struct {
     char name;
     int hp;
-    int red;
-    int green;
-    int blue;
     char *sprite;
     char *sprite_color;
     int width;
@@ -260,6 +258,7 @@ void draw_single_attak_target(game_t *game);
 void draw_attack_aoe(game_t *game);
 void draw_attak_target(game_t *game);
 void draw_turn_ind(game_t *game);
+void draw_mons_sprites(game_t *game, mons_t *mons);
 void draw_mons(game_t *game, mons_t *mons);
 void draw_skill_desc(skill_t *temp, game_t *game, int x);
 void draw_skill(game_t *game);
@@ -303,6 +302,7 @@ void set_attack_anim_pos(game_t *game, mons_t *target);
 void multi_hit(game_t *game, mons_t *target);
 void target_team(game_t *game);
 void set_attack(game_t *game);
+void set_texture_mons(mons_t *mons);
 
     //attack_hit.c
 int check_collide(game_t *game, mons_t *mons);

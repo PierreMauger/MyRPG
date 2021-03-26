@@ -8,10 +8,10 @@
 #include "game.h"
 
 static data_mons_t data_mons[] = {
-    {'a', 130, 255, 60, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 5, (char *[]){"Morsure", "AOE", "Ralliement"}},
-    {'b', 150, 230, 255, 0, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 8, (char *[]){"Morsure", "Ruee sauvage", "Course"}},
-    {'c', 150, 0, 170, 255, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 7, (char *[]){"Morsure", "Belier", "Chasseur"}},
-    {'d', 150, 255, 255, 255, SLIME_IMG, SLIME_IMG_COLOR, 66, 50, 3, 8, (char *[]){"Morsure", "AOE", "Ralliement"}}
+    {'a', 130, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 5, (char *[]){"Morsure", "AOE", "Ralliement"}},
+    {'b', 150, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 8, (char *[]){"Morsure", "Ruee sauvage", "Course"}},
+    {'c', 150, LANCER_IMG, LANCER_IMG_COLOR, 260, 252, 4, 7, (char *[]){"Morsure", "Belier", "Chasseur"}},
+    {'d', 150, SLIME_IMG, SLIME_IMG_COLOR, 66, 50, 3, 8, (char *[]){"Morsure", "AOE", "Ralliement"}}
 };
 
 int find_in_mons_database(char name)
@@ -40,8 +40,6 @@ void init_mons_texture(mons_t *elem, sfVector2f pos, int i)
     (sfVector2f){MONS_WIDTH(elem) / 2, MONS_HEIGHT(elem)});
     sfSprite_setPosition(MONS_SPRITE(elem), pos);
     sfSprite_setPosition(MONS_SPRITE_COLOR(elem), pos);
-    sfSprite_setColor(MONS_SPRITE_COLOR(elem), sfColor_fromRGB(
-    data_mons[i].red, data_mons[i].green, data_mons[i].blue));
 }
 
 void init_mons_stat(mons_t *elem, sfVector2f pos, int i)

@@ -41,6 +41,7 @@ SRC			=	src/anim_elems/anim_all.c			\
 				src/init_elems/init_window.c		\
 				src/set_elems/set_attack_anim_pos.c	\
 				src/set_elems/set_attack.c			\
+				src/set_elems/set_texture_mons.c	\
 				src/attack_hit.c					\
 				src/game.c							\
 				src/play.c							\
