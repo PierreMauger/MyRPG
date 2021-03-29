@@ -15,7 +15,7 @@ void init_skill_stat(skill_t *elem, char *buffer, int id)
     elem->stat->coef = (int *)parser(buffer, "coef", id);
     elem->stat->target = (int *)parser(buffer, "target", id);
     elem->stat->aoe = (int *)parser(buffer, "aoe", id);
-    elem->stat->atb_boost = (float *)parser(buffer, "atb_boost", id);
+    elem->stat->atb_boost = (int *)parser(buffer, "atb_boost", id);
     elem->stat->passive = (int)parser(buffer, "passive", id);
     elem->stat->ini_cd = (int)parser(buffer, "cooldown", id);
     elem->stat->act_cd = 0;

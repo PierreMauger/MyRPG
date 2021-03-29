@@ -70,36 +70,6 @@
 #define sfGrey (sfColor){128, 128, 128, 255}
 
 typedef struct {
-    char *name;
-    int *coef;
-    int nb_hit;
-    int *target;
-    int *aoe;
-    float *atb_boost;
-    int passive;
-    int cooldown;
-    char *sprite;
-    char *anim;
-    int anim_x;
-    int anim_y;
-    int nb_anim;
-    char *desc_img;
-    char *desc;
-} data_skill_t;
-
-typedef struct {
-    char name;
-    int hp;
-    char *sprite;
-    char *sprite_color;
-    int width;
-    int height;
-    int nb_anim;
-    float speed;
-    char **skill;
-} data_mons_t;
-
-typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
 } skill_texture_t;
@@ -116,7 +86,7 @@ typedef struct {
     int *target;
     int nb_hit;
     int *aoe;
-    float *atb_boost;
+    int *atb_boost;
     int passive;
     int ini_cd;
     int act_cd;

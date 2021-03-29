@@ -114,7 +114,7 @@
         "coef": [0],
         "target": [0],
         "aoe": [0],
-        "atb_boost": [],
+        "atb_boost": [0],
         "passive": 1,
         "cooldown": 1,
         "img": "ressources/sprites/grass.png",

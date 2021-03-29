@@ -25,7 +25,7 @@ void atb_calc(game_t *game, mons_t *curr_mons)
     float temp_atb;
 
     MONS_CURR_ATB(curr_mons) +=
-    game->ind->ptr_skill->stat->atb_boost[CURR_ATT];
+    (float)game->ind->ptr_skill->stat->atb_boost[CURR_ATT];
     if (MONS_CURR_ATB(curr_mons) <= 0)
         MONS_CURR_ATB(curr_mons) = 0;
     temp_atb = MONS_CURR_ATB(curr_mons);
