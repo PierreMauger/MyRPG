@@ -1,46 +1,64 @@
 ##
 ## EPITECH PROJECT, 2020
-## Lib
+## Blib
 ## File description:
-## Makefile lib
+## Makefile
 ##
 
-SRC	=	my_getnbr.c					\
-		my_printf.c					\
-		my_put_nbr.c				\
-		my_put_nbr_base.c			\
-		my_putchar.c				\
-		my_putstr.c					\
-		my_revstr.c					\
-		my_strcat.c					\
-		my_strcmp.c					\
-		my_strcpy.c					\
-		my_strdup.c					\
-		my_strlen.c					\
-		my_strncat.c				\
-		my_strncmp.c				\
-		my_strncpy.c				\
-		my_strndup.c				\
-		nbr_to_str.c				\
+SRC		=	print/bfprintf/bfprint_char.c			\
+			print/bfprintf/bfprint_nbr.c			\
+			print/bfprintf/bfprint_str.c			\
+			print/bfprintf/bfprintf.c				\
+			print/bprintf/bprint_char.c				\
+			print/bprintf/bprint_nbr.c				\
+			print/bprintf/bprint_str.c				\
+			print/bprintf/bprintf.c					\
+			string/bstrlen.c						\
+			string/bstrcmp.c						\
+			string/bstrncmp.c						\
+			string/bstrdup.c						\
+			string/bstrndup.c						\
+			string/bstrcat.c						\
+			string/bstrncat.c						\
+			string/bmemset.c						\
+			string/bstrcpy.c						\
+			string/bstrncpy.c						\
+			string/brevstr.c						\
+			string/bitoa.c							\
+			string/batoi.c							\
+			array/binit_array.c						\
+			array/bstr_array.c						\
+			array/badd_array.c						\
+			array/barray_len.c						\
+			array/barray_dup.c						\
+			file/bread_file.c						\
+			memory/calloc.c							\
 
-OBJ	=	$(SRC:.c=.o)
+OBJ		=	$(SRC:.c=.o)
 
-CFLAGS	=	-I include/
+CFLAGS	=	-I include -W -g
 
-NAME	=	libmy.a
+NAME	=	libblib.a
+
+BUILDNAME	=	build
+
+$(NAME):	$(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@cp include/blib.h ../../include
+	@cp include/barray.h ../../include
+	@cp include/bfile.h ../../include
+	@cp include/bmemory.h ../../include
+	@cp include/bprint.h ../../include
+	@cp include/bstring.h ../../include
+	@cp $(NAME) ../
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
-		cp include/my.h ../../include/
-		ar rc $(NAME) $(OBJ)
-		cp $(NAME) ../
-
 clean:
-		@rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean:	clean
-		@rm -f $(NAME)
-		@rm -f ../$(NAME)
+	@rm -f $(NAME)
+	@rm -f ../$(NAME)
 
 re:	fclean all

@@ -21,7 +21,7 @@ static data_skill_t data_skill[] = {
 int find_in_skill_database(char *name)
 {
     for (int i = 0; i < 8; i++)
-        if (!my_strcmp(data_skill[i].name, name))
+        if (!bstrcmp(data_skill[i].name, name))
             return i;
     return 0;
 }
@@ -70,7 +70,7 @@ void init_skill_desc(skill_t *elem, game_t *game, int i)
     sfSprite_setTexture(elem->desc->sprite, elem->desc->texture, sfTrue);
     sfSprite_setOrigin(elem->desc->sprite, (sfVector2f){0, 80});
     elem->desc->text = init_text(game, data_skill[i].desc, sfWhite);
-    elem->desc->cd_text = init_text(game, nbr_to_str(data_skill[i].cooldown),
+    elem->desc->cd_text = init_text(game, bitoa(data_skill[i].cooldown),
     sfYellow);
     elem->desc->name_text = init_text(game, data_skill[i].name, sfYellow);
 }

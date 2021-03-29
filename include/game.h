@@ -8,7 +8,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "my.h"
+#include "blib.h"
 #include <stdbool.h>
 #include <time.h>
 #include <SFML/Graphics/RenderWindow.h>
@@ -62,8 +62,8 @@
 #define LANCER_IMG "ressources/sprites/lancer.png"
 #define LANCER_IMG_COLOR "ressources/sprites/lancer_color.png"
 #define FONT "ressources/font.ttf"
-#define SKILL_SHADER "ressources/skill_shader.frag"
-#define TURN_SHADER "ressources/turn_shader.frag"
+#define SKILL_SHADER "ressources/shaders/skill_shader.frag"
+#define TURN_SHADER "ressources/shaders/turn_shader.frag"
 #define RENDER_SKILL game->shader->render_skill
 #define RENDER_TURN game->shader->render_turn
 
