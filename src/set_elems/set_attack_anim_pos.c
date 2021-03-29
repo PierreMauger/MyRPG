@@ -44,7 +44,7 @@ void multi_hit(game_t *game, mons_t *target)
 {
     if (target == NULL || game->ind->ptr_skill == NULL)
         return;
-    if (CURR_ATT < game->ind->ptr_skill->stat->nbr_hit - 1) {
+    if (CURR_ATT < game->ind->ptr_skill->stat->nb_hit - 1) {
         set_attack_anim_pos(game, game->ind->target);
         game->set->in_anim = true;
         CURR_ATT += 1;

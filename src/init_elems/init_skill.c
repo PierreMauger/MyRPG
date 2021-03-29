@@ -7,16 +7,15 @@
 
 #include "game.h"
 
-void put_in_skill_list(skill_t **skill, game_t *game, char *name)
+void put_in_skill_list(game_t *game, skill_t **skill, char *buffer, int id)
 {
     skill_t *elem = malloc(sizeof(skill_t));
     skill_t *last = *skill;
-    int i = find_in_skill_database(name);
 
-    init_skill_stat(elem, i);
-    init_skill_texture(elem, i);
-    init_skill_anim(elem, i);
-    init_skill_desc(elem, game, i);
+    init_skill_stat(elem, buffer, id);
+    init_skill_texture(elem, buffer, id);
+    init_skill_anim(elem, buffer, id);
+    init_skill_desc(game, elem, buffer, id);
     elem->next = NULL;
     if (*skill == NULL) {
         elem->next = *skill;

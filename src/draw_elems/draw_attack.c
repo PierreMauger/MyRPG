@@ -7,9 +7,9 @@
 
 #include "game.h"
 
-static int last_anim_frame(sfIntRect rect, int anim_nb)
+static int last_anim_frame(sfIntRect rect, int nb_anim)
 {
-    if (rect.left == rect.width * (anim_nb - 1))
+    if (rect.left == rect.width * (nb_anim - 1))
         return 1;
     return 0;
 }

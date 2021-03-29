@@ -32,8 +32,8 @@
 #define PTR_SKILL_ANIM_SPRITE game->ind->ptr_skill->anim->sprite
 #define PTR_SKILL_ANIM_TEX game->ind->ptr_skill->anim->texture
 #define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
-#define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->anim_nb
-#define PTR_SKILL_HIT_NB game->ind->ptr_skill->stat->nbr_hit
+#define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->nb_anim
+#define PTR_SKILL_HIT_NB game->ind->ptr_skill->stat->nb_hit
 
 #define PTR_MONS_SPRITE game->ind->ptr_mons->texture->sprite
 #define PTR_MONS_WIDTH game->ind->ptr_mons->texture->rect.width
@@ -72,7 +72,7 @@
 typedef struct {
     char *name;
     int *coef;
-    int nbr_hit;
+    int nb_hit;
     int *target;
     int *aoe;
     float *atb_boost;
@@ -82,7 +82,7 @@ typedef struct {
     char *anim;
     int anim_x;
     int anim_y;
-    int anim_nb;
+    int nb_anim;
     char *desc_img;
     char *desc;
 } data_skill_t;
@@ -114,13 +114,13 @@ typedef struct {
     char *name;
     int *coef;
     int *target;
-    int nbr_hit;
+    int nb_hit;
     int *aoe;
     float *atb_boost;
     int passive;
     int ini_cd;
     int act_cd;
-    int anim_nb;
+    int nb_anim;
 } skill_stat_t;
 
 typedef struct {
@@ -224,18 +224,17 @@ typedef struct {
 void animate(game_t *game);
 void anim_all(game_t *game);
 void anim_mons(game_t *game);
-void move_rect(sfIntRect *rect, int offset, int anim_nb);
-void bool_move_rect(sfIntRect *rect, int offset, int anim_nb, bool *boolean);
+void move_rect(sfIntRect *rect, int offset, int nb_anim);
+void bool_move_rect(sfIntRect *rect, int offset, int nb_anim, bool *boolean);
 
 //DB_ELEMS
-int find_in_mons_database(char name);
-void init_mons_texture(mons_t *elem, sfVector2f pos, int i);
-void init_mons_stat(mons_t *elem, sfVector2f pos, int i);
-int find_in_skill_database(char *name);
-void init_skill_stat(skill_t *elem, int i);
-void init_skill_texture(skill_t *elem, int i);
-void init_skill_anim(skill_t *elem, int i);
-void init_skill_desc(skill_t *elem, game_t *game, int i);
+void init_mons_pos(mons_t *mons, sfVector2f pos);
+void init_mons_texture(mons_t *elem, char *buffer, int i);
+void init_mons_stat(mons_t *elem, char *buffer, int i);
+void init_skill_stat(skill_t *elem, char *buffer, int id);
+void init_skill_texture(skill_t *elem, char *buffer, int id);
+void init_skill_anim(skill_t *elem, char *buffer, int id);
+void init_skill_desc(game_t *game, skill_t *elem, char *buffer, int id);
 
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
@@ -288,14 +287,15 @@ void choose_skill(game_t *game);
 void init_game(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
-void put_in_mons_list(mons_t **mons, sfVector2f pos, char name, game_t *game);
+void put_in_mons_list(game_t *game, mons_t **mons, char *buffer, int id);
+void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 void init_shader(game_t *game);
 void init_set(game_t *game);
 sfText *init_text(game_t *game, char *string, sfColor color);
 void init_time(game_t *game);
 void init_window(game_t *game);
-void put_in_skill_list(skill_t **skill, game_t *game, char *name);
+void put_in_skill_list(game_t *game, skill_t **skill, char *buffer, int id);
 
 //SET_ELEMS
 void aoe_hit(game_t *game);
@@ -305,6 +305,11 @@ void multi_hit(game_t *game, mons_t *target);
 void target_team(game_t *game);
 void set_attack(game_t *game);
 void set_texture_mons(mons_t *mons);
+
+//PARSER
+int *batoi_arr(char *src);
+char *get_id(char *buffer, int id);
+size_t parser(char *buffer, char *str, int id);
 
     //attack_hit.c
 int check_collide(game_t *game, mons_t *mons);
