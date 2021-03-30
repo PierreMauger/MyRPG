@@ -5,53 +5,55 @@
 ## Main Makefile
 ##
 
-SRC			=	src/anim_elems/anim_all.c			\
-				src/anim_elems/anim_mons.c			\
-				src/anim_elems/move_rect.c			\
-				src/db_elems/db_mons.c				\
-				src/db_elems/db_skill.c				\
-				src/destroy_elems/destroy_game.c	\
-				src/destroy_elems/destroy_ind.c		\
-				src/destroy_elems/destroy_mons.c	\
-				src/destroy_elems/destroy_set.c		\
-				src/destroy_elems/destroy_shader.c	\
-				src/destroy_elems/destroy_skill.c	\
-				src/destroy_elems/destroy_time.c	\
-				src/destroy_elems/destroy_window.c	\
-				src/draw_elems/draw_all.c			\
-				src/draw_elems/draw_attack.c		\
-				src/draw_elems/draw_ind.c			\
-				src/draw_elems/draw_mons.c			\
-				src/draw_elems/draw_skill.c			\
-				src/game_elems/atb.c				\
-				src/game_elems/cooldown.c			\
-				src/game_elems/kill.c				\
-				src/game_elems/passive.c			\
-				src/game_elems/turn.c				\
-				src/get_elems/get_event.c			\
-				src/get_elems/get_skill.c			\
-				src/init_elems/init_game.c			\
-				src/init_elems/init_ind.c			\
-				src/init_elems/init_mons.c			\
-				src/init_elems/init_shader.c		\
-				src/init_elems/init_set.c			\
-				src/init_elems/init_skill.c			\
-				src/init_elems/init_time.c			\
-				src/init_elems/init_text.c			\
-				src/init_elems/init_window.c		\
-				src/parser/json_parser.c			\
-				src/set_elems/set_attack_anim_pos.c	\
-				src/set_elems/set_attack.c			\
-				src/set_elems/set_texture_mons.c	\
-				src/attack_hit.c					\
-				src/game.c							\
-				src/play.c							\
+SRC			=	src/fight/anim_elems/anim_all.c				\
+				src/fight/anim_elems/anim_mons.c			\
+				src/fight/anim_elems/move_rect.c			\
+				src/fight/db_elems/db_mons.c				\
+				src/fight/db_elems/db_skill.c				\
+				src/fight/destroy_elems/destroy_fight.c		\
+				src/fight/destroy_elems/destroy_ind.c		\
+				src/fight/destroy_elems/destroy_mons.c		\
+				src/fight/destroy_elems/destroy_set.c		\
+				src/fight/destroy_elems/destroy_shader.c	\
+				src/fight/destroy_elems/destroy_skill.c		\
+				src/fight/draw_elems/draw_all.c				\
+				src/fight/draw_elems/draw_attack.c			\
+				src/fight/draw_elems/draw_ind.c				\
+				src/fight/draw_elems/draw_mons.c			\
+				src/fight/draw_elems/draw_skill.c			\
+				src/fight/game_elems/atb.c					\
+				src/fight/game_elems/cooldown.c				\
+				src/fight/game_elems/kill.c					\
+				src/fight/game_elems/passive.c				\
+				src/fight/game_elems/turn.c					\
+				src/fight/get_elems/get_event.c				\
+				src/fight/get_elems/get_skill.c				\
+				src/fight/init_elems/init_fight.c			\
+				src/fight/init_elems/init_ind.c				\
+				src/fight/init_elems/init_mons.c			\
+				src/fight/init_elems/init_shader.c			\
+				src/fight/init_elems/init_set.c				\
+				src/fight/init_elems/init_skill.c			\
+				src/fight/init_elems/init_text.c			\
+				src/fight/set_elems/set_attack_anim_pos.c	\
+				src/fight/set_elems/set_attack.c			\
+				src/fight/set_elems/set_texture_mons.c		\
+				src/fight/attack_hit.c						\
+				src/parser/json_parser.c					\
+				src/game/init_elems/init_game.c				\
+				src/game/init_elems/init_time.c				\
+				src/game/init_elems/init_window.c			\
+				src/game/destroy_elems/destroy_game.c		\
+				src/game/destroy_elems/destroy_time.c		\
+				src/game/destroy_elems/destroy_window.c		\
+				src/game.c									\
+				src/play.c									\
 
 SRC_MAIN	=	main.c				\
 
 SRC_TEST	=	tests/test_main.c	\
 
-NAME		=	game
+NAME		=	my_rpg
 
 NAME_TEST	=	unit_tests
 

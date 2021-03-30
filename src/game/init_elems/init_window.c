@@ -10,7 +10,7 @@
 void init_window(game_t *game)
 {
     game->window = malloc(sizeof(window_t));
-    game->window->w_size = (sfVideoMode){1920, 1080, 32};
-    GET_WINDOW = create_my_window(game->window->w_size.width,
-    game->window->w_size.height);
+    game->window->w_size = (sfVector2f){1920, 1080};
+    GET_WINDOW = create_window(game->window->w_size.x,
+    game->window->w_size.y);
 }

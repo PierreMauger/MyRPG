@@ -20,12 +20,3 @@ void update_all(game_t *game)
         turn_loop(game);
     }
 }
-
-void game_loop(game_t *game)
-{
-    event_loop(game);
-    if (game->set->pause == false) {
-        update_all(game);
-        draw_all(game);
-    }
-}

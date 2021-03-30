@@ -153,7 +153,7 @@ typedef struct {
 
 typedef struct {
     sfRenderWindow *window;
-    sfVideoMode w_size;
+    sfVector2f w_size;
 } window_t;
 
 typedef struct {
@@ -207,7 +207,7 @@ void init_skill_anim(skill_t *elem, char *buffer, int id);
 void init_skill_desc(game_t *game, skill_t *elem, char *buffer, int id);
 
 //DESTROY_ELEMS
-void destroy_game(game_t *game);
+void destroy_fight(game_t *game);
 void destroy_turn_arrow(arrow_t *arr);
 void destroy_turn_ind(indicator_t *ind);
 void destroy_mons_texture(mons_texture_t *texture);
@@ -254,7 +254,7 @@ int check_collide_skill(game_t *game, skill_t *skill);
 void choose_skill(game_t *game);
 
 //INIT_ELEMS
-void init_game(game_t *game);
+void init_fight(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void put_in_mons_list(game_t *game, mons_t **mons, char *buffer, int id);
@@ -288,11 +288,14 @@ void attack_hit(game_t *game, mons_t *curr_mons);
 void attack_activation(game_t *game);
 
     //game.c
-sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
-void main_loop(game_t *game);
+sfRenderWindow *create_window(int width, int height);
+void fight_loop(game_t *game);
 
     //play.c
 void update_all(game_t *game);
-void game_loop(game_t *game);
+
+void init_game(game_t *game);
+void destroy_game(game_t *game);
+
 
 #endif
