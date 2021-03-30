@@ -197,10 +197,13 @@ void bool_move_rect(sfIntRect *rect, int offset, int nb_anim, bool *boolean);
 void init_mons_pos(mons_t *mons, sfVector2f pos);
 void init_mons_texture(mons_t *elem, char *buffer, int i);
 void init_mons_stat(mons_t *elem, char *buffer, int i);
+void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
+void put_in_mons_list(game_t *game, mons_t **mons, char *buffer, int id);
 void init_skill_stat(skill_t *elem, char *buffer, int id);
 void init_skill_texture(skill_t *elem, char *buffer, int id);
 void init_skill_anim(skill_t *elem, char *buffer, int id);
 void init_skill_desc(game_t *game, skill_t *elem, char *buffer, int id);
+void put_in_skill_list(game_t *game, skill_t **skill, char *buffer, int id);
 
 //DESTROY_ELEMS
 void destroy_fight(game_t *game);
@@ -216,8 +219,6 @@ void destroy_skill_anim(skill_anim_t *anim);
 void destroy_skill_stat(skill_stat_t *stat);
 void destroy_skill_desc(skill_desc_t *desc);
 void destroy_skill(skill_t *skill);
-void destroy_time(time_elapsed_t *time);
-void destroy_window(window_t *window);
 
 //DRAW_ELEMS
 void draw_all(game_t *game);
@@ -235,12 +236,18 @@ void atb_increase(mons_t *team);
 void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
+int check_collide(game_t *game, mons_t *mons);
+void atb_calc(game_t *game, mons_t *curr_mons);
+void attack_hit(game_t *game, mons_t *curr_mons);
+void attack_activation(game_t *game);
 void cooldown_reduce(game_t *game);
+void fight_loop(game_t *game);
 mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
 int check_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
 void turn_loop(game_t *game);
+void update_all(game_t *game);
 
 //GET_ELEMS
 void event_pause(game_t *game);
@@ -254,15 +261,11 @@ void init_fight(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
-void put_in_mons_list(game_t *game, mons_t **mons, char *buffer, int id);
 void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 void init_shader(game_t *game);
 void init_set(game_t *game);
 sfText *init_text(game_t *game, char *str, sfColor color);
-void init_time(game_t *game);
-void init_window(game_t *game);
-void put_in_skill_list(game_t *game, skill_t **skill, char *buffer, int id);
 
 //SET_ELEMS
 void aoe_hit(game_t *game);
@@ -278,21 +281,15 @@ int *batoi_arr(char *src);
 char *get_id(char *buffer, int id);
 size_t parser(char *buffer, char *str, int id);
 
-    //attack_hit.c
-int check_collide(game_t *game, mons_t *mons);
-void atb_calc(game_t *game, mons_t *curr_mons);
-void attack_hit(game_t *game, mons_t *curr_mons);
-void attack_activation(game_t *game);
-
-    //game.c
-sfRenderWindow *create_window(int width, int height);
-void fight_loop(game_t *game);
-
-    //play.c
-void update_all(game_t *game);
-
+//INIT_ELEMS
 void init_game(game_t *game);
-void destroy_game(game_t *game);
+void init_time(game_t *game);
+sfRenderWindow *create_window(int width, int height);
+void init_window(game_t *game);
 
+//DESTROY_ELEMS
+void destroy_game(game_t *game);
+void destroy_time(time_elapsed_t *time);
+void destroy_window(window_t *window);
 
 #endif

@@ -22,10 +22,13 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/draw_elems/draw_mons.c			\
 				src/fight/draw_elems/draw_skill.c			\
 				src/fight/game_elems/atb.c					\
+				src/fight/game_elems/attack_hit.c			\
 				src/fight/game_elems/cooldown.c				\
+				src/fight/game_elems/fight_loop.c			\
 				src/fight/game_elems/kill.c					\
 				src/fight/game_elems/passive.c				\
 				src/fight/game_elems/turn.c					\
+				src/fight/game_elems/update_all.c			\
 				src/fight/get_elems/get_event.c				\
 				src/fight/get_elems/get_skill.c				\
 				src/fight/init_elems/init_fight.c			\
@@ -33,12 +36,10 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/init_elems/init_mons.c			\
 				src/fight/init_elems/init_shader.c			\
 				src/fight/init_elems/init_set.c				\
-				src/fight/init_elems/init_skill.c			\
 				src/fight/init_elems/init_text.c			\
 				src/fight/set_elems/set_attack_anim_pos.c	\
 				src/fight/set_elems/set_attack.c			\
 				src/fight/set_elems/set_texture_mons.c		\
-				src/fight/attack_hit.c						\
 				src/parser/json_parser.c					\
 				src/game/init_elems/init_game.c				\
 				src/game/init_elems/init_time.c				\
@@ -46,8 +47,6 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/game/destroy_elems/destroy_game.c		\
 				src/game/destroy_elems/destroy_time.c		\
 				src/game/destroy_elems/destroy_window.c		\
-				src/game.c									\
-				src/play.c									\
 
 SRC_MAIN	=	main.c				\
 

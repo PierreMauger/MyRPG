@@ -7,16 +7,6 @@
 
 #include "game.h"
 
-sfRenderWindow *create_window(int width, int height)
-{
-    sfRenderWindow *window;
-    sfVideoMode video_mode = {width, height, 32};
-
-    window = sfRenderWindow_create(video_mode, "Raccoon RPG", sfClose, NULL);
-    sfRenderWindow_setFramerateLimit(window, 60);
-    return window;
-}
-
 void fight_loop(game_t *game)
 {
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
