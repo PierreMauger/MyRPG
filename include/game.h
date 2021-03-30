@@ -48,11 +48,7 @@
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
-#define MENU 0
-#define PLAY 1
-#define GAME_OVER 2
-#define VICTORY 3
-#define ANIME_TIME 0.3
+#define ANIM_TIME 0.3
 #define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
 #define SLASH_IMG "ressources/sprites/slash_anim.png"
@@ -257,12 +253,13 @@ void choose_skill(game_t *game);
 void init_fight(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
+void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
 void put_in_mons_list(game_t *game, mons_t **mons, char *buffer, int id);
 void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 void init_shader(game_t *game);
 void init_set(game_t *game);
-sfText *init_text(game_t *game, char *string, sfColor color);
+sfText *init_text(game_t *game, char *str, sfColor color);
 void init_time(game_t *game);
 void init_window(game_t *game);
 void put_in_skill_list(game_t *game, skill_t **skill, char *buffer, int id);

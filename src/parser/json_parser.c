@@ -11,16 +11,18 @@ int *batoi_arr(char *src)
 {
     int len = 1;
     int *arr = NULL;
+    int dif = 0;
 
     for (int i = 0; src[i]; i++)
         if (src[i] == ',')
             len++;
     arr = malloc(sizeof(int) * len);
     for (int i = 0; i < len; i++) {
-        arr[i] = batoi(src);
-        for (; *src != ' ' && *src; src++);
-        src++;
+        arr[i] = batoi(src + dif);
+        for (; src[dif] != ' ' && src[dif]; dif++);
+        dif++;
     }
+    free(src);
     return arr;
 }
 

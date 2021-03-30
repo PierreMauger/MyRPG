@@ -30,7 +30,7 @@ void init_mons(game_t *game)
 {
     char *buffer;
 
-    buffer = bread_file("ressources/json/player_team.json", 20);
+    buffer = bread_file("ressources/json/mons.json", 20);
     if (!buffer || bstrlen(buffer) < 10)
         return;
     game->p_mons = NULL;

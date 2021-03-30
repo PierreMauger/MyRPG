@@ -23,6 +23,11 @@ void destroy_skill_anim(skill_anim_t *anim)
 
 void destroy_skill_stat(skill_stat_t *stat)
 {
+    free(stat->name);
+    free(stat->coef);
+    free(stat->target);
+    free(stat->aoe);
+    free(stat->atb_boost);
     free(stat);
 }
 

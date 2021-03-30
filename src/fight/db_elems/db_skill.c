@@ -24,30 +24,35 @@ void init_skill_stat(skill_t *elem, char *buffer, int id)
 
 void init_skill_texture(skill_t *elem, char *buffer, int id)
 {
+    char *img_path = (char *)parser(buffer, "img", id);
+
     elem->texture = malloc(sizeof(skill_texture_t));
-    elem->texture->texture = sfTexture_createFromFile(
-    (char *)parser(buffer, "img", id), NULL);
+    elem->texture->texture = sfTexture_createFromFile(img_path, NULL);
     elem->texture->sprite = sfSprite_create();
     sfTexture_setSmooth(elem->texture->texture, sfTrue);
     sfSprite_setTexture(elem->texture->sprite, elem->texture->texture, sfTrue);
     sfSprite_setPosition(elem->texture->sprite, (sfVector2f){0, 0});
+    free(img_path);
 }
 
 void init_skill_anim(skill_t *elem, char *buffer, int id)
 {
+    char *img_path = (char *)parser(buffer, "anim", id);
+
     elem->anim = malloc(sizeof(skill_anim_t));
     elem->anim->rect = (sfIntRect){0, 0, (int)parser(buffer, "anim_x", id),
     (int)parser(buffer, "anim_y", id)};
-    elem->anim->texture = sfTexture_createFromFile((char *)parser(buffer,
-    "anim", id), NULL);
+    elem->anim->texture = sfTexture_createFromFile(img_path, NULL);
     elem->anim->sprite = sfSprite_create();
+    free(img_path);
 }
 
 void init_skill_desc(game_t *game, skill_t *elem, char *buffer, int id)
 {
+    char *img_path = (char *)parser(buffer, "desc_img", id);
+
     elem->desc = malloc(sizeof(skill_desc_t));
-    elem->desc->texture = sfTexture_createFromFile((char *)parser(buffer,
-    "desc_img", id), NULL);
+    elem->desc->texture = sfTexture_createFromFile(img_path, NULL);
     elem->desc->sprite = sfSprite_create();
     sfSprite_setTexture(elem->desc->sprite, elem->desc->texture, sfTrue);
     sfSprite_setOrigin(elem->desc->sprite, (sfVector2f){0, 80});
@@ -57,4 +62,5 @@ void init_skill_desc(game_t *game, skill_t *elem, char *buffer, int id)
     "cooldown", id)),sfYellow);
     elem->desc->name_text = init_text(game, (char *)parser(buffer, "name",
     id), sfYellow);
+    free(img_path);
 }
