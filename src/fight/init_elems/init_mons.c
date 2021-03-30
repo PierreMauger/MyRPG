@@ -9,19 +9,19 @@
 
 void init_all_pos(game_t *game)
 {
-    sfVector2f p_pos = {200, 800};
-    sfVector2f e_pos = {600, 400};
+    sfVector2f p_pos = {200, 600};
+    sfVector2f e_pos = {600, 300};
     mons_t *temp = game->p_mons;
     mons_t *temp2 = game->e_mons;
 
     while (temp != NULL) {
         init_mons_pos(temp, p_pos);
-        p_pos.x += 200;
+        p_pos.x += 250;
         temp = temp->next;
     }
     while (temp2 != NULL) {
         init_mons_pos(temp2, e_pos);
-        e_pos.x += 350;
+        e_pos.x += 250;
         temp2 = temp2->next;
     }
 }

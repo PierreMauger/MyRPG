@@ -11,7 +11,6 @@ void init_mons_pos(mons_t *mons, sfVector2f pos)
 {
     sfSprite_setPosition(MONS_SPRITE(mons), pos);
     sfSprite_setPosition(MONS_SPRITE_COLOR(mons), pos);
-
     sfRectangleShape_setPosition(MONS_HP(mons),
     (sfVector2f){pos.x + MONS_WIDTH(mons) / 2, pos.y + 10});
     sfRectangleShape_setPosition(mons->stat->atb,
