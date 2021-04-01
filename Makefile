@@ -16,7 +16,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/destroy_elems/destroy_set.c		\
 				src/fight/destroy_elems/destroy_shader.c	\
 				src/fight/destroy_elems/destroy_skill.c		\
-				src/fight/draw_elems/draw_fight.c				\
+				src/fight/draw_elems/draw_fight.c			\
 				src/fight/draw_elems/draw_attack.c			\
 				src/fight/draw_elems/draw_ind.c				\
 				src/fight/draw_elems/draw_mons.c			\
@@ -29,7 +29,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/fight_elems/passive.c				\
 				src/fight/fight_elems/turn.c				\
 				src/fight/fight_elems/update_fight.c		\
-				src/fight/get_elems/get_event.c				\
+				src/fight/get_elems/get_event_fight.c		\
 				src/fight/get_elems/get_skill.c				\
 				src/fight/init_elems/init_fight.c			\
 				src/fight/init_elems/init_ind.c				\
@@ -45,6 +45,8 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/game/init_elems/init_time.c				\
 				src/game/init_elems/init_window.c			\
 				src/game/game_elems/main_loop.c				\
+				src/game/game_elems/start_fight.c			\
+				src/game/get_elems.c/get_event.c			\
 				src/game/destroy_elems/destroy_game.c		\
 				src/game/destroy_elems/destroy_time.c		\
 				src/game/destroy_elems/destroy_window.c		\
