@@ -7,7 +7,7 @@
 
 #include "game.h"
 
-int check_passive(game_t *game)
+int has_passive(game_t *game)
 {
     skill_t *temp = game->ind->ptr_skill;
 

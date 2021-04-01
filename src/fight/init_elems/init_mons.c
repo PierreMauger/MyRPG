@@ -28,9 +28,8 @@ void init_all_pos(game_t *game)
 
 void init_mons(game_t *game)
 {
-    char *buffer;
+    char *buffer = bread_file(JSON_MONS, 20);
 
-    buffer = bread_file(JSON_MONS, 20);
     if (!buffer || bstrlen(buffer) < 10)
         return;
     game->p_mons = NULL;

@@ -13,6 +13,5 @@ void destroy_fight(game_t *game)
     destroy_mons(game->p_mons);
     destroy_mons(game->e_mons);
     destroy_turn_ind(game->ind);
-    sfFont_destroy(game->font);
     destroy_shader(game->shader);
 }

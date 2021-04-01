@@ -13,9 +13,9 @@ void check_multi_hit(game_t *game)
         multi_hit(game, game->ind->target);
 }
 
-void check_passive_act(game_t *game)
+void check_passive(game_t *game)
 {
-    if (check_passive(game) == true && game->set->in_anim == false)
+    if (has_passive(game) == true && game->set->in_anim == false)
         passive_action(game, game->ind->target);
 }
 
@@ -27,10 +27,10 @@ void check_turn(game_t *game)
     }
 }
 
-void update_all(game_t *game)
+void update_fight(game_t *game)
 {
     anim_all(game);
     check_multi_hit(game);
-    check_passive_act(game);
+    check_passive(game);
     check_turn(game);
 }

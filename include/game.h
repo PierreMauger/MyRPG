@@ -179,6 +179,7 @@ typedef struct {
     sfVector2i mouse_pos;
     sfFont *font;
     shader_t *shader;
+    bool in_fight;
 } game_t;
 
 //ANIM_ELEMS
@@ -216,7 +217,7 @@ void destroy_skill_desc(skill_desc_t *desc);
 void destroy_skill(skill_t *skill);
 
 //DRAW_ELEMS
-void draw_all(game_t *game);
+void draw_fight(game_t *game);
 void draw_single_attak_target(game_t *game);
 void draw_attack_aoe(game_t *game);
 void draw_attak_target(game_t *game);
@@ -239,15 +240,15 @@ void cooldown_reduce(game_t *game);
 void fight_loop(game_t *game);
 mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
-int check_passive(game_t *game);
+int has_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
 void turn_loop(game_t *game);
-void update_all(game_t *game);
+void update_fight(game_t *game);
 
 //GET_ELEMS
 void event_pause(game_t *game);
 void event_click(game_t *game);
-void event_loop(game_t *game);
+void event_fight_loop(game_t *game);
 int check_collide_skill(game_t *game, skill_t *skill);
 void choose_skill(game_t *game);
 
@@ -281,6 +282,9 @@ void init_game(game_t *game);
 void init_time(game_t *game);
 sfRenderWindow *create_window(int width, int height);
 void init_window(game_t *game);
+
+//GAME_ELEMS
+void main_loop(game_t *game);
 
 //DESTROY_ELEMS
 void destroy_game(game_t *game);

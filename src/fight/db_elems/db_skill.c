@@ -58,8 +58,8 @@ void init_skill_desc(game_t *game, skill_t *elem, char *buffer, int id)
     sfSprite_setOrigin(elem->desc->sprite, (sfVector2f){0, 80});
     elem->desc->text = init_text(game, (char *)parser(buffer, "desc", id),
     sfWhite);
-    elem->desc->cd_text = init_text(game, bitoa((int)parser(buffer,
-    "cooldown", id)),sfYellow);
+    elem->desc->cd_text = init_text(game, bitoa((int)parser(buffer, "cooldown",
+    id)), sfYellow);
     elem->desc->name_text = init_text(game, (char *)parser(buffer, "name",
     id), sfYellow);
     free(img_path);

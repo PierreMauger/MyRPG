@@ -7,7 +7,7 @@
 
 #include "game.h"
 
-void draw_all(game_t *game)
+void draw_fight(game_t *game)
 {
     sfRenderWindow_clear(GET_WINDOW, sfBlack);
     draw_mons(game, game->p_mons);
