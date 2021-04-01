@@ -49,17 +49,12 @@
 #define ARR_ANIM_NB 2
 
 #define ANIM_TIME 0.3
-#define DIRT_IMG "ressources/sprites/dirt.png"
 #define GRASS_IMG "ressources/sprites/grass.png"
-#define SLASH_IMG "ressources/sprites/slash_anim.png"
-#define BONK_IMG "ressources/sprites/lol_anim.png"
-#define SLIME_IMG "ressources/sprites/slime.png"
-#define SLIME_IMG_COLOR "ressources/sprites/slime.png"
-#define LANCER_IMG "ressources/sprites/lancer.png"
-#define LANCER_IMG_COLOR "ressources/sprites/lancer_color.png"
 #define FONT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
+#define JSON_MONS "ressources/json/mons.json"
+#define JSON_SKILL "ressources/json/skill.json"
 #define RENDER_SKILL game->shader->render_skill
 #define RENDER_TURN game->shader->render_turn
 

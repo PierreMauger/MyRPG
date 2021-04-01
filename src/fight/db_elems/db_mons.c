@@ -60,7 +60,7 @@ void init_mons_stat(mons_t *elem, char *buffer, int id)
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id)
 {
     int *skill_list = (int *)parser(buffer, "skill", id);
-    char *skill_buffer = bread_file("ressources/json/skill.json", 20);
+    char *skill_buffer = bread_file(JSON_SKILL, 20);
 
     elem->skill = NULL;
     for (int j = 0; j < (int)parser(buffer, "nb_skill", id); j++)

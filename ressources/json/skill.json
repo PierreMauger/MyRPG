@@ -81,7 +81,7 @@
     "atb_boost": [0, 15],
     "passive": 0,
     "cooldown": 4,
-    "img": "resso/urces/sprites/grass.png",
+    "img": "ressources/sprites/grass.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
@@ -122,7 +122,7 @@
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
-    "desc": "attack one more\n time if atb = 0",
+    "desc": "attack one more\ntime if atb = 0",
     "desc_img": "ressources/sprites/dirt.png"
   }
 ]

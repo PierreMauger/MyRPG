@@ -30,12 +30,12 @@ void init_mons(game_t *game)
 {
     char *buffer;
 
-    buffer = bread_file("ressources/json/mons.json", 20);
+    buffer = bread_file(JSON_MONS, 20);
     if (!buffer || bstrlen(buffer) < 10)
         return;
     game->p_mons = NULL;
     game->e_mons = NULL;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 1; i < 4; i++) {
         put_in_mons_list(game, &game->p_mons, buffer, i);
         put_in_mons_list(game, &game->e_mons, buffer, i);
     }
