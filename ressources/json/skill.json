@@ -124,5 +124,23 @@
     "nb_anim": 4,
     "desc": "attack one more\ntime if atb = 0",
     "desc_img": "ressources/sprites/dirt.png"
+  },
+  {
+    "id": 8,
+    "name": "Plop",
+    "nb_hit": 1,
+    "coef": [20],
+    "target": [0],
+    "aoe": [0],
+    "atb_boost": [0],
+    "passive": 0,
+    "cooldown": 1,
+    "img": "ressources/sprites/grass.png",
+    "anim": "ressources/sprites/slash_anim.png",
+    "anim_x": 32,
+    "anim_y": 88,
+    "nb_anim": 4,
+    "desc": "worst attack",
+    "desc_img": "ressources/sprites/dirt.png"
   }
 ]

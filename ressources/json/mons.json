@@ -27,7 +27,7 @@
   },
   {
     "id": 3,
-    "name": "b",
+    "name": "c",
     "health": 150,
     "img": "ressources/sprites/slime.png",
     "img_color": "ressources/sprites/slime.png",
@@ -37,5 +37,18 @@
     "speed": 8.0,
     "skill": [1, 6, 7],
     "nb_skill": 3
+  },
+  {
+    "id": 4,
+    "name": "d",
+    "health": 50,
+    "img": "ressources/sprites/slime.png",
+    "img_color": "ressources/sprites/slime.png",
+    "width": 66,
+    "height": 50,
+    "nb_anim": 3,
+    "speed": 3.0,
+    "skill": [8],
+    "nb_skill": 1
   }
 ]

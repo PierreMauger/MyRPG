@@ -45,7 +45,7 @@ void init_mons_stat(mons_t *elem, char *buffer, int id)
     MONS_CURR_HP(elem) = MONS_MAX_HP(elem);
     MONS_HP(elem) = sfRectangleShape_create();
     sfRectangleShape_setOrigin(MONS_HP(elem),
-    (sfVector2f){MONS_WIDTH(elem) / 2+ 50, 0});
+    (sfVector2f){MONS_WIDTH(elem) / 2 + 50, 0});
     sfRectangleShape_setSize(MONS_HP(elem), (sfVector2f){100, 10});
     sfRectangleShape_setFillColor(MONS_HP(elem), sfGreen);
     MONS_SPEED(elem) = (int)parser(buffer, "speed", id);

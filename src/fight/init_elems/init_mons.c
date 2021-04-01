@@ -33,11 +33,7 @@ void init_mons(game_t *game)
     if (!buffer || bstrlen(buffer) < 10)
         return;
     game->p_mons = NULL;
-    game->e_mons = NULL;
-    for (int i = 1; i < 4; i++) {
+    for (int i = 1; i < 4; i++)
         put_in_mons_list(game, &game->p_mons, buffer, i);
-        put_in_mons_list(game, &game->e_mons, buffer, i);
-    }
-    init_all_pos(game);
     free(buffer);
 }

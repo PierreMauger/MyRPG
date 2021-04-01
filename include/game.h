@@ -236,6 +236,7 @@ int check_collide(game_t *game, mons_t *mons);
 void atb_calc(game_t *game, mons_t *curr_mons);
 void attack_hit(game_t *game, mons_t *curr_mons);
 void attack_activation(game_t *game);
+void cooldown_refresh(mons_t *target);
 void cooldown_reduce(game_t *game);
 void fight_loop(game_t *game);
 mons_t *kill_func(game_t *game, mons_t *head);
