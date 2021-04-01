@@ -11,18 +11,14 @@ void init_all_pos(game_t *game)
 {
     sfVector2f p_pos = {200, 600};
     sfVector2f e_pos = {600, 300};
-    mons_t *temp = game->p_mons;
-    mons_t *temp2 = game->e_mons;
 
-    while (temp != NULL) {
+    for (mons_t *temp = game->p_mons; temp; temp = temp->next) {
         init_mons_pos(temp, p_pos);
         p_pos.x += 250;
-        temp = temp->next;
     }
-    while (temp2 != NULL) {
-        init_mons_pos(temp2, e_pos);
+    for (mons_t *temp = game->e_mons; temp; temp = temp->next) {
+        init_mons_pos(temp, e_pos);
         e_pos.x += 250;
-        temp2 = temp2->next;
     }
 }
 

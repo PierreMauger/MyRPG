@@ -9,12 +9,9 @@
 
 void aoe_hit(game_t *game)
 {
-    mons_t *temp = game->ind->team;
-
-    while (temp != NULL) {
+    for (mons_t *temp = game->ind->team; temp; temp = temp->next) {
         game->ind->target = temp;
         set_attack_anim(game);
-        temp = temp->next;
     }
 }
 

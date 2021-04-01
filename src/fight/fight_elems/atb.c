@@ -9,16 +9,14 @@
 
 void atb_increase(mons_t *team)
 {
-    mons_t *temp = team;
     float temp_atb;
 
-    while (temp != NULL) {
+    for (mons_t *temp = team; temp; temp = temp->next) {
         MONS_CURR_ATB(temp) += MONS_SPEED(temp);
         temp_atb = MONS_CURR_ATB(temp);
         if (temp_atb >= 100)
             temp_atb = 100;
         sfRectangleShape_setSize(temp->stat->atb, (sfVector2f){temp_atb, 10});
-        temp = temp->next;
     }
 }
 
@@ -31,41 +29,32 @@ void atb_reset(game_t *game)
 
 int check_atb(game_t *game)
 {
-    mons_t *temp = game->p_mons;
-    mons_t *temp2 = game->e_mons;
-
-    while (temp != NULL) {
+    for (mons_t *temp = game->p_mons; temp; temp = temp->next) {
         if (MONS_CURR_ATB(temp) > 100)
             return 1;
-        temp = temp->next;
     }
-    while (temp2 != NULL) {
-        if (MONS_CURR_ATB(temp2) > 100)
+    for (mons_t *temp = game->e_mons; temp; temp = temp->next) {
+        if (MONS_CURR_ATB(temp) > 100)
             return 1;
-        temp2 = temp2->next;
     }
     return 0;
 }
 
 mons_t *get_higher_atb(game_t *game)
 {
-    mons_t *temp = game->p_mons;
-    mons_t *temp2 = game->e_mons;
-    mons_t *result = temp;
+    mons_t *result = game->p_mons;
 
-    while (temp2 != NULL) {
-        if (MONS_CURR_ATB(temp2) > MONS_CURR_ATB(result)) {
-            result = temp2;
+    for (mons_t *temp = game->e_mons; temp; temp = temp->next) {
+        if (MONS_CURR_ATB(temp) > MONS_CURR_ATB(result)) {
+            result = temp;
             game->set->turn = 1;
         }
-        temp2 = temp2->next;
     }
-    while (temp != NULL) {
+    for (mons_t *temp = game->p_mons; temp; temp = temp->next) {
         if (MONS_CURR_ATB(temp) >= MONS_CURR_ATB(result)) {
             result = temp;
             game->set->turn = 0;
         }
-        temp = temp->next;
     }
     return result;
 }

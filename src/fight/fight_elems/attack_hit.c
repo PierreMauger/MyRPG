@@ -47,13 +47,10 @@ void attack_hit(game_t *game, mons_t *curr_mons)
 
 void attack_activation(game_t *game)
 {
-    mons_t *temp = game->ind->team;
-
     if (game->ind->ptr_skill->stat->aoe[CURR_ATT] == 1)
-        while (temp != NULL) {
+        for (mons_t *temp = game->ind->team; temp; temp = temp->next) {
             game->ind->target = temp;
             attack_hit(game, game->ind->target);
-            temp = temp->next;
         }
     else
         attack_hit(game, game->ind->target);

@@ -23,13 +23,10 @@ void draw_mons_sprites(game_t *game, mons_t *mons)
 
 void draw_mons(game_t *game, mons_t *head)
 {
-    mons_t *temp = head;
-
-    while (temp != NULL) {
+    for (mons_t *temp = head; temp; temp = temp->next) {
         set_texture_mons(temp);
         draw_mons_sprites(game, temp);
         sfRenderWindow_drawRectangleShape(GET_WINDOW, MONS_HP(temp), NULL);
         sfRenderWindow_drawRectangleShape(GET_WINDOW, temp->stat->atb, NULL);
-        temp = temp->next;
     }
 }

@@ -25,10 +25,9 @@ void draw_skill_desc(skill_t *temp, game_t *game, int x)
 
 void draw_skill(game_t *game)
 {
-    skill_t *temp = game->ind->ptr_mons->skill;
     int x = 1100;
 
-    while (temp != NULL) {
+    for (skill_t *temp = game->ind->ptr_mons->skill; temp; temp = temp->next) {
         sfSprite_setPosition(temp->texture->sprite, (sfVector2f){x, 700});
         if (temp->stat->act_cd != 0)
             sfSprite_setColor(temp->texture->sprite, sfGrey);
@@ -40,7 +39,6 @@ void draw_skill(game_t *game)
         else
             sfRenderWindow_drawSprite(GET_WINDOW, temp->texture->sprite, NULL);
         draw_skill_desc(temp, game, x);
-        temp = temp->next;
         x += 100;
     }
 }

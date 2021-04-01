@@ -9,12 +9,9 @@
 
 int has_passive(game_t *game)
 {
-    skill_t *temp = game->ind->ptr_skill;
-
-    while (temp != NULL) {
+    for (skill_t *temp = game->ind->ptr_skill; temp; temp = temp->next) {
         if (temp->stat->passive == 1)
             return 1;
-        temp = temp->next;
     }
     return 0;
 }
@@ -25,10 +22,8 @@ void passive_action(game_t *game, mons_t *target)
 
     if (target == NULL)
         return;
-    while (temp != NULL) {
-        if (temp->stat->passive != 1)
-            temp = temp->next;
-        else
+    for (; temp; temp = temp->next) {
+        if (temp->stat->passive == 1)
             break;
     }
     if (!bstrcmp(temp->stat->name, "Chasseur") && MONS_CURR_ATB(target) == 0

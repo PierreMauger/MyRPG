@@ -40,10 +40,9 @@ void draw_attack_aoe(game_t *game)
         temp = game->e_mons;
     else
         temp = game->p_mons;
-    while (temp != NULL) {
+    for (; temp; temp = temp->next) {
         set_attack_anim_pos(game, temp);
         draw_single_attak_target(game);
-        temp = temp->next;
     }
 }
 

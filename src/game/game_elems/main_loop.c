@@ -25,12 +25,9 @@ void event_loop(game_t *game)
 
 void reset_fight(game_t *game)
 {
-    mons_t *temp = game->p_mons;
-
-    while (temp != NULL) {
+    for (mons_t *temp = game->p_mons; temp; temp = temp->next) {
         MONS_CURR_ATB(temp) = 0;
         cooldown_refresh(temp);
-        temp = temp->next;
     }
 }
 

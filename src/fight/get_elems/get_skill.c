@@ -19,12 +19,9 @@ int check_collide_skill(game_t *game, skill_t *skill)
 
 void choose_skill(game_t *game)
 {
-    skill_t *temp = game->ind->ptr_mons->skill;
-
-    while (temp != NULL) {
+    for (skill_t *temp = game->ind->ptr_mons->skill; temp; temp = temp->next) {
         if (check_collide_skill(game, temp) == 1)
             if (temp->stat->passive == 0 && temp->stat->act_cd == 0)
                 game->ind->ptr_skill = temp;
-        temp = temp->next;
     }
 }

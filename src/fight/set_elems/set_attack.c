@@ -17,11 +17,8 @@ void target_team(game_t *game)
 
 void set_attack(game_t *game)
 {
-    mons_t *temp;
-
     target_team(game);
-    temp = game->ind->team;
-    while (temp != NULL) {
+    for (mons_t *temp = game->ind->team; temp; temp = temp->next) {
         if (check_collide(game, temp) == 1) {
             atb_reset(game);
             game->ind->target = temp;
@@ -32,7 +29,5 @@ void set_attack(game_t *game)
             game->ind->ptr_skill->stat->act_cd =
             game->ind->ptr_skill->stat->ini_cd;
         }
-        if (temp != NULL)
-            temp = temp->next;
     }
 }

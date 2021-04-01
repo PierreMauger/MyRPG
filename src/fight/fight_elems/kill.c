@@ -10,9 +10,8 @@
 mons_t *kill_func(game_t *game, mons_t *head)
 {
     mons_t *last = NULL;
-    mons_t *act = head;
 
-    while (act != NULL) {
+    for (mons_t *act = head; act; act = act->next) {
         if (MONS_CURR_HP(act) == 0) {
             if (last == NULL)
                 head = head->next;
@@ -26,7 +25,6 @@ mons_t *kill_func(game_t *game, mons_t *head)
             break;
         }
         last = act;
-        act = act->next;
     }
     return head;
 }
