@@ -23,7 +23,7 @@ void start_fight(game_t *game)
         return;
     game->e_mons = NULL;
     for (int i = 1; i < 4; i++)
-        put_in_mons_list(game, &game->e_mons, buffer, i);
+        put_in_mons_list(game, &game->e_mons, buffer, 4);
     init_all_pos(game);
     reset_fight(game);
     free(buffer);

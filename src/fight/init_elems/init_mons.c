@@ -7,6 +7,16 @@
 
 #include "game.h"
 
+void init_mons_pos(mons_t *mons, sfVector2f pos)
+{
+    sfSprite_setPosition(MONS_SPRITE(mons), pos);
+    sfSprite_setPosition(MONS_SPRITE_COLOR(mons), pos);
+    sfRectangleShape_setPosition(MONS_HP(mons),
+    (sfVector2f){pos.x + MONS_WIDTH(mons) / 2, pos.y + 10});
+    sfRectangleShape_setPosition(mons->stat->atb,
+    (sfVector2f){pos.x + MONS_WIDTH(mons) / 2, pos.y + 30});
+}
+
 void init_all_pos(game_t *game)
 {
     sfVector2f p_pos = {200, 600};
@@ -30,6 +40,6 @@ void init_mons(game_t *game)
         return;
     game->p_mons = NULL;
     for (int i = 1; i < 4; i++)
-        put_in_mons_list(game, &game->p_mons, buffer, 4);
+        put_in_mons_list(game, &game->p_mons, buffer, i);
     free(buffer);
 }

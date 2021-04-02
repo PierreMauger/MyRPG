@@ -48,6 +48,9 @@
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
+#define GET_ATT(elem) elem->stat->att * (1 + elem->status->att_p * 0.5 - elem->status->att_m * 0.5)
+#define GET_DEF(elem) elem->stat->def * (1 + elem->status->def_p * 0.5 - elem->status->def_m * 0.5)
+
 #define ANIM_TIME 0.3
 #define GRASS_IMG "ressources/sprites/grass.png"
 #define FONT "ressources/font.ttf"
@@ -110,6 +113,13 @@ typedef struct {
 } mons_texture_t;
 
 typedef struct {
+    bool att_p;
+    bool att_m;
+    bool def_p;
+    bool def_m;
+} mons_status_t;
+
+typedef struct {
     float speed;
     float att;
     float def;
@@ -123,6 +133,7 @@ typedef struct {
 typedef struct mons {
     mons_texture_t *texture;
     mons_stat_t *stat;
+    mons_status_t *status;
     skill_t *skill;
     struct mons *next;
 } mons_t;
@@ -192,7 +203,7 @@ void move_rect(sfIntRect *rect, int offset, int nb_anim);
 void bool_move_rect(sfIntRect *rect, int offset, int nb_anim, bool *boolean);
 
 //DB_ELEMS
-void init_mons_pos(mons_t *mons, sfVector2f pos);
+void init_mons_status(mons_t *elem);
 void init_mons_texture(mons_t *elem, char *buffer, int i);
 void init_mons_stat(mons_t *elem, char *buffer, int i);
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
@@ -207,6 +218,7 @@ void put_in_skill_list(game_t *game, skill_t **skill, char *buffer, int id);
 void destroy_fight(game_t *game);
 void destroy_turn_arrow(arrow_t *arr);
 void destroy_turn_ind(indicator_t *ind);
+void destroy_mons_status(mons_status_t *status);
 void destroy_mons_texture(mons_texture_t *texture);
 void destroy_mons_stat(mons_stat_t *stat);
 void destroy_mons(mons_t *mons);
@@ -260,6 +272,7 @@ void init_fight(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
+void init_mons_pos(mons_t *mons, sfVector2f pos);
 void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 void init_shader(game_t *game);

@@ -38,7 +38,7 @@ void attack_hit(game_t *game, mons_t *curr_mons)
 {
     atb_calc(game, curr_mons);
     MONS_CURR_HP(curr_mons) -= game->ind->ptr_skill->stat->coef[CURR_ATT] *
-    game->ind->ptr_mons->stat->att / curr_mons->stat->def;
+    GET_ATT(game->ind->ptr_mons) / GET_DEF(game->ind->target);
     if (MONS_CURR_HP(curr_mons) <= 0)
         MONS_CURR_HP(curr_mons) = 0;
     sfRectangleShape_setSize(MONS_HP(curr_mons), (sfVector2f){(float)

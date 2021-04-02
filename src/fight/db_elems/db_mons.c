@@ -7,14 +7,13 @@
 
 #include "game.h"
 
-void init_mons_pos(mons_t *mons, sfVector2f pos)
+void init_mons_status(mons_t *elem)
 {
-    sfSprite_setPosition(MONS_SPRITE(mons), pos);
-    sfSprite_setPosition(MONS_SPRITE_COLOR(mons), pos);
-    sfRectangleShape_setPosition(MONS_HP(mons),
-    (sfVector2f){pos.x + MONS_WIDTH(mons) / 2, pos.y + 10});
-    sfRectangleShape_setPosition(mons->stat->atb,
-    (sfVector2f){pos.x + MONS_WIDTH(mons) / 2, pos.y + 30});
+    elem->status = malloc(sizeof(mons_status_t));
+    elem->status->att_p = 0;
+    elem->status->att_m = 0;
+    elem->status->def_p = 0;
+    elem->status->def_m = 0;
 }
 
 void init_mons_texture(mons_t *elem, char *buffer, int id)
@@ -76,6 +75,7 @@ void put_in_mons_list(game_t *game, mons_t **mons, char *buffer, int id)
     mons_t *elem = malloc(sizeof(mons_t));
     mons_t *last = *mons;
 
+    init_mons_status(elem);
     init_mons_texture(elem, buffer, id);
     init_mons_stat(elem, buffer, id);
     init_mons_skill(game, elem, buffer, id);
