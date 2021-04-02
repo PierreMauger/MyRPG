@@ -22,6 +22,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/draw_elems/draw_ind.c				\
 				src/fight/draw_elems/draw_mons.c			\
 				src/fight/draw_elems/draw_skill.c			\
+				src/fight/draw_elems/draw_status.c			\
 				src/fight/fight_elems/atb.c					\
 				src/fight/fight_elems/attack_hit.c			\
 				src/fight/fight_elems/cooldown.c			\

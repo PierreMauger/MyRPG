@@ -260,6 +260,7 @@ void draw_mons_sprites(game_t *game, mons_t *mons);
 void draw_mons(game_t *game, mons_t *mons);
 void draw_skill_desc(skill_t *temp, game_t *game, int x);
 void draw_skill(game_t *game);
+void draw_status(game_t *game, mons_t *mons);
 
 //GAME_ELEMS
 void atb_increase(mons_t *team);

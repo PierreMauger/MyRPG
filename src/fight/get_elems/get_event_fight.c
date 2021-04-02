@@ -9,9 +9,12 @@
 
 void event_pause(game_t *game)
 {
-    if (game->event.type == sfEvtKeyPressed)
+    if (game->event.type == sfEvtKeyPressed) {
+        if (game->event.key.code == sfKeyO)
+            game->ind->ptr_mons->status->att_p = 1;
         if (game->event.key.code == sfKeyP)
             game->set->pause = !game->set->pause;
+    }
 }
 
 void event_click(game_t *game)
