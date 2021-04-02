@@ -16,6 +16,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/destroy_elems/destroy_set.c		\
 				src/fight/destroy_elems/destroy_shader.c	\
 				src/fight/destroy_elems/destroy_skill.c		\
+				src/fight/destroy_elems/destroy_status.c	\
 				src/fight/draw_elems/draw_fight.c			\
 				src/fight/draw_elems/draw_attack.c			\
 				src/fight/draw_elems/draw_ind.c				\
@@ -36,6 +37,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/init_elems/init_mons.c			\
 				src/fight/init_elems/init_shader.c			\
 				src/fight/init_elems/init_set.c				\
+				src/fight/init_elems/init_status.c			\
 				src/fight/init_elems/init_text.c			\
 				src/fight/set_elems/set_attack_anim_pos.c	\
 				src/fight/set_elems/set_attack.c			\

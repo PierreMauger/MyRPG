@@ -13,4 +13,5 @@ void init_fight(game_t *game)
     init_mons(game);
     init_turn_ind(game);
     init_shader(game);
+    init_status(game);
 }

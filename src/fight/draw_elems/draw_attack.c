@@ -21,7 +21,7 @@ void draw_single_attak_target(game_t *game, mons_t *target)
     sfRenderWindow_drawSprite(GET_WINDOW, PTR_SKILL_ANIM_SPRITE, NULL);
     sfText_setString(game->ind->damage,
     bitoa(game->ind->ptr_skill->stat->coef[CURR_ATT] *
-    GET_ATT(game->ind->ptr_mons) / GET_DEF(game->ind->target)));
+    GET_ATT(game->ind->ptr_mons) / GET_DEF(target)));
     sfText_setOrigin(game->ind->damage, (sfVector2f)
     {sfText_getGlobalBounds(game->ind->damage).width / 2, 0});
     sfText_setString(game->ind->att_name, game->ind->ptr_skill->stat->name);

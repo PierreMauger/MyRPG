@@ -48,8 +48,10 @@
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
-#define GET_ATT(elem) elem->stat->att * (1 + elem->status->att_p * 0.5 - elem->status->att_m * 0.5)
-#define GET_DEF(elem) elem->stat->def * (1 + elem->status->def_p * 0.5 - elem->status->def_m * 0.5)
+#define GET_ATT(elem) elem->stat->att * (1 + elem->status->att_p * 0.5 - \
+elem->status->att_m * 0.5)
+#define GET_DEF(elem) elem->stat->def * (1 + elem->status->def_p * 0.5 - \
+elem->status->def_m * 0.5)
 
 #define ANIM_TIME 0.3
 #define GRASS_IMG "ressources/sprites/grass.png"
@@ -181,6 +183,20 @@ typedef struct {
     sfShader *turn;
 } shader_t;
 
+typedef enum {
+    att_p,
+    att_m,
+    def_p,
+    def_m,
+
+    status_nbr
+} status_list_t;
+
+typedef struct {
+    sfSprite **sprite;
+    sfTexture **texture;
+} status_t;
+
 typedef struct {
     window_t *window;
     time_elapsed_t *time;
@@ -189,6 +205,7 @@ typedef struct {
     mons_t *p_mons;
     mons_t *e_mons;
     indicator_t *ind;
+    status_t *status;
     sfVector2i mouse_pos;
     sfFont *font;
     shader_t *shader;
@@ -229,6 +246,9 @@ void destroy_skill_anim(skill_anim_t *anim);
 void destroy_skill_stat(skill_stat_t *stat);
 void destroy_skill_desc(skill_desc_t *desc);
 void destroy_skill(skill_t *skill);
+void destroy_status_texture(sfTexture **texture);
+void destroy_status_sprite(sfSprite **sprite);
+void destroy_status(status_t *status);
 
 //DRAW_ELEMS
 void draw_fight(game_t *game);
@@ -277,6 +297,9 @@ void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 void init_shader(game_t *game);
 void init_set(game_t *game);
+void init_status_texture(game_t *game);
+void init_status_sprite(game_t *game);
+void init_status(game_t *game);
 sfText *init_text(game_t *game, char *str, sfColor color);
 
 //SET_ELEMS
