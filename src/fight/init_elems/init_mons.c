@@ -30,6 +30,6 @@ void init_mons(game_t *game)
         return;
     game->p_mons = NULL;
     for (int i = 1; i < 4; i++)
-        put_in_mons_list(game, &game->p_mons, buffer, i);
+        put_in_mons_list(game, &game->p_mons, buffer, 4);
     free(buffer);
 }

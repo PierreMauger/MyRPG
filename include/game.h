@@ -220,7 +220,7 @@ void destroy_skill(skill_t *skill);
 
 //DRAW_ELEMS
 void draw_fight(game_t *game);
-void draw_single_attak_target(game_t *game);
+void draw_single_attak_target(game_t *game, mons_t *mons);
 void draw_attack_aoe(game_t *game);
 void draw_attak_target(game_t *game);
 void draw_turn_ind(game_t *game);

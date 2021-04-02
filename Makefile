@@ -46,7 +46,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/game/init_elems/init_window.c			\
 				src/game/game_elems/main_loop.c				\
 				src/game/game_elems/start_fight.c			\
-				src/game/get_elems.c/get_event.c			\
+				src/game/get_elems/get_event.c				\
 				src/game/destroy_elems/destroy_game.c		\
 				src/game/destroy_elems/destroy_time.c		\
 				src/game/destroy_elems/destroy_window.c		\

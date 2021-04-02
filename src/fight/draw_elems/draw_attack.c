@@ -14,14 +14,14 @@ static int last_anim_frame(sfIntRect rect, int nb_anim)
     return 0;
 }
 
-void draw_single_attak_target(game_t *game)
+void draw_single_attak_target(game_t *game, mons_t *target)
 {
     sfSprite_setTexture(PTR_SKILL_ANIM_SPRITE, PTR_SKILL_ANIM_TEX, sfTrue);
     sfSprite_setTextureRect(PTR_SKILL_ANIM_SPRITE, PTR_SKILL_ANIM_RECT);
     sfRenderWindow_drawSprite(GET_WINDOW, PTR_SKILL_ANIM_SPRITE, NULL);
     sfText_setString(game->ind->damage,
     bitoa(game->ind->ptr_skill->stat->coef[CURR_ATT] *
-    game->ind->ptr_mons->stat->att / game->ind->target->stat->def));
+    game->ind->ptr_mons->stat->att / target->stat->def));
     sfText_setOrigin(game->ind->damage, (sfVector2f)
     {sfText_getGlobalBounds(game->ind->damage).width / 2, 0});
     sfText_setString(game->ind->att_name, game->ind->ptr_skill->stat->name);
@@ -43,7 +43,7 @@ void draw_attack_aoe(game_t *game)
         temp = game->p_mons;
     for (; temp; temp = temp->next) {
         set_attack_anim_pos(game, temp);
-        draw_single_attak_target(game);
+        draw_single_attak_target(game, temp);
     }
 }
 
@@ -55,7 +55,7 @@ void draw_attak_target(game_t *game)
         }
         else {
             set_attack_anim_pos(game, game->ind->target);
-            draw_single_attak_target(game);
+            draw_single_attak_target(game, game->ind->target);
         }
     }
 }
