@@ -42,6 +42,8 @@ void init_mons_stat(mons_t *elem, char *buffer, int id)
 {
     elem->stat = malloc(sizeof(mons_stat_t));
     MONS_MAX_HP(elem) = (int)parser(buffer, "health", id);
+    elem->stat->att = (float)parser(buffer, "att", id);
+    elem->stat->def = (float)parser(buffer, "def", id);
     MONS_CURR_HP(elem) = MONS_MAX_HP(elem);
     MONS_HP(elem) = sfRectangleShape_create();
     sfRectangleShape_setOrigin(MONS_HP(elem),

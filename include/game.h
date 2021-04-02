@@ -111,6 +111,8 @@ typedef struct {
 
 typedef struct {
     float speed;
+    float att;
+    float def;
     int max_hp;
     int curr_hp;
     float curr_atb;
