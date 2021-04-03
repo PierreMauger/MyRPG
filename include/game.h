@@ -34,6 +34,8 @@
 #define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
 #define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->nb_anim
 #define PTR_SKILL_HIT_NB game->ind->ptr_skill->stat->nb_hit
+#define PTR_SKILL_STATUS game->ind->ptr_skill->stat->status
+#define PTR_SKILL_STATUS_TURN game->ind->ptr_skill->stat->status_turn
 
 #define PTR_MONS_SPRITE game->ind->ptr_mons->texture->sprite
 #define PTR_MONS_WIDTH game->ind->ptr_mons->texture->rect.width
@@ -50,10 +52,10 @@
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
-#define GET_ATT(elem) elem->stat->att * (1 + elem->status->att_p * 0.5 - \
-elem->status->att_m * 0.5)
-#define GET_DEF(elem) elem->stat->def * (1 + elem->status->def_p * 0.5 - \
-elem->status->def_m * 0.5)
+#define GET_ATT(elem) elem->stat->att * (1 + (bool)elem->status->att_p * 0.5 -\
+(bool)elem->status->att_m * 0.5)
+#define GET_DEF(elem) elem->stat->def * (1 + (bool)elem->status->def_p * 0.5 -\
+(bool)elem->status->def_m * 0.5)
 
 #define ANIM_TIME 0.3
 #define GRASS_IMG "ressources/sprites/grass.png"
@@ -90,6 +92,7 @@ typedef struct {
     int *aoe;
     int *atb_boost;
     int *status;
+    int *status_turn;
     int passive;
     int ini_cd;
     int act_cd;
@@ -122,10 +125,10 @@ typedef struct {
 } mons_texture_t;
 
 typedef struct {
-    bool att_p;
-    bool att_m;
-    bool def_p;
-    bool def_m;
+    int att_p;
+    int att_m;
+    int def_p;
+    int def_m;
 } mons_status_t;
 
 typedef struct {
@@ -269,7 +272,7 @@ void draw_skill_desc(skill_t *temp, game_t *game, int x);
 void draw_skill(game_t *game);
 void draw_status(game_t *game, mons_t *mons);
 
-//GAME_ELEMS
+//FIGHT_ELEMS
 void atb_increase(mons_t *team);
 void atb_reset(game_t *game);
 int check_atb(game_t *game);
@@ -285,7 +288,13 @@ mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
 int has_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
+void status_reduce_att(game_t *game);
+void status_reduce_def(game_t *game);
+void status_reduce(game_t *game);
 void turn_loop(game_t *game);
+void check_multi_hit(game_t *game);
+void check_passive(game_t *game);
+void check_turn(game_t *game);
 void update_fight(game_t *game);
 
 //GET_ELEMS

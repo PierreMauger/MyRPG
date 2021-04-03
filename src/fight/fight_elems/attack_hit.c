@@ -36,18 +36,18 @@ void atb_calc(game_t *game, mons_t *curr_mons)
 
 void apply_status(game_t *game, mons_t *curr_mons)
 {
-    switch (game->ind->ptr_skill->stat->status[CURR_ATT]) {
+    switch (PTR_SKILL_STATUS[CURR_ATT]) {
     case 1:
-        curr_mons->status->att_p = 1;
+        curr_mons->status->att_p = PTR_SKILL_STATUS_TURN[CURR_ATT];
         break;
     case 2:
-        curr_mons->status->att_m = 1;
+        curr_mons->status->att_m = PTR_SKILL_STATUS_TURN[CURR_ATT];
         break;
     case 3:
-        curr_mons->status->def_p = 1;
+        curr_mons->status->def_p = PTR_SKILL_STATUS_TURN[CURR_ATT];
         break;
     case 4:
-        curr_mons->status->def_m = 1;
+        curr_mons->status->def_m = PTR_SKILL_STATUS_TURN[CURR_ATT];
         break;
     default:
         break;

@@ -29,6 +29,7 @@ void destroy_skill_stat(skill_stat_t *stat)
     free(stat->aoe);
     free(stat->atb_boost);
     free(stat->status);
+    free(stat->status_turn);
     free(stat);
 }
 

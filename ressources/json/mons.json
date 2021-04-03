@@ -47,7 +47,7 @@
   {
     "id": 4,
     "name": "d",
-    "health": 50,
+    "health": 100,
     "att": 50,
     "def": 50,
     "speed": 3.0,
