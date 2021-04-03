@@ -25,5 +25,6 @@ void destroy_status(status_t *status)
 {
     destroy_status_texture(status->texture);
     destroy_status_sprite(status->sprite);
+    sfText_destroy(status->text);
     free(status);
 }
