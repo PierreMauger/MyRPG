@@ -89,6 +89,7 @@ typedef struct {
     int nb_hit;
     int *aoe;
     int *atb_boost;
+    int *status;
     int passive;
     int ini_cd;
     int act_cd;

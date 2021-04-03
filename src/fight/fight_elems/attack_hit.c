@@ -34,11 +34,32 @@ void atb_calc(game_t *game, mons_t *curr_mons)
     sfRectangleShape_setSize(curr_mons->stat->atb, (sfVector2f){temp_atb, 10});
 }
 
+void apply_status(game_t *game, mons_t *curr_mons)
+{
+    switch (game->ind->ptr_skill->stat->status[CURR_ATT]) {
+    case 1:
+        curr_mons->status->att_p = 1;
+        break;
+    case 2:
+        curr_mons->status->att_m = 1;
+        break;
+    case 3:
+        curr_mons->status->def_p = 1;
+        break;
+    case 4:
+        curr_mons->status->def_m = 1;
+        break;
+    default:
+        break;
+    }
+}
+
 void attack_hit(game_t *game, mons_t *curr_mons)
 {
     atb_calc(game, curr_mons);
     MONS_CURR_HP(curr_mons) -= game->ind->ptr_skill->stat->coef[CURR_ATT] *
-    GET_ATT(game->ind->ptr_mons) / GET_DEF(game->ind->target);
+    GET_ATT(game->ind->ptr_mons) / GET_DEF(curr_mons);
+    apply_status(game, curr_mons);
     if (MONS_CURR_HP(curr_mons) <= 0)
         MONS_CURR_HP(curr_mons) = 0;
     sfRectangleShape_setSize(MONS_HP(curr_mons), (sfVector2f){(float)
