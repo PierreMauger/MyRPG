@@ -10,10 +10,10 @@
 void init_status_texture(game_t *game)
 {
     game->status->texture = malloc(sizeof(sfTexture *) * status_nbr);
-    game->status->texture[att_p] = sfTexture_createFromFile(GRASS_IMG, NULL);
-    game->status->texture[att_m] = sfTexture_createFromFile(GRASS_IMG, NULL);
-    game->status->texture[def_p] = sfTexture_createFromFile(GRASS_IMG, NULL);
-    game->status->texture[def_m] = sfTexture_createFromFile(GRASS_IMG, NULL);
+    game->status->texture[att_p] = sfTexture_createFromFile(ATT_P_IMG, NULL);
+    game->status->texture[att_m] = sfTexture_createFromFile(ATT_M_IMG, NULL);
+    game->status->texture[def_p] = sfTexture_createFromFile(DEF_P_IMG, NULL);
+    game->status->texture[def_m] = sfTexture_createFromFile(DEF_M_IMG, NULL);
 }
 
 void init_status_sprite(game_t *game)

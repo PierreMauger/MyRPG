@@ -44,6 +44,8 @@
 #define GET_SECONDS game->time->seconds
 #define GET_TOTAL_TIME game->time->total_time
 
+#define STATUS_SPRITE game->status->sprite
+
 #define CURR_ATT game->ind->curr_attack
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
@@ -55,6 +57,10 @@ elem->status->def_m * 0.5)
 
 #define ANIM_TIME 0.3
 #define GRASS_IMG "ressources/sprites/grass.png"
+#define ATT_P_IMG "ressources/sprites/att_p.png"
+#define ATT_M_IMG "ressources/sprites/att_m.png"
+#define DEF_P_IMG "ressources/sprites/def_p.png"
+#define DEF_M_IMG "ressources/sprites/def_m.png"
 #define FONT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
