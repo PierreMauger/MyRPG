@@ -12,7 +12,7 @@ void atb_increase(mons_t *team)
     float temp_atb;
 
     for (mons_t *temp = team; temp; temp = temp->next) {
-        MONS_CURR_ATB(temp) += MONS_SPEED(temp);
+        MONS_CURR_ATB(temp) += GET_SPE(temp);
         temp_atb = MONS_CURR_ATB(temp);
         if (temp_atb >= 100)
             temp_atb = 100;

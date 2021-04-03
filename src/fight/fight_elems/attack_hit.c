@@ -20,50 +20,30 @@ int check_collide(game_t *game, mons_t *mons)
     return 0;
 }
 
-void atb_calc(game_t *game, mons_t *curr_mons)
+void atb_calc(game_t *game, mons_t *target)
 {
     float temp_atb;
 
-    MONS_CURR_ATB(curr_mons) +=
+    MONS_CURR_ATB(target) +=
     (float)game->ind->ptr_skill->stat->atb_boost[CURR_ATT];
-    if (MONS_CURR_ATB(curr_mons) <= 0)
-        MONS_CURR_ATB(curr_mons) = 0;
-    temp_atb = MONS_CURR_ATB(curr_mons);
+    if (MONS_CURR_ATB(target) <= 0)
+        MONS_CURR_ATB(target) = 0;
+    temp_atb = MONS_CURR_ATB(target);
         if (temp_atb >= 100)
             temp_atb = 100;
-    sfRectangleShape_setSize(curr_mons->stat->atb, (sfVector2f){temp_atb, 10});
+    sfRectangleShape_setSize(target->stat->atb, (sfVector2f){temp_atb, 10});
 }
 
-void apply_status(game_t *game, mons_t *curr_mons)
+void attack_hit(game_t *game, mons_t *target)
 {
-    switch (PTR_SKILL_STATUS[CURR_ATT]) {
-    case 1:
-        curr_mons->status->att_p = PTR_SKILL_STATUS_TURN[CURR_ATT];
-        break;
-    case 2:
-        curr_mons->status->att_m = PTR_SKILL_STATUS_TURN[CURR_ATT];
-        break;
-    case 3:
-        curr_mons->status->def_p = PTR_SKILL_STATUS_TURN[CURR_ATT];
-        break;
-    case 4:
-        curr_mons->status->def_m = PTR_SKILL_STATUS_TURN[CURR_ATT];
-        break;
-    default:
-        break;
-    }
-}
-
-void attack_hit(game_t *game, mons_t *curr_mons)
-{
-    atb_calc(game, curr_mons);
-    MONS_CURR_HP(curr_mons) -= game->ind->ptr_skill->stat->coef[CURR_ATT] *
-    GET_ATT(game->ind->ptr_mons) / GET_DEF(curr_mons);
-    apply_status(game, curr_mons);
-    if (MONS_CURR_HP(curr_mons) <= 0)
-        MONS_CURR_HP(curr_mons) = 0;
-    sfRectangleShape_setSize(MONS_HP(curr_mons), (sfVector2f){(float)
-    MONS_CURR_HP(curr_mons) / (float)MONS_MAX_HP(curr_mons) * 100, 10});
+    atb_calc(game, target);
+    MONS_CURR_HP(target) -= game->ind->ptr_skill->stat->coef[CURR_ATT] *
+    GET_ATT(game->ind->ptr_mons) / GET_DEF(target);
+    status_apply(game, target);
+    if (MONS_CURR_HP(target) <= 0)
+        MONS_CURR_HP(target) = 0;
+    sfRectangleShape_setSize(MONS_HP(target), (sfVector2f){(float)
+    MONS_CURR_HP(target) / (float)MONS_MAX_HP(target) * 100, 10});
     game->set->attack = false;
 }
 

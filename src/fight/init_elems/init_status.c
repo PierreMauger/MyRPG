@@ -14,6 +14,8 @@ void init_status_texture(game_t *game)
     game->status->texture[att_m] = sfTexture_createFromFile(ATT_M_IMG, NULL);
     game->status->texture[def_p] = sfTexture_createFromFile(DEF_P_IMG, NULL);
     game->status->texture[def_m] = sfTexture_createFromFile(DEF_M_IMG, NULL);
+    game->status->texture[spe_p] = sfTexture_createFromFile(SPE_P_IMG, NULL);
+    game->status->texture[spe_m] = sfTexture_createFromFile(SPE_M_IMG, NULL);
 }
 
 void init_status_sprite(game_t *game)
@@ -31,6 +33,12 @@ void init_status_sprite(game_t *game)
     game->status->sprite[def_m] = sfSprite_create();
     sfSprite_setTexture(game->status->sprite[def_m],
     game->status->texture[def_m], sfTrue);
+    game->status->sprite[spe_p] = sfSprite_create();
+    sfSprite_setTexture(game->status->sprite[spe_p],
+    game->status->texture[spe_p], sfTrue);
+    game->status->sprite[spe_m] = sfSprite_create();
+    sfSprite_setTexture(game->status->sprite[spe_m],
+    game->status->texture[spe_m], sfTrue);
 }
 
 void init_status(game_t *game)

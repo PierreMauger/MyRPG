@@ -29,7 +29,8 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/fight_elems/fight_loop.c			\
 				src/fight/fight_elems/kill.c				\
 				src/fight/fight_elems/passive.c				\
-				src/fight/fight_elems/status.c				\
+				src/fight/fight_elems/status_apply.c		\
+				src/fight/fight_elems/status_reduce.c		\
 				src/fight/fight_elems/turn.c				\
 				src/fight/fight_elems/update_fight.c		\
 				src/fight/get_elems/get_event_fight.c		\

@@ -14,6 +14,8 @@ void init_mons_status(mons_t *elem)
     elem->status->att_m = 0;
     elem->status->def_p = 0;
     elem->status->def_m = 0;
+    elem->status->spe_p = 0;
+    elem->status->spe_m = 0;
 }
 
 void init_mons_texture(mons_t *elem, char *buffer, int id)

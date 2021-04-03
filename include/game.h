@@ -52,10 +52,12 @@
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
-#define GET_ATT(elem) elem->stat->att * (1 + (bool)elem->status->att_p * 0.5 -\
-(bool)elem->status->att_m * 0.5)
-#define GET_DEF(elem) elem->stat->def * (1 + (bool)elem->status->def_p * 0.5 -\
-(bool)elem->status->def_m * 0.5)
+#define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p * 0.5 -\
+(bool)elem->status->att_m * 0.5))
+#define GET_DEF(elem) (elem->stat->def * (1 + (bool)elem->status->def_p * 0.5 -\
+(bool)elem->status->def_m * 0.5))
+#define GET_SPE(elem) (elem->stat->speed * (1 + (bool)elem->status->spe_p * 0.5\
+- (bool)elem->status->spe_m * 0.5))
 
 #define ANIM_TIME 0.3
 #define GRASS_IMG "ressources/sprites/grass.png"
@@ -63,6 +65,8 @@
 #define ATT_M_IMG "ressources/sprites/att_m.png"
 #define DEF_P_IMG "ressources/sprites/def_p.png"
 #define DEF_M_IMG "ressources/sprites/def_m.png"
+#define SPE_P_IMG "ressources/sprites/spe_p.png"
+#define SPE_M_IMG "ressources/sprites/spe_m.png"
 #define FONT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
@@ -129,6 +133,8 @@ typedef struct {
     int att_m;
     int def_p;
     int def_m;
+    int spe_p;
+    int spe_m;
 } mons_status_t;
 
 typedef struct {
@@ -198,6 +204,8 @@ typedef enum {
     att_m,
     def_p,
     def_m,
+    spe_p,
+    spe_m,
 
     status_nbr
 } status_list_t;
@@ -270,6 +278,9 @@ void draw_mons_sprites(game_t *game, mons_t *mons);
 void draw_mons(game_t *game, mons_t *mons);
 void draw_skill_desc(skill_t *temp, game_t *game, int x);
 void draw_skill(game_t *game);
+void draw_status_att(game_t *game, mons_t *mons, int *temp_x);
+void draw_status_def(game_t *game, mons_t *mons, int *temp_x);
+void draw_status_spe(game_t *game, mons_t *mons, int *temp_x);
 void draw_status(game_t *game, mons_t *mons);
 
 //FIGHT_ELEMS
@@ -278,8 +289,8 @@ void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
 int check_collide(game_t *game, mons_t *mons);
-void atb_calc(game_t *game, mons_t *curr_mons);
-void attack_hit(game_t *game, mons_t *curr_mons);
+void atb_calc(game_t *game, mons_t *target);
+void attack_hit(game_t *game, mons_t *target);
 void attack_activation(game_t *game);
 void cooldown_refresh(mons_t *target);
 void cooldown_reduce(game_t *game);
@@ -288,6 +299,7 @@ mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
 int has_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
+void status_apply(game_t *game, mons_t *target);
 void status_reduce_att(game_t *game);
 void status_reduce_def(game_t *game);
 void status_reduce(game_t *game);
