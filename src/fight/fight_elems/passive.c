@@ -26,7 +26,7 @@ void passive_action(game_t *game, mons_t *target)
         if (temp->stat->passive == 1)
             break;
     }
-    if (!bstrcmp(temp->stat->name, "Chasseur") && MONS_CURR_ATB(target) == 0
+    if (!bstrcmp(temp->stat->name, "Hunter") && MONS_CURR_ATB(target) == 0
     && temp->stat->act_cd == 0) {
         game->ind->ptr_skill = game->ind->ptr_mons->skill;
         set_attack_anim_pos(game, game->ind->target);

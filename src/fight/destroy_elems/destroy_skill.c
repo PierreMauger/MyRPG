@@ -45,15 +45,12 @@ void destroy_skill_desc(skill_desc_t *desc)
 
 void destroy_skill(skill_t *skill)
 {
-    skill_t *temp = NULL;
-
-    while (skill != NULL) {
+    for (skill_t *temp = NULL; skill; skill = skill->next) {
         temp = skill;
         destroy_skill_texture(skill->texture);
         destroy_skill_anim(skill->anim);
         destroy_skill_stat(skill->stat);
         destroy_skill_desc(skill->desc);
-        skill = skill->next;
         free(temp);
     }
 }
