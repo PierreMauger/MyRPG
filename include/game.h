@@ -234,6 +234,15 @@ typedef struct {
     sfText *text;
 } status_t;
 
+typedef struct menu_s {
+    sfVector2f pos;
+    sfIntRect rect;
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfMusic *music;
+    bool music_playing;
+}menu_t;
+
 typedef struct {
     window_t *window;
     time_elapsed_t *time;
@@ -252,6 +261,11 @@ typedef struct {
     bool in_fight;
     bool in_dialog;
 } game_t;
+
+//MENU_ELEMS
+menu_t *main_menu(game_t *game);
+void menu_play(game_t *game, menu_t *menu);
+bool start_game(game_t *game, menu_t *menu);
 
 //ANIM_ELEMS
 void animate(game_t *game);
