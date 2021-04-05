@@ -34,6 +34,8 @@
 #define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
 #define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->nb_anim
 #define PTR_SKILL_HIT_NB game->ind->ptr_skill->stat->nb_hit
+#define PTR_SKILL_STATUS game->ind->ptr_skill->stat->status
+#define PTR_SKILL_STATUS_TURN game->ind->ptr_skill->stat->status_turn
 
 #define PTR_MONS_SPRITE game->ind->ptr_mons->texture->sprite
 #define PTR_MONS_WIDTH game->ind->ptr_mons->texture->rect.width
@@ -44,12 +46,27 @@
 #define GET_SECONDS game->time->seconds
 #define GET_TOTAL_TIME game->time->total_time
 
+#define STATUS_SPRITE game->status->sprite
+
 #define CURR_ATT game->ind->curr_attack
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
+#define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p * 0.5 -\
+(bool)elem->status->att_m * 0.5))
+#define GET_DEF(elem) (elem->stat->def * (1 + (bool)elem->status->def_p * 0.5 -\
+(bool)elem->status->def_m * 0.5))
+#define GET_SPE(elem) (elem->stat->speed * (1 + (bool)elem->status->spe_p * 0.5\
+- (bool)elem->status->spe_m * 0.5))
+
 #define ANIM_TIME 0.3
 #define GRASS_IMG "ressources/sprites/grass.png"
+#define ATT_P_IMG "ressources/sprites/att_p.png"
+#define ATT_M_IMG "ressources/sprites/att_m.png"
+#define DEF_P_IMG "ressources/sprites/def_p.png"
+#define DEF_M_IMG "ressources/sprites/def_m.png"
+#define SPE_P_IMG "ressources/sprites/spe_p.png"
+#define SPE_M_IMG "ressources/sprites/spe_m.png"
 #define FONT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
@@ -78,6 +95,8 @@ typedef struct {
     int nb_hit;
     int *aoe;
     int *atb_boost;
+    int *status;
+    int *status_turn;
     int passive;
     int ini_cd;
     int act_cd;
@@ -110,6 +129,15 @@ typedef struct {
 } mons_texture_t;
 
 typedef struct {
+    int att_p;
+    int att_m;
+    int def_p;
+    int def_m;
+    int spe_p;
+    int spe_m;
+} mons_status_t;
+
+typedef struct {
     float speed;
     float att;
     float def;
@@ -123,6 +151,7 @@ typedef struct {
 typedef struct mons {
     mons_texture_t *texture;
     mons_stat_t *stat;
+    mons_status_t *status;
     skill_t *skill;
     struct mons *next;
 } mons_t;
@@ -170,6 +199,23 @@ typedef struct {
     sfShader *turn;
 } shader_t;
 
+typedef enum {
+    att_p,
+    att_m,
+    def_p,
+    def_m,
+    spe_p,
+    spe_m,
+
+    status_nbr
+} status_list_t;
+
+typedef struct {
+    sfSprite **sprite;
+    sfTexture **texture;
+    sfText *text;
+} status_t;
+
 typedef struct {
     window_t *window;
     time_elapsed_t *time;
@@ -178,6 +224,7 @@ typedef struct {
     mons_t *p_mons;
     mons_t *e_mons;
     indicator_t *ind;
+    status_t *status;
     sfVector2i mouse_pos;
     sfFont *font;
     shader_t *shader;
@@ -192,7 +239,7 @@ void move_rect(sfIntRect *rect, int offset, int nb_anim);
 void bool_move_rect(sfIntRect *rect, int offset, int nb_anim, bool *boolean);
 
 //DB_ELEMS
-void init_mons_pos(mons_t *mons, sfVector2f pos);
+void init_mons_status(mons_t *elem);
 void init_mons_texture(mons_t *elem, char *buffer, int i);
 void init_mons_stat(mons_t *elem, char *buffer, int i);
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
@@ -207,6 +254,7 @@ void put_in_skill_list(game_t *game, skill_t **skill, char *buffer, int id);
 void destroy_fight(game_t *game);
 void destroy_turn_arrow(arrow_t *arr);
 void destroy_turn_ind(indicator_t *ind);
+void destroy_mons_status(mons_status_t *status);
 void destroy_mons_texture(mons_texture_t *texture);
 void destroy_mons_stat(mons_stat_t *stat);
 void destroy_mons(mons_t *mons);
@@ -217,10 +265,13 @@ void destroy_skill_anim(skill_anim_t *anim);
 void destroy_skill_stat(skill_stat_t *stat);
 void destroy_skill_desc(skill_desc_t *desc);
 void destroy_skill(skill_t *skill);
+void destroy_status_texture(sfTexture **texture);
+void destroy_status_sprite(sfSprite **sprite);
+void destroy_status(status_t *status);
 
 //DRAW_ELEMS
 void draw_fight(game_t *game);
-void draw_single_attak_target(game_t *game);
+void draw_single_attak_target(game_t *game, mons_t *mons);
 void draw_attack_aoe(game_t *game);
 void draw_attak_target(game_t *game);
 void draw_turn_ind(game_t *game);
@@ -228,15 +279,19 @@ void draw_mons_sprites(game_t *game, mons_t *mons);
 void draw_mons(game_t *game, mons_t *mons);
 void draw_skill_desc(skill_t *temp, game_t *game, int x);
 void draw_skill(game_t *game);
+void draw_status_att(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
+void draw_status_def(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
+void draw_status_spe(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
+void draw_status(game_t *game, mons_t *mons);
 
-//GAME_ELEMS
+//FIGHT_ELEMS
 void atb_increase(mons_t *team);
 void atb_reset(game_t *game);
 int check_atb(game_t *game);
 mons_t *get_higher_atb(game_t *game);
 int check_collide(game_t *game, mons_t *mons);
-void atb_calc(game_t *game, mons_t *curr_mons);
-void attack_hit(game_t *game, mons_t *curr_mons);
+void atb_calc(game_t *game, mons_t *target);
+void attack_hit(game_t *game, mons_t *target);
 void attack_activation(game_t *game);
 void cooldown_refresh(mons_t *target);
 void cooldown_reduce(game_t *game);
@@ -245,7 +300,14 @@ mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
 int has_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
+void status_apply(game_t *game, mons_t *target);
+void status_reduce_att(game_t *game);
+void status_reduce_def(game_t *game);
+void status_reduce(game_t *game);
 void turn_loop(game_t *game);
+void check_multi_hit(game_t *game);
+void check_passive(game_t *game);
+void check_turn(game_t *game);
 void update_fight(game_t *game);
 
 //GET_ELEMS
@@ -260,10 +322,14 @@ void init_fight(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
+void init_mons_pos(mons_t *mons, sfVector2f pos);
 void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 void init_shader(game_t *game);
 void init_set(game_t *game);
+void init_status_texture(game_t *game);
+void init_status_sprite(game_t *game);
+void init_status(game_t *game);
 sfText *init_text(game_t *game, char *str, sfColor color);
 
 //SET_ELEMS
@@ -278,6 +344,7 @@ void set_texture_mons(mons_t *mons);
 //PARSER
 int *batoi_arr(char *src);
 char *get_id(char *buffer, int id);
+size_t parser_array(char *buffer, int i);
 size_t parser(char *buffer, char *str, int id);
 
 //INIT_ELEMS

@@ -21,7 +21,7 @@ void set_attack_anim(game_t *game)
     set_attack_anim_pos(game, game->ind->target);
 }
     //if (has_passive(game) == true)
-    //    passive_action(game, mons_list, curr_mons);
+    //    passive_action(game, mons_list, target);
 
 void set_attack_anim_pos(game_t *game, mons_t *target)
 {

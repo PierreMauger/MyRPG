@@ -32,5 +32,6 @@ void update_fight(game_t *game)
     anim_all(game);
     check_multi_hit(game);
     check_passive(game);
+    status_reduce(game);
     check_turn(game);
 }

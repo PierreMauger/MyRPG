@@ -14,4 +14,5 @@ void destroy_fight(game_t *game)
     destroy_mons(game->e_mons);
     destroy_turn_ind(game->ind);
     destroy_shader(game->shader);
+    destroy_status(game->status);
 }

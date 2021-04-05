@@ -12,6 +12,10 @@ void reset_fight(game_t *game)
     for (mons_t *temp = game->p_mons; temp; temp = temp->next) {
         MONS_CURR_ATB(temp) = 0;
         cooldown_refresh(temp);
+        temp->status->att_p = 0;
+        temp->status->att_m = 0;
+        temp->status->def_p = 0;
+        temp->status->def_m = 0;
     }
 }
 
