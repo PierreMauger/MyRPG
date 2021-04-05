@@ -22,4 +22,6 @@ char **bstr_array(char const *file, char separator);
 
 char **badd_array(char **dest, char *src);
 
+void bfree_array(char **src);
+
 #endif // BARRAY_H
