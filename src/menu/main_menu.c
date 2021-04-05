@@ -7,9 +7,10 @@
 
 #include "game.h"
 
-bool start_game(game_t *game) 
+bool start_game(game_t *game, menu_t *menu) 
 {
-    if (sfKeyboard_isKeyPressed(sfKeyG)) {
+    if (sfKeyboard_isKeyPressed(sfKeyF)) {
+        menu->music_playing = true;
         return (true);
     }
     return (false);
@@ -18,9 +19,15 @@ bool start_game(game_t *game)
 void menu_play(game_t *game, menu_t *menu)
 {
     menu->music = sfMusic_createFromFile("src/menu/rpg_music.ogg");
-    if (start_game(game) == false) {
-        //sfMusic_play(menu->music);
+    if (start_game(game, menu) == false && menu->music_playing == false) {
+        menu->music_playing = true;
+        sfMusic_getLoop(menu->music);
+        sfMusic_play(menu->music);
         sfRenderWindow_drawSprite(GET_WINDOW, menu->sprite, NULL);
+    }
+    else {
+        sfMusic_pause(menu->music);
+        sfMusic_destroy(menu->music);
     }
 }
 
@@ -34,5 +41,6 @@ menu_t *main_menu(game_t *game)
     sfSprite_setTexture(menu->sprite, menu->texture, sfTrue);
     sfSprite_setPosition(menu->sprite, menu->pos);
     sfSprite_setTextureRect(menu->sprite, menu->rect);
+    menu->music_playing = false;
     return (menu);
 }

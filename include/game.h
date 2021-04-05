@@ -229,6 +229,7 @@ typedef struct menu_s {
     sfSprite *sprite;
     sfTexture *texture;
     sfMusic *music;
+    bool music_playing;
 }menu_t;
 
 typedef struct {
@@ -250,7 +251,7 @@ typedef struct {
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);
 void menu_play(game_t *game, menu_t *menu);
-bool start_game(game_t *game);
+bool start_game(game_t *game, menu_t *menu);
 
 //ANIM_ELEMS
 void animate(game_t *game);
