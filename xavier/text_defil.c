@@ -81,6 +81,7 @@ void text_defil(char *str, text_t *text, sfRenderWindow *window)
 text_t init_text(text_t text)
 {
     text.index = 0;
+    text.select = 1;
     text.clock = NULL;
     text.save = NULL;
     text.size_font = 60;

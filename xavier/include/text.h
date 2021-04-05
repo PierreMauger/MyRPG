@@ -21,6 +21,7 @@ typedef struct {
     sfClock *clock;
     char *save;
     size_t index;
+    size_t str_index;
     int size_font;
     int delay;
     sfVector2f pos;
