@@ -16,6 +16,7 @@ void main_loop(game_t *game)
             fight_loop(game);
         }
         sfRenderWindow_clear(GET_WINDOW, sfWhite);
+        draw_quest_text(game);
         sfRenderWindow_display(GET_WINDOW);
     }
 }

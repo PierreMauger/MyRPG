@@ -30,7 +30,7 @@ void destroy_mons_stat(mons_stat_t *stat)
 
 void destroy_mons(mons_t *mons)
 {
-   mons_t *temp = NULL;
+    mons_t *temp = NULL;
 
     while (mons != NULL) {
         temp = mons;

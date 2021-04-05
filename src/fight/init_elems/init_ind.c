@@ -20,11 +20,11 @@ void init_turn_ind(game_t *game)
     game->ind = malloc(sizeof(indicator_t));
     init_turn_arrow(game);
     game->ind->damage = sfText_create();
-    sfText_setFont(game->ind->damage, game->font);
+    sfText_setFont(game->ind->damage, game->font_fight);
     sfText_setCharacterSize(game->ind->damage, 75);
     sfText_setColor(game->ind->damage, sfYellow);
     game->ind->att_name = sfText_create();
-    sfText_setFont(game->ind->att_name, game->font);
+    sfText_setFont(game->ind->att_name, game->font_fight);
     sfText_setCharacterSize(game->ind->att_name, 50);
     sfText_setColor(game->ind->att_name, sfWhite);
     game->ind->ptr_mons = NULL;

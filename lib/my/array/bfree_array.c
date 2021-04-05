@@ -15,6 +15,3 @@ void bfree_array(char **src)
         return;
     free(src);
 }
-    // for (int i = 0; i < (int)len_src; i++) {
-    //     free(src[i]);
-    // }

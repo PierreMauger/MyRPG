@@ -67,7 +67,8 @@
 #define DEF_M_IMG "ressources/sprites/def_m.png"
 #define SPE_P_IMG "ressources/sprites/spe_p.png"
 #define SPE_M_IMG "ressources/sprites/spe_m.png"
-#define FONT "ressources/font.ttf"
+#define FONT_TEXT "ressources/absender.ttf"
+#define FONT_FIGHT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
 #define JSON_MONS "ressources/json/mons.json"
@@ -194,6 +195,16 @@ typedef struct {
 } settings_t;
 
 typedef struct {
+    sfRectangleShape *rect;
+    sfText *text;
+    int delay;
+    char *save;
+    size_t index;
+    size_t str_index;
+    int size_font;
+} quest_text_t;
+
+typedef struct {
     sfVector2f final_pos;
     char **start;
     char **end;
@@ -234,9 +245,12 @@ typedef struct {
     status_t *status;
     sfVector2i mouse_pos;
     sfFont *font;
+    sfFont *font_fight;
     shader_t *shader;
     quest_t *quest;
+    quest_text_t *text;
     bool in_fight;
+    bool in_dialog;
 } game_t;
 
 //ANIM_ELEMS
@@ -376,6 +390,7 @@ void destroy_time(time_elapsed_t *time);
 void destroy_window(window_t *window);
 
 void init_quest(game_t *game);
-void destroy_quest(quest_t *quest);
+void draw_quest_text(game_t *game);
+void destroy_quest(quest_t *quest, quest_text_t *quest_text);
 
 #endif
