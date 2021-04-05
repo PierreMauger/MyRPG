@@ -11,15 +11,17 @@
 #include "bstring.h"
 #include "bmemory.h"
 
-size_t barray_len(const char **array);
+size_t barray_len(char **array);
 
 char **binit_array_light(size_t x);
 char **binit_array(size_t x, size_t y);
 
-char **barray_dup(const char **src);
+char **barray_dup(char **src);
 
 char **bstr_array(char const *file, char separator);
 
 char **badd_array(char **dest, char *src);
+
+void bfree_array(char **src);
 
 #endif // BARRAY_H

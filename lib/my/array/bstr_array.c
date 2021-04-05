@@ -29,8 +29,8 @@ char **bstr_array(char const *file, char separator)
 
     if (!file)
         return NULL;
-    x = bcount_line(file, separator);
-    map = bcalloc(sizeof(char *), x + 1);
+    x = bcount_line(file, separator) + 1;
+    map = bcalloc(sizeof(char *), x + 2);
     if (!map)
         return NULL;
     for (int nb_arr = 0; nb_arr < x; nb_arr++) {
@@ -39,5 +39,6 @@ char **bstr_array(char const *file, char separator)
         for (; file[adv + y] == separator && file[adv + y]; y++);
         adv += y;
     }
+    map[x + 1] = bstrndup(file + adv, y);
     return map;
 }

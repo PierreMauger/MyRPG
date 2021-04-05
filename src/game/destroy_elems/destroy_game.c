@@ -9,6 +9,7 @@
 
 void destroy_game(game_t *game)
 {
+    destroy_quest(game->quest);
     destroy_fight(game);
     destroy_time(game->time);
     destroy_window(game->window);

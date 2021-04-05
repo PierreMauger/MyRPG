@@ -72,6 +72,7 @@
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
+#define JSON_QUEST "ressources/json/quest.json"
 #define RENDER_SKILL game->shader->render_skill
 #define RENDER_TURN game->shader->render_turn
 
@@ -193,6 +194,12 @@ typedef struct {
 } settings_t;
 
 typedef struct {
+    sfVector2f final_pos;
+    char **start;
+    char **end;
+} quest_t;
+
+typedef struct {
     sfRenderStates render_skill;
     sfRenderStates render_turn;
     sfShader *skill;
@@ -236,6 +243,7 @@ typedef struct {
     sfVector2i mouse_pos;
     sfFont *font;
     shader_t *shader;
+    quest_t *quest;
     bool in_fight;
 } game_t;
 
@@ -357,6 +365,7 @@ void set_texture_mons(mons_t *mons);
 //PARSER
 int *batoi_arr(char *src);
 char *get_id(char *buffer, int id);
+size_t parser_array(char *buffer, int i);
 size_t parser(char *buffer, char *str, int id);
 
 //INIT_ELEMS
@@ -378,5 +387,8 @@ void event_loop(game_t *game);
 void destroy_game(game_t *game);
 void destroy_time(time_elapsed_t *time);
 void destroy_window(window_t *window);
+
+void init_quest(game_t *game);
+void destroy_quest(quest_t *quest);
 
 #endif

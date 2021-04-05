@@ -7,7 +7,7 @@
 
 #include "barray.h"
 
-char **barray_dup(const char **src)
+char **barray_dup(char **src)
 {
     size_t src_len = barray_len(src);
     char **result = bcalloc(sizeof(char *), src_len + 1);
