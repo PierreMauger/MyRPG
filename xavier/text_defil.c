@@ -40,7 +40,7 @@ static void display_text(char *str, sfRenderWindow *win, text_t *text, char *t)
     while (str[a] != '\0') {
         c = str[a], sfText_setString(sen, &c), sfText_setPosition(sen, pos);
         sfRenderWindow_drawText(win, sen, NULL), a++;
-        if (pos.x >= 600 && pos.y < stock.y + 55 * 2)
+        if (pos.x >= 600)
             a = spl_txt(a, t, &pos, sen), pos.x = stock.x + 10;
         else pos.x += 32;
         sfRenderWindow_drawText(win, sen, NULL);
@@ -56,13 +56,7 @@ static int get_text(char *str, text_t *text, sfRenderWindow *window)
         text->save = malloc(sizeof(char) * (my_strlen(str) + 1));
         text->save[0] = '\0';
     }
-    if (text->index >= my_strlen(str)) {
-        if (sfClock_getElapsedTime(text->clock).microseconds >= 1000000) {
-            text->clock = NULL, free(text->save);
-            text->save = NULL, text->index = 0;
-            return (0);
-        }
-    }
+    if (text->index >= my_strlen(str)) {}
     else if (sfClock_getElapsedTime(text->clock).microseconds >= text->delay)
         sfClock_restart(text->clock), text->index = text->index + 1;
     while (a != text->index) {
