@@ -344,6 +344,7 @@ void set_texture_mons(mons_t *mons);
 //PARSER
 int *batoi_arr(char *src);
 char *get_id(char *buffer, int id);
+size_t parser_array(char *buffer, int i);
 size_t parser(char *buffer, char *str, int id);
 
 //INIT_ELEMS

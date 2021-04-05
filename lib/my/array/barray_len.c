@@ -7,7 +7,7 @@
 
 #include "barray.h"
 
-size_t barray_len(const char **array)
+size_t barray_len(char **array)
 {
     size_t result = 0;
 

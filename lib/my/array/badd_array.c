@@ -9,7 +9,7 @@
 
 char **badd_array(char **dest, char *src)
 {
-    size_t len_dest = barray_len((const char **)dest);
+    size_t len_dest = barray_len((char **)dest);
     char **result = NULL;
 
     if (!dest || !src)
