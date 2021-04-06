@@ -15,13 +15,15 @@ static void init_quest_text(game_t *game)
     game->text->str_index = 0;
     game->text->size_font = 60;
     game->text->save = NULL;
+    game->text->size = (sfVector2f){1200, 200};
+    game->text->pos = (sfVector2f){120, 550};
     game->text->text = sfText_create();
     sfText_setFont(game->text->text, game->font_fight);
     sfText_setCharacterSize(game->text->text, 20);
     sfText_setColor(game->text->text, sfWhite);
     game->text->rect = sfRectangleShape_create();
-    sfRectangleShape_setSize(game->text->rect, (sfVector2f){600, 200});
-    sfRectangleShape_setPosition(game->text->rect, (sfVector2f){180, 300});
+    sfRectangleShape_setSize(game->text->rect, game->text->size);
+    sfRectangleShape_setPosition(game->text->rect, game->text->pos);
     sfRectangleShape_setFillColor(game->text->rect,
     sfColor_fromRGBA(47, 27, 12, 220));
 }

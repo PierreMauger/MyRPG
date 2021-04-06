@@ -202,6 +202,8 @@ typedef struct {
     size_t index;
     size_t str_index;
     int size_font;
+    sfVector2f pos;
+    sfVector2f size;
 } quest_text_t;
 
 typedef struct {
@@ -234,14 +236,14 @@ typedef struct {
     sfText *text;
 } status_t;
 
-typedef struct menu_s {
+typedef struct {
     sfVector2f pos;
     sfIntRect rect;
     sfSprite *sprite;
     sfTexture *texture;
     sfMusic *music;
     bool music_playing;
-}menu_t;
+} menu_t;
 
 typedef struct {
     window_t *window;

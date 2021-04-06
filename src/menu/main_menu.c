@@ -38,10 +38,11 @@ menu_t *main_menu(game_t *game)
     menu->pos = (sfVector2f){0, 0};
     menu->rect = (sfIntRect){0, 0, 1920, 1080};
     menu->sprite = sfSprite_create();
-    menu->texture = sfTexture_createFromFile("ressources/menu/menu_test.jpg", NULL);
+    menu->texture = sfTexture_createFromFile(
+    "ressources/menu/menu_test.jpg", NULL);
     sfSprite_setTexture(menu->sprite, menu->texture, sfTrue);
     sfSprite_setPosition(menu->sprite, menu->pos);
     sfSprite_setTextureRect(menu->sprite, menu->rect);
     menu->music_playing = false;
-    return (menu);
+    return menu;
 }

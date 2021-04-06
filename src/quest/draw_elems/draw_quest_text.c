@@ -28,20 +28,20 @@ static int spl_txt(int a, char *str, sfVector2f *pos, sfText *sen)
 
 static void display_text(char *str, game_t *game, char *t)
 {
-    sfVector2f pos = (sfVector2f){180, 300};
-    sfVector2f stock = pos;
+    sfVector2f pos = game->text->pos;
     char c;
 
-    pos.x += 10, sfText_setFont(game->text->text, game->font);
-    sfText_setCharacterSize(game->text->text, 60);
+    pos.x += 10;
+    sfText_setFont(game->text->text, game->font);
+    sfText_setCharacterSize(game->text->text, game->text->size_font);
     for (int a = 0; str[a] != '\0'; a++) {
         c = str[a];
         sfText_setString(game->text->text, &c);
         sfText_setPosition(game->text->text, pos);
         sfRenderWindow_drawText(GET_WINDOW, game->text->text, NULL);
-        if (pos.x >= 600) {
+        if (pos.x >= game->text->size.x) {
             a = spl_txt(a, t, &pos, game->text->text);
-            pos.x = stock.x + 10;
+            pos.x = game->text->pos.x + 10;
         }
         else
             pos.x += 32;

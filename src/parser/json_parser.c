@@ -39,12 +39,13 @@ char *get_id(char *buffer, int id)
 
 char **clean_tab(char **tab)
 {
-    int j = 0;
+    int j = 1;
 
     for (int i = 0; i < (int)barray_len(tab); i++) {
         tab[i]++;
-        j = 1;
-        for (; tab[i][j] != '"'; j++);
+        if (i != 0)
+            tab[i]++;
+        for (j = 1; tab[i][j] != '"'; j++);
         tab[i][j] = '\0';
     }
     return tab;
