@@ -1,0 +1,51 @@
+[
+    {
+        "type": "bush",
+        "hor.x": 580,
+        "hor.y": 660,
+        "ver.x": 155,
+        "ver.y": 250,
+    },
+    {
+        "type": "bush",
+        "hor.x": 450,
+        "hor.y": 510,
+        "ver.x": 305,
+        "ver.y": 380,
+    },
+    {
+        "type": "water",
+        "hor.x": -2,
+        "hor.y": 660,
+        "ver.x": 60,
+        "ver.y": 150,
+    },
+    {
+        "type": "water",
+        "hor.x": 580,
+        "hor.y": 660,
+        "ver.x": -2,
+        "ver.y": 80,
+    },
+    {
+        "type": "forest",
+        "hor.x": 900,
+        "hor.y": 1500,
+        "ver.x": 280,
+        "ver.y": 650,
+    },
+    {
+        "type": "forest",
+        "hor.x": 550,
+        "hor.y": 1500,
+        "ver.x": 660,
+        "ver.y": 750,
+    },
+    {
+        "type": "forest",
+        "hor.x": 640,
+        "hor.y": 876,
+        "ver.x": 280,
+        "ver.y": 660,
+    },
+]
