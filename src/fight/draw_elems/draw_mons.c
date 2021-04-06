@@ -7,18 +7,20 @@
 
 #include "game.h"
 
+void draw_single_mons(game_t *game, mons_t *mons, sfRenderStates *shader)
+{
+    sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE(mons), shader);
+    sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE_COLOR(mons), shader);
+}
+
 void draw_mons_sprites(game_t *game, mons_t *mons)
 {
-    if (mons == game->ind->ptr_mons) {
-        sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE(mons),
-        &RENDER_TURN);
-        sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE_COLOR(mons),
-        &RENDER_TURN);
-    }
-    else {
-        sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE(mons), NULL);
-        sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE_COLOR(mons), NULL);
-    }
+    if (mons == game->ind->ptr_mons)
+        draw_single_mons(game, mons, &RENDER_TURN);
+    else if (mons == game->ind->target)
+        draw_single_mons(game, mons, &RENDER_TURN);
+    else
+        draw_single_mons(game, mons, NULL);
 }
 
 void draw_mons(game_t *game, mons_t *head)
