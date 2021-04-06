@@ -51,7 +51,7 @@ static void display_text(char *str, game_t *game, char *t)
 
 static void get_text(char *str, game_t *game)
 {
-    game->text->save = malloc(sizeof(char) * (bstrlen(str) + 1));
+    game->text->save = malloc(sizeof(char) * (bstrlen(str) + 2));
     if (!(game->text->index >= bstrlen(str)))
         if (sfClock_getElapsedTime(game->time->clock).microseconds >=
         game->text->delay) {

@@ -43,7 +43,8 @@ char **clean_tab(char **tab)
 
     for (int i = 0; i < (int)barray_len(tab); i++) {
         tab[i]++;
-        for (j = 0; tab[i][j] != '"'; j++);
+        j = 1;
+        for (; tab[i][j] != '"'; j++);
         tab[i][j] = '\0';
     }
     return tab;
@@ -54,7 +55,7 @@ size_t parser_array(char *buffer, int i)
     if (buffer[0] != '"')
         return (size_t)batoi_arr(bstrndup(buffer, i));
     else
-        return (size_t)clean_tab(bstr_array(bstrndup(buffer, i), ' '));
+        return (size_t)clean_tab(bstr_array(bstrndup(buffer, i), ','));
 }
 
 size_t parser(char *buffer, char *str, int id)
