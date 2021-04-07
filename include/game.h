@@ -71,11 +71,13 @@
 #define FONT_FIGHT "ressources/font.ttf"
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
+#define TARGET_SHADER "ressources/shaders/target_shader.frag"
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
 #define JSON_QUEST "ressources/json/quest.json"
 #define RENDER_SKILL game->shader->render_skill
 #define RENDER_TURN game->shader->render_turn
+#define RENDER_TARGET game->shader->render_target
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 
@@ -215,8 +217,10 @@ typedef struct {
 typedef struct {
     sfRenderStates render_skill;
     sfRenderStates render_turn;
+    sfRenderStates render_target;
     sfShader *skill;
     sfShader *turn;
+    sfShader *target;
 } shader_t;
 
 typedef enum {

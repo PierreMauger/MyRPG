@@ -18,7 +18,7 @@ void draw_mons_sprites(game_t *game, mons_t *mons)
     if (mons == game->ind->ptr_mons)
         draw_single_mons(game, mons, &RENDER_TURN);
     else if (mons == game->ind->target)
-        draw_single_mons(game, mons, &RENDER_TURN);
+        draw_single_mons(game, mons, &RENDER_TARGET);
     else
         draw_single_mons(game, mons, NULL);
 }

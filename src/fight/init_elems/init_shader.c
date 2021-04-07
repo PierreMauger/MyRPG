@@ -7,21 +7,24 @@
 
 #include "game.h"
 
+static sfRenderStates init_renderstate(sfShader *shader)
+{
+    sfRenderStates render = (sfRenderStates){
+        .shader = shader,
+        .blendMode = sfBlendAlpha,
+        .transform = sfTransform_Identity,
+        .texture = NULL,
+    };
+    return render;
+}
+
 void init_shader(game_t *game)
 {
     game->shader = malloc(sizeof(shader_t));
     game->shader->skill = sfShader_createFromFile(NULL, NULL, SKILL_SHADER);
     game->shader->turn = sfShader_createFromFile(NULL, NULL, TURN_SHADER);
-    RENDER_TURN = (sfRenderStates){
-        .shader = game->shader->turn,
-        .blendMode = sfBlendAlpha,
-        .transform = sfTransform_Identity,
-        .texture = NULL,
-    };
-    RENDER_SKILL = (sfRenderStates){
-        .shader = game->shader->skill,
-        .blendMode = sfBlendAlpha,
-        .transform = sfTransform_Identity,
-        .texture = NULL,
-    };
+    game->shader->target = sfShader_createFromFile(NULL, NULL, TARGET_SHADER);
+    RENDER_SKILL = init_renderstate(game->shader->skill);
+    RENDER_TURN = init_renderstate(game->shader->turn);
+    RENDER_TARGET = init_renderstate(game->shader->target);
 }
