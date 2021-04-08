@@ -7,7 +7,7 @@
 
 #include "game.h"
 
-static sfRenderStates init_renderstate(sfShader *shader)
+sfRenderStates init_renderstate(sfShader *shader)
 {
     sfRenderStates render = (sfRenderStates){
         .shader = shader,

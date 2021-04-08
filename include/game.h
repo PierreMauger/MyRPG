@@ -367,6 +367,7 @@ void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
 void init_mons_pos(mons_t *mons, sfVector2f pos);
 void init_all_pos(game_t *game);
 void init_mons(game_t *game);
+sfRenderStates init_renderstate(sfShader *shader);
 void init_shader(game_t *game);
 void init_set(game_t *game);
 void init_status_texture(game_t *game);
