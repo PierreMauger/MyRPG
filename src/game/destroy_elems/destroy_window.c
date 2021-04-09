@@ -9,7 +9,6 @@
 
 void destroy_window(window_t *window)
 {
-    //sfTexture_destroy(window->texture);
     sfSprite_destroy(window->sprite);
     sfRenderWindow_destroy(window->window);
     sfRenderTexture_destroy(window->buffer);

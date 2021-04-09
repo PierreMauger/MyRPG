@@ -184,7 +184,7 @@ typedef struct {
     sfRenderWindow *window;
     sfVector2f w_size;
     sfRenderTexture *buffer;
-    sfTexture *texture;
+    sfTexture *tex;
     sfSprite *sprite;
 } window_t;
 

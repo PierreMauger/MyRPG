@@ -18,8 +18,8 @@ void draw_fight(game_t *game)
         draw_skill(game);
     }
     draw_attak_target(game);
-    game->window->texture = (sfTexture *)sfRenderTexture_getTexture(GET_BUFFER);
-    sfSprite_setTexture(game->window->sprite, game->window->texture, sfFalse);
+    game->window->tex = (sfTexture *)sfRenderTexture_getTexture(GET_BUFFER);
+    sfSprite_setTexture(game->window->sprite, game->window->tex, sfFalse);
     sfRenderWindow_drawSprite(GET_WINDOW, game->window->sprite, &RENDER_SNOW);
     sfRenderTexture_display(GET_BUFFER);
     sfRenderWindow_display(GET_WINDOW);

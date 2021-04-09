@@ -37,7 +37,8 @@ void draw_skill(game_t *game)
             sfRenderTexture_drawSprite(GET_BUFFER, temp->texture->sprite,
             &RENDER_SKILL);
         else
-            sfRenderTexture_drawSprite(GET_BUFFER, temp->texture->sprite, NULL);
+            sfRenderTexture_drawSprite(GET_BUFFER, temp->texture->sprite,
+            NULL);
         draw_skill_desc(temp, game, x);
         x += 100;
     }
