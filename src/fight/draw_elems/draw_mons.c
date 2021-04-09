@@ -9,8 +9,8 @@
 
 void draw_single_mons(game_t *game, mons_t *mons, sfRenderStates *shader)
 {
-    sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE(mons), shader);
-    sfRenderWindow_drawSprite(GET_WINDOW, MONS_SPRITE_COLOR(mons), shader);
+    sfRenderTexture_drawSprite(GET_BUFFER, MONS_SPRITE(mons), shader);
+    sfRenderTexture_drawSprite(GET_BUFFER, MONS_SPRITE_COLOR(mons), shader);
 }
 
 void draw_attack_shader(game_t *game)
@@ -43,8 +43,8 @@ void draw_mons(game_t *game, mons_t *head)
         set_texture_mons(temp);
         draw_mons_sprites(game, temp);
         draw_status(game, temp);
-        sfRenderWindow_drawRectangleShape(GET_WINDOW, MONS_HP(temp), NULL);
-        sfRenderWindow_drawRectangleShape(GET_WINDOW, temp->stat->atb, NULL);
+        sfRenderTexture_drawRectangleShape(GET_BUFFER, MONS_HP(temp), NULL);
+        sfRenderTexture_drawRectangleShape(GET_BUFFER, temp->stat->atb, NULL);
     }
     if (game->ind->ptr_skill && game->ind->ptr_skill->stat->aoe[CURR_ATT])
         draw_attack_shader(game);

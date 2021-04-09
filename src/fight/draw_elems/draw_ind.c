@@ -18,6 +18,6 @@ void draw_turn_ind(game_t *game)
         sfSprite_setTexture(game->ind->arr->sprite, game->ind->arr->texture,
         sfTrue);
         sfSprite_setTextureRect(game->ind->arr->sprite, game->ind->arr->rect);
-        sfRenderWindow_drawSprite(GET_WINDOW, game->ind->arr->sprite, NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, game->ind->arr->sprite, NULL);
     }
 }

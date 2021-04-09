@@ -15,11 +15,11 @@ void draw_skill_desc(skill_t *temp, game_t *game, int x)
         sfText_setPosition(temp->desc->name_text, (sfVector2f){x + 40, 620});
         sfText_setString(temp->desc->cd_text, bitoa(temp->stat->act_cd));
         sfSprite_setPosition(temp->desc->sprite, (sfVector2f){x, 700});
-        sfRenderWindow_drawSprite(GET_WINDOW, temp->desc->sprite, NULL);
-        sfRenderWindow_drawText(GET_WINDOW, temp->desc->text, NULL);
-        sfRenderWindow_drawText(GET_WINDOW, temp->desc->name_text, NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, temp->desc->sprite, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, temp->desc->text, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, temp->desc->name_text, NULL);
         if (temp->stat->act_cd != 0)
-            sfRenderWindow_drawText(GET_WINDOW, temp->desc->cd_text, NULL);
+            sfRenderTexture_drawText(GET_BUFFER, temp->desc->cd_text, NULL);
     }
 }
 
@@ -34,10 +34,10 @@ void draw_skill(game_t *game)
         else
             sfSprite_setColor(temp->texture->sprite, sfWhite);
         if (temp == game->ind->ptr_skill)
-            sfRenderWindow_drawSprite(GET_WINDOW, temp->texture->sprite,
+            sfRenderTexture_drawSprite(GET_BUFFER, temp->texture->sprite,
             &RENDER_SKILL);
         else
-            sfRenderWindow_drawSprite(GET_WINDOW, temp->texture->sprite, NULL);
+            sfRenderTexture_drawSprite(GET_BUFFER, temp->texture->sprite, NULL);
         draw_skill_desc(temp, game, x);
         x += 100;
     }

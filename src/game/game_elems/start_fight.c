@@ -16,6 +16,8 @@ void reset_fight(game_t *game)
         temp->status->att_m = 0;
         temp->status->def_p = 0;
         temp->status->def_m = 0;
+        temp->status->spe_p = 0;
+        temp->status->spe_m = 0;
     }
 }
 
@@ -31,4 +33,5 @@ void start_fight(game_t *game)
     init_all_pos(game);
     reset_fight(game);
     free(buffer);
+    sfRenderTexture_display(GET_BUFFER);
 }

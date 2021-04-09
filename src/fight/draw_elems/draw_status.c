@@ -12,21 +12,21 @@ void draw_status_att(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos)
     if (mons->status->att_p) {
         sfSprite_setPosition(STATUS_SPRITE[att_p], (sfVector2f){pos.x - 50 +
         *temp_x, pos.y + 50});
-        sfRenderWindow_drawSprite(GET_WINDOW, STATUS_SPRITE[att_p], NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, STATUS_SPRITE[att_p], NULL);
         sfText_setPosition(game->status->text, (sfVector2f){pos.x - 35 +
         *temp_x, pos.y + 75});
         sfText_setString(game->status->text, bitoa(mons->status->att_p));
-        sfRenderWindow_drawText(GET_WINDOW, game->status->text, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, game->status->text, NULL);
         *temp_x += 30;
     }
     if (mons->status->att_m) {
         sfSprite_setPosition(STATUS_SPRITE[att_m], (sfVector2f){pos.x - 50 +
         *temp_x, pos.y + 50});
-        sfRenderWindow_drawSprite(GET_WINDOW, STATUS_SPRITE[att_m], NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, STATUS_SPRITE[att_m], NULL);
         sfText_setPosition(game->status->text, (sfVector2f){pos.x - 35 +
         *temp_x, pos.y + 75});
         sfText_setString(game->status->text, bitoa(mons->status->att_m));
-        sfRenderWindow_drawText(GET_WINDOW, game->status->text, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, game->status->text, NULL);
         *temp_x += 30;
     }
 }
@@ -36,21 +36,21 @@ void draw_status_def(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos)
     if (mons->status->def_p) {
         sfSprite_setPosition(STATUS_SPRITE[def_p], (sfVector2f){pos.x - 50 +
         *temp_x, pos.y + 50});
-        sfRenderWindow_drawSprite(GET_WINDOW, STATUS_SPRITE[def_p], NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, STATUS_SPRITE[def_p], NULL);
         sfText_setPosition(game->status->text, (sfVector2f){pos.x - 35 +
         *temp_x, pos.y + 75});
         sfText_setString(game->status->text, bitoa(mons->status->def_p));
-        sfRenderWindow_drawText(GET_WINDOW, game->status->text, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, game->status->text, NULL);
         *temp_x += 30;
     }
     if (mons->status->def_m) {
         sfSprite_setPosition(STATUS_SPRITE[def_m], (sfVector2f){pos.x - 50 +
         *temp_x, pos.y + 50});
-        sfRenderWindow_drawSprite(GET_WINDOW, STATUS_SPRITE[def_m], NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, STATUS_SPRITE[def_m], NULL);
         sfText_setPosition(game->status->text, (sfVector2f){pos.x - 35 +
         *temp_x, pos.y + 75});
         sfText_setString(game->status->text, bitoa(mons->status->def_m));
-        sfRenderWindow_drawText(GET_WINDOW, game->status->text, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, game->status->text, NULL);
         *temp_x += 30;
     }
 }
@@ -60,21 +60,21 @@ void draw_status_spe(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos)
     if (mons->status->spe_p) {
         sfSprite_setPosition(STATUS_SPRITE[spe_p], (sfVector2f){pos.x - 50 +
         *temp_x, pos.y + 50});
-        sfRenderWindow_drawSprite(GET_WINDOW, STATUS_SPRITE[spe_p], NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, STATUS_SPRITE[spe_p], NULL);
         sfText_setPosition(game->status->text, (sfVector2f){pos.x - 35 +
         *temp_x, pos.y + 75});
         sfText_setString(game->status->text, bitoa(mons->status->spe_p));
-        sfRenderWindow_drawText(GET_WINDOW, game->status->text, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, game->status->text, NULL);
         *temp_x += 30;
     }
     if (mons->status->spe_m) {
         sfSprite_setPosition(STATUS_SPRITE[spe_m], (sfVector2f){pos.x - 50 +
         *temp_x, pos.y + 50});
-        sfRenderWindow_drawSprite(GET_WINDOW, STATUS_SPRITE[spe_m], NULL);
+        sfRenderTexture_drawSprite(GET_BUFFER, STATUS_SPRITE[spe_m], NULL);
         sfText_setPosition(game->status->text, (sfVector2f){pos.x - 35 +
         *temp_x, pos.y + 75});
         sfText_setString(game->status->text, bitoa(mons->status->spe_m));
-        sfRenderWindow_drawText(GET_WINDOW, game->status->text, NULL);
+        sfRenderTexture_drawText(GET_BUFFER, game->status->text, NULL);
         *temp_x += 30;
     }
 }

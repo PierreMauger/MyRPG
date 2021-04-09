@@ -42,6 +42,7 @@
 #define PTR_MONS_RECT game->ind->ptr_mons->texture->rect
 
 #define GET_WINDOW game->window->window
+#define GET_BUFFER game->window->buffer
 #define GET_CLOCK game->time->clock
 #define GET_SECONDS game->time->seconds
 #define GET_TOTAL_TIME game->time->total_time
@@ -72,12 +73,14 @@
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
 #define TARGET_SHADER "ressources/shaders/target_shader.frag"
+#define SNOW_SHADER "ressources/shaders/snow_shader.frag"
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
 #define JSON_QUEST "ressources/json/quest.json"
 #define RENDER_SKILL game->shader->render_skill
 #define RENDER_TURN game->shader->render_turn
 #define RENDER_TARGET game->shader->render_target
+#define RENDER_SNOW game->shader->render_snow
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 
@@ -221,9 +224,11 @@ typedef struct {
     sfRenderStates render_skill;
     sfRenderStates render_turn;
     sfRenderStates render_target;
+    sfRenderStates render_snow;
     sfShader *skill;
     sfShader *turn;
     sfShader *target;
+    sfShader *snow;
 } shader_t;
 
 typedef enum {
