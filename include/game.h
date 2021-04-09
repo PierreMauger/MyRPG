@@ -180,6 +180,9 @@ typedef struct {
 typedef struct {
     sfRenderWindow *window;
     sfVector2f w_size;
+    sfRenderTexture *buffer;
+    sfTexture *texture;
+    sfSprite *sprite;
 } window_t;
 
 typedef struct {
@@ -252,16 +255,16 @@ typedef struct {
 typedef struct {
     window_t *window;
     time_elapsed_t *time;
-    settings_t *set;
     sfEvent event;
+    settings_t *set;
     mons_t *p_mons;
     mons_t *e_mons;
     indicator_t *ind;
     status_t *status;
+    shader_t *shader;
     sfVector2i mouse_pos;
     sfFont *font;
     sfFont *font_fight;
-    shader_t *shader;
     quest_t *quest;
     quest_text_t *text;
     bool in_fight;

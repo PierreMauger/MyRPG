@@ -23,4 +23,8 @@ void init_window(game_t *game)
     game->window->w_size = (sfVector2f){1440, 810};
     GET_WINDOW = create_window(game->window->w_size.x,
     game->window->w_size.y);
+    game->window->buffer = sfRenderTexture_create(game->window->w_size.x,
+    game->window->w_size.y, sfFalse);
+    game->window->texture = NULL;
+    game->window->sprite = sfSprite_create();
 }
