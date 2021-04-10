@@ -18,6 +18,8 @@
 #include <SFML/Audio.h>
 
 #define MONS_SPEED(elem) elem->stat->speed
+#define MONS_ATT(elem) elem->stat->att
+#define MONS_DEF(elem) elem->stat->def
 #define MONS_MAX_HP(elem) elem->stat->max_hp
 #define MONS_CURR_HP(elem) elem->stat->curr_hp
 #define MONS_CURR_ATB(elem) elem->stat->curr_atb
@@ -27,7 +29,6 @@
 #define MONS_WIDTH(elem) elem->texture->rect.width
 #define MONS_HEIGHT(elem) elem->texture->rect.height
 #define MONS_SPRITE(elem) elem->texture->sprite
-#define MONS_SPRITE_COLOR(elem) elem->texture->sprite_color
 
 #define PTR_SKILL_ANIM_SPRITE game->ind->ptr_skill->anim->sprite
 #define PTR_SKILL_ANIM_TEX game->ind->ptr_skill->anim->texture
@@ -59,6 +60,8 @@
 (bool)elem->status->def_m * 0.5))
 #define GET_SPE(elem) (elem->stat->speed * (1 + (bool)elem->status->spe_p * 0.5\
 - (bool)elem->status->spe_m * 0.5))
+
+#define BAR_SIZE (sfVector2f){100, 10}
 
 #define ANIM_TIME 0.3
 #define GRASS_IMG "ressources/sprites/grass.png"
@@ -129,8 +132,6 @@ typedef struct skill {
 typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
-    sfTexture *texture_color;
-    sfSprite *sprite_color;
     sfIntRect rect;
     int nb_anim;
 } mons_texture_t;
@@ -403,6 +404,7 @@ void init_game(game_t *game);
 void init_time(game_t *game);
 sfRenderWindow *create_window(int width, int height);
 void init_window(game_t *game);
+sfRectangleShape *init_rectangle(sfVector2f size, sfColor color, int center_x);
 
 //GAME_ELEMS
 void main_loop(game_t *game);

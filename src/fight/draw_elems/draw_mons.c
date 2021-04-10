@@ -10,7 +10,6 @@
 void draw_single_mons(game_t *game, mons_t *mons, sfRenderStates *shader)
 {
     sfRenderTexture_drawSprite(GET_BUFFER, MONS_SPRITE(mons), shader);
-    sfRenderTexture_drawSprite(GET_BUFFER, MONS_SPRITE_COLOR(mons), shader);
 }
 
 void draw_attack_shader(game_t *game)

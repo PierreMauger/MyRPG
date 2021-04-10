@@ -21,7 +21,6 @@ void init_mons_status(mons_t *elem)
 void init_mons_texture(mons_t *elem, char *buffer, int id)
 {
     char *img = (char *)parser(buffer, "img", id);
-    char *img_color = (char *)parser(buffer, "img_color", id);
 
     elem->texture = malloc(sizeof(mons_texture_t));
     elem->texture->rect = (sfIntRect){0, 0, (int)parser(buffer, "width", id),
@@ -29,35 +28,22 @@ void init_mons_texture(mons_t *elem, char *buffer, int id)
     elem->texture->nb_anim = (int)parser(buffer, "nb_anim", id);
     elem->texture->texture = sfTexture_createFromFile(img, NULL);
     MONS_SPRITE(elem) = sfSprite_create();
-    elem->texture->texture_color = sfTexture_createFromFile(img_color, NULL);
-    MONS_SPRITE_COLOR(elem) = sfSprite_create();
     sfSprite_setOrigin(MONS_SPRITE(elem),
     (sfVector2f){MONS_WIDTH(elem) / 2, MONS_HEIGHT(elem)});
-    sfSprite_setOrigin(MONS_SPRITE_COLOR(elem),
-    (sfVector2f){MONS_WIDTH(elem) / 2, MONS_HEIGHT(elem)});
     free(img);
-    free(img_color);
 }
 
 void init_mons_stat(mons_t *elem, char *buffer, int id)
 {
     elem->stat = malloc(sizeof(mons_stat_t));
     MONS_MAX_HP(elem) = (int)parser(buffer, "health", id);
-    elem->stat->att = (float)parser(buffer, "att", id);
-    elem->stat->def = (float)parser(buffer, "def", id);
-    MONS_CURR_HP(elem) = MONS_MAX_HP(elem);
-    MONS_HP(elem) = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(MONS_HP(elem),
-    (sfVector2f){MONS_WIDTH(elem) / 2 + 50, 0});
-    sfRectangleShape_setSize(MONS_HP(elem), (sfVector2f){100, 10});
-    sfRectangleShape_setFillColor(MONS_HP(elem), sfGreen);
+    MONS_ATT(elem) = (float)parser(buffer, "att", id);
+    MONS_DEF(elem) = (float)parser(buffer, "def", id);
     MONS_SPEED(elem) = (int)parser(buffer, "speed", id);
+    MONS_CURR_HP(elem) = MONS_MAX_HP(elem);
     MONS_CURR_ATB(elem) = 0;
-    elem->stat->atb = sfRectangleShape_create();
-    sfRectangleShape_setOrigin(elem->stat->atb,
-    (sfVector2f){MONS_WIDTH(elem) / 2 + 50, 0});
-    sfRectangleShape_setSize(elem->stat->atb, (sfVector2f){0, 10});
-    sfRectangleShape_setFillColor(elem->stat->atb, sfCyan);
+    MONS_HP(elem) = init_rectangle(BAR_SIZE, sfGreen, MONS_WIDTH(elem));
+    MONS_ATB(elem) = init_rectangle(BAR_SIZE, sfCyan, MONS_WIDTH(elem));
 }
 
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id)

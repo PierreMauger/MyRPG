@@ -16,8 +16,6 @@ void destroy_mons_texture(mons_texture_t *texture)
 {
     sfTexture_destroy(texture->texture);
     sfSprite_destroy(texture->sprite);
-    sfTexture_destroy(texture->texture_color);
-    sfSprite_destroy(texture->sprite_color);
     free(texture);
 }
 

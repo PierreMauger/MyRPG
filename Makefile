@@ -49,6 +49,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/game/init_elems/init_game.c				\
 				src/game/init_elems/init_time.c				\
 				src/game/init_elems/init_window.c			\
+				src/game/init_elems/init_rectangle.c		\
 				src/game/game_elems/main_loop.c				\
 				src/game/game_elems/start_fight.c			\
 				src/game/get_elems/get_event.c				\
