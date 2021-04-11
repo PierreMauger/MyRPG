@@ -277,6 +277,18 @@ typedef struct {
     bool in_dialog;
 } game_t;
 
+typedef struct game_object {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+    sfIntRect rect;
+} game_object_t;
+
+typedef struct list {
+    game_object_t *data;
+    struct list *next;
+} list_t;
+
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);
 void menu_play(game_t *game, menu_t *menu);
