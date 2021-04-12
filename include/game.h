@@ -277,15 +277,21 @@ typedef struct {
     bool in_dialog;
 } game_t;
 
-typedef struct game_object {
+typedef struct item {
     sfSprite *sprite;
     sfTexture *texture;
     sfVector2f pos;
     sfIntRect rect;
-} game_object_t;
+    bool is_in_inventory;
+    char *name;
+    char *description;
+    int dmg_buff;
+    int def_buff;
+    int speed_buff;
+} item_t;
 
 typedef struct list {
-    game_object_t *data;
+    item_t *data;
     struct list *next;
 } list_t;
 

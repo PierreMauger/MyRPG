@@ -8,16 +8,16 @@
 #include "blib.h"
 #include "game.h"
 
-void draw_list(sfRenderWindow *w, list_t *ennemies)
+void draw_list(sfRenderWindow *w, list_t *items)
 {
-    list_t *temp = ennemies;
+    list_t *temp = items;
     while (temp != NULL) {
         sfRenderWindow_drawSprite(w, temp->data->sprite, NULL);
         temp = temp->next;
     }
 }
 
-void list_push(list_t **head, game_object_t *data)
+void list_push(list_t **head, item_t *data)
 {
     list_t *node = malloc(sizeof(list_t));
 
@@ -28,7 +28,7 @@ void list_push(list_t **head, game_object_t *data)
     (*head) = node;
 }
 
-void list_stack(list_t **head, game_object_t *data)
+void list_stack(list_t **head, item_t *data)
 {
     list_t *node = malloc(sizeof(list_t));
     list_t *temp = (*head);
