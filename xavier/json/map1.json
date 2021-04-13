@@ -4,7 +4,7 @@
         "hor.x": 580,
         "hor.y": 660,
         "ver.x": 155,
-        "ver.y": 250,
+        "ver.y": 240,
     },
     {
         "type": "bush",
@@ -47,5 +47,19 @@
         "hor.y": 876,
         "ver.x": 280,
         "ver.y": 660,
+    },
+    {
+        "type": "backmap",
+        "hor.x": -10,
+        "hor.y": 0,
+        "ver.x": 240,
+        "ver.y": 260,
+    },
+    {
+        "type": "nextmap",
+        "hor.x": 1360,
+        "hor.y": 1380,
+        "ver.x": 240,
+        "ver.y": 260,
     },
 ]

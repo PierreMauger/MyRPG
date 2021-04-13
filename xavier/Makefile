@@ -7,6 +7,9 @@
 
 SRCS =	map_main.c \
 		obstacle.c \
+		free.c \
+		change_map.c \
+		display_map_anim.c \
 
 OBJS = $(SRCS:.c=.o)
 

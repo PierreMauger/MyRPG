@@ -15,7 +15,7 @@ int ch_move(sfRenderWindow *window, dinomove_t *move)
     }
     if (sfKeyboard_isKeyPressed(sfKeyRight)) {
         if (move->dino_pos.x <= 1370 && check_obs(move, 1) == 0)
-            move->dino_pos.x += 1.5;
+            move->dino_pos.x += 6;
     }
     if (sfKeyboard_isKeyPressed(sfKeyUp)) {
         if (move->dino_pos.y >= 0 && check_obs(move, 2) == 0)
@@ -31,7 +31,7 @@ int my_perso(sfRenderWindow *window, dinomove_t *move)
 {
     sfTexture *back = sfTexture_createFromFile("dino.png", NULL);
     sfSprite *my_spr = sfSprite_create();
-    sfVector2f sprite_size = {0.15, 0.15};
+    sfVector2f sprite_size = {0.6, 0.6};
     sfSprite_setPosition(my_spr, move->dino_pos);
     sfSprite_scale(my_spr, sprite_size);
 
@@ -43,22 +43,25 @@ int my_perso(sfRenderWindow *window, dinomove_t *move)
 int loop(sfRenderWindow *window)
 {
     sfEvent event;
-    sfTexture *my_texture = sfTexture_createFromFile("map/village1.png", NULL);
-    sfSprite *my_sprite = sfSprite_create();
     sfVector2f size = {0.75, 0.75};
     dinomove_t move = init_struct_move(move);
 
     if (move.index_obs == -1) return (-1);
-    sfSprite_setScale(my_sprite, size);
+    move.my_texture = sfTexture_createFromFile("map/maison.jpg", NULL);
+    move.my_sprite = sfSprite_create(), move.window = window;
+    sfSprite_setTexture(move.my_sprite, move.my_texture, sfTrue);
+    sfSprite_setScale(move.my_sprite, size);
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event)) {
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
         }
         ch_move(window, &move), sfRenderWindow_clear(window, sfWhite);
-        sfSprite_setTexture(my_sprite, my_texture, sfTrue);
-        sfRenderWindow_drawSprite(window, my_sprite, NULL);
+        sfRenderWindow_drawSprite(window, move.my_sprite, NULL);
         my_perso(window, &move), sfRenderWindow_display(window);
+        /*int a = move.dino_pos.x;
+        int b = move.dino_pos.y;
+        printf("%d %d\n", a, b);*/
     }
     return (0);
 }
