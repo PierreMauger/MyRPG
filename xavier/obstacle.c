@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-int fill_obstacle_tab(char *buff, dinomove_t *move, int *i)
+static int fill_obstacle_tab(char *buff, dinomove_t *move, int *i)
 {
     int a = 0;
     int h = 0;
@@ -30,7 +30,7 @@ int fill_obstacle_tab(char *buff, dinomove_t *move, int *i)
     return (0);
 }
 
-int init_obstacle_split(char *buff, dinomove_t *move)
+static int init_obstacle_split(char *buff, dinomove_t *move)
 {
     int i = 0;
     int a = 0;
@@ -60,7 +60,7 @@ int init_obstacle(dinomove_t *move)
     int ret = 0;
     char buff[4096];
 
-    fd = open("map1.json", O_RDWR);
+    fd = open(move->fl_map_obstacle, O_RDWR);
     if (fd == -1) return (1);
     ret = read(fd, buff, 4096);
     if (ret == -1) return (1);
@@ -75,6 +75,7 @@ dinomove_t init_struct_move(dinomove_t move)
     move.map_size.y = 810;
     move.dino_pos.x = 0;
     move.dino_pos.y = 200;
+    move.fl_map_obstacle = "json/map0.json";
     move.index_obs = 0;
     if (init_obstacle(&move) == 1)
         move.index_obs = -1;
@@ -94,6 +95,10 @@ int check_obs(dinomove_t *move, int dir)
     while (i != move->index_obs) {
         if (st.x >= move->obstacle[i][0] && st.x <= move->obstacle[i][1]) {
             if (st.y >= move->obstacle[i][2] && st.y <= move->obstacle[i][3]) {
+                if (strcmp(move->type[i], " \"nextmap\"") == 0)
+                    change_map_next(move);
+                else if (strcmp(move->type[i], " \"backmap\"") == 0)
+                    change_map_back(move);
                 return (1);
             }
         }

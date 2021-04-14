@@ -1,0 +1,16 @@
+[
+    {
+        "type": "bush",
+        "hor.x": 580,
+        "hor.y": 660,
+        "ver.x": 155,
+        "ver.y": 240,
+    }
+    {
+        "type": "backmap",
+        "hor.x": -10,
+        "hor.y": 0,
+        "ver.x": 240,
+        "ver.y": 260,
+    },
+]
