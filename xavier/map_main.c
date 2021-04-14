@@ -59,9 +59,6 @@ int loop(sfRenderWindow *window)
         ch_move(window, &move), sfRenderWindow_clear(window, sfWhite);
         sfRenderWindow_drawSprite(window, move.my_sprite, NULL);
         my_perso(window, &move), sfRenderWindow_display(window);
-        /*int a = move.dino_pos.x;
-        int b = move.dino_pos.y;
-        printf("%d %d\n", a, b);*/
     }
     return (0);
 }

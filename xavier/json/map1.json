@@ -51,7 +51,7 @@
     {
         "type": "backmap",
         "hor.x": -10,
-        "hor.y": 0,
+        "hor.y": -1,
         "ver.x": 240,
         "ver.y": 260,
     },
