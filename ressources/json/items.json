@@ -3,6 +3,7 @@
     "id": 1,
     "name": "Excalibur",
     "description": "Thats a lot of DAMAGE",
+    "path": "ressources/sprites/item1.png",
     "att_buff": 9999,
     "def_buff": 0,
     "speed_buff": 0
@@ -11,6 +12,7 @@
     "id": 2,
     "name": "Berseker Helmet",
     "description": "A big nice nordic crafted helmet.",
+    "path": "ressources/sprites/item2.png",
     "att_buff": 0,
     "def_buff": 500,
     "speed_buff": 0

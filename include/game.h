@@ -80,6 +80,7 @@
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
 #define JSON_QUEST "ressources/json/quest.json"
+#define JSON_ITEMS "ressources/json/items.json"
 #define RENDER_SKILL game->shader->render_skill
 #define RENDER_TURN game->shader->render_turn
 #define RENDER_TARGET game->shader->render_target
