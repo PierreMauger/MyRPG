@@ -1,23 +1,16 @@
 [
     {
-        "type": "bush",
-        "hor.x": 580,
-        "hor.y": 660,
-        "ver.x": 155,
-        "ver.y": 240,
-    }
-    {
         "type": "backmap",
         "hor.x": -10,
         "hor.y": -1,
-        "ver.x": 240,
-        "ver.y": 260,
+        "ver.x": 310,
+        "ver.y": 350,
     },
     {
         "type": "nextmap",
-        "hor.x": 420,
-        "hor.y": 480,
+        "hor.x": 590,
+        "hor.y": 620,
         "ver.x": -10,
-        "ver.y": 0,
+        "ver.y": -1,
     },
 ]

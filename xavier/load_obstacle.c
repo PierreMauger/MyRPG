@@ -24,7 +24,8 @@ static int fill_obstacle_tab(char *buff, dinomove_t *move, int *i)
         stock[z] = '\0';
         if (h == 0)
             move->type[move->index_obs] = strdup(stock);
-        else move->obstacle[move->index_obs][a] = atoi(stock), a++;
+        else
+            move->obstacle[move->index_obs][a] = atoi(stock) , a++;
         free(stock), z = 0, h = 1;
     }
     return (0);
@@ -80,29 +81,4 @@ dinomove_t init_struct_move(dinomove_t move)
     if (init_obstacle(&move) == 1)
         move.index_obs = -1;
     return (move);
-}
-
-int check_obs(dinomove_t *move, int dir)
-{
-    int i = 0;
-    sfVector2f st = move->dino_pos;
-
-    if (dir == 0) st.x -= 1.5;
-    if (dir == 1) st.x += 1.5;
-    if (dir == 2) st.y -= 1.5;
-    if (dir == 3) st.y += 1.5;
-
-    while (i != move->index_obs) {
-        if (st.x >= move->obstacle[i][0] && st.x <= move->obstacle[i][1]) {
-            if (st.y >= move->obstacle[i][2] && st.y <= move->obstacle[i][3]) {
-                if (strcmp(move->type[i], " \"nextmap\"") == 0)
-                    change_map_next(move);
-                else if (strcmp(move->type[i], " \"backmap\"") == 0)
-                    change_map_back(move);
-                return (1);
-            }
-        }
-        i++;
-    }
-    return (0);
 }
