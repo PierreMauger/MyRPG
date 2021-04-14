@@ -44,14 +44,16 @@ int loop(sfRenderWindow *window)
 {
     sfEvent event;
     sfVector2f size = {0.75, 0.75};
-    dinomove_t move = init_struct_move(move);
+    dinomove_t move = init_struct_move(move, window);
+    int passed = 0;
 
-    if (move.index_obs == -1) return (-1);
-    move.my_texture = sfTexture_createFromFile("map/maison.jpg", NULL);
-    move.my_sprite = sfSprite_create(), move.window = window;
+    if (move.index_obs == -1)
+        return (-1);
     sfSprite_setTexture(move.my_sprite, move.my_texture, sfTrue);
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event)) {
+            if (event.type == sfEvtKeyPressed)
+                create_col(move.dino_pos.x, move.dino_pos.y, &move, &passed);
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
         }

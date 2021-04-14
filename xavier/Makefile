@@ -11,6 +11,8 @@ SRCS =	map_main.c \
 		free.c \
 		change_map.c \
 		display_map_anim.c \
+		my_itoa.c \
+		create_obs_write.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -19,7 +21,9 @@ NAME = move_map
 all : $(NAME)
 
 $(NAME) :
-	gcc -g -o $(NAME) $(SRCS) -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window -I include/
+	make -C lib/my
+	gcc -g -o $(NAME) $(SRCS) -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window -L lib/ -lmy -I include/
+	make clean -C lib/my
 
 clean :
 	rm -f $(OBJS)

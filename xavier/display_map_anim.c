@@ -33,7 +33,7 @@ void display_change_down(dinomove_t *move, sfTexture *save, int o, int n)
             old_pos.y -= 20, new_pos.y -= 20, sfClock_restart(clock);
         display_map_split(move, old);
     }
-    new_pos.y = 0, move->dino_pos.y = 0, move->dino_pos.x = 420;
+    new_pos.y = 0;
     sfSprite_setPosition(move->my_sprite, new_pos);
 }
 
@@ -55,7 +55,7 @@ void display_change_up(dinomove_t *move, sfTexture *save, int o, int n)
             old_pos.y += 20, new_pos.y += 20, sfClock_restart(clock);
         display_map_split(move, old);
     }
-    new_pos.y = 0, move->dino_pos.y = 930, move->dino_pos.x = 400;
+    new_pos.y = 0;
     sfSprite_setPosition(move->my_sprite, new_pos);
 }
 
@@ -77,7 +77,7 @@ void display_change_first(dinomove_t *move, sfTexture *save, int o, int n)
             old_pos.x -= 20, new_pos.x -= 20, sfClock_restart(clock);
         display_map_split(move, old);
     }
-    new_pos.x = 0, move->dino_pos.x = 0;
+    new_pos.x = 0;
     sfSprite_setPosition(move->my_sprite, new_pos);
 }
 
@@ -99,6 +99,6 @@ void display_change_second(dinomove_t *move, sfTexture *save, int o, int n)
             old_pos.x += 20, new_pos.x += 20, sfClock_restart(clock);
         display_map_split(move, old);
     }
-    new_pos.x = 0, sfSprite_setPosition(move->my_sprite, new_pos);
-    move->dino_pos.x = 1849;
+    new_pos.x = 0;
+    sfSprite_setPosition(move->my_sprite, new_pos);
 }

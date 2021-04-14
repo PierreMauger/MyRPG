@@ -7,23 +7,19 @@
 
 #include "map.h"
 
-static void split_check_obs(dinomove_t *move, int *p, int i)
+static void split_check_obs(dinomove_t *move, int i)
 {
-    if (strcmp(move->type[i], " \"nextmap\"") == 0) {
-        printf("yo\n");
+    if (my_strcmp(move->type[i], " \"nextmap\"") == 0) {
         change_map_next(move);
-        (*p)++;
     }
-    else if (strcmp(move->type[i], " \"backmap\"") == 0) {
+    else if (my_strcmp(move->type[i], " \"backmap\"") == 0) {
         change_map_back(move);
-        (*p)++;
     }
 }
 
 int check_obs(dinomove_t *move, int dir)
 {
     int i = 0;
-    int p = 0;
     sfVector2f st = move->dino_pos;
 
     if (dir == 0) st.x -= 1.5;
@@ -34,10 +30,9 @@ int check_obs(dinomove_t *move, int dir)
     while (i != move->index_obs) {
         if ((st.x >= move->obstacle[i][0] && st.x <= move->obstacle[i][1])
             && (st.y >= move->obstacle[i][2] && st.y <= move->obstacle[i][3])) {
-            split_check_obs(move, &p, i);
-        }
-        if (p == 1)
+            split_check_obs(move, i);
             return (1);
+        }
         i++;
     }
     return (0);

@@ -21,6 +21,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "my.h"
 
 typedef struct {
     sfRenderWindow *window;
@@ -35,7 +36,7 @@ typedef struct {
     size_t index_obs;
 } dinomove_t;
 
-dinomove_t init_struct_move(dinomove_t move);
+dinomove_t init_struct_move(dinomove_t move, sfRenderWindow *window);
 int check_obs(dinomove_t *move, int dir);
 int change_map_back(dinomove_t *move);
 int change_map_next(dinomove_t *move);
@@ -45,5 +46,7 @@ void display_change_first(dinomove_t *move, sfTexture *save, int o, int n);
 void display_change_second(dinomove_t *move, sfTexture *save, int o, int n);
 void display_change_up(dinomove_t *move, sfTexture *save, int o, int n);
 void display_change_down(dinomove_t *move, sfTexture *save, int o, int n);
+char *my_itoa(int nb);
+int create_col(int a, int b, dinomove_t *move, int *passed);
 
 #endif
