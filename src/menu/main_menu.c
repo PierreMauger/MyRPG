@@ -6,10 +6,15 @@
 */
 
 #include "game.h"
+#include <button.h>
 
-bool start_game(game_t *game) 
+bool start_game(game_t *game, menu_t *menu, button_t *btn) 
 {
-    if (sfKeyboard_isKeyPressed(sfKeyG)) {
+    if (is_mouse_on_button(game, btn)) {
+        printf("Hello button");
+        sfMusic_destroy(menu->music);
+        sfSprite_destroy(menu->sprite);
+        sfTexture_destroy(menu->texture);
         return (true);
     }
     return (false);
@@ -17,16 +22,22 @@ bool start_game(game_t *game)
 
 void menu_play(game_t *game, menu_t *menu)
 {
+    button_t *btn;
     menu->music = sfMusic_createFromFile("src/menu/rpg_music.ogg");
-    if (start_game(game) == false) {
-        //sfMusic_play(menu->music);
+    if (start_game(game, menu, btn) == false) {
+        sfMusic_play(menu->music);
         sfRenderWindow_drawSprite(GET_WINDOW, menu->sprite, NULL);
     }
+    return;
 }
 
 menu_t *main_menu(game_t *game)
 {   
+    button_t *btn = malloc(sizeof(button_t));
     menu_t *menu = malloc(sizeof(menu_t));
+    create_button("src/menu/empty_button.png", game, btn);
+    set_button_rect(btn, btn->rect);
+    draw_button(game, btn);
     menu->pos = (sfVector2f){0, 0};
     menu->rect = (sfIntRect){0, 0, 1920, 1080};
     menu->sprite = sfSprite_create();
