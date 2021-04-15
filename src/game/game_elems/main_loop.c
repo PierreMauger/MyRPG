@@ -11,7 +11,7 @@ void main_loop(game_t *game)
 {
     menu_t *menu = main_menu(game);
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
-        //sfRenderWindow_clear(GET_WINDOW, sfWhite);
+        sfRenderWindow_clear(GET_WINDOW, sfWhite);
         event_loop(game);
         menu_play(game, menu);
         if (game->in_fight) {

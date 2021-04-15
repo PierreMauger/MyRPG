@@ -8,27 +8,42 @@
 #include <game.h>
 #include <button.h>
 
+void draw_buttons(button_t **list)
+{
+    game_t *game;
+    if (list == NULL || game == NULL)
+        return;
+    for (unsigned int itr = 0; list[itr]; ++itr) {
+        sfWindow_drawSprite(GET_WINDOW, list[itr]->sprite, NULL);
+    }
+}
+
 button_t **list_button(game_t *game, int size_nbr)
 {
-    button_t **btn_list = malloc(sizeof(button_t *));
+    button_t **btn_list = malloc(sizeof(button_t) * size_nbr);
+
+    if (btn_list == NULL)
+        return (NULL);
     for (int i = 0; i <= size_nbr; ++i) {
-        btn_list[i] = malloc(sizeof(button_t) + 1);
         btn_list[i] = NULL;
-        btn_list[size_nbr + 1] = '\0';
     }
     return (btn_list);
 }
 
-void create_button(sfTexture *texture, sfSprite *sprite, sfIntRect rect, sfVector2f pos)
+button_t *create_button(sfVector2f pos, char *path, sfIntRect rect)
 {
-    button_t *btn;
+    button_t *btn = malloc(sizeof(button_t));
+    
     if (!btn)
-        return;
+        return (NULL);
     btn->pos = pos;
+    btn->rect = rect;
     btn->sprite = sfSprite_create();
     btn->texture = sfTexture_createFromFile(path, NULL);
     sfSprite_setPosition(btn->sprite, btn->pos);
+    sfSprite_setTexture(btn->sprite, btn->texture, sfTrue);
     sfSprite_setTextureRect(btn->sprite, btn->rect);
+    return (btn);
 }
 
 bool is_mouse_on_button(game_t *game, button_t *btn)

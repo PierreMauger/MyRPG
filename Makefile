@@ -8,6 +8,7 @@
 SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/anim_elems/anim_mons.c			\
 				src/menu/main_menu.c						\
+				src/menu/button_main.c						\
 				src/fight/anim_elems/move_rect.c			\
 				src/fight/db_elems/db_mons.c				\
 				src/fight/db_elems/db_skill.c				\

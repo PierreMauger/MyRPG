@@ -9,6 +9,7 @@
 #define GAME_H
 
 #include "blib.h"
+#include <button.h>
 #include <stdbool.h>
 #include <time.h>
 #include <SFML/Graphics/RenderWindow.h>
@@ -239,10 +240,19 @@ typedef struct {
     bool in_fight;
 } game_t;
 
+//BUTTON_ELEMS
+button_t **list_button(game_t *game, button_t *btn, int size_nbr);
+void create_button(char *path, game_t *game, button_t *btn);
+bool is_mouse_on_button(game_t *game, button_t *btn);
+void set_btn_pos(button_t *btn, sfVector2f pos);
+void draw_button(game_t *game, button_t *btn);
+void set_button_rect(button_t *btn, sfIntRect rect);
+void set_button_color(button_t *btn, sfColor color);
+
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);
 void menu_play(game_t *game, menu_t *menu);
-bool start_game(game_t *game);
+bool start_game(game_t *game, menu_t *menu, button_t *btn);
 
 //ANIM_ELEMS
 void animate(game_t *game);
