@@ -1,0 +1,16 @@
+[
+    {
+        "type": "backmap",
+        "hor.x": -10,
+        "hor.y": -1,
+        "ver.x": 310,
+        "ver.y": 360,
+    },
+    {
+        "type": "nextmap",
+        "hor.x": 1850,
+        "hor.y": 1871,
+        "ver.x": 310,
+        "ver.y": 360,
+    },
+]

@@ -82,12 +82,17 @@
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
 #define JSON_QUEST "ressources/json/quest.json"
+#define JSON_ITEMS "ressources/json/items.json"
 #define RENDER_SKILL game->shader->render_skill
 #define RENDER_TURN game->shader->render_turn
 #define RENDER_TARGET game->shader->render_target
 #define RENDER_SNOW game->shader->render_snow
 
 #define sfGrey (sfColor){128, 128, 128, 255}
+
+// More defines for paths
+#define INV_PATH "ressources/sprites/inv.png"
+
 
 typedef struct {
     sfTexture *texture;
@@ -281,6 +286,42 @@ typedef struct {
     bool in_fight;
     bool in_dialog;
 } game_t;
+
+typedef struct item {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+    sfIntRect rect;
+    bool is_in_inventory;
+    int index;
+    char *name;
+    char *description;
+    int dmg_buff;
+    int def_buff;
+    int speed_buff;
+} item_t;
+
+typedef struct list {
+    item_t *data;
+    struct list *next;
+} list_t;
+
+typedef struct inventory {
+    sfSprite *sprite;
+    sfTexture *texture;
+    list_t *list;
+} inventory_t;
+
+// LL funcs
+void draw_list(sfRenderWindow *w, list_t *items);
+void list_stack(list_t **head, item_t *data);
+void list_destroy(list_t *head);
+void list_remove(list_t **head, int index);
+
+// Inventory funcs
+int get_item_index(list_t *inv);
+inventory_t *init_inventory(void);
+void add_item_to_inv(inventory_t *inv, int item_id);
 
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);
