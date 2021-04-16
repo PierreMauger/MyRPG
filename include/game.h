@@ -17,6 +17,8 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
+#define MONS_LEVEL(elem) elem->stat->level
+#define MONS_XP(elem) elem->stat->xp
 #define MONS_SPEED(elem) elem->stat->speed
 #define MONS_ATT(elem) elem->stat->att
 #define MONS_DEF(elem) elem->stat->def
@@ -152,6 +154,8 @@ typedef struct {
     int max_hp;
     int curr_hp;
     float curr_atb;
+    int xp;
+    int level;
     sfRectangleShape *hp;
     sfRectangleShape *atb;
 } mons_stat_t;
@@ -161,6 +165,7 @@ typedef struct mons {
     mons_stat_t *stat;
     mons_status_t *status;
     skill_t *skill;
+    int id;
     struct mons *next;
 } mons_t;
 
@@ -349,6 +354,8 @@ void cooldown_reduce(game_t *game);
 void fight_loop(game_t *game);
 mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
+void get_xp(mons_t *mons);
+char *level_up(char *buffer, mons_t *mons);
 int has_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
 void status_apply(game_t *game, mons_t *target);
@@ -398,6 +405,7 @@ int *batoi_arr(char *src);
 char *get_id(char *buffer, int id);
 size_t parser_array(char *buffer, int i);
 size_t parser(char *buffer, char *str, int id);
+char *parser_write(char *buffer, char *name, char *new_name, int id);
 
 //INIT_ELEMS
 void init_game(game_t *game);

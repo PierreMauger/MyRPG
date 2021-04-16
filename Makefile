@@ -29,6 +29,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/fight/fight_elems/cooldown.c			\
 				src/fight/fight_elems/fight_loop.c			\
 				src/fight/fight_elems/kill.c				\
+				src/fight/fight_elems/level_up.c			\
 				src/fight/fight_elems/passive.c				\
 				src/fight/fight_elems/status_apply.c		\
 				src/fight/fight_elems/status_reduce.c		\
@@ -57,6 +58,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/game/destroy_elems/destroy_time.c		\
 				src/game/destroy_elems/destroy_window.c		\
 				src/parser/json_parser.c					\
+				src/parser/parser_write.c					\
 				src/quest/destroy_elems/destroy_quest.c		\
 				src/quest/draw_elems/draw_quest_text.c		\
 				src/quest/init_elems/init_quest.c			\
@@ -91,7 +93,7 @@ CLEAR =	"\033[H\033[2J"
 
 $(NAME):	$(OBJ) $(OBJ_MAIN)
 	@(make -C lib/my) > /dev/null
-	@(gcc $(OBJ) $(OBJ_MAIN) -o $(NAME) $(CFLAGS)) > /dev/null
+	@(g++ $(OBJ) $(OBJ_MAIN) -o $(NAME) $(CFLAGS)) > /dev/null
 
 all:	$(NAME)
 

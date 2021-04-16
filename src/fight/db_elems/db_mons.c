@@ -40,6 +40,8 @@ void init_mons_stat(mons_t *elem, char *buffer, int id)
     MONS_ATT(elem) = (float)parser(buffer, "att", id);
     MONS_DEF(elem) = (float)parser(buffer, "def", id);
     MONS_SPEED(elem) = (int)parser(buffer, "speed", id);
+    MONS_XP(elem) = (int)parser(buffer, "xp", id);
+    MONS_LEVEL(elem) = (int)parser(buffer, "level", id);
     MONS_CURR_HP(elem) = MONS_MAX_HP(elem);
     MONS_CURR_ATB(elem) = 0;
     MONS_HP(elem) = init_rectangle(BAR_SIZE, sfGreen, MONS_WIDTH(elem));
@@ -67,6 +69,7 @@ void put_in_mons_list(game_t *game, mons_t **mons, char *buffer, int id)
     init_mons_texture(elem, buffer, id);
     init_mons_stat(elem, buffer, id);
     init_mons_skill(game, elem, buffer, id);
+    elem->id = id;
     elem->next = NULL;
     if (*mons == NULL) {
         elem->next = *mons;
