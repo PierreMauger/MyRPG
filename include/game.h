@@ -241,8 +241,8 @@ typedef struct {
 } game_t;
 
 //BUTTON_ELEMS
-button_t **list_button(game_t *game, button_t *btn, int size_nbr);
-void create_button(char *path, game_t *game, button_t *btn);
+button_t **list_button(game_t *game, int size_nbr);
+button_t *create_button(sfVector2f pos, char *path, sfIntRect rect);
 bool is_mouse_on_button(game_t *game, button_t *btn);
 void set_btn_pos(button_t *btn, sfVector2f pos);
 void draw_button(game_t *game, button_t *btn);
