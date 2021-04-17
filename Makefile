@@ -62,6 +62,9 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/quest/destroy_elems/destroy_quest.c		\
 				src/quest/draw_elems/draw_quest_text.c		\
 				src/quest/init_elems/init_quest.c			\
+				src/inventory/inventory.c					\
+				src/inventory/liblist.c						\
+				src/inventory/inv_events.c					\
 
 SRC_MAIN	=	main.c				\
 
