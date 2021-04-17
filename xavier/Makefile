@@ -13,6 +13,7 @@ SRCS =	map_main.c \
 		display_map_anim.c \
 		my_itoa.c \
 		create_obs_write.c \
+		display_sprite.c \
 
 OBJS = $(SRCS:.c=.o)
 
