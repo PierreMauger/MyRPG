@@ -19,17 +19,20 @@ int get_item_index(list_t *inv)
     return i;
 }
 
-inventory_t *init_inventory(void)
+inventory_t *init_inventory(game_t *game)
 {
     inventory_t *inv = malloc(sizeof(inventory_t));
     inv->list = NULL;
-    inv->texture = sfTexture_createFromFile(INV_PATH, NULL);
-    inv->sprite = sfSprite_create();
-    sfSprite_setTexture(inv->sprite, inv->texture, sfTrue);
+    inv->invtexture = sfTexture_createFromFile(INV_PATH, NULL);
+    inv->invsprite = sfSprite_create();
+    inv->selectexture = sfTexture_createFromFile(SELEC_PATH, NULL);
+    inv->selecsprite = sfSprite_create();
+    inv->pos.x = (sfRenderWindow_getSize(GET_WINDOW).x / 2) - 175;
+    inv->pos.y = (sfRenderWindow_getSize(GET_WINDOW).y - 140);
+    sfSprite_setTexture(inv->invsprite, inv->invtexture, sfTrue);
+    sfSprite_setTexture(inv->selecsprite, inv->selectexture, sfTrue);
     return inv;
 }
-
-//WIP
 
 item_t *create_item(int id)
 {
@@ -52,12 +55,21 @@ item_t *create_item(int id)
     return data;
 }
 
-// Need to add pos_init
-
 void add_item_to_inv(inventory_t *inv, int item_id)
 {
     item_t *data = create_item(item_id);
     data->is_in_inventory = true;
     data->index = get_item_index(inv->list);
+    data->pos.x = (inv->pos.x + 5.f) + (30 * data->index);
+    data->pos.y = inv->pos.y + 3.f;
     list_stack(&(inv->list), data);
+}
+
+// Still to do
+
+void draw_inventory(game_t *game, inventory_t *inv)
+{
+    printf("test\n");
+    game->in_inv = false;
+    return;
 }

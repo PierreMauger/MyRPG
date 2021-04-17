@@ -90,6 +90,7 @@
 
 // More defines for paths
 #define INV_PATH "ressources/sprites/inv.png"
+#define SELEC_PATH "ressources/sprites/select.png"
 
 
 typedef struct {
@@ -280,6 +281,7 @@ typedef struct {
     quest_text_t *text;
     bool in_fight;
     bool in_dialog;
+    bool in_inv;
 } game_t;
 
 typedef struct item {
@@ -288,6 +290,7 @@ typedef struct item {
     sfVector2f pos;
     sfIntRect rect;
     bool is_in_inventory;
+    bool is_equiped;
     int index;
     char *name;
     char *description;
@@ -302,8 +305,11 @@ typedef struct list {
 } list_t;
 
 typedef struct inventory {
-    sfSprite *sprite;
-    sfTexture *texture;
+    sfSprite *invsprite;
+    sfTexture *invtexture;
+    sfSprite *selecsprite;
+    sfTexture *selectexture;
+    sfVector2u pos;
     list_t *list;
 } inventory_t;
 
@@ -315,8 +321,9 @@ void list_remove(list_t **head, int index);
 
 // Inventory funcs
 int get_item_index(list_t *inv);
-inventory_t *init_inventory(void);
+inventory_t *init_inventory(game_t *game);
 void add_item_to_inv(inventory_t *inv, int item_id);
+void draw_inventory(game_t *game, inventory_t *inv);
 
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);
