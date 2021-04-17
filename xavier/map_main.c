@@ -14,15 +14,15 @@ int ch_move(sfRenderWindow *window, dinomove_t *move)
             move->dino_pos.x -= 1.5;
     }
     if (sfKeyboard_isKeyPressed(sfKeyRight)) {
-        if (move->dino_pos.x <= 1370 && check_obs(move, 1) == 0)
-            move->dino_pos.x += 6;
+        if (move->dino_pos.x <= 1850 && check_obs(move, 1) == 0)
+            move->dino_pos.x += 1.5;
     }
     if (sfKeyboard_isKeyPressed(sfKeyUp)) {
         if (move->dino_pos.y >= 0 && check_obs(move, 2) == 0)
             move->dino_pos.y -= 1.5;
     }
     if (sfKeyboard_isKeyPressed(sfKeyDown)) {
-        if (move->dino_pos.y <= 740 && check_obs(move, 3) == 0)
+        if (move->dino_pos.y <= 950 && check_obs(move, 3) == 0)
             move->dino_pos.y += 1.5;
     }
 }
@@ -44,24 +44,22 @@ int loop(sfRenderWindow *window)
 {
     sfEvent event;
     sfVector2f size = {0.75, 0.75};
-    dinomove_t move = init_struct_move(move);
+    dinomove_t move = init_struct_move(move, window);
+    int passed = 0;
 
-    if (move.index_obs == -1) return (-1);
-    move.my_texture = sfTexture_createFromFile("map/maison.jpg", NULL);
-    move.my_sprite = sfSprite_create(), move.window = window;
+    if (move.index_obs == -1)
+        return (-1);
     sfSprite_setTexture(move.my_sprite, move.my_texture, sfTrue);
-    sfSprite_setScale(move.my_sprite, size);
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event)) {
+            if (event.type == sfEvtKeyPressed)
+                create_col(move.dino_pos.x, move.dino_pos.y, &move, &passed);
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
         }
         ch_move(window, &move), sfRenderWindow_clear(window, sfWhite);
         sfRenderWindow_drawSprite(window, move.my_sprite, NULL);
         my_perso(window, &move), sfRenderWindow_display(window);
-        /*int a = move.dino_pos.x;
-        int b = move.dino_pos.y;
-        printf("%d %d\n", a, b);*/
     }
     return (0);
 }
@@ -70,7 +68,7 @@ int main(int ac, char **av)
 {
     int err = 0;
     sfRenderWindow *window;
-    sfVideoMode video_mode = {1440, 810};
+    sfVideoMode video_mode = {1920, 1080};
     window = sfRenderWindow_create(video_mode, "map", sfClose, NULL);
     sfRenderWindow_setFramerateLimit(window, 90);
     err = loop(window);
