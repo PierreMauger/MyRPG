@@ -14,8 +14,8 @@ void get_xp(mons_t *mons)
 
     for (mons_t *temp = mons; temp; temp = temp->next) {
         temp->stat->xp += 50;
-        if (temp->stat->xp >= 100) {
-            temp->stat->xp = 0;
+        if (temp->stat->xp > 100) {
+            temp->stat->xp = 1;
             temp->stat->level++;
             buffer = parser_write(buffer, "level",
             bitoa(temp->stat->level), temp->id);
