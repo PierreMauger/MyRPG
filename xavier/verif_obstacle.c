@@ -10,9 +10,9 @@
 static void split_check_obs(dinomove_t *move, int i)
 {
     if (my_strcmp(move->obs.type[i], " \"nextmap\"") == 0)
-        move->obs.display_text = true;
+        move->obs.display_text_next = true;
     if (my_strcmp(move->obs.type[i], " \"backmap\"") == 0)
-        move->obs.display_text = true;
+        move->obs.display_text_back = true;
 }
 
 static int check_obs(dinomove_t *move, int dir)
@@ -35,7 +35,7 @@ static int check_obs(dinomove_t *move, int dir)
         }
         i++;
     }
-    move->obs.display_text = false;
+    move->obs.display_text_next = false, move->obs.display_text_back = false;
     return (0);
 }
 
@@ -43,18 +43,18 @@ int ch_move(sfRenderWindow *window, dinomove_t *move)
 {
     if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
         if (move->dino_pos.x >= 0 && check_obs(move, 0) == 0)
-            move->dino_pos.x -= 1.5;
+            move->dino_pos.x -= move->speed;
     }
     if (sfKeyboard_isKeyPressed(sfKeyRight)) {
         if (move->dino_pos.x <= 1850 && check_obs(move, 1) == 0)
-            move->dino_pos.x += 1.5;
+            move->dino_pos.x += move->speed;
     }
     if (sfKeyboard_isKeyPressed(sfKeyUp)) {
         if (move->dino_pos.y >= 0 && check_obs(move, 2) == 0)
-            move->dino_pos.y -= 1.5;
+            move->dino_pos.y -= move->speed;
     }
     if (sfKeyboard_isKeyPressed(sfKeyDown)) {
         if (move->dino_pos.y <= 950 && check_obs(move, 3) == 0)
-            move->dino_pos.y += 1.5;
+            move->dino_pos.y += move->speed;
     }
 }

@@ -31,7 +31,8 @@ typedef struct {
     size_t index_obs;
     bool next_map;
     bool back_map;
-    bool display_text;
+    bool display_text_next;
+    bool display_text_back;
 } obs_t;
 
 typedef struct {
@@ -42,6 +43,7 @@ typedef struct {
     sfVector2f map_size;
     sfVector2f map_limit;
     obs_t obs;
+    int speed;
 } dinomove_t;
 
 dinomove_t init_struct_move(dinomove_t move, sfRenderWindow *window);
@@ -58,5 +60,6 @@ int create_col(int a, int b, dinomove_t *move, int *passed);
 int ch_move(sfRenderWindow *window, dinomove_t *move);
 void my_perso(sfRenderWindow *window, dinomove_t *move);
 void display_next_map(dinomove_t *move);
+void display_back_map(dinomove_t *move);
 
 #endif

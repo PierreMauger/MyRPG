@@ -1,9 +1,9 @@
 [
     {
         "type": "backmap",
-        "hor.x": 280,
-        "hor.y": 350,
-        "ver.x": 690,
-        "ver.y": 745,
+        "hor.x": 350,
+        "hor.y": 475,
+        "ver.x": 920,
+        "ver.y": 970,
     },
 ]

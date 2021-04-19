@@ -96,9 +96,11 @@ dinomove_t init_struct_move(dinomove_t move, sfRenderWindow *window)
     move.my_texture = sfTexture_createFromFile("map/maison.jpg", NULL);
     move.my_sprite = sfSprite_create();
     move.window = window;
+    move.speed = 1.5;
     move.obs.next_map = false;
     move.obs.back_map = false;
-    move.obs.display_text = false;
+    move.obs.display_text_next = false;
+    move.obs.display_text_back = false;
     if (init_obstacle(&move) == 1)
         move.obs.index_obs = -1;
     return (move);
