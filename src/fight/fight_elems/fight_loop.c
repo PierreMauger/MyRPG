@@ -18,7 +18,6 @@ void check_end(game_t *game)
         game->in_fight = 0;
     }
 }
-//victory or lose
 
 void fight_loop(game_t *game)
 {
