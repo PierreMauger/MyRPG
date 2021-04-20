@@ -36,7 +36,6 @@
 #define PTR_SKILL_ANIM_TEX game->ind->ptr_skill->anim->texture
 #define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
 #define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->nb_anim
-#define PTR_SKILL_HIT_NB game->ind->ptr_skill->stat->nb_hit
 #define PTR_SKILL_STATUS game->ind->ptr_skill->stat->status
 #define PTR_SKILL_STATUS_TURN game->ind->ptr_skill->stat->status_turn
 
@@ -56,12 +55,12 @@
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
-#define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p * 0.5 -\
-(bool)elem->status->att_m * 0.5))
-#define GET_DEF(elem) (elem->stat->def * (1 + (bool)elem->status->def_p * 0.5 -\
-(bool)elem->status->def_m * 0.5))
-#define GET_SPE(elem) (elem->stat->speed * (1 + (bool)elem->status->spe_p * 0.5\
-- (bool)elem->status->spe_m * 0.5))
+#define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p\
+* 0.5 - (bool)elem->status->att_m * 0.5))
+#define GET_DEF(elem) (elem->stat->def * (1 + (bool)elem->status->def_p\
+* 0.5 - (bool)elem->status->def_m * 0.5))
+#define GET_SPE(elem) (elem->stat->speed * (1 + (bool)elem->status->spe_p\
+* 0.5 - (bool)elem->status->spe_m * 0.5))
 
 #define BAR_SIZE (sfVector2f){100, 10}
 
@@ -93,7 +92,6 @@
 // More defines for paths
 #define INV_PATH "ressources/sprites/inv.png"
 #define SELEC_PATH "ressources/sprites/select.png"
-
 
 typedef struct {
     sfTexture *texture;

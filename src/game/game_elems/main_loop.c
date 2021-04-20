@@ -10,6 +10,7 @@
 void main_loop(game_t *game)
 {
     inventory_t *inv = init_inventory(game);
+
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
         event_loop(game);
         if (game->in_fight) {
