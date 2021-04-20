@@ -77,7 +77,7 @@
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
 #define TARGET_SHADER "ressources/shaders/target_shader.frag"
-#define SNOW_SHADER "ressources/shaders/snow_shader.frag"
+#define SNOW_SHADER "ressources/shaders/rain_shader.frag"
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
 #define JSON_QUEST "ressources/json/quest.json"
