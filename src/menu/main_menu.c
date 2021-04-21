@@ -11,7 +11,6 @@
 bool start_game(game_t *game, menu_t *menu, button_t *btn) 
 {
     if (is_mouse_on_button(game, btn)) {
-        printf("Hello button");
         sfMusic_destroy(menu->music);
         sfSprite_destroy(menu->sprite);
         sfTexture_destroy(menu->texture);

@@ -8,6 +8,13 @@
 #include "game.h"
 #include <button.h>
 
+void destroy_button(button_t *btn) 
+{
+    sfSprite_destroy(btn->sprite);
+    sfTexture_destroy(btn->texture);
+    free(btn);
+}
+
 button_t **list_button(game_t *game, int size_nbr)
 {
     button_t **btn_list = malloc(sizeof(button_t) * size_nbr);
