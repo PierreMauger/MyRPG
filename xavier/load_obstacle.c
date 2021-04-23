@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-static int split_fill_obs(char *buff, dinomove_t *move, int *i, char **stock)
+static int split_fill_obs(char *buff, raccoonmove_t *move, int *i, char **stock)
 {
     int z = 0;
 
@@ -22,7 +22,7 @@ static int split_fill_obs(char *buff, dinomove_t *move, int *i, char **stock)
     return (z);
 }
 
-static int fill_obstacle_tab(char *buff, dinomove_t *move, int *i)
+static int fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
 {
     int a = 0;
     int h = 0;
@@ -46,7 +46,7 @@ static int fill_obstacle_tab(char *buff, dinomove_t *move, int *i)
     return (0);
 }
 
-static int init_obstacle_split(char *buff, dinomove_t *move)
+static int init_obstacle_split(char *buff, raccoonmove_t *move)
 {
     int i = 0;
     int a = 0;
@@ -70,7 +70,7 @@ static int init_obstacle_split(char *buff, dinomove_t *move)
     return (0);
 }
 
-int init_obstacle(dinomove_t *move)
+int init_obstacle(raccoonmove_t *move)
 {
     int fd = 0;
     int ret = 0;
@@ -83,25 +83,4 @@ int init_obstacle(dinomove_t *move)
     buff[ret] = '\0';
     init_obstacle_split(buff, move);
     return (0);
-}
-
-dinomove_t init_struct_move(dinomove_t move, sfRenderWindow *window)
-{
-    move.map_size.x = 1440;
-    move.map_size.y = 810;
-    move.dino_pos.x = 555;
-    move.dino_pos.y = 333;
-    move.obs.fl_map_obstacle = "json/map0.json";
-    move.obs.index_obs = 0;
-    move.my_texture = sfTexture_createFromFile("map/maison.jpg", NULL);
-    move.my_sprite = sfSprite_create();
-    move.window = window;
-    move.speed = 1.5;
-    move.obs.next_map = false;
-    move.obs.back_map = false;
-    move.obs.display_text_next = false;
-    move.obs.display_text_back = false;
-    if (init_obstacle(&move) == 1)
-        move.obs.index_obs = -1;
-    return (move);
 }

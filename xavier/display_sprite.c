@@ -7,12 +7,12 @@
 
 #include "map.h"
 
-void my_perso(sfRenderWindow *window, dinomove_t *move)
+void my_perso(sfRenderWindow *window, raccoonmove_t *move)
 {
-    sfTexture *back = sfTexture_createFromFile("dino.png", NULL);
+    sfTexture *back = sfTexture_createFromFile("sprite/raccoon.png", NULL);
     sfSprite *my_spr = sfSprite_create();
-    sfVector2f sprite_size = {0.6, 0.6};
-    sfSprite_setPosition(my_spr, move->dino_pos);
+    sfVector2f sprite_size = {1, 1};
+    sfSprite_setPosition(my_spr, move->raccoon_pos);
     sfSprite_scale(my_spr, sprite_size);
 
     sfSprite_setTexture(my_spr, back, sfTrue);
@@ -20,7 +20,7 @@ void my_perso(sfRenderWindow *window, dinomove_t *move)
     sfTexture_destroy(back), sfSprite_destroy(my_spr);
 }
 
-void display_next_map(dinomove_t *move)
+void display_next_map(raccoonmove_t *move)
 {
     sfFont* font = sfFont_createFromFile("../ressources/font.ttf");
     sfText* text = sfText_create();
@@ -31,7 +31,7 @@ void display_next_map(dinomove_t *move)
         i++;
     pos.x = move->obs.obstacle[i][0];
     pos.y = move->obs.obstacle[i][2];
-    sfText_setString(text, "press k");
+    sfText_setString(text, "press E");
     sfText_setFont(text, font);
     sfText_setCharacterSize(text, 60);
     sfText_setPosition(text, pos);
@@ -40,7 +40,7 @@ void display_next_map(dinomove_t *move)
     sfText_destroy(text), sfFont_destroy(font);
 }
 
-void display_back_map(dinomove_t *move)
+void display_back_map(raccoonmove_t *move)
 {
     sfFont* font = sfFont_createFromFile("../ressources/font.ttf");
     sfText* text = sfText_create();
@@ -51,7 +51,7 @@ void display_back_map(dinomove_t *move)
         i++;
     pos.x = move->obs.obstacle[i][0] + 200;
     pos.y = move->obs.obstacle[i][2];
-    sfText_setString(text, "press k");
+    sfText_setString(text, "press E");
     sfText_setFont(text, font);
     sfText_setCharacterSize(text, 60);
     sfText_setPosition(text, pos);

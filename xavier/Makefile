@@ -14,6 +14,10 @@ SRCS =	map_main.c \
 		my_itoa.c \
 		create_obs_write.c \
 		display_sprite.c \
+		pnj.c \
+		pnj_interaction.c \
+		event.c \
+		text_defil.c \
 
 OBJS = $(SRCS:.c=.o)
 

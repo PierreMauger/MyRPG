@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-void free_obs(dinomove_t *move)
+void free_obs(raccoonmove_t *move)
 {
     int i = 0;
 
