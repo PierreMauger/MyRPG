@@ -22,7 +22,7 @@ int check_collide(game_t *game, mons_t *mons)
 
 void atb_calc(game_t *game, mons_t *target)
 {
-    float temp_atb;
+    float temp_atb = 0;
 
     MONS_CURR_ATB(target) +=
     (float)game->ind->ptr_skill->stat->atb_boost[CURR_ATT];

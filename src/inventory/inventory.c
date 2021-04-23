@@ -22,6 +22,7 @@ int get_item_index(list_t *inv)
 inventory_t *init_inventory(game_t *game)
 {
     inventory_t *inv = malloc(sizeof(inventory_t));
+
     inv->list = NULL;
     inv->invtexture = sfTexture_createFromFile(INV_PATH, NULL);
     inv->invsprite = sfSprite_create();
@@ -58,6 +59,7 @@ item_t *create_item(int id)
 void add_item_to_inv(inventory_t *inv, int item_id)
 {
     item_t *data = create_item(item_id);
+
     data->is_in_inventory = true;
     data->index = get_item_index(inv->list);
     data->pos.x = (inv->pos.x + 5.f) + (30 * data->index);
@@ -69,7 +71,7 @@ void add_item_to_inv(inventory_t *inv, int item_id)
 
 void draw_inventory(game_t *game, inventory_t *inv)
 {
-    printf("test\n");
+    bprintf("test\n");
     game->in_inv = false;
     return;
 }

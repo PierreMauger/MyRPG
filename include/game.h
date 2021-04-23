@@ -17,6 +17,8 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
+#define MONS_LEVEL(elem) elem->stat->level
+#define MONS_XP(elem) elem->stat->xp
 #define MONS_SPEED(elem) elem->stat->speed
 #define MONS_ATT(elem) elem->stat->att
 #define MONS_DEF(elem) elem->stat->def
@@ -34,7 +36,6 @@
 #define PTR_SKILL_ANIM_TEX game->ind->ptr_skill->anim->texture
 #define PTR_SKILL_ANIM_RECT game->ind->ptr_skill->anim->rect
 #define PTR_SKILL_ANIM_NB game->ind->ptr_skill->stat->nb_anim
-#define PTR_SKILL_HIT_NB game->ind->ptr_skill->stat->nb_hit
 #define PTR_SKILL_STATUS game->ind->ptr_skill->stat->status
 #define PTR_SKILL_STATUS_TURN game->ind->ptr_skill->stat->status_turn
 
@@ -54,12 +55,12 @@
 #define ARR_RECT game->ind->arr->rect
 #define ARR_ANIM_NB 2
 
-#define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p * 0.5 -\
-(bool)elem->status->att_m * 0.5))
-#define GET_DEF(elem) (elem->stat->def * (1 + (bool)elem->status->def_p * 0.5 -\
-(bool)elem->status->def_m * 0.5))
-#define GET_SPE(elem) (elem->stat->speed * (1 + (bool)elem->status->spe_p * 0.5\
-- (bool)elem->status->spe_m * 0.5))
+#define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p\
+* 0.5 - (bool)elem->status->att_m * 0.5))
+#define GET_DEF(elem) (elem->stat->def * (1 + (bool)elem->status->def_p\
+* 0.5 - (bool)elem->status->def_m * 0.5))
+#define GET_SPE(elem) (elem->stat->speed * (1 + (bool)elem->status->spe_p\
+* 0.5 - (bool)elem->status->spe_m * 0.5))
 
 #define BAR_SIZE (sfVector2f){100, 10}
 
@@ -76,7 +77,7 @@
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
 #define TARGET_SHADER "ressources/shaders/target_shader.frag"
-#define SNOW_SHADER "ressources/shaders/snow_shader.frag"
+#define SNOW_SHADER "ressources/shaders/rain_shader.frag"
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
 #define JSON_QUEST "ressources/json/quest.json"
@@ -91,7 +92,6 @@
 // More defines for paths
 #define INV_PATH "ressources/sprites/inv.png"
 #define SELEC_PATH "ressources/sprites/select.png"
-
 
 typedef struct {
     sfTexture *texture;
@@ -158,6 +158,8 @@ typedef struct {
     int max_hp;
     int curr_hp;
     float curr_atb;
+    int xp;
+    int level;
     sfRectangleShape *hp;
     sfRectangleShape *atb;
 } mons_stat_t;
@@ -167,6 +169,7 @@ typedef struct mons {
     mons_stat_t *stat;
     mons_status_t *status;
     skill_t *skill;
+    int id;
     struct mons *next;
 } mons_t;
 
@@ -397,6 +400,8 @@ void cooldown_reduce(game_t *game);
 void fight_loop(game_t *game);
 mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
+void get_xp(mons_t *mons);
+char *level_up(char *buffer, mons_t *mons);
 int has_passive(game_t *game);
 void passive_action(game_t *game, mons_t *target);
 void status_apply(game_t *game, mons_t *target);
@@ -446,6 +451,7 @@ int *batoi_arr(char *src);
 char *get_id(char *buffer, int id);
 size_t parser_array(char *buffer, int i);
 size_t parser(char *buffer, char *str, int id);
+char *parser_write(char *buffer, char *name, char *new_name, int id);
 
 //INIT_ELEMS
 void init_game(game_t *game);

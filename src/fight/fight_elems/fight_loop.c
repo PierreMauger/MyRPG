@@ -9,10 +9,15 @@
 
 void check_end(game_t *game)
 {
-    if (game->e_mons == NULL || game->p_mons == NULL)
+    if (game->e_mons == NULL) {
+        get_xp(game->p_mons);
         game->in_fight = 0;
+    }
+    else if (game->p_mons == NULL) {
+        bprintf("you lose");
+        game->in_fight = 0;
+    }
 }
-//victory or lose
 
 void fight_loop(game_t *game)
 {
