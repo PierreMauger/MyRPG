@@ -15,10 +15,13 @@ static raccoonmove_t init_struct_move_split(raccoonmove_t move)
     move.obs.back_map = false;
     move.obs.display_text_next = false;
     move.obs.display_text_back = false;
-    move.obs.chest_open = false;
-    move.obs.col_chest = false;
+    move.chest.chest_open = false;
+    move.chest.col_chest = false;
     move.pnj.exist = false;
     move.pnj.interaction = false;
+    move.anim = false;
+    move.chest.clock_chest = NULL;
+    move.chest.already_open = false;
     return (move);
 }
 
@@ -46,8 +49,10 @@ static void split_check_obs(raccoonmove_t *move, int i)
         move->obs.display_text_next = true;
     if (my_strcmp(move->obs.type[i], " \"backmap\"") == 0)
         move->obs.display_text_back = true;
-    if (my_strcmp(move->obs.type[i], " \"chest\"") == 0)
-        move->obs.col_chest = true;
+    if (my_strcmp(move->obs.type[i], " \"chest\"") == 0) {
+        move->chest.col_chest = true;
+        move->chest.index = i;
+    }
 }
 
 static int check_obs(raccoonmove_t *move, int dir)
@@ -70,13 +75,13 @@ static int check_obs(raccoonmove_t *move, int dir)
         i++;
     }
     move->obs.display_text_next = false, move->obs.display_text_back = false;
-    move->obs.col_chest = false;
+    move->chest.col_chest = false;
     return (0);
 }
 
 int ch_move(sfRenderWindow *window, raccoonmove_t *move)
 {
-    if (move->pnj.interaction == true)
+    if (move->anim == true)
         return (1);
     if (sfKeyboard_isKeyPressed(sfKeyLeft) || sfKeyboard_isKeyPressed(sfKeyQ)) {
         if (move->raccoon_pos.x >= 0 && check_obs(move, 0) == 0)

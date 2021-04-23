@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "text.h"
+#include "map.h"
 
 static int spl_txt(int a, char *str, sfVector2f *pos, sfText *sen)
 {
@@ -40,7 +40,7 @@ static void display_text(char *str, sfRenderWindow *win, text_t *text, char *t)
     while (str[a] != '\0') {
         c = str[a], sfText_setString(sen, &c), sfText_setPosition(sen, pos);
         sfRenderWindow_drawText(win, sen, NULL), a++;
-        if (pos.x >= 800)
+        if (pos.x >= stock.x + 700)
             a = spl_txt(a, t, &pos, sen), pos.x = stock.x + 10;
         else pos.x += 32;
         sfRenderWindow_drawText(win, sen, NULL);
@@ -69,7 +69,7 @@ static int get_text(char *str, text_t *text, sfRenderWindow *window)
 void text_defil(char *str, text_t *text, sfRenderWindow *window)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
-    sfColor color = sfColor_fromRGBA(47, 27, 12, 220);
+    sfColor color = sfColor_fromRGBA(47, 27, text->color, 220);
     sfRectangleShape_setSize(rect, text->size_box);
     sfRectangleShape_setPosition(rect, text->pos);
     sfRectangleShape_setFillColor(rect, color);
@@ -78,7 +78,7 @@ void text_defil(char *str, text_t *text, sfRenderWindow *window)
     get_text(str, text, window);
 }
 
-text_t init_text(text_t text)
+text_t init_text(text_t text, raccoonmove_t *move)
 {
     text.index = 0;
     text.str_index = 0;
@@ -90,5 +90,6 @@ text_t init_text(text_t text)
     text.size_box.x = 800;
     text.size_box.y = 200;
     text.delay = 50000;
+    text.color = 12;
     return (text);
 }

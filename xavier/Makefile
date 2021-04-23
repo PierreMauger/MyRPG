@@ -18,6 +18,7 @@ SRCS =	map_main.c \
 		pnj_interaction.c \
 		event.c \
 		text_defil.c \
+		chest_open.c \
 
 OBJS = $(SRCS:.c=.o)
 

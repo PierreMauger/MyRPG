@@ -18,8 +18,9 @@ static void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text)
     if (move->obs.display_text_back == true)
         display_back_map(move);
     if (text->clock)
-        text_defil(move->pnj.sentence[text->str_index], text, window);
-    if (move->obs.col_chest == true) {}
+        text_defil(move->sentence[text->str_index], text, window);
+    if (move->chest.chest_open == true)
+        chest_open(move, text);
     sfRenderWindow_display(window);
 }
 
@@ -36,16 +37,14 @@ static int loop(sfRenderWindow *window)
     sfEvent event;
     sfVector2f size = {0.75, 0.75};
     raccoonmove_t move = init_struct_move(move, window);
-    text_t text = init_text(text);
+    text_t text = init_text(text, &move);
     int passed = 0;
 
     if (move.obs.index_obs == -1)
         return (-1);
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event)) {
-            map_event(&move, event, &passed);
-            if (move.pnj.interaction == true)
-                event_text(event, move.pnj.sentence, &text, &move);
+            map_event(&move, event, &passed, &text);
         }
         check_change_map(&move);
         ch_move(window, &move);

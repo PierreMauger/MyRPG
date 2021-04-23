@@ -20,10 +20,10 @@ static int create_pnj(raccoonmove_t *move)
     move->pnj.exist = true;
     move->pnj.last_dir = -1;
     sfSprite_scale(move->pnj.my_sprite, size);
-    move->pnj.sentence = malloc(sizeof(char *) * 3);
-    move->pnj.sentence[0] = PNJ_SPEAK_FIRST;
-    move->pnj.sentence[1] = PNJ_SPEAK_SECOND;
-    move->pnj.sentence[2] = NULL;
+    move->sentence = malloc(sizeof(char *) * 3);
+    move->sentence[0] = PNJ_SPEAK_FIRST;
+    move->sentence[1] = PNJ_SPEAK_SECOND;
+    move->sentence[2] = NULL;
     return (0);
 }
 
