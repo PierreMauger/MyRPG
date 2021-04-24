@@ -20,8 +20,8 @@ static raccoonmove_t init_struct_move_split(raccoonmove_t move)
     move.pnj.exist = false;
     move.pnj.interaction = false;
     move.anim = false;
-    move.chest.clock_chest = NULL;
-    move.chest.already_open = false;
+    move.chest.already_open_first = false;
+    move.chest.already_open_second = false;
     return (move);
 }
 
@@ -50,6 +50,10 @@ static void split_check_obs(raccoonmove_t *move, int i)
     if (my_strcmp(move->obs.type[i], " \"backmap\"") == 0)
         move->obs.display_text_back = true;
     if (my_strcmp(move->obs.type[i], " \"chest\"") == 0) {
+        if (my_strcmp(move->obs.fl_map_obstacle, "json/map0.json") == 0)
+            move->chest.nb_chest = 1;
+        if (my_strcmp(move->obs.fl_map_obstacle, "json/map1.json") == 0)
+            move->chest.nb_chest = 2;
         move->chest.col_chest = true;
         move->chest.index = i;
     }

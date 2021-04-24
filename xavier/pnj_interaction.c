@@ -18,3 +18,12 @@ int check_pnj_col(raccoonmove_t *move)
     }
     return (0);
 }
+
+int create_sentence_pnj(raccoonmove_t *move)
+{
+    move->pnj.interaction = true;
+    move->sentence = malloc(sizeof(char *) * 3);
+    move->sentence[0] = PNJ_SPEAK_FIRST;
+    move->sentence[1] = PNJ_SPEAK_SECOND;
+    move->sentence[2] = NULL;
+}
