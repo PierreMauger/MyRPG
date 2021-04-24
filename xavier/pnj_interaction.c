@@ -9,6 +9,8 @@
 
 int check_pnj_col(raccoonmove_t *move)
 {
+    if (my_strcmp(move->obs.fl_map_obstacle, "json/map1.json") != 0)
+        return (0);
     int x = move->pnj.pnj_pos.x;
     int y = move->pnj.pnj_pos.y;
 

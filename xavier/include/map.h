@@ -43,6 +43,8 @@ typedef struct {
 } obs_t;
 
 typedef struct {
+    sfTexture *my_texture;
+    sfSprite *my_sprite;
     bool already_open_first;
     bool already_open_second;
     bool chest_open;
