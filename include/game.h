@@ -92,6 +92,7 @@
 // More defines for paths
 #define INV_PATH "ressources/sprites/inv.png"
 #define SELEC_PATH "ressources/sprites/select.png"
+#define EQU_PATH "ressources/sprites/equiped.png"
 
 typedef struct {
     sfTexture *texture;
@@ -312,7 +313,10 @@ typedef struct inventory {
     sfTexture *invtexture;
     sfSprite *selecsprite;
     sfTexture *selectexture;
+    sfSprite *equipedsprite;
+    sfTexture *equipedtexture;
     sfVector2u pos;
+    short selected;
     list_t *list;
 } inventory_t;
 
@@ -327,6 +331,9 @@ int get_item_index(list_t *inv);
 inventory_t *init_inventory(game_t *game);
 void add_item_to_inv(inventory_t *inv, int item_id);
 void draw_inventory(game_t *game, inventory_t *inv);
+void poll_inv_events(game_t *game, inventory_t *inv);
+void set_selec_pos(inventory_t *inv);
+void draw_equiped(game_t *game, inventory_t *inv);
 
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);

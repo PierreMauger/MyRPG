@@ -16,6 +16,7 @@ void init_game(game_t *game)
     game->font_fight = sfFont_createFromFile(FONT_FIGHT);
     game->in_fight = 0;
     game->in_dialog = 0;
+    game->in_inv = false;
     init_fight(game);
     init_quest(game);
 }
