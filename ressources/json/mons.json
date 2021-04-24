@@ -5,13 +5,15 @@
     "health": 120,
     "att": 40,
     "def": 80,
-    "speed": 8.0,
+    "speed": 8,
     "img": "ressources/sprites/slime.png",
     "width": 66,
     "height": 50,
     "nb_anim": 3,
     "skill": [1, 2, 3],
-    "nb_skill": 3
+    "nb_skill": 3,
+    "xp": 10,
+    "level": 0
   },
   {
     "id": 2,
@@ -19,13 +21,15 @@
     "health": 150,
     "att": 70,
     "def": 60,
-    "speed": 5.0,
+    "speed": 5,
     "img": "ressources/sprites/slime.png",
     "width": 66,
     "height": 50,
     "nb_anim": 3,
     "skill": [1, 4, 5],
-    "nb_skill": 3
+    "nb_skill": 3,
+    "xp": 0,
+    "level": 0
   },
   {
     "id": 3,
@@ -33,13 +37,15 @@
     "health": 150,
     "att": 55,
     "def": 70,
-    "speed": 6.0,
+    "speed": 6,
     "img": "ressources/sprites/slime.png",
     "width": 66,
     "height": 50,
     "nb_anim": 3,
     "skill": [1, 6, 7],
-    "nb_skill": 3
+    "nb_skill": 3,
+    "xp": 0,
+    "level": 0
   },
   {
     "id": 4,
@@ -47,12 +53,14 @@
     "health": 200,
     "att": 50,
     "def": 50,
-    "speed": 4.0,
+    "speed": 4,
     "img": "ressources/sprites/slime.png",
     "width": 66,
     "height": 50,
     "nb_anim": 3,
     "skill": [8],
-    "nb_skill": 1
+    "nb_skill": 1,
+    "xp": 0,
+    "level": 0
   }
 ]

@@ -31,7 +31,7 @@ static void split_create_col(int fd, int a, int b, int *passed)
     }
 }
 
-int create_col(int a, int b, dinomove_t *move, int *passed)
+int create_col(int a, int b, raccoonmove_t *move, int *passed)
 {
     int fd = 0;
     char buff[4096];
@@ -40,8 +40,9 @@ int create_col(int a, int b, dinomove_t *move, int *passed)
         free_obs(move);
         init_obstacle(move);
     }
-    if (sfKeyboard_isKeyPressed(sfKeyE)) {
-        fd = open(move->fl_map_obstacle, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+    if (sfKeyboard_isKeyPressed(sfKeyT)) {
+        fd = open(move->obs.fl_map_obstacle,
+        O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
         if (fd == -1)
             return (-2);
         read(fd, buff, 4096);

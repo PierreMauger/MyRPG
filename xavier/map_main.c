@@ -7,59 +7,48 @@
 
 #include "map.h"
 
-int ch_move(sfRenderWindow *window, dinomove_t *move)
+static void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
-        if (move->dino_pos.x >= 0 && check_obs(move, 0) == 0)
-            move->dino_pos.x -= 1.5;
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyRight)) {
-        if (move->dino_pos.x <= 1850 && check_obs(move, 1) == 0)
-            move->dino_pos.x += 1.5;
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyUp)) {
-        if (move->dino_pos.y >= 0 && check_obs(move, 2) == 0)
-            move->dino_pos.y -= 1.5;
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyDown)) {
-        if (move->dino_pos.y <= 950 && check_obs(move, 3) == 0)
-            move->dino_pos.y += 1.5;
-    }
+    sfRenderWindow_clear(window, sfWhite);
+    sfRenderWindow_drawSprite(window, move->my_sprite, NULL);
+    pnj(move);
+    my_perso(window, move);
+    if (move->obs.display_text_next == true)
+        display_next_map(move);
+    if (move->obs.display_text_back == true)
+        display_back_map(move);
+    if (text->clock)
+        text_defil(move->sentence[text->str_index], text, window);
+    if (move->chest.chest_open == true)
+        chest_open(move, text);
+    sfRenderWindow_display(window);
 }
 
-int my_perso(sfRenderWindow *window, dinomove_t *move)
+static void check_change_map(raccoonmove_t *move)
 {
-    sfTexture *back = sfTexture_createFromFile("dino.png", NULL);
-    sfSprite *my_spr = sfSprite_create();
-    sfVector2f sprite_size = {0.6, 0.6};
-    sfSprite_setPosition(my_spr, move->dino_pos);
-    sfSprite_scale(my_spr, sprite_size);
-
-    sfSprite_setTexture(my_spr, back, sfTrue);
-    sfRenderWindow_drawSprite(window, my_spr, NULL);
-    sfTexture_destroy(back), sfSprite_destroy(my_spr);
+    if (move->obs.next_map == true)
+        change_map_next(move);
+    if (move->obs.back_map == true)
+        change_map_back(move);
 }
 
-int loop(sfRenderWindow *window)
+static int loop(sfRenderWindow *window)
 {
     sfEvent event;
     sfVector2f size = {0.75, 0.75};
-    dinomove_t move = init_struct_move(move, window);
+    raccoonmove_t move = init_struct_move(move, window);
+    text_t text = init_text(text, &move);
     int passed = 0;
 
-    if (move.index_obs == -1)
+    if (move.obs.index_obs == -1)
         return (-1);
-    sfSprite_setTexture(move.my_sprite, move.my_texture, sfTrue);
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event)) {
-            if (event.type == sfEvtKeyPressed)
-                create_col(move.dino_pos.x, move.dino_pos.y, &move, &passed);
-            if (event.type == sfEvtClosed)
-                sfRenderWindow_close(window);
+            map_event(&move, event, &passed, &text);
         }
-        ch_move(window, &move), sfRenderWindow_clear(window, sfWhite);
-        sfRenderWindow_drawSprite(window, move.my_sprite, NULL);
-        my_perso(window, &move), sfRenderWindow_display(window);
+        check_change_map(&move);
+        ch_move(window, &move);
+        displ_all(window, &move, &text);
     }
     return (0);
 }

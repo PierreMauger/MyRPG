@@ -12,6 +12,7 @@ void main_loop(game_t *game)
     inventory_t *inv = init_inventory(game);
     add_item_to_inv(inv, 1);
     add_item_to_inv(inv, 2);
+
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
         event_loop(game);
         sfRenderWindow_clear(GET_WINDOW, sfWhite);

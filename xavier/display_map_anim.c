@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-void display_map_split(dinomove_t *move, sfSprite *old)
+void display_map_split(raccoonmove_t *move, sfSprite *old)
 {
     sfRenderWindow_clear(move->window, sfWhite);
     sfRenderWindow_drawSprite(move->window, old, NULL);
@@ -15,7 +15,7 @@ void display_map_split(dinomove_t *move, sfSprite *old)
     sfRenderWindow_display(move->window);
 }
 
-void display_change_down(dinomove_t *move, sfTexture *save, int o, int n)
+void display_change_down(raccoonmove_t *move, sfTexture *save, int o, int n)
 {
     sfSprite *old = sfSprite_create();
     sfVector2f old_pos = {0, o};
@@ -37,7 +37,7 @@ void display_change_down(dinomove_t *move, sfTexture *save, int o, int n)
     sfSprite_setPosition(move->my_sprite, new_pos);
 }
 
-void display_change_up(dinomove_t *move, sfTexture *save, int o, int n)
+void display_change_up(raccoonmove_t *move, sfTexture *save, int o, int n)
 {
     sfSprite *old = sfSprite_create();
     sfVector2f old_pos = {0, o};
@@ -59,7 +59,7 @@ void display_change_up(dinomove_t *move, sfTexture *save, int o, int n)
     sfSprite_setPosition(move->my_sprite, new_pos);
 }
 
-void display_change_first(dinomove_t *move, sfTexture *save, int o, int n)
+void display_change_first(raccoonmove_t *move, sfTexture *save, int o, int n)
 {
     sfSprite *old = sfSprite_create();
     sfVector2f old_pos = {o, 0};
@@ -81,7 +81,7 @@ void display_change_first(dinomove_t *move, sfTexture *save, int o, int n)
     sfSprite_setPosition(move->my_sprite, new_pos);
 }
 
-void display_change_second(dinomove_t *move, sfTexture *save, int o, int n)
+void display_change_second(raccoonmove_t *move, sfTexture *save, int o, int n)
 {
     sfSprite *old = sfSprite_create();
     sfVector2f old_pos = {o, 0};

@@ -7,16 +7,16 @@
 
 #include "map.h"
 
-void free_obs(dinomove_t *move)
+void free_obs(raccoonmove_t *move)
 {
     int i = 0;
 
-    while (i != move->index_obs) {
-        free(move->obstacle[i]);
-        free(move->type[i]);
+    while (i != move->obs.index_obs) {
+        free(move->obs.obstacle[i]);
+        free(move->obs.type[i]);
         i++;
     }
-    free(move->obstacle);
-    free(move->type);
-    move->index_obs = 0;
+    free(move->obs.obstacle);
+    free(move->obs.type);
+    move->obs.index_obs = 0;
 }
