@@ -64,6 +64,13 @@ typedef struct {
 } pnj_t;
 
 typedef struct {
+    sfTexture *my_texture;
+    sfSprite *my_sprite;
+    bool taken;
+    bool col_key;
+} mykey_t;
+
+typedef struct {
     sfRenderWindow *window;
     sfTexture *my_texture;
     sfSprite *my_sprite;
@@ -73,9 +80,11 @@ typedef struct {
     obs_t obs;
     pnj_t pnj;
     chest_t chest;
+    mykey_t key;
     char **sentence;
     int speed;
     bool anim;
+    bool boot;
 } raccoonmove_t;
 
 typedef struct {
@@ -115,5 +124,6 @@ int event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move);
 int chest_open(raccoonmove_t *move, text_t *text);
 int create_sentence_chest(raccoonmove_t *move, text_t *text);
 int create_sentence_pnj(raccoonmove_t *move);
+void display_mykey(raccoonmove_t *move, int x, int y);
 
 #endif

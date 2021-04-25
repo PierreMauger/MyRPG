@@ -22,6 +22,7 @@ static int create_sentence_pnj_split(raccoonmove_t *move, text_t *text)
         move->chest.already_open_second = true;
         move->chest.my_texture = sfTexture_createFromFile
         ("../ressources/sprites/helm.png", NULL);
+        move->boot = true;
     }
     move->sentence[2] = NULL;
 }

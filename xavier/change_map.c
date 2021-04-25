@@ -63,19 +63,23 @@ static void select_map_next(raccoonmove_t *move)
 
 int change_map_next(raccoonmove_t *move)
 {
-    int o = 0;
     int n = 1440;
     sfTexture *save = move->my_texture;
 
+    if (my_strcmp(move->obs.fl_map_obstacle, "json/map2.json") == 0
+        && move->key.taken == false) {
+        move->obs.next_map = false;
+        return (0);
+    }
     select_map_next(move);
     free_obs(move);
     init_obstacle(move);
     if (my_strcmp(move->obs.fl_map_obstacle, "json/map3.json") == 0) {
         n = -720;
-        display_change_up(move, save, o, n);
+        display_change_up(move, save, 0, n);
     }
     else
-        display_change_first(move, save, o, n);
+        display_change_first(move, save, 0, n);
     move->obs.next_map = false;
     move->obs.display_text_next = false;
     return (0);

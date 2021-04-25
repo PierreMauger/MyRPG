@@ -57,6 +57,8 @@ static int k_map(raccoonmove_t *move, sfEvent event, int *passed, text_t *text)
         create_sentence_pnj(move);
     if (sfKeyboard_isKeyPressed(sfKeyE) && move->chest.col_chest == true)
         create_sentence_chest(move, text);
+    if (sfKeyboard_isKeyPressed(sfKeyE) && move->key.col_key == true)
+        move->key.taken = true;
     if (sfKeyboard_isKeyPressed(sfKeyE)
         && move->obs.display_text_next == true)
         move->obs.next_map = true;

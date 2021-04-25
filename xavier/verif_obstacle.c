@@ -7,44 +7,12 @@
 
 #include "map.h"
 
-static raccoonmove_t init_struct_move_split(raccoonmove_t move)
+static int split_check_obs(raccoonmove_t *move, int i)
 {
-    move.speed = 2;
-    move.pnj.speed_pnj = 1.5;
-    move.obs.next_map = false;
-    move.obs.back_map = false;
-    move.obs.display_text_next = false;
-    move.obs.display_text_back = false;
-    move.chest.chest_open = false;
-    move.chest.col_chest = false;
-    move.pnj.exist = false;
-    move.pnj.interaction = false;
-    move.anim = false;
-    move.chest.already_open_first = false;
-    move.chest.already_open_second = false;
-    return (move);
-}
-
-raccoonmove_t init_struct_move(raccoonmove_t move, sfRenderWindow *window)
-{
-    move.map_size.x = 1440;
-    move.map_size.y = 810;
-    move.raccoon_pos.x = 555;
-    move.raccoon_pos.y = 333;
-    move.obs.fl_map_obstacle = "json/map0.json";
-    move.obs.index_obs = 0;
-    move.my_texture = sfTexture_createFromFile("map/maison.jpg", NULL);
-    move.my_sprite = sfSprite_create();
-    sfSprite_setTexture(move.my_sprite, move.my_texture, sfTrue);
-    move.window = window;
-    move = init_struct_move_split(move);
-    if (init_obstacle(&move) == 1)
-        move.obs.index_obs = -1;
-    return (move);
-}
-
-static void split_check_obs(raccoonmove_t *move, int i)
-{
+    if (my_strcmp(move->obs.type[i], " \"lava\"") == 0 && move->boot == true)
+        return (1);
+    if (my_strcmp(move->obs.type[i], " \"key\"") == 0)
+        move->key.col_key = true;
     if (my_strcmp(move->obs.type[i], " \"nextmap\"") == 0)
         move->obs.display_text_next = true;
     if (my_strcmp(move->obs.type[i], " \"backmap\"") == 0)
@@ -57,28 +25,40 @@ static void split_check_obs(raccoonmove_t *move, int i)
         move->chest.col_chest = true;
         move->chest.index = i;
     }
+    return (0);
+}
+
+static sfVector2f save_move_obs(raccoonmove_t *move, int dir, sfVector2f st)
+{
+    st = move->raccoon_pos;
+    if (dir == 0)
+        st.x -= move->speed;
+    if (dir == 1)
+        st.x += move->speed;
+    if (dir == 2)
+        st.y -= move->speed;
+    if (dir == 3)
+        st.y += move->speed;
+    return (st);
 }
 
 static int check_obs(raccoonmove_t *move, int dir)
 {
     int i = 0;
-    sfVector2f st = move->raccoon_pos;
+    sfVector2f st = save_move_obs(move, dir, st);
 
-    if (dir == 0) st.x -= move->speed;
-    if (dir == 1) st.x += move->speed;
-    if (dir == 2) st.y -= move->speed;
-    if (dir == 3) st.y += move->speed;
     while (i != move->obs.index_obs) {
         if ((st.x >= move->obs.obstacle[i][0]
             && st.x <= move->obs.obstacle[i][1])
             && (st.y >= move->obs.obstacle[i][2]
             && st.y <= move->obs.obstacle[i][3])) {
-            split_check_obs(move, i);
-            return (1);
+            if (split_check_obs(move, i) != 1)
+                return (1);
         }
         i++;
     }
-    move->obs.display_text_next = false, move->obs.display_text_back = false;
+    move->obs.display_text_next = false;
+    move->obs.display_text_back = false;
     move->chest.col_chest = false;
     return (0);
 }

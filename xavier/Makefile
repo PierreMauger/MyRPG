@@ -8,6 +8,7 @@
 SRCS =	map_main.c \
 		load_obstacle.c \
 		verif_obstacle.c \
+		init_obstacle.c \
 		free.c \
 		change_map.c \
 		display_map_anim.c \
