@@ -65,6 +65,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/inventory/inventory.c					\
 				src/inventory/liblist.c						\
 				src/inventory/inv_events.c					\
+				src/inventory/cleaning.c					\
 
 SRC_MAIN	=	main.c				\
 

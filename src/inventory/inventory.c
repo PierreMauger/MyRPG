@@ -44,17 +44,21 @@ item_t *create_item(int id)
     sfTexture *t;
     item_t *data = malloc(sizeof(item_t));
     char *buf = NULL;
+    char *path = NULL;
 
     buf = bread_file(JSON_ITEMS, 20);
     data->description = (char *)parser(buf, "description", id);
     data->name = (char *)parser(buf, "name", id);
-    t = sfTexture_createFromFile((char *)parser(buf, "path", id), NULL);
+    path = (char *)parser(buf, "path", id);
+    t = sfTexture_createFromFile(path, NULL);
     data->texture = t;
     data->sprite = sfSprite_create();
     sfSprite_setTexture(data->sprite, data->texture, sfTrue);
     data->dmg_buff = (int)parser(buf, "att_buff", id);
     data->def_buff = (int)parser(buf, "def_buff", id);
     data->speed_buff = (int)parser(buf, "speed_buff", id);
+    free(buf);
+    free(path);
     return data;
 }
 

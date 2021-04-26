@@ -334,6 +334,7 @@ void draw_inventory(game_t *game, inventory_t *inv);
 void poll_inv_events(game_t *game, inventory_t *inv);
 void set_selec_pos(inventory_t *inv);
 void draw_equiped(game_t *game, inventory_t *inv);
+void destroy_inv(inventory_t *inv);
 
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);

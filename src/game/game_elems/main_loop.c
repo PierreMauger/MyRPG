@@ -25,4 +25,5 @@ void main_loop(game_t *game)
         draw_quest_text(game);
         sfRenderWindow_display(GET_WINDOW);
     }
+    destroy_inv(inv);
 }
