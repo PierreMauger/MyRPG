@@ -13,7 +13,7 @@ static int split_fill_obs(char *buff, raccoonmove_t *move, int *i, char **stock)
 
     (*i)++;
     (*stock) = malloc(sizeof(char) * 30);
-    while (buff[*i] != ',') {
+    while (buff[*i] != 44) {
         (*stock)[z] = buff[*i];
         (*i)++;
         z++;

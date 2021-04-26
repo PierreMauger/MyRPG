@@ -11,11 +11,15 @@ static int spl_txt(int a, char *str, sfVector2f *pos, sfText *sen)
 {
     int passed = 0;
 
-    if (str[a] == ' ') {
-        a++, passed++, pos->y += 55;
+    if (str[a] == '\0')
+        passed++;
+    if (str[a] == ' ' && passed == 0) {
+        a++, passed++;
+        pos->y += 55;
     }
     if (str[a - 1] == ' ' && passed == 0) {
-        pos->y += 55, passed++;
+        pos->y += 55;
+        passed++;
     }
     if (passed == 0) {
         pos->x += 32;
@@ -40,7 +44,7 @@ static void display_text(char *str, sfRenderWindow *win, text_t *text, char *t)
     while (str[a] != '\0') {
         c = str[a], sfText_setString(sen, &c), sfText_setPosition(sen, pos);
         sfRenderWindow_drawText(win, sen, NULL), a++;
-        if (pos.x >= stock.x + 700)
+        if (pos.x >= stock.x + (text->size_box.x - 100))
             a = spl_txt(a, t, &pos, sen), pos.x = stock.x + 10;
         else pos.x += 32;
         sfRenderWindow_drawText(win, sen, NULL);

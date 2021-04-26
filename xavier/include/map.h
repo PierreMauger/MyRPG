@@ -26,8 +26,10 @@
 
 #define PNJ_SPEAK_FIRST "Hello sir, It's going to be a lovely day."
 #define PNJ_SPEAK_SECOND "How can i help you ?"
-#define CHEST_SPEAK_FIRST "You find iron boots !"
-#define CHEST_SPEAK_SECOND "It can be helpful to cross something .."
+#define CHEST1_SPEAK_FIRST "You find a sword !"
+#define CHEST1_SPEAK_SECOND "You can equip it by opening the inventory"
+#define CHEST2_SPEAK_FIRST "You find iron boots !"
+#define CHEST2_SPEAK_SECOND "It can be helpful to cross something .."
 
 typedef struct {
     char *fl_map_obstacle;
@@ -41,11 +43,14 @@ typedef struct {
 } obs_t;
 
 typedef struct {
-    bool already_open;
+    sfTexture *my_texture;
+    sfSprite *my_sprite;
+    bool already_open_first;
+    bool already_open_second;
     bool chest_open;
     bool col_chest;
     size_t index;
-    sfClock *clock_chest;
+    int nb_chest;
 } chest_t;
 
 typedef struct {
@@ -59,6 +64,13 @@ typedef struct {
 } pnj_t;
 
 typedef struct {
+    sfTexture *my_texture;
+    sfSprite *my_sprite;
+    bool taken;
+    bool col_key;
+} mykey_t;
+
+typedef struct {
     sfRenderWindow *window;
     sfTexture *my_texture;
     sfSprite *my_sprite;
@@ -68,9 +80,11 @@ typedef struct {
     obs_t obs;
     pnj_t pnj;
     chest_t chest;
+    mykey_t key;
     char **sentence;
     int speed;
     bool anim;
+    bool boot;
 } raccoonmove_t;
 
 typedef struct {
@@ -108,5 +122,8 @@ int check_pnj_col(raccoonmove_t *move);
 int map_event(raccoonmove_t *move, sfEvent event, int *passed, text_t *text);
 int event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move);
 int chest_open(raccoonmove_t *move, text_t *text);
+int create_sentence_chest(raccoonmove_t *move, text_t *text);
+int create_sentence_pnj(raccoonmove_t *move);
+void display_mykey(raccoonmove_t *move, int x, int y);
 
 #endif

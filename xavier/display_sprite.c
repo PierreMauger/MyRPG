@@ -7,6 +7,17 @@
 
 #include "map.h"
 
+void display_mykey(raccoonmove_t *move, int x, int y)
+{
+    sfVector2f pos_key = {1792 + x, 917 + y};
+
+    if (move->key.taken == false
+        && my_strcmp(move->obs.fl_map_obstacle, "json/map1.json") == 0) {
+        sfSprite_setPosition(move->key.my_sprite, pos_key);
+        sfRenderWindow_drawSprite(move->window, move->key.my_sprite, NULL);
+    }
+}
+
 void my_perso(sfRenderWindow *window, raccoonmove_t *move)
 {
     sfTexture *back = sfTexture_createFromFile("sprite/raccoon.png", NULL);

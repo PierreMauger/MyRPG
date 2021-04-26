@@ -35,7 +35,7 @@
 },
 {
 	"type": "default",
-	"hor.x": 920,
+	"hor.x": 900,
 	"hor.y": 1120,
 	"ver.x": 324,
 	"ver.y": 408,
@@ -77,7 +77,7 @@
 },
 {
 	"type": "default",
-	"hor.x": 839,
+	"hor.x": 845,
 	"hor.y": 915,
 	"ver.x": 42,
 	"ver.y": 234,
@@ -85,7 +85,7 @@
 {
 	"type": "default",
 	"hor.x": 559,
-	"hor.y": 828,
+	"hor.y": 850,
 	"ver.x": 130,
 	"ver.y": 214,
 },
@@ -158,4 +158,12 @@
 	"hor.y": 987,
 	"ver.x": 118,
 	"ver.y": 205,
+},
+
+{
+	"type": "default",
+	"hor.x": 999,
+	"hor.y": 1153,
+	"ver.x": 29,
+	"ver.y": 121,
 },
