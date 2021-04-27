@@ -9,22 +9,22 @@
 
 static void init_quest_text(game_t *game)
 {
-    game->text = malloc(sizeof(quest_text_t));
-    game->text->delay = 100000;
-    game->text->index = 0;
-    game->text->str_index = 0;
-    game->text->size_font = 60;
-    game->text->save = NULL;
-    game->text->size = (sfVector2f){1200, 200};
-    game->text->pos = (sfVector2f){120, 550};
-    game->text->text = sfText_create();
-    sfText_setFont(game->text->text, game->font_fight);
-    sfText_setCharacterSize(game->text->text, 20);
-    sfText_setColor(game->text->text, sfWhite);
-    game->text->rect = sfRectangleShape_create();
-    sfRectangleShape_setSize(game->text->rect, game->text->size);
-    sfRectangleShape_setPosition(game->text->rect, game->text->pos);
-    sfRectangleShape_setFillColor(game->text->rect,
+    game->qtext = malloc(sizeof(quest_text_t));
+    game->qtext->delay = 100000;
+    game->qtext->index = 0;
+    game->qtext->str_index = 0;
+    game->qtext->size_font = 60;
+    game->qtext->save = NULL;
+    game->qtext->size = (sfVector2f){1200, 200};
+    game->qtext->pos = (sfVector2f){120, 550};
+    game->qtext->text = sfText_create();
+    sfText_setFont(game->qtext->text, game->font_fight);
+    sfText_setCharacterSize(game->qtext->text, 20);
+    sfText_setColor(game->qtext->text, sfWhite);
+    game->qtext->rect = sfRectangleShape_create();
+    sfRectangleShape_setSize(game->qtext->rect, game->qtext->size);
+    sfRectangleShape_setPosition(game->qtext->rect, game->qtext->pos);
+    sfRectangleShape_setFillColor(game->qtext->rect,
     sfColor_fromRGBA(47, 27, 12, 220));
 }
 

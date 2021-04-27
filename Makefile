@@ -50,6 +50,8 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/game/init_elems/init_game.c				\
 				src/game/init_elems/init_time.c				\
 				src/game/init_elems/init_window.c			\
+				src/game/init_elems/init_map.c			 	\
+				src/game/init_elems/init_text.c			 	\
 				src/game/init_elems/init_rectangle.c		\
 				src/game/game_elems/main_loop.c				\
 				src/game/game_elems/start_fight.c			\
@@ -66,6 +68,21 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/inventory/liblist.c						\
 				src/inventory/inv_events.c					\
 				src/inventory/cleaning.c					\
+				src/map/change_map.c						\
+				src/map/chest_open.c						\
+				src/map/display_map_anim.c					\
+				src/map/display_sprite.c					\
+				src/map/event.c								\
+				src/map/free.c								\
+				src/map/init_obstacle.c						\
+				src/map/load_obstacle.c						\
+				src/map/map_main.c							\
+				src/map/pnj_interaction.c					\
+				src/map/pnj.c								\
+				src/map/text_defil.c						\
+				src/map/verif_obstacle.c					\
+				src/map/my_itoa.c							\
+
 
 SRC_MAIN	=	main.c				\
 

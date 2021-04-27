@@ -10,15 +10,15 @@
 void event_text(game_t *game)
 {
     if (game->event.type == sfEvtMouseButtonPressed && game->in_dialog == 1
-        && game->quest->start[game->text->str_index + 1] == NULL) {
+        && game->quest->start[game->qtext->str_index + 1] == NULL) {
         game->in_dialog = 0;
-        game->text->index = 0, game->text->str_index = 0;
+        game->qtext->index = 0, game->qtext->str_index = 0;
         return;
     }
     if (game->event.type == sfEvtMouseButtonPressed && game->in_dialog == 1
-        && game->quest->start[game->text->str_index] != NULL) {
-        game->text->str_index++, game->in_dialog = 0;
-        game->text->index = 0;
+        && game->quest->start[game->qtext->str_index] != NULL) {
+        game->qtext->str_index++, game->in_dialog = 0;
+        game->qtext->index = 0;
     }
     if (game->event.type == sfEvtMouseButtonPressed && game->in_dialog == 0)
         game->in_dialog = 1;
@@ -41,6 +41,7 @@ void event_open_inv(game_t *game)
 void event_loop(game_t *game)
 {
     while (sfRenderWindow_pollEvent(GET_WINDOW, &game->event)) {
+        map_event(game->move, game->event, game->text);
         event_start_fight(game);
         event_text(game);
         event_open_inv(game);

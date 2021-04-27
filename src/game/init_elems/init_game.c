@@ -19,4 +19,6 @@ void init_game(game_t *game)
     game->in_inv = false;
     init_fight(game);
     init_quest(game);
+    init_map(game);
+    my_first_init_text(game);
 }
