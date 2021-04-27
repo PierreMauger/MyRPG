@@ -9,6 +9,7 @@
 #define GAME_H
 
 #include "blib.h"
+#include "map.h"
 #include <stdbool.h>
 #include <time.h>
 #include <SFML/Graphics/RenderWindow.h>
@@ -282,10 +283,12 @@ typedef struct {
     sfFont *font;
     sfFont *font_fight;
     quest_t *quest;
-    quest_text_t *text;
+    quest_text_t *qtext;
     bool in_fight;
     bool in_dialog;
     bool in_inv;
+    raccoonmove_t *move;
+    text_t *text;
 } game_t;
 
 typedef struct item {
@@ -319,62 +322,6 @@ typedef struct inventory {
     short selected;
     list_t *list;
 } inventory_t;
-
-typedef struct {
-    char *fl_map_obstacle;
-    int **obstacle;
-    char **type;
-    size_t index_obs;
-    bool next_map;
-    bool back_map;
-    bool display_text_next;
-    bool display_text_back;
-} obs_t;
-
-typedef struct {
-    sfTexture *my_texture;
-    sfSprite *my_sprite;
-    bool already_open_first;
-    bool already_open_second;
-    bool chest_open;
-    bool col_chest;
-    size_t index;
-    int nb_chest;
-} chest_t;
-
-typedef struct {
-    sfTexture *my_texture;
-    sfSprite *my_sprite;
-    sfVector2f pnj_pos;
-    bool interaction;
-    bool exist;
-    int last_dir;
-    int speed_pnj;
-} pnj_t;
-
-typedef struct {
-    sfTexture *my_texture;
-    sfSprite *my_sprite;
-    bool taken;
-    bool col_key;
-} mykey_t;
-
-typedef struct {
-    sfRenderWindow *window;
-    sfTexture *my_texture;
-    sfSprite *my_sprite;
-    sfVector2f raccoon_pos;
-    sfVector2f map_size;
-    sfVector2f map_limit;
-    obs_t obs;
-    pnj_t pnj;
-    chest_t chest;
-    mykey_t key;
-    char **sentence;
-    int speed;
-    bool anim;
-    bool boot;
-} raccoonmove_t;
 
 // LL funcs
 void draw_list(sfRenderWindow *w, list_t *items);
@@ -500,6 +447,8 @@ void init_set(game_t *game);
 void init_status_texture(game_t *game);
 void init_status_sprite(game_t *game);
 void init_status(game_t *game);
+void init_map(game_t *game);
+void my_first_init_text(game_t *game);
 sfText *init_text(game_t *game, char *str, sfColor color);
 
 //SET_ELEMS

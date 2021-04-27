@@ -28,48 +28,48 @@ static int spl_txt(int a, char *str, sfVector2f *pos, sfText *sen)
 
 static void display_text(char *str, game_t *game, char *t)
 {
-    sfVector2f pos = game->text->pos;
+    sfVector2f pos = game->qtext->pos;
     char c;
 
     pos.x += 10;
-    sfText_setFont(game->text->text, game->font);
-    sfText_setCharacterSize(game->text->text, game->text->size_font);
+    sfText_setFont(game->qtext->text, game->font);
+    sfText_setCharacterSize(game->qtext->text, game->qtext->size_font);
     for (int a = 0; str[a] != '\0'; a++) {
         c = str[a];
-        sfText_setString(game->text->text, &c);
-        sfText_setPosition(game->text->text, pos);
-        sfRenderWindow_drawText(GET_WINDOW, game->text->text, NULL);
-        if (pos.x >= game->text->size.x) {
-            a = spl_txt(a, t, &pos, game->text->text);
-            pos.x = game->text->pos.x + 10;
+        sfText_setString(game->qtext->text, &c);
+        sfText_setPosition(game->qtext->text, pos);
+        sfRenderWindow_drawText(GET_WINDOW, game->qtext->text, NULL);
+        if (pos.x >= game->qtext->size.x) {
+            a = spl_txt(a, t, &pos, game->qtext->text);
+            pos.x = game->qtext->pos.x + 10;
         }
         else
             pos.x += 32;
-        sfRenderWindow_drawText(GET_WINDOW, game->text->text, NULL);
+        sfRenderWindow_drawText(GET_WINDOW, game->qtext->text, NULL);
     }
 }
 
 static void get_text(char *str, game_t *game)
 {
-    game->text->save = malloc(sizeof(char) * (bstrlen(str) + 2));
-    if (!(game->text->index >= bstrlen(str)))
+    game->qtext->save = malloc(sizeof(char) * (bstrlen(str) + 2));
+    if (!(game->qtext->index >= bstrlen(str)))
         if (sfClock_getElapsedTime(game->time->clock).microseconds >=
-        game->text->delay) {
+        game->qtext->delay) {
         sfClock_restart(game->time->clock);
-        game->text->index++;
+        game->qtext->index++;
     }
-    for (size_t a = 0; a <= game->text->index; a++) {
-        game->text->save[a] = str[a];
-        game->text->save[a + 1] = '\0';
+    for (size_t a = 0; a <= game->qtext->index; a++) {
+        game->qtext->save[a] = str[a];
+        game->qtext->save[a + 1] = '\0';
     }
-    display_text(game->text->save, game, str);
-    free(game->text->save);
+    display_text(game->qtext->save, game, str);
+    free(game->qtext->save);
 }
 
 void draw_quest_text(game_t *game)
 {
     if (game->in_dialog == 1) {
-        sfRenderWindow_drawRectangleShape(GET_WINDOW, game->text->rect, NULL);
-        get_text(game->quest->start[game->text->str_index], game);
+        sfRenderWindow_drawRectangleShape(GET_WINDOW, game->qtext->rect, NULL);
+        get_text(game->quest->start[game->qtext->str_index], game);
     }
 }
