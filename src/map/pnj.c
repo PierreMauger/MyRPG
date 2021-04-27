@@ -11,7 +11,7 @@ static int create_pnj(raccoonmove_t *move)
 {
     sfVector2f size = {0.2, 0.2};
 
-    move->pnj.my_texture = sfTexture_createFromFile("ressources/sprites/pnj.png", NULL);
+    move->pnj.my_texture = sfTexture_createFromFile(PNJ, NULL);
     move->pnj.my_sprite = sfSprite_create();
     sfSprite_setTexture(move->pnj.my_sprite, move->pnj.my_texture, sfTrue);
     srand(time(NULL));

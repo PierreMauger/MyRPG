@@ -20,7 +20,7 @@ void display_mykey(raccoonmove_t *move, int x, int y)
 
 void my_perso(sfRenderWindow *window, raccoonmove_t *move)
 {
-    sfTexture *back = sfTexture_createFromFile("ressources/sprites/raccoon.png", NULL);
+    sfTexture *back = sfTexture_createFromFile(RACCOON, NULL);
     sfSprite *my_spr = sfSprite_create();
     sfVector2f sprite_size = {1, 1};
     sfSprite_setPosition(my_spr, move->raccoon_pos);

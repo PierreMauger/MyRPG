@@ -36,6 +36,10 @@
 #define MAP1 "ressources/json/map1.json"
 #define MAP2 "ressources/json/map2.json"
 #define MAP3 "ressources/json/map3.json"
+#define RACCOON "ressources/sprites/raccoon.png"
+#define KEY "ressources/sprites/key.png"
+#define MAPMAISON "ressources/map/maison.jpg"
+#define PNJ "ressources/sprites/pnj.png"
 
 typedef struct {
     char *fl_map_obstacle;

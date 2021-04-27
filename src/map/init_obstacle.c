@@ -35,10 +35,10 @@ void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
     move->raccoon_pos.y = 333;
     move->obs.fl_map_obstacle = MAP0;
     move->obs.index_obs = 0;
-    move->my_texture = sfTexture_createFromFile("ressources/map/maison.jpg", NULL);
+    move->my_texture = sfTexture_createFromFile(MAPMAISON, NULL);
     move->my_sprite = sfSprite_create();
     sfSprite_setTexture(move->my_sprite, move->my_texture, sfTrue);
-    move->key.my_texture = sfTexture_createFromFile("ressources/sprites/key.png", NULL);
+    move->key.my_texture = sfTexture_createFromFile(KEY, NULL);
     move->key.my_sprite = sfSprite_create();
     sfSprite_setTexture(move->key.my_sprite, move->key.my_texture, sfTrue);
     move->window = window;
