@@ -99,7 +99,6 @@ typedef struct {
 
 typedef struct {
     sfClock *clock;
-    char **sentence;
     char *save;
     size_t index;
     size_t str_index;

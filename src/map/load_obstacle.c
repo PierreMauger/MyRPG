@@ -74,12 +74,12 @@ int init_obstacle(raccoonmove_t *move)
 {
     int fd = 0;
     int ret = 0;
-    char buff[4096];
+    char buff[9000];
 
     fd = open(move->obs.fl_map_obstacle, O_RDWR);
     if (fd == -1)
         return (1);
-    ret = read(fd, buff, 4096);
+    ret = read(fd, buff, 9000);
     if (ret == -1)
         return (1);
     buff[ret] = '\0';
