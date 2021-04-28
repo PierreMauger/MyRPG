@@ -23,7 +23,7 @@ static int create_pnj(raccoonmove_t *move)
     return (0);
 }
 
-static int display_pnj(raccoonmove_t *move)
+int display_pnj(raccoonmove_t *move)
 {
     sfSprite_setPosition(move->pnj.my_sprite, move->pnj.pnj_pos);
     sfRenderWindow_drawSprite(move->window, move->pnj.my_sprite, NULL);
@@ -81,6 +81,5 @@ int pnj(raccoonmove_t *move)
     if (move->pnj.exist == false)
         create_pnj(move);
     move_pnj(move);
-    display_pnj(move);
     return (0);
 }

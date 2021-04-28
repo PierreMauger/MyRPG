@@ -41,6 +41,8 @@ void event_open_inv(game_t *game)
 void event_loop(game_t *game)
 {
     while (sfRenderWindow_pollEvent(GET_WINDOW, &game->event)) {
+        if (sfKeyboard_isKeyPressed(sfKeyEscape))
+            my_pause(game);
         map_event(game->move, game->event, game->text);
         event_start_fight(game);
         event_text(game);

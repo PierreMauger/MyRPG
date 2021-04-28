@@ -483,6 +483,11 @@ void start_fight(game_t *game);
 void event_start_fight(game_t *game);
 void event_loop(game_t *game);
 
+// PAUSE_ELEMS
+int my_pause(game_t *game);
+int display_arrow(game_t *game, int *i);
+int display_pause(game_t *game);
+
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
 void destroy_time(time_elapsed_t *time);

@@ -11,7 +11,8 @@ void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text)
 {
     sfRenderWindow_clear(window, sfWhite);
     sfRenderWindow_drawSprite(window, move->my_sprite, NULL);
-    pnj(move);
+    if (move->pnj.exist == true)
+        display_pnj(move);
     display_mykey(move, 0, 0);
     my_perso(window, move);
     if (move->obs.display_text_next == true)

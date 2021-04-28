@@ -135,5 +135,6 @@ int create_sentence_pnj(raccoonmove_t *move);
 void display_mykey(raccoonmove_t *move, int x, int y);
 void check_change_map(raccoonmove_t *move);
 void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text);
+int display_pnj(raccoonmove_t *move);
 
 #endif
