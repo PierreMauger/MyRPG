@@ -67,18 +67,18 @@ int change_map_next(raccoonmove_t *move)
     int n = 1440;
     sfTexture *save = move->my_texture;
 
-    if (bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0
-        && move->key.taken == false) {
+    if ((bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0
+        && move->key.taken == false) ||
+        (bstrcmp(move->obs.fl_map_obstacle, MAP0) == 0
+        && move->sword == false)) {
         move->obs.next_map = false;
         return (0);
     }
     select_map_next(move);
     free_obs(move);
     init_obstacle(move);
-    if (bstrcmp(move->obs.fl_map_obstacle, MAP3) == 0) {
-        n = -720;
-        display_change_up(move, save, 0, n);
-    }
+    if (bstrcmp(move->obs.fl_map_obstacle, MAP3) == 0)
+        n = -720, display_change_up(move, save, 0, n);
     else
         display_change_first(move, save, 0, n);
     move->obs.next_map = false;

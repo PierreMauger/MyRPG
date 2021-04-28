@@ -207,13 +207,6 @@
 	"type": "default",
 	"hor.x": 1185,
 	"hor.y": 1851,
-	"ver.x": 951,
-	"ver.y": 900,
-},
-{
-	"type": "default",
-	"hor.x": 1185,
-	"hor.y": 1851,
 	"ver.x": 900,
 	"ver.y": 951,
 },

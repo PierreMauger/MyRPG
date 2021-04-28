@@ -73,7 +73,7 @@ static int get_text(char *str, text_t *text, sfRenderWindow *window)
 void text_defil(char *str, text_t *text, sfRenderWindow *window)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
-    sfColor color = sfColor_fromRGBA(47, 27, text->color, 220);
+    sfColor color = sfColor_fromRGBA(47, text->color2, text->color, 220);
     sfRectangleShape_setSize(rect, text->size_box);
     sfRectangleShape_setPosition(rect, text->pos);
     sfRectangleShape_setFillColor(rect, color);
@@ -95,4 +95,6 @@ void my_init_text(text_t *text, raccoonmove_t *move)
     text->size_box.y = 200;
     text->delay = 50000;
     text->color = 12;
+    text->color2 = 27;
+    text->display = false;
 }

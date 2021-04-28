@@ -24,8 +24,12 @@
 #include <stdbool.h>
 #include "blib.h"
 
+#define LINK_SPEAK_FIRST "It's dangerous to go alone !"
+#define LINK_SPEAK_SECOND "You should open the chest !"
 #define PNJ_SPEAK_FIRST "Hello sir, It's going to be a lovely day."
 #define PNJ_SPEAK_SECOND "How can i help you ?"
+#define DONJON_SPEAK_FIRST "You don't have the key !"
+#define DONJON_SPEAK_SECOND "You should explore the village."
 #define CHEST1_SPEAK_FIRST "You find a sword !"
 #define CHEST1_SPEAK_SECOND "You can equip it by opening the inventory"
 #define CHEST2_SPEAK_FIRST "You find iron boots !"
@@ -102,12 +106,14 @@ typedef struct {
 
 typedef struct {
     sfClock *clock;
+    bool display;
     char *save;
     size_t index;
     size_t str_index;
     int size_font;
     int delay;
     int color;
+    int color2;
     sfVector2f pos;
     sfVector2f size_box;
 } text_t;
@@ -134,11 +140,12 @@ int map_event(raccoonmove_t *move, sfEvent event, text_t *text);
 int my_event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move);
 int chest_open(raccoonmove_t *move, text_t *text);
 int create_sentence_chest(raccoonmove_t *move, text_t *text);
-int create_sentence_pnj(raccoonmove_t *move);
+int create_sentence_pnj(raccoonmove_t *move, text_t *text);
 void display_mykey(raccoonmove_t *move, int x, int y);
 void check_change_map(raccoonmove_t *move);
 void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text);
 int display_pnj(raccoonmove_t *move);
 int load_save(raccoonmove_t *move);
+void check_got_sword(raccoonmove_t *move, text_t *text);
 
 #endif
