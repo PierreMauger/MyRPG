@@ -40,7 +40,7 @@ int my_event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move)
     }
     if (text->clock == NULL) {
         text->clock = sfClock_create();
-        text->pos.x = move->raccoon_pos.x - 250;
+        text->pos.x = move->raccoon_pos.x - 220;
         text->pos.y = move->raccoon_pos.y + 100;
     }
 }

@@ -19,6 +19,11 @@ static int split_write_in_json_save(FILE *fp, game_t *game)
         fwrite("true", 1, 4, fp);
     else
         fwrite("false", 1, 5, fp);
+    fwrite(",\n\t\t\"sword\": ", 1, 13, fp);
+    if (game->move->sword == true)
+        fwrite("true", 1, 4, fp);
+    else
+        fwrite("false", 1, 5, fp);
     fwrite(",\n\t},\n]", 1, 7, fp);
 }
 

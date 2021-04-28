@@ -11,6 +11,7 @@ static void init_struct_move_split(raccoonmove_t *move)
 {
     move->speed = 3;
     move->boot = false;
+    move->sword = false;
     move->pnj.speed_pnj = 2;
     move->obs.next_map = false;
     move->obs.back_map = false;
@@ -29,8 +30,6 @@ static void init_struct_move_split(raccoonmove_t *move)
 
 void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
 {
-    move->map_size.x = 1440;
-    move->map_size.y = 810;
     move->raccoon_pos.x = 555;
     move->raccoon_pos.y = 333;
     move->obs.fl_map_obstacle = MAP0;
@@ -42,6 +41,7 @@ void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
     move->key.my_sprite = sfSprite_create();
     sfSprite_setTexture(move->key.my_sprite, move->key.my_texture, sfTrue);
     move->window = window;
+    move->map_clock = sfClock_create();
     init_struct_move_split(move);
     if (init_obstacle(move) == 1)
         move->obs.index_obs = -1;

@@ -31,6 +31,26 @@ int change_move(raccoonmove_t *move)
     return (0);
 }
 
+static void find_bool_split(char stock, raccoonmove_t *move, int i, char *buff)
+{
+    if (stock == 't') {
+        move->boot = true;
+        move->chest.already_open_second = true;
+    }
+    else
+        move->boot = false;
+    while (buff[i] != ':')
+        i++;
+    i += 2;
+    stock = buff[i];
+    if (stock == 't') {
+        move->sword = true;
+        move->chest.already_open_first = true;
+    }
+    else
+        move->sword = false;
+}
+
 void find_bool(char *buff, raccoonmove_t *move, int i)
 {
     char stock;
@@ -47,10 +67,5 @@ void find_bool(char *buff, raccoonmove_t *move, int i)
         i++;
     i += 2;
     stock = buff[i];
-    if (stock == 't') {
-        move->boot = true;
-        move->chest.already_open_second = true;
-    }
-    else
-        move->boot = false;
+    find_bool_split(stock, move, i, buff);
 }

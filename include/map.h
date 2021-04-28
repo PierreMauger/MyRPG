@@ -88,8 +88,7 @@ typedef struct {
     sfTexture *my_texture;
     sfSprite *my_sprite;
     sfVector2f raccoon_pos;
-    sfVector2f map_size;
-    sfVector2f map_limit;
+    sfClock *map_clock;
     obs_t obs;
     pnj_t pnj;
     chest_t chest;
@@ -98,6 +97,7 @@ typedef struct {
     int speed;
     bool anim;
     bool boot;
+    bool sword;
 } raccoonmove_t;
 
 typedef struct {

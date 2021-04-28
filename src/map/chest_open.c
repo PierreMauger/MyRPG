@@ -15,6 +15,7 @@ static int create_sentence_pnj_split(raccoonmove_t *move, text_t *text)
         move->chest.already_open_first = true;
         move->chest.my_texture = sfTexture_createFromFile
         ("ressources/sprites/sword.png", NULL);
+        move->sword = true;
     }
     if (move->chest.nb_chest == 2) {
         move->sentence[0] = CHEST2_SPEAK_FIRST;

@@ -11,6 +11,7 @@ static void destroy_map(game_t *game)
 {
     sfTexture_destroy(game->move->my_texture);
     sfSprite_destroy(game->move->my_sprite);
+    sfClock_destroy(game->move->map_clock);
     free_obs(game->move);
     free(game->text);
     free(game->move);

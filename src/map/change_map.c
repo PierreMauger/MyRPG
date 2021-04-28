@@ -17,9 +17,9 @@ static void load_map(raccoonmove_t *move, char *tex, char *map)
 static int select_map_back(raccoonmove_t *move)
 {
     int p = 0;
-
     if (bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0 && p == 0) {
         load_map(move, "ressources/map/maison.jpg", MAP0);
+        move->pnj.exist = false;
         move->raccoon_pos.x = 1300;
         move->raccoon_pos.y = 510;
         p++;
@@ -51,6 +51,7 @@ static void select_map_next(raccoonmove_t *move)
     if (bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0 && p == 0) {
         load_map(move, "ressources/map/plage.png", MAP2);
         move->raccoon_pos.x = 5;
+        move->pnj.exist = false;
         p++;
     }
     if (bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0 && p == 0) {
