@@ -12,7 +12,8 @@ sfRenderWindow *create_window(int width, int height)
     sfRenderWindow *window;
     sfVideoMode video_mode = {width, height, 32};
 
-    window = sfRenderWindow_create(video_mode, "Raccoon RPG", sfClose, NULL);
+    window = sfRenderWindow_create(
+        video_mode, "Raccoon RPG", sfResize | sfClose, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     return window;
 }

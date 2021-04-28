@@ -61,6 +61,9 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/game/destroy_elems/destroy_window.c		\
 				src/game/pause/pause.c						\
 				src/game/pause/display_pause_elem.c			\
+				src/game/save/save_elem.c					\
+				src/game/save/load_save.c					\
+				src/game/save/load_save_split.c				\
 				src/parser/json_parser.c					\
 				src/parser/parser_write.c					\
 				src/quest/destroy_elems/destroy_quest.c		\

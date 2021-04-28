@@ -488,6 +488,12 @@ int my_pause(game_t *game);
 int display_arrow(game_t *game, int *i);
 int display_pause(game_t *game);
 
+// SAVE_ELEMS
+int save_elem(game_t *game);
+int load_save(raccoonmove_t *move);
+void find_bool(char *buff, raccoonmove_t *move, int i);
+int change_move(raccoonmove_t *move);
+
 //DESTROY_ELEMS
 void destroy_game(game_t *game);
 void destroy_time(time_elapsed_t *time);

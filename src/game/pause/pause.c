@@ -42,7 +42,7 @@ static int check_go_back(game_t *game, int i)
     if (i == 0)
         return (0);
     if (i == 1)
-        exit (5);
+        save_elem(game);
     if (i == 2)
         sfRenderWindow_close(GET_WINDOW);
     return (0);

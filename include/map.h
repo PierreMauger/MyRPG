@@ -39,6 +39,9 @@
 #define RACCOON "ressources/sprites/raccoon.png"
 #define KEY "ressources/sprites/key.png"
 #define MAPMAISON "ressources/map/maison.jpg"
+#define MAPPLAGE "ressources/map/plage.png"
+#define MAPVILLAGE "ressources/map/village.png"
+#define MAPDONJON "ressources/map/donjon.jpg"
 #define PNJ "ressources/sprites/pnj.png"
 
 typedef struct {
@@ -136,5 +139,6 @@ void display_mykey(raccoonmove_t *move, int x, int y);
 void check_change_map(raccoonmove_t *move);
 void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text);
 int display_pnj(raccoonmove_t *move);
+int load_save(raccoonmove_t *move);
 
 #endif
