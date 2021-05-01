@@ -21,7 +21,7 @@ static void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text)
     if (text->clock)
         text_defil(move->sentence[text->str_index], text, window);
     if (move->chest.chest_open == true)
-        chest_open(move, text);
+        chest_open(move);
     sfRenderWindow_display(window);
 }
 
@@ -48,7 +48,7 @@ static int loop(sfRenderWindow *window)
             map_event(&move, event, &passed, &text);
         }
         check_change_map(&move);
-        ch_move(window, &move);
+        ch_move(&move);
         displ_all(window, &move, &text);
     }
     return (0);

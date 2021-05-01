@@ -7,7 +7,7 @@
 
 #include "game.h"
 
-static int pause_event_pressed(game_t *game, int *i)
+static int pause_event_pressed(int *i)
 {
     if (sfKeyboard_isKeyPressed(sfKeyUp) || sfKeyboard_isKeyPressed(sfKeyZ))
         (*i)--;
@@ -22,7 +22,7 @@ static int pause_event_pressed(game_t *game, int *i)
     return (0);
 }
 
-static int split_pause(game_t *game, sfClock *total, int *i)
+static int split_pause(game_t *game, int *i)
 {
     int ret = 0;
 
@@ -30,7 +30,7 @@ static int split_pause(game_t *game, sfClock *total, int *i)
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(GET_WINDOW);
         if (game->event.type == sfEvtKeyPressed)
-            ret = pause_event_pressed(game, i);
+            ret = pause_event_pressed(i);
         if (ret == 1)
             return (1);
     }
@@ -48,17 +48,16 @@ static int check_go_back(game_t *game, int i)
     return (0);
 }
 
-int my_pause(game_t *game)
+void my_pause(game_t *game)
 {
-    sfClock *total = sfClock_create();
     int i = 0;
 
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
-        if (split_pause(game, total, &i) == 1)
-            return (1);
+        if (split_pause(game, &i) == 1)
+            return;
         if (sfKeyboard_isKeyPressed(sfKeyReturn)) {
             check_go_back(game, i);
-            return (0);
+            return;
         }
         sfRenderWindow_clear(GET_WINDOW, sfBlack);
         displ_all(GET_WINDOW, game->move, game->text);

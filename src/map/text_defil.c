@@ -82,7 +82,7 @@ void text_defil(char *str, text_t *text, sfRenderWindow *window)
     get_text(str, text, window);
 }
 
-void my_init_text(text_t *text, raccoonmove_t *move)
+void my_init_text(text_t *text)
 {
     text->index = 0;
     text->str_index = 0;

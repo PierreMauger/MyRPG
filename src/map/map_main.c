@@ -22,7 +22,7 @@ void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text)
     if (text->clock)
         text_defil(move->sentence[text->str_index], text, window);
     if (move->chest.chest_open == true)
-        chest_open(move, text);
+        chest_open(move);
 }
 
 void check_change_map(raccoonmove_t *move)

@@ -484,9 +484,9 @@ void event_start_fight(game_t *game);
 void event_loop(game_t *game);
 
 // PAUSE_ELEMS
-int my_pause(game_t *game);
-int display_arrow(game_t *game, int *i);
-int display_pause(game_t *game);
+void my_pause(game_t *game);
+void display_arrow(game_t *game, int *i);
+void display_pause(game_t *game);
 
 // SAVE_ELEMS
 int save_elem(game_t *game);

@@ -7,10 +7,8 @@
 
 #include "game.h"
 
-static int display_pause_back(game_t *game)
+static void display_pause_back(game_t *game)
 {
-    int i = 0;
-    sfVector2f zpos;
     sfVector2f size = {40, 40};
     sfTexture *my_texture = sfTexture_createFromFile
         ("ressources/sprites/pause_back.png", NULL);
@@ -21,13 +19,10 @@ static int display_pause_back(game_t *game)
     sfRenderWindow_drawSprite(GET_WINDOW, my_sprite, NULL);
     sfTexture_destroy(my_texture);
     sfSprite_destroy(my_sprite);
-    return (0);
 }
 
-int display_pause(game_t *game)
+void display_pause(game_t *game)
 {
-    int i = 0;
-    sfVector2f zpos;
     sfVector2f size = {1, 1};
     sfVector2f pos = {1920 / 2 - 400, 1080 / 2 - 350};
     sfTexture *my_texture = sfTexture_createFromFile
@@ -41,10 +36,9 @@ int display_pause(game_t *game)
     sfRenderWindow_drawSprite(GET_WINDOW, my_sprite, NULL);
     sfTexture_destroy(my_texture);
     sfSprite_destroy(my_sprite);
-    return (0);
 }
 
-int display_arrow(game_t *game, int *i)
+void display_arrow(game_t *game, int *i)
 {
     sfTexture *my_texture = sfTexture_createFromFile
         ("ressources/sprites/fleche.png", NULL);
@@ -63,5 +57,4 @@ int display_arrow(game_t *game, int *i)
     sfRenderWindow_drawSprite(GET_WINDOW, my_sprite, NULL);
     sfTexture_destroy(my_texture);
     sfSprite_destroy(my_sprite);
-    return (0);
 }

@@ -24,12 +24,12 @@ static int reset_text(text_t *text, raccoonmove_t *move)
     return (0);
 }
 
-int my_event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move)
+void my_event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move)
 {
     if (event.type == sfEvtMouseButtonPressed && text->clock != NULL
         && str[text->str_index + 1] == NULL) {
         reset_text(text, move);
-        return (0);
+        return;
     }
     if (event.type == sfEvtMouseButtonPressed && text->clock != NULL
         && str[text->str_index + 1] != NULL) {
@@ -47,7 +47,7 @@ int my_event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move)
     }
 }
 
-static int k_map(raccoonmove_t *move, sfEvent event, text_t *text)
+static void k_map(raccoonmove_t *move, text_t *text)
 {
     if (sfKeyboard_isKeyPressed(sfKeyA)) {
         if (move->speed == 3)
@@ -71,12 +71,12 @@ static int k_map(raccoonmove_t *move, sfEvent event, text_t *text)
         move->obs.back_map = true;
 }
 
-int map_event(raccoonmove_t *move, sfEvent event, text_t *text)
+void map_event(raccoonmove_t *move, sfEvent event, text_t *text)
 {
     if (text->display == true)
         my_event_text(event, move->sentence, text, move);
     if (event.type == sfEvtKeyPressed) {
-        k_map(move, event, text);
+        k_map(move, text);
     }
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(move->window);

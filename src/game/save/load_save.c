@@ -25,7 +25,7 @@ static void find_map(char *buff, raccoonmove_t *move, int *i)
     free(stock);
 }
 
-static int find_pos_split(char *buff, raccoonmove_t *move, int *i)
+static void find_pos_split(char *buff, raccoonmove_t *move, int *i)
 {
     char *stock = malloc(sizeof(char) * 6);
     int a = 0;
@@ -34,7 +34,7 @@ static int find_pos_split(char *buff, raccoonmove_t *move, int *i)
         (*i)++;
     *i += 2;
     if (buff[*i] == ',')
-        return (1);
+        return;
     while (buff[*i] != '-') {
         stock[a] = buff[*i];
         (*i)++, a++;
@@ -77,7 +77,7 @@ static int parsing_save(char *buff, raccoonmove_t *move)
 {
     int i = 0;
 
-    while (buff[i] != '\0') {
+    if (buff[i] != '\0') {
         while (buff[i] != 'm')
             i++;
         find_map(buff, move, &i);
@@ -87,8 +87,8 @@ static int parsing_save(char *buff, raccoonmove_t *move)
         while (buff[i] != ':')
             i++;
         find_bool(buff, move, i);
-        return (0);
     }
+    return (0);
 }
 
 int load_save(raccoonmove_t *move)

@@ -45,7 +45,7 @@ int event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move)
     }
 }
 
-static int k_map(raccoonmove_t *move, sfEvent event, int *passed, text_t *text)
+static int k_map(raccoonmove_t *move, int *passed, text_t *text)
 {
     if (sfKeyboard_isKeyPressed(sfKeyA)) {
         if (move->speed == 2)
@@ -68,12 +68,12 @@ static int k_map(raccoonmove_t *move, sfEvent event, int *passed, text_t *text)
     create_col(move->raccoon_pos.x, move->raccoon_pos.y, move, passed);
 }
 
-int map_event(raccoonmove_t *move, sfEvent event, int *passed, text_t *text)
+void map_event(raccoonmove_t *move, sfEvent event, int *passed, text_t *text)
 {
     if (move->pnj.interaction == true || move->chest.chest_open == true)
         event_text(event, move->sentence, text, move);
     if (event.type == sfEvtKeyPressed) {
-        k_map(move, event, passed, text);
+        k_map(move, passed, text);
     }
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(move->window);

@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-static int split_fill_obs(char *buff, raccoonmove_t *move, int *i, char **stock)
+static int split_fill_obs(char *buff, int *i, char **stock)
 {
     int z = 0;
 
@@ -34,13 +34,13 @@ static int fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
             (*i)++;
         if (buff[*i] == '}')
             break;
-        z = split_fill_obs(buff, move, i, &stock);
+        z = split_fill_obs(buff, i, &stock);
         if (h == 0) {
             move->obs.type[move->obs.index_obs] = bstrdup(stock);
             move->obs.type[move->obs.index_obs][z] = '\0';
         }
         else
-            move->obs.obstacle[move->obs.index_obs][a] = atoi(stock) , a++;
+            move->obs.obstacle[move->obs.index_obs][a] = batoi(stock) , a++;
         free(stock), z = 0, h = 1;
     }
     return (0);

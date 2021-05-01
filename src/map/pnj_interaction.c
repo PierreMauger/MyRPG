@@ -21,7 +21,7 @@ int check_pnj_col(raccoonmove_t *move)
     return (0);
 }
 
-int create_sentence_pnj(raccoonmove_t *move, text_t *text)
+void create_sentence_pnj(raccoonmove_t *move, text_t *text)
 {
     move->pnj.interaction = true;
     text->display = true;

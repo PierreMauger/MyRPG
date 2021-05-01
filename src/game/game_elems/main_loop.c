@@ -11,7 +11,7 @@ void loop_map(game_t *game)
 {
     if (sfClock_getElapsedTime(game->move->map_clock).microseconds >= 10000) {
         check_change_map(game->move);
-        ch_move(GET_WINDOW, game->move);
+        ch_move(game->move);
         pnj(game->move);
         sfClock_restart(game->move->map_clock);
     }

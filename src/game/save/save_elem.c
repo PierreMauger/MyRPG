@@ -7,7 +7,7 @@
 
 #include "game.h"
 
-static int split_write_in_json_save(FILE *fp, game_t *game)
+static void split_write_in_json_save(FILE *fp, game_t *game)
 {
     fwrite(",\n\t\t\"key\": ", 1, 11, fp);
     if (game->move->key.taken == true)
@@ -27,7 +27,7 @@ static int split_write_in_json_save(FILE *fp, game_t *game)
     fwrite(",\n\t},\n]", 1, 7, fp);
 }
 
-static int write_in_json_save(FILE *fp, game_t *game)
+static void write_in_json_save(FILE *fp, game_t *game)
 {
     fwrite("[\n\t{\n\t\t", 1, 7, fp);
     fwrite("\"map\": \"", 1, 8, fp);
@@ -48,13 +48,10 @@ static int write_in_json_save(FILE *fp, game_t *game)
             bstrlen(my_itoa(game->move->pnj.pnj_pos.y)), fp);
     }
     split_write_in_json_save(fp, game);
-    return (0);
 }
 
 int save_elem(game_t *game)
 {
-    int fd = 0;
-    int ret = 0;
     FILE *fp = fopen("ressources/json/save.json", "w");
 
     if (fp == NULL)

@@ -63,10 +63,10 @@ static int check_obs(raccoonmove_t *move, int dir)
     return (0);
 }
 
-int ch_move(sfRenderWindow *window, raccoonmove_t *move)
+void ch_move(raccoonmove_t *move)
 {
     if (move->anim == true)
-        return (1);
+        return;
     if (sfKeyboard_isKeyPressed(sfKeyLeft) || sfKeyboard_isKeyPressed(sfKeyQ)) {
         if (move->raccoon_pos.x >= 0 && check_obs(move, 0) == 0)
             move->raccoon_pos.x -= move->speed;

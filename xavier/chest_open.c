@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-static int create_sentence_pnj_split(raccoonmove_t *move, text_t *text)
+static void create_sentence_pnj_split(raccoonmove_t *move)
 {
     if (move->chest.nb_chest == 1) {
         move->sentence[0] = CHEST1_SPEAK_FIRST;
@@ -37,7 +37,7 @@ int create_sentence_chest(raccoonmove_t *move, text_t *text)
         return (1);
     move->chest.chest_open = true;
     move->sentence = malloc(sizeof(char *) * 3);
-    create_sentence_pnj_split(move, text);
+    create_sentence_pnj_split(move);
     move->chest.my_sprite = sfSprite_create();
     sfSprite_setTexture(move->chest.my_sprite, move->chest.my_texture, sfTrue);
     pos.x += 70;
@@ -47,8 +47,7 @@ int create_sentence_chest(raccoonmove_t *move, text_t *text)
     return (0);
 }
 
-int chest_open(raccoonmove_t *move, text_t *text)
+void chest_open(raccoonmove_t *move)
 {
     sfRenderWindow_drawSprite(move->window, move->chest.my_sprite, NULL);
-    return (0);
 }

@@ -113,17 +113,17 @@ void display_change_up(raccoonmove_t *move, sfTexture *save, int o, int n);
 void display_change_down(raccoonmove_t *move, sfTexture *save, int o, int n);
 char *my_itoa(int nb);
 int create_col(int a, int b, raccoonmove_t *move, int *passed);
-int ch_move(sfRenderWindow *window, raccoonmove_t *move);
+void ch_move(raccoonmove_t *move);
 void my_perso(sfRenderWindow *window, raccoonmove_t *move);
 void display_next_map(raccoonmove_t *move);
 void display_back_map(raccoonmove_t *move);
 int pnj(raccoonmove_t *move);
 int check_pnj_col(raccoonmove_t *move);
-int map_event(raccoonmove_t *move, sfEvent event, int *passed, text_t *text);
+void map_event(raccoonmove_t *move, sfEvent event, int *passed, text_t *text);
 int event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move);
-int chest_open(raccoonmove_t *move, text_t *text);
+void chest_open(raccoonmove_t *move);
 int create_sentence_chest(raccoonmove_t *move, text_t *text);
-int create_sentence_pnj(raccoonmove_t *move);
+void create_sentence_pnj(raccoonmove_t *move);
 void display_mykey(raccoonmove_t *move, int x, int y);
 
 #endif
