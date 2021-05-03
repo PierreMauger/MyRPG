@@ -22,7 +22,7 @@ static int split_fill_obs(char *buff, int *i, char **stock)
     return (z);
 }
 
-static int fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
+static void fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
 {
     int a = 0;
     int h = 0;
@@ -40,13 +40,12 @@ static int fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
             move->obs.type[move->obs.index_obs][z] = '\0';
         }
         else
-            move->obs.obstacle[move->obs.index_obs][a] = batoi(stock) , a++;
+            move->obs.obstacle[move->obs.index_obs][a] = atoi(stock) , a++;
         free(stock), z = 0, h = 1;
     }
-    return (0);
 }
 
-static int init_obstacle_split(char *buff, raccoonmove_t *move)
+static void init_obstacle_split(char *buff, raccoonmove_t *move)
 {
     int i = 0;
     int a = 0;
@@ -67,7 +66,6 @@ static int init_obstacle_split(char *buff, raccoonmove_t *move)
         }
         i++;
     }
-    return (0);
 }
 
 int init_obstacle(raccoonmove_t *move)
