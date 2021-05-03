@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-static int spl_txt(int a, char *str, sfVector2f *pos, sfText *sen)
+static size_t spl_txt(size_t a, char *str, sfVector2f *pos, sfText *sen)
 {
     int passed = 0;
 
@@ -36,17 +36,19 @@ static void display_text(char *str, sfRenderWindow *win, text_t *text, char *t)
     sfText* sen = sfText_create();
     sfVector2f pos = text->pos;
     sfVector2f stock = pos;
-    int a = 0;
+    size_t a = 0;
     char c;
 
     pos.x += 10, sfText_setFont(sen, font);
     sfText_setCharacterSize(sen, text->size_font);
-    while (str[a] != '\0') {
-        c = str[a], sfText_setString(sen, &c), sfText_setPosition(sen, pos);
+    while (a < bstrlen(str)) {
+        c = str[a];
+        sfText_setString(sen, &c), sfText_setPosition(sen, pos);
         sfRenderWindow_drawText(win, sen, NULL), a++;
         if (pos.x >= stock.x + (text->size_box.x - 100))
             a = spl_txt(a, t, &pos, sen), pos.x = stock.x + 10;
-        else pos.x += 32;
+        else
+            pos.x += 32;
         sfRenderWindow_drawText(win, sen, NULL);
     }
     sfText_destroy(sen), sfFont_destroy(font);
@@ -60,12 +62,16 @@ static int get_text(char *str, text_t *text, sfRenderWindow *window)
         text->save = malloc(sizeof(char) * (bstrlen(str) + 1));
         text->save[0] = '\0';
     }
-    if (text->index >= bstrlen(str)) {}
-    else if (sfClock_getElapsedTime(text->clock).microseconds >= text->delay)
-        sfClock_restart(text->clock), text->index = text->index + 1;
-    while (a != text->index) {
-        text->save[a] = str[a], a++, text->save[a] = '\0';
+    if (sfClock_getElapsedTime(text->clock).microseconds >= text->delay
+        && text->index < bstrlen(str)) {
+        sfClock_restart(text->clock);
+        text->index = text->index + 1;
     }
+    while (a != text->index) {
+        text->save[a] = str[a];
+        a++;
+    }
+    text->save[a] = '\0';
     display_text(text->save, window, text, str);
     return (0);
 }

@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "link_speak_first": "It's dangerous to go alone !",
+        "link_speak_second": "You should open the chest !",
+        "pnj_speak_first": "Hello sir, It's going to be a lovely day.",
+        "pnj_speak_second": "How can i help you ?",
+        "donjon_speak_first": "You don't have the key !",
+        "donjon_speak_second": "You should explore the village.",
+        "chest1_speak_first": "You find a sword !",
+        "chest1_speak_second": "You can equip it by opening the inventory",
+        "chest2_speak_first": "You find iron boots !",
+        "chest2_speak_second": "It can be helpful to cross something ..",
+        "climat_speak_first": "The climate seems out of whack around here.",
+        "climat_speak_second": "The raccoon boss should be close !",
+    },
+]

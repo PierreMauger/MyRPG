@@ -24,19 +24,6 @@
 #include <stdbool.h>
 #include "blib.h"
 
-#define LINK_SPEAK_FIRST "It's dangerous to go alone !"
-#define LINK_SPEAK_SECOND "You should open the chest !"
-#define PNJ_SPEAK_FIRST "Hello sir, It's going to be a lovely day."
-#define PNJ_SPEAK_SECOND "How can i help you ?"
-#define DONJON_SPEAK_FIRST "You don't have the key !"
-#define DONJON_SPEAK_SECOND "You should explore the village."
-#define CHEST1_SPEAK_FIRST "You find a sword !"
-#define CHEST1_SPEAK_SECOND "You can equip it by opening the inventory"
-#define CHEST2_SPEAK_FIRST "You find iron boots !"
-#define CHEST2_SPEAK_SECOND "It can be helpful to cross something .."
-#define CLIMAT1_SPEAK_FIRST "The climate seems out of whack around here."
-#define CLIMAT2_SPEAK_SECOND "The raccoon boss should be close !"
-
 // ressources define
 #define MAP0 "ressources/json/map0.json"
 #define MAP1 "ressources/json/map1.json"
@@ -45,6 +32,7 @@
 #define RACCOON "ressources/sprites/raccoon.png"
 #define RACCOONBOSS "ressources/sprites/raccoonbagar.png"
 #define KEY "ressources/sprites/key.png"
+#define SWORD "ressources/sprites/sword.png"
 #define MAPMAISON "ressources/map/maison.jpg"
 #define MAPPLAGE "ressources/map/plage.jpg"
 #define MAPVILLAGE "ressources/map/village.png"
@@ -169,5 +157,7 @@ void climat_map(raccoonmove_t *move, text_t *text);
 int enemy(raccoonmove_t *move);
 int init_enemy(raccoonmove_t *move);
 void check_if_combat(raccoonmove_t *move);
+char *get_text_open(char *filepath);
+size_t parser(char *buffer, char *str, int id);
 
 #endif
