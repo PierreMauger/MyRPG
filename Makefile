@@ -86,6 +86,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/map/verif_obstacle.c					\
 				src/map/my_itoa.c							\
 				src/map/enemy.c								\
+				src/map/enemy_fight.c						\
 
 
 SRC			+=	main.c				\

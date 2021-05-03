@@ -9,10 +9,12 @@
 
 static void load_pos_enemy(raccoonmove_t *move, int x, int y)
 {
-    sfVector2f pos = {1400, 890};
+    char *buff = get_text_open("ressources/json/enemy_pos.json");
 
-    move->enemy[x][y].pos = pos;
+    move->enemy[x][y].pos.x = (int)parser(buff, "enemy_pos.x", x + 1);
+    move->enemy[x][y].pos.y = (int)parser(buff, "enemy_pos.y", x + 1);
     sfSprite_setPosition(move->enemy[x][y].my_sprite, move->enemy[x][y].pos);
+    free(buff);
 }
 
 static void load_texture_enemy(raccoonmove_t *move)
@@ -22,6 +24,8 @@ static void load_texture_enemy(raccoonmove_t *move)
 
     while (x != 4) {
         while (move->enemy[x][y].last == false) {
+            move->enemy[x][y].interaction = false;
+            move->enemy[x][y].dead = false;
             move->enemy[x][y].my_texture =
                 sfTexture_createFromFile(RACCOONBOSS, NULL);
             move->enemy[x][y].my_sprite = sfSprite_create();
@@ -44,43 +48,9 @@ int init_enemy(raccoonmove_t *move)
     move->enemy[1][0].last = false;
     move->enemy[1][1].last = true;
     move->enemy[2] = malloc(sizeof(enemy_t) * 2);
-    move->enemy[2][0].last = true;
+    move->enemy[2][1].last = true;
     move->enemy[3] = malloc(sizeof(enemy_t) * 3);
     move->enemy[3][0].last = true;
     load_texture_enemy(move);
     return (0);
-}
-
-static int check_hit_enemy(raccoonmove_t *move, int x, int y)
-{
-    int k = move->enemy[x][y].pos.x;
-    int j = move->enemy[x][y].pos.y;
-
-    if ((k >= move->raccoon_pos.x - 30 && k <= move->raccoon_pos.x + 30)
-        && (j >= move->raccoon_pos.y - 30 && j <= move->raccoon_pos.y + 30)) {
-        return (1);
-    }
-    return (0);
-}
-
-void check_if_combat(raccoonmove_t *move)
-{
-    int x = -1;
-    int y = 0;
-
-    if (bstrcmp(move->obs.fl_map_obstacle, MAP0) == 0 && x == -1)
-        x = 0;
-    if (bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0 && x == -1)
-        x = 1;
-    if (bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0 && x == -1)
-        x = 2;
-    if (bstrcmp(move->obs.fl_map_obstacle, MAP3) == 0 && x == -1)
-        x = 3;
-    while (move->enemy[x][y].last == false) {
-        if (check_hit_enemy(move, x, y) == 1)
-            move->enemy[x][y].interaction = true;
-        sfRenderWindow_drawSprite(
-            move->window, move->enemy[x][y].my_sprite, NULL);
-        y++;
-    }
 }

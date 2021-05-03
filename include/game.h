@@ -425,6 +425,7 @@ void check_multi_hit(game_t *game);
 void check_passive(game_t *game);
 void check_turn(game_t *game);
 void update_fight(game_t *game);
+void check_if_combat_start(game_t *game);
 
 //GET_ELEMS
 void event_pause(game_t *game);

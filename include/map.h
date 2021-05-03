@@ -78,6 +78,7 @@ typedef struct {
     sfVector2f pos;
     bool interaction;
     bool last;
+    bool dead;
 } enemy_t;
 
 typedef struct {
