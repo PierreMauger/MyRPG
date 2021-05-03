@@ -30,7 +30,7 @@ static int select_map_back(raccoonmove_t *move)
         p++;
     }
     if (bstrcmp(move->obs.fl_map_obstacle, MAP3) == 0 && p == 0) {
-        load_map(move, "ressources/map/plage.png", MAP2);
+        load_map(move, "ressources/map/plage.jpg", MAP2);
         move->raccoon_pos.x = 600;
         move->raccoon_pos.y = 5;
         return (5);
@@ -38,7 +38,7 @@ static int select_map_back(raccoonmove_t *move)
     return (0);
 }
 
-static void select_map_next(raccoonmove_t *move)
+static void select_map_next(raccoonmove_t *move, text_t *text)
 {
     int p = 0;
 
@@ -49,9 +49,9 @@ static void select_map_next(raccoonmove_t *move)
         p++;
     }
     if (bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0 && p == 0) {
-        load_map(move, "ressources/map/plage.png", MAP2);
+        load_map(move, "ressources/map/plage.jpg", MAP2);
         move->raccoon_pos.x = 5;
-        move->pnj.exist = false;
+        climat_map(move, text);
         p++;
     }
     if (bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0 && p == 0) {
@@ -62,19 +62,19 @@ static void select_map_next(raccoonmove_t *move)
     }
 }
 
-int change_map_next(raccoonmove_t *move)
+int change_map_next(raccoonmove_t *move, text_t *text)
 {
     int n = 1440;
     sfTexture *save = move->my_texture;
 
     if ((bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0
-        && move->key.taken == false) ||
+        && move->item.key == false) ||
         (bstrcmp(move->obs.fl_map_obstacle, MAP0) == 0
-        && move->sword == false)) {
+        && move->item.sword == false)) {
         move->obs.next_map = false;
         return (0);
     }
-    select_map_next(move);
+    select_map_next(move, text);
     free_obs(move);
     init_obstacle(move);
     if (bstrcmp(move->obs.fl_map_obstacle, MAP3) == 0)

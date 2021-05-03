@@ -10,8 +10,8 @@
 static void init_struct_move_split(raccoonmove_t *move)
 {
     move->speed = 3;
-    move->boot = false;
-    move->sword = false;
+    move->item.boot = false;
+    move->item.sword = false;
     move->pnj.speed_pnj = 2;
     move->obs.next_map = false;
     move->obs.back_map = false;
@@ -25,7 +25,8 @@ static void init_struct_move_split(raccoonmove_t *move)
     move->chest.already_open_first = false;
     move->chest.already_open_second = false;
     move->key.col_key = false;
-    move->key.taken = false;
+    move->item.key = false;
+    move->climat_change = false;
 }
 
 void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
@@ -43,6 +44,7 @@ void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
     move->window = window;
     move->map_clock = sfClock_create();
     init_struct_move_split(move);
+    init_enemy(move);
     if (init_obstacle(move) == 1)
         move->obs.index_obs = -1;
 }

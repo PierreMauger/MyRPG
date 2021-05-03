@@ -7,87 +7,62 @@
 
 #include "game.h"
 
-static void find_map(char *buff, raccoonmove_t *move, int *i)
+static int change_move(raccoonmove_t *move)
 {
-    char *stock = malloc(sizeof(char) * 30);
-    int a = 0;
+    int p = 0;
 
-    while (buff[*i] != ':')
-        (*i)++;
-    *i += 3;
-    while (buff[*i] != '"') {
-        stock[a] = buff[*i];
-        (*i)++;
-        a++;
+    if ((bstrcmp(move->obs.fl_map_obstacle, MAP0) == 0) && p == 0) {
+        move->my_texture = sfTexture_createFromFile(MAPMAISON, NULL);
+        p++;
     }
-    stock[a] = '\0';
-    move->obs.fl_map_obstacle = bstrdup(stock);
-    free(stock);
+    if ((bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0) && p == 0) {
+        move->my_texture = sfTexture_createFromFile(MAPVILLAGE, NULL);
+        p++;
+    }
+    if ((bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0) && p == 0) {
+        move->my_texture = sfTexture_createFromFile(MAPPLAGE, NULL);
+        p++;
+    }
+    if ((bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0) && p == 0)
+        move->my_texture = sfTexture_createFromFile(MAPDONJON, NULL);
+    sfSprite_setTexture(move->my_sprite, move->my_texture, sfTrue);
+    free_obs(move);
+    init_obstacle(move);
+    return (0);
 }
 
-static void find_pos_split(char *buff, raccoonmove_t *move, int *i)
+static void find_bool_map(char *buff, raccoonmove_t *move)
 {
-    char *stock = malloc(sizeof(char) * 6);
-    int a = 0;
+    char *stock = (char *)parser(buff, "key", 1);
 
-    while (buff[*i] != ':')
-        (*i)++;
-    *i += 2;
-    if (buff[*i] == ',')
-        return;
-    while (buff[*i] != '-') {
-        stock[a] = buff[*i];
-        (*i)++, a++;
+    if (bstrcmp(stock, "true") == 0)
+        move->item.key = true;
+    else
+        move->item.key = false;
+    stock = (char *)parser(buff, "boot", 1);
+    if (bstrcmp(stock, "true") == 0) {
+        move->item.boot = true;
+        move->chest.already_open_second = true;
     }
-    (*i)++, a = 0;
-    move->pnj.pnj_pos.x = batoi(stock);
-    free(stock), stock = malloc(sizeof(char) * 6);
-    while (buff[*i] != ',') {
-        stock[a] = buff[*i];
-        (*i)++, a++;
+    else
+        move->item.boot = false;
+    stock = (char *)parser(buff, "sword", 1);
+    if (bstrcmp(stock, "true") == 0) {
+        move->item.sword = true;
+        move->chest.already_open_first = true;
     }
-    move->pnj.pnj_pos.y = batoi(stock), free(stock);
-}
-
-static void find_pos(char *buff, raccoonmove_t *move, int *i)
-{
-    char *stock = malloc(sizeof(char) * 6);
-    int a = 0;
-
-    *i += 2;
-    while (buff[*i] != '-') {
-        stock[a] = buff[*i];
-        (*i)++, a++;
-    }
-    stock[a] = '\0';
-    (*i)++, a = 0;
-    move->raccoon_pos.x = batoi(stock);
-    free(stock), stock = malloc(sizeof(char) * 6);
-    while (buff[*i] != ',') {
-        stock[a] = buff[*i];
-        (*i)++, a++;
-    }
-    stock[a] = '\0';
-    move->raccoon_pos.y = batoi(stock);
-    free(stock);
-    find_pos_split(buff, move, i);
+    else
+        move->item.sword = false;
 }
 
 static int parsing_save(char *buff, raccoonmove_t *move)
 {
-    int i = 0;
-
-    if (buff[i] != '\0') {
-        while (buff[i] != 'm')
-            i++;
-        find_map(buff, move, &i);
-        while (buff[i] != ':')
-            i++;
-        find_pos(buff, move, &i);
-        while (buff[i] != ':')
-            i++;
-        find_bool(buff, move, i);
-    }
+    move->obs.fl_map_obstacle = (char *)parser(buff, "map", 1);
+    move->raccoon_pos.x = (int)parser(buff, "raccoon_pos.x", 1);
+    move->raccoon_pos.y = (int)parser(buff, "raccoon_pos.y", 1);
+    move->pnj.pnj_pos.x = (int)parser(buff, "pnj_pos.x", 1);
+    move->pnj.pnj_pos.y = (int)parser(buff, "pnj_pos.y", 1);
+    find_bool_map(buff, move);
     return (0);
 }
 

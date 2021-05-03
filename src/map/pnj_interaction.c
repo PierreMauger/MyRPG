@@ -29,4 +29,6 @@ void create_sentence_pnj(raccoonmove_t *move, text_t *text)
     move->sentence[0] = PNJ_SPEAK_FIRST;
     move->sentence[1] = PNJ_SPEAK_SECOND;
     move->sentence[2] = NULL;
+    text->pos.x = move->raccoon_pos.x - 220;
+    text->pos.y = move->raccoon_pos.y + 100;
 }

@@ -11,7 +11,7 @@ void display_mykey(raccoonmove_t *move, int x, int y)
 {
     sfVector2f pos_key = {1792 + x, 917 + y};
 
-    if (move->key.taken == false
+    if (move->item.key == false
         && bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0) {
         sfSprite_setPosition(move->key.my_sprite, pos_key);
         sfRenderWindow_drawSprite(move->window, move->key.my_sprite, NULL);

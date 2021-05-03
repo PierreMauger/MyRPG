@@ -9,7 +9,7 @@
 
 static int split_check_obs(raccoonmove_t *move, int i)
 {
-    if (bstrcmp(move->obs.type[i], " \"lava\"") == 0 && move->boot == true)
+    if (bstrcmp(move->obs.type[i], " \"lava\"") == 0 && move->item.boot == true)
         return (1);
     if (bstrcmp(move->obs.type[i], " \"key\"") == 0)
         move->key.col_key = true;

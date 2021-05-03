@@ -22,7 +22,30 @@ static int split_fill_obs(char *buff, int *i, char **stock)
     return (z);
 }
 
-static void fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
+static int get_batoi(raccoonmove_t *move, int *a, char *stock, int *h)
+{
+    char *less_space;
+    int sp = 1;
+    int new = 0;
+
+    if (*h != 0) {
+        less_space = malloc(sizeof(char) * bstrlen(stock));
+        while (stock[sp] != '\0') {
+            less_space[new] = stock[sp];
+            sp++;
+            new++;
+        }
+        less_space[new] = '\0';
+        move->obs.obstacle[move->obs.index_obs][*a] = batoi(less_space);
+        (*a)++;
+        free(less_space);
+    }
+    free(stock);
+    *h = 1;
+    return (0);
+}
+
+static int fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
 {
     int a = 0;
     int h = 0;
@@ -39,13 +62,13 @@ static void fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
             move->obs.type[move->obs.index_obs] = bstrdup(stock);
             move->obs.type[move->obs.index_obs][z] = '\0';
         }
-        else
-            move->obs.obstacle[move->obs.index_obs][a] = atoi(stock) , a++;
-        free(stock), z = 0, h = 1;
+        get_batoi(move, &a, stock, &h);
+        z = 0;
     }
+    return (0);
 }
 
-static void init_obstacle_split(char *buff, raccoonmove_t *move)
+static int init_obstacle_split(char *buff, raccoonmove_t *move)
 {
     int i = 0;
     int a = 0;
@@ -66,6 +89,7 @@ static void init_obstacle_split(char *buff, raccoonmove_t *move)
         }
         i++;
     }
+    return (0);
 }
 
 int init_obstacle(raccoonmove_t *move)

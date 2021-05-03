@@ -19,6 +19,7 @@ static int reset_text(text_t *text, raccoonmove_t *move)
     move->chest.chest_open = false;
     text->size_box.x = 800;
     text->display = false;
+    move->anim = false;
     free(text->save);
     free(move->sentence);
     return (0);
@@ -42,9 +43,20 @@ void my_event_text(sfEvent event, char **str, text_t *text, raccoonmove_t *move)
     }
     if (text->clock == NULL) {
         text->clock = sfClock_create();
-        text->pos.x = move->raccoon_pos.x - 220;
-        text->pos.y = move->raccoon_pos.y + 100;
+        move->anim = true;
     }
+}
+
+static void split_k_map(raccoonmove_t *move, text_t *text)
+{
+    if (sfKeyboard_isKeyPressed(sfKeyE)
+        && move->obs.display_text_next == true) {
+        move->obs.next_map = true;
+        check_got_sword(move, text);
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyE)
+        && move->obs.display_text_back == true)
+        move->obs.back_map = true;
 }
 
 static void k_map(raccoonmove_t *move, text_t *text)
@@ -62,13 +74,8 @@ static void k_map(raccoonmove_t *move, text_t *text)
     if (sfKeyboard_isKeyPressed(sfKeyE) && move->chest.col_chest == true)
         create_sentence_chest(move, text);
     if (sfKeyboard_isKeyPressed(sfKeyE) && move->key.col_key == true)
-        move->key.taken = true;
-    if (sfKeyboard_isKeyPressed(sfKeyE)
-        && move->obs.display_text_next == true)
-        move->obs.next_map = true, check_got_sword(move, text);
-    if (sfKeyboard_isKeyPressed(sfKeyE)
-        && move->obs.display_text_back == true)
-        move->obs.back_map = true;
+        move->item.key = true;
+    split_k_map(move, text);
 }
 
 void map_event(raccoonmove_t *move, sfEvent event, text_t *text)
@@ -80,8 +87,4 @@ void map_event(raccoonmove_t *move, sfEvent event, text_t *text)
     }
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(move->window);
-    if (move->pnj.interaction == true || move->chest.chest_open == true)
-        move->anim = true;
-    else
-        move->anim = false;
 }
