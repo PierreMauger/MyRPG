@@ -11,7 +11,9 @@ static void init_struct_move_split(raccoonmove_t *move)
 {
     move->speed = 3;
     move->item.boot = false;
+    move->pnj.door_open = false;
     move->item.sword = false;
+    move->item.door = false;
     move->pnj.speed_pnj = 2;
     move->obs.next_map = false;
     move->obs.back_map = false;
@@ -38,6 +40,9 @@ void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
     move->my_texture = sfTexture_createFromFile(MAPMAISON, NULL);
     move->my_sprite = sfSprite_create();
     sfSprite_setTexture(move->my_sprite, move->my_texture, sfTrue);
+    move->my_texture_rac = sfTexture_createFromFile(RACCOON, NULL);
+    move->my_sprite_rac = sfSprite_create();
+    sfSprite_setTexture(move->my_sprite_rac, move->my_texture_rac, sfTrue);
     move->key.my_texture = sfTexture_createFromFile(KEY, NULL);
     move->key.my_sprite = sfSprite_create();
     sfSprite_setTexture(move->key.my_sprite, move->key.my_texture, sfTrue);

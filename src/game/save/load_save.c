@@ -33,21 +33,21 @@ static int change_move(raccoonmove_t *move)
 
 static void find_bool_map(char *buff, raccoonmove_t *move)
 {
-    char *stock = (char *)parser(buff, "key", 1);
-
-    if (bstrcmp(stock, "true") == 0)
+    if (bstrcmp((char *)parser(buff, "door", 1), "true") == 0)
+        move->item.door = true;
+    else
+        move->item.door = false;
+    if (bstrcmp((char *)parser(buff, "key", 1), "true") == 0)
         move->item.key = true;
     else
         move->item.key = false;
-    stock = (char *)parser(buff, "boot", 1);
-    if (bstrcmp(stock, "true") == 0) {
+    if (bstrcmp((char *)parser(buff, "boot", 1), "true") == 0) {
         move->item.boot = true;
         move->chest.already_open_second = true;
     }
     else
         move->item.boot = false;
-    stock = (char *)parser(buff, "sword", 1);
-    if (bstrcmp(stock, "true") == 0) {
+    if (bstrcmp((char *)parser(buff, "sword", 1), "true") == 0) {
         move->item.sword = true;
         move->chest.already_open_first = true;
     }
@@ -60,8 +60,10 @@ static int parsing_save(char *buff, raccoonmove_t *move)
     move->obs.fl_map_obstacle = (char *)parser(buff, "map", 1);
     move->raccoon_pos.x = (int)parser(buff, "raccoon_pos.x", 1);
     move->raccoon_pos.y = (int)parser(buff, "raccoon_pos.y", 1);
-    move->pnj.pnj_pos.x = (int)parser(buff, "pnj_pos.x", 1);
-    move->pnj.pnj_pos.y = (int)parser(buff, "pnj_pos.y", 1);
+    if ((int)parser(buff, "pnj_pos.x", 1) != 0)
+        move->pnj.pnj_pos.x = (int)parser(buff, "pnj_pos.x", 1);
+    if ((int)parser(buff, "pnj_pos.y", 1) != 0)
+        move->pnj.pnj_pos.y = (int)parser(buff, "pnj_pos.y", 1);
     find_bool_map(buff, move);
     return (0);
 }

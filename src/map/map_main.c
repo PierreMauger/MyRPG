@@ -16,10 +16,8 @@ void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text)
     display_mykey(move, 0, 0);
     my_perso(window, move);
     check_if_combat(move);
-    if (move->obs.display_text_next == true)
-        display_next_map(move);
-    if (move->obs.display_text_back == true)
-        display_back_map(move);
+    if (check_use_now(move) >= 1)
+        display_use(move);
     if (text->clock)
         text_defil(move->sentence[text->str_index], text, window);
     if (move->chest.chest_open == true)

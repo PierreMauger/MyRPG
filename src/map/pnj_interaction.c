@@ -44,10 +44,12 @@ void create_sentence_pnj(raccoonmove_t *move, text_t *text)
 
     move->pnj.interaction = true;
     text->display = true;
-    move->sentence = malloc(sizeof(char *) * 3);
+    move->sentence = malloc(sizeof(char *) * 4);
     move->sentence[0] = (char *)parser(buff, "pnj_speak_first", 1);
     move->sentence[1] = (char *)parser(buff, "pnj_speak_second", 1);
-    move->sentence[2] = NULL;
+    move->sentence[2] = (char *)parser(buff, "pnj_speak_third", 1);
+    move->sentence[3] = NULL;
+    move->item.door = true;
     text->pos.x = move->raccoon_pos.x - 220;
     text->pos.y = move->raccoon_pos.y + 100;
     free(buff);

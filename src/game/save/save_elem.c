@@ -9,7 +9,6 @@
 
 static void split_write_in_json_save(FILE *fp, game_t *game)
 {
-    fwrite(",\n\t\t\"key\": ", 1, 11, fp);
     if (game->move->item.key == true)
         fwrite("\"true\"", 1, 6, fp);
     else
@@ -24,17 +23,16 @@ static void split_write_in_json_save(FILE *fp, game_t *game)
         fwrite("\"true\"", 1, 6, fp);
     else
         fwrite("\"false\"", 1, 7, fp);
+    fwrite(",\n\t\t\"door\": ", 1, 12, fp);
+    if (game->move->item.door == true)
+        fwrite("\"true\"", 1, 6, fp);
+    else
+        fwrite("\"false\"", 1, 7, fp);
     fwrite(",\n\t},\n]", 1, 7, fp);
 }
 
 static void write_in_json_save(FILE *fp, game_t *game)
 {
-    fwrite("\"map\": \"", 1, 8, fp);
-    fwrite(game->move->obs.fl_map_obstacle, 1,
-        bstrlen(game->move->obs.fl_map_obstacle), fp);
-    fwrite("\",\n\t\t\"raccoon_pos.x\": ", 1, 22, fp);
-    fwrite(my_itoa(game->move->raccoon_pos.x), 1,
-        bstrlen(my_itoa(game->move->raccoon_pos.x)), fp);
     fwrite(",\n\t\t\"raccoon_pos.y\": ", 1, 21, fp);
     fwrite(my_itoa(game->move->raccoon_pos.y), 1,
         bstrlen(my_itoa(game->move->raccoon_pos.y)), fp);
@@ -46,6 +44,7 @@ static void write_in_json_save(FILE *fp, game_t *game)
     if (game->move->pnj.exist == true)
         fwrite(my_itoa(game->move->pnj.pnj_pos.y), 1,
             bstrlen(my_itoa(game->move->pnj.pnj_pos.y)), fp);
+    fwrite(",\n\t\t\"key\": ", 1, 11, fp);
     split_write_in_json_save(fp, game);
 }
 
@@ -57,6 +56,12 @@ int save_elem(game_t *game)
         return (1);
     fwrite("[\n\t{\n\t\t", 1, 7, fp);
     fwrite("\"id\": 1,\n\t\t", 1, 11, fp);
+    fwrite("\"map\": \"", 1, 8, fp);
+    fwrite(game->move->obs.fl_map_obstacle, 1,
+        bstrlen(game->move->obs.fl_map_obstacle), fp);
+    fwrite("\",\n\t\t\"raccoon_pos.x\": ", 1, 22, fp);
+    fwrite(my_itoa(game->move->raccoon_pos.x), 1,
+        bstrlen(my_itoa(game->move->raccoon_pos.x)), fp);
     write_in_json_save(fp, game);
     fclose(fp);
     return (0);

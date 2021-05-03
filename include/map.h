@@ -70,6 +70,7 @@ typedef struct {
     bool exist;
     int last_dir;
     int speed_pnj;
+    bool door_open;
 } pnj_t;
 
 typedef struct {
@@ -91,12 +92,15 @@ typedef struct {
     bool boot;
     bool sword;
     bool key;
+    bool door;
 } itemmap_t;
 
 typedef struct {
     sfRenderWindow *window;
     sfTexture *my_texture;
     sfSprite *my_sprite;
+    sfTexture *my_texture_rac;
+    sfSprite *my_sprite_rac;
     sfVector2f raccoon_pos;
     sfClock *map_clock;
     obs_t obs;
@@ -139,8 +143,7 @@ void display_change_down(raccoonmove_t *move, sfTexture *save, int o, int n);
 char *my_itoa(int nb);
 void ch_move(raccoonmove_t *move);
 void my_perso(sfRenderWindow *window, raccoonmove_t *move);
-void display_next_map(raccoonmove_t *move);
-void display_back_map(raccoonmove_t *move);
+void display_use(raccoonmove_t *move);
 int pnj(raccoonmove_t *move);
 int check_pnj_col(raccoonmove_t *move);
 void map_event(raccoonmove_t *move, sfEvent event, text_t *text);
@@ -160,5 +163,6 @@ int init_enemy(raccoonmove_t *move);
 void check_if_combat(raccoonmove_t *move);
 char *get_text_open(char *filepath);
 size_t parser(char *buffer, char *str, int id);
+int check_use_now(raccoonmove_t *move);
 
 #endif

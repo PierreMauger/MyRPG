@@ -7,16 +7,10 @@
 
 #include "map.h"
 
-static int split_check_obs(raccoonmove_t *move, int i)
+static int check_obs_name_split(raccoonmove_t *move, int i)
 {
-    if (bstrcmp(move->obs.type[i], " \"lava\"") == 0 && move->item.boot == true)
-        return (1);
-    if (bstrcmp(move->obs.type[i], " \"key\"") == 0)
-        move->key.col_key = true;
-    if (bstrcmp(move->obs.type[i], " \"nextmap\"") == 0)
-        move->obs.display_text_next = true;
-    if (bstrcmp(move->obs.type[i], " \"backmap\"") == 0)
-        move->obs.display_text_back = true;
+    if (bstrcmp(move->obs.type[i], " \"door\"") == 0)
+        move->pnj.door_open = true;
     if (bstrcmp(move->obs.type[i], " \"chest\"") == 0) {
         if (bstrcmp(move->obs.fl_map_obstacle, MAP0) == 0)
             move->chest.nb_chest = 1;
@@ -25,6 +19,24 @@ static int split_check_obs(raccoonmove_t *move, int i)
         move->chest.col_chest = true;
         move->chest.index = i;
     }
+    return (0);
+}
+
+static int check_obs_name(raccoonmove_t *move, int i)
+{
+    if (bstrcmp(move->obs.type[i], " \"lava\"") == 0 && move->item.boot == true)
+        return (1);
+    if (bstrcmp(move->obs.type[i], " \"door\"") == 0 && move->item.door == true)
+        return (1);
+    if (bstrcmp(move->obs.type[i], " \"key\"") == 0 && move->item.key == true)
+        return (1);
+    if (bstrcmp(move->obs.type[i], " \"nextmap\"") == 0)
+        move->obs.display_text_next = true;
+    if (bstrcmp(move->obs.type[i], " \"backmap\"") == 0)
+        move->obs.display_text_back = true;
+    if (bstrcmp(move->obs.type[i], " \"key\"") == 0)
+        move->key.col_key = true;
+    check_obs_name_split(move, i);
     return (0);
 }
 
@@ -52,7 +64,7 @@ static int check_obs(raccoonmove_t *move, int dir)
             && st.x <= move->obs.obstacle[i][1])
             && (st.y >= move->obs.obstacle[i][2]
             && st.y <= move->obs.obstacle[i][3])) {
-            if (split_check_obs(move, i) != 1)
+            if (check_obs_name(move, i) != 1)
                 return (1);
         }
         i++;
