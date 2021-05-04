@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-static void init_struct_move_split(raccoonmove_t *move)
+static void init_struct_move_set(raccoonmove_t *move)
 {
     move->speed = 3;
     move->item.boot = false;
@@ -31,12 +31,8 @@ static void init_struct_move_split(raccoonmove_t *move)
     move->climat_change = false;
 }
 
-void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
+static void init_struct_move_sprite(raccoonmove_t *move)
 {
-    move->raccoon_pos.x = 555;
-    move->raccoon_pos.y = 333;
-    move->obs.fl_map_obstacle = MAP0;
-    move->obs.index_obs = 0;
     move->my_texture = sfTexture_createFromFile(MAPMAISON, NULL);
     move->my_sprite = sfSprite_create();
     sfSprite_setTexture(move->my_sprite, move->my_texture, sfTrue);
@@ -46,10 +42,23 @@ void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
     move->key.my_texture = sfTexture_createFromFile(KEY, NULL);
     move->key.my_sprite = sfSprite_create();
     sfSprite_setTexture(move->key.my_sprite, move->key.my_texture, sfTrue);
+    move->fight_map_texture = sfTexture_createFromFile(FIGHT_MAP1, NULL);
+    move->fight_map_sprite = sfSprite_create();
+    sfSprite_setTexture(move->fight_map_sprite, move->fight_map_texture,
+    sfTrue);
+}
+
+void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
+{
+    move->raccoon_pos.x = 555;
+    move->raccoon_pos.y = 333;
+    move->obs.fl_map_obstacle = MAP0;
+    move->obs.index_obs = 0;
     move->window = window;
     move->map_clock = sfClock_create();
     move->enemy_info.nb_enemy = 2;
-    init_struct_move_split(move);
+    init_struct_move_set(move);
+    init_struct_move_sprite(move);
     init_enemy(move);
     if (init_obstacle(move) == 1)
         move->obs.index_obs = -1;

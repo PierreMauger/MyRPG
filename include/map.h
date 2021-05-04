@@ -38,6 +38,8 @@
 #define MAPVILLAGE "ressources/map/village.png"
 #define MAPDONJON "ressources/map/donjon.jpg"
 #define PNJ "ressources/sprites/pnj.png"
+#define FIGHT_MAP1 "ressources/map/fight_forest.jpg"
+#define FIGHT_MAP2 "ressources/map/beach_fight.jpg"
 #define MAP_OBS move->obs.fl_map_obstacle
 
 typedef struct {
@@ -104,6 +106,8 @@ typedef struct {
     sfRenderWindow *window;
     sfTexture *my_texture;
     sfSprite *my_sprite;
+    sfTexture *fight_map_texture;
+    sfSprite *fight_map_sprite;
     sfTexture *my_texture_rac;
     sfSprite *my_sprite_rac;
     sfVector2f raccoon_pos;
