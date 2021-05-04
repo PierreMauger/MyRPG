@@ -57,7 +57,7 @@ static void select_map_next(raccoonmove_t *move, text_t *text)
     if (bstrcmp(move->obs.fl_map_obstacle, MAP2) == 0 && p == 0) {
         load_map(move, "ressources/map/donjon.jpg", MAP3);
         move->raccoon_pos.x = 400;
-        move->raccoon_pos.y = 915;
+        move->raccoon_pos.y = 900;
         p++;
     }
 }
