@@ -13,7 +13,7 @@ static int split_fill_obs(char *buff, int *i, char **stock)
 
     (*i)++;
     (*stock) = malloc(sizeof(char) * 30);
-    while (buff[*i] != 44) {
+    while (buff[*i] != 44 && buff[*i] != '\n') {
         (*stock)[z] = buff[*i];
         (*i)++;
         z++;

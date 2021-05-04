@@ -38,7 +38,7 @@ void init_mons(game_t *game)
     if (!buffer || bstrlen(buffer) < 10)
         return;
     game->p_mons = NULL;
-    for (int i = 1; i < game->move->enemy_info.nb_enemy; i++)
+    for (int i = 1; i < 2; i++)
         put_in_mons_list(game, &game->p_mons, buffer, i);
     free(buffer);
 }
