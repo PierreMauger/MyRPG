@@ -57,13 +57,17 @@ static void find_bool_map(char *buff, raccoonmove_t *move)
 
 static int parsing_save(char *buff, raccoonmove_t *move)
 {
+    int stock = 0;
+
     move->obs.fl_map_obstacle = (char *)parser(buff, "map", 1);
     move->raccoon_pos.x = (int)parser(buff, "raccoon_pos.x", 1);
     move->raccoon_pos.y = (int)parser(buff, "raccoon_pos.y", 1);
-    if ((int)parser(buff, "pnj_pos.x", 1) != 0)
-        move->pnj.pnj_pos.x = (int)parser(buff, "pnj_pos.x", 1);
-    if ((int)parser(buff, "pnj_pos.y", 1) != 0)
-        move->pnj.pnj_pos.y = (int)parser(buff, "pnj_pos.y", 1);
+    stock = (int)parser(buff, "pnj_x", 1);
+    if (stock != 0)
+        move->pnj.pnj_pos.x = stock;
+    stock = (int)parser(buff, "pnj_y", 1);
+    if (stock != 0)
+        move->pnj.pnj_pos.y = stock;
     find_bool_map(buff, move);
     return (0);
 }

@@ -48,6 +48,7 @@ void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
     sfSprite_setTexture(move->key.my_sprite, move->key.my_texture, sfTrue);
     move->window = window;
     move->map_clock = sfClock_create();
+    move->enemy_info.nb_enemy = 2;
     init_struct_move_split(move);
     init_enemy(move);
     if (init_obstacle(move) == 1)

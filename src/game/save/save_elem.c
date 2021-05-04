@@ -36,11 +36,11 @@ static void write_in_json_save(FILE *fp, game_t *game)
     fwrite(",\n\t\t\"raccoon_pos.y\": ", 1, 21, fp);
     fwrite(my_itoa(game->move->raccoon_pos.y), 1,
         bstrlen(my_itoa(game->move->raccoon_pos.y)), fp);
-    fwrite(",\n\t\t\"png_pos.x\": ", 1, 17, fp);
+    fwrite(",\n\t\t\"png_x\": ", 1, 13, fp);
     if (game->move->pnj.exist == true)
         fwrite(my_itoa(game->move->pnj.pnj_pos.x), 1,
             bstrlen(my_itoa(game->move->pnj.pnj_pos.x)), fp);
-    fwrite(",\n\t\t\"png_pos.y\": ", 1, 17, fp);
+    fwrite(",\n\t\t\"png_y\": ", 1, 13, fp);
     if (game->move->pnj.exist == true)
         fwrite(my_itoa(game->move->pnj.pnj_pos.y), 1,
             bstrlen(my_itoa(game->move->pnj.pnj_pos.y)), fp);

@@ -23,7 +23,7 @@ static void load_texture_enemy(raccoonmove_t *move)
     int y = 0;
 
     while (x != 4) {
-        while (move->enemy[x][y].last == false) {
+        while (move->enemy[x][y].last != true) {
             move->enemy[x][y].interaction = false;
             move->enemy[x][y].dead = false;
             move->enemy[x][y].my_texture =
@@ -48,6 +48,7 @@ int init_enemy(raccoonmove_t *move)
     move->enemy[1][0].last = false;
     move->enemy[1][1].last = true;
     move->enemy[2] = malloc(sizeof(enemy_t) * 2);
+    move->enemy[2][0].last = false;
     move->enemy[2][1].last = true;
     move->enemy[3] = malloc(sizeof(enemy_t) * 3);
     move->enemy[3][0].last = true;

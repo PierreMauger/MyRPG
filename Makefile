@@ -101,7 +101,7 @@ OBJ			=	$(SRC:.c=.o)
 
 OBJ_TEST	=	$(SRC_TEST:.c=.o)
 
-CFLAGS		=	-L lib/my -I include -lblib -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -Wall -Wextra -W
+CFLAGS		=	-g -L lib/my -I include -lblib -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -Wall -Wextra -W
 
 CFLAGS_TEST	=	--coverage -lcriterion -I include
 

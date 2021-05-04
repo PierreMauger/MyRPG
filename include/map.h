@@ -83,6 +83,11 @@ typedef struct {
 } enemy_t;
 
 typedef struct {
+    int nb_enemy;
+    int who_enemy;
+} enemy_info_t;
+
+typedef struct {
     sfTexture *my_texture;
     sfSprite *my_sprite;
     bool col_key;
@@ -106,11 +111,13 @@ typedef struct {
     obs_t obs;
     pnj_t pnj;
     enemy_t **enemy;
+    enemy_info_t enemy_info;
     chest_t chest;
     mykey_t key;
     itemmap_t item;
     char **sentence;
     int speed;
+    int nb_enemy;
     bool climat_change;
     bool anim;
 } raccoonmove_t;
