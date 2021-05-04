@@ -40,17 +40,4 @@ void main(void)
 	finalColor = (vec3(0, 0, c * 1.5));
 
     gl_FragColor = pixel_color + vec4(finalColor, 1);
-
-    for (float i = 0.; i < 4.; i++) {
-        vec2 size = resolution.xy * i * .01;
-        vec2 drop = 6.28 * coord * size + (pixel_color.rg - .5) * 2.;
-        vec2 round = sin(drop);
-        vec4 calc = texture2D(currentTexture, floor(coord * size - 0.25 + 0.5) / size);
-        float t = (round.x + round.y) * max(0., 1. - fract(time * (calc.b + .1) + calc.g) * 2.);
-
-        if (calc.r < (3 - i) * .16 && t > .5) {
-            gl_FragColor += calc;
-        }
-    }
-
 }

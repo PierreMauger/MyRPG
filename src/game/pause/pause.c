@@ -60,7 +60,7 @@ void my_pause(game_t *game)
             return;
         }
         sfRenderWindow_clear(GET_WINDOW, sfBlack);
-        displ_all(GET_WINDOW, game->move, game->text);
+        displ_all(GET_WINDOW, game->move, game->text, game);
         display_pause(game);
         display_arrow(game, &i);
         sfRenderWindow_display(GET_WINDOW);

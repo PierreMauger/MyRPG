@@ -78,7 +78,8 @@
 #define SKILL_SHADER "ressources/shaders/skill_shader.frag"
 #define TURN_SHADER "ressources/shaders/turn_shader.frag"
 #define TARGET_SHADER "ressources/shaders/target_shader.frag"
-#define SNOW_SHADER "ressources/shaders/rain_shader.frag"
+#define SNOW_SHADER "ressources/shaders/snow_shader.frag"
+#define RAIN_SHADER "ressources/shaders/rain_shader.frag"
 #define JSON_MONS "ressources/json/mons.json"
 #define JSON_SKILL "ressources/json/skill.json"
 #define JSON_QUEST "ressources/json/quest.json"
@@ -87,6 +88,7 @@
 #define RENDER_TURN game->shader->render_turn
 #define RENDER_TARGET game->shader->render_target
 #define RENDER_SNOW game->shader->render_snow
+#define RENDER_RAIN game->shader->render_rain
 
 #define sfGrey (sfColor){128, 128, 128, 255}
 
@@ -237,10 +239,12 @@ typedef struct {
     sfRenderStates render_turn;
     sfRenderStates render_target;
     sfRenderStates render_snow;
+    sfRenderStates render_rain;
     sfShader *skill;
     sfShader *turn;
     sfShader *target;
     sfShader *snow;
+    sfShader *rain;
 } shader_t;
 
 typedef enum {
@@ -501,5 +505,8 @@ void destroy_window(window_t *window);
 void init_quest(game_t *game);
 void draw_quest_text(game_t *game);
 void destroy_quest(quest_t *quest, quest_text_t *quest_text);
+
+void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text,
+game_t *game);
 
 #endif

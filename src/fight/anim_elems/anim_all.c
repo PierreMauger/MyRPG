@@ -30,6 +30,7 @@ void anim_all(game_t *game)
     sfShader_setFloatUniform(game->shader->turn, "time", GET_TOTAL_TIME);
     sfShader_setFloatUniform(game->shader->target, "time", GET_TOTAL_TIME);
     sfShader_setFloatUniform(game->shader->snow, "time", GET_TOTAL_TIME);
+    sfShader_setFloatUniform(game->shader->rain, "time", GET_TOTAL_TIME);
     if (GET_SECONDS > ANIM_TIME) {
         animate(game);
     }

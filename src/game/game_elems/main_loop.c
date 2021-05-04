@@ -16,7 +16,7 @@ void loop_map(game_t *game)
         check_if_combat_start(game);
         sfClock_restart(game->move->map_clock);
     }
-    displ_all(GET_WINDOW, game->move, game->text);
+    displ_all(GET_WINDOW, game->move, game->text, game);
 }
 
 void main_loop(game_t *game)
