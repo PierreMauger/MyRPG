@@ -59,8 +59,11 @@ static int parsing_save(char *buff, raccoonmove_t *move)
 {
     int stock = 0;
 
+    stock = (int)parser(buff, "raccoon_pos.x", 1);
+    if (stock == -1)
+        return (1);
     move->obs.fl_map_obstacle = (char *)parser(buff, "map", 1);
-    move->raccoon_pos.x = (int)parser(buff, "raccoon_pos.x", 1);
+    move->raccoon_pos.x = stock;
     move->raccoon_pos.y = (int)parser(buff, "raccoon_pos.y", 1);
     stock = (int)parser(buff, "pnj_x", 1);
     if (stock != 0)
@@ -83,7 +86,7 @@ int load_save(raccoonmove_t *move)
         return (1);
     ret = read(fd, buff, 4096);
     buff[ret] = '\0';
-    parsing_save(buff, move);
-    change_move(move);
+    if (parsing_save(buff, move) == 0)
+        change_move(move);
     return (0);
 }

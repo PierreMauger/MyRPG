@@ -25,6 +25,7 @@ void check_if_combat_start(game_t *game)
             game->in_fight = 1;
             game->move->enemy[x][y].dead = true;
             game->move->enemy[x][y].interaction = false;
+            game->move->enemy_info.nb_enemy = x + 1;
         }
         y++;
     }

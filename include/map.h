@@ -117,7 +117,6 @@ typedef struct {
     itemmap_t item;
     char **sentence;
     int speed;
-    int nb_enemy;
     bool climat_change;
     bool anim;
 } raccoonmove_t;
