@@ -265,12 +265,41 @@ typedef struct {
 } status_t;
 
 typedef struct {
+    int sky;
+    int mont;
+    int tree;
+    int grass;
+} speed_t;
+
+typedef struct {
+    sfVector2f sky;
+    sfVector2f mont;
+    sfVector2f tree;
+    sfVector2f grass;
+} pos_parallax_t;
+
+typedef struct {
+    sfTexture *sky;
+    sfSprite *sprite_sky;
+    sfTexture *mont;
+    sfSprite *sprite_mont;
+    sfTexture *grass;
+    sfSprite *sprite_grass;
+    sfTexture *tree;
+    sfSprite *sprite_tree;
+    speed_t speed;
+    pos_parallax_t pos_para;
+} parallax_t;
+
+typedef struct {
     sfVector2f pos;
     sfIntRect rect;
     sfSprite *sprite;
     sfTexture *texture;
     sfMusic *music;
     bool music_playing;
+    parallax_t *para;
+    parallax_t *paracpy;
 } menu_t;
 
 typedef struct {
@@ -293,6 +322,7 @@ typedef struct {
     bool in_inv;
     raccoonmove_t *move;
     text_t *text;
+    menu_t *menu;
 } game_t;
 
 typedef struct item {
@@ -348,6 +378,9 @@ void destroy_inv(inventory_t *inv);
 menu_t *main_menu(game_t *game);
 void menu_play(game_t *game, menu_t *menu);
 bool start_game(game_t *game, menu_t *menu);
+parallax_t *init_parallax(parallax_t *parallax, int pos_max);
+void display_parallax(game_t *game);
+void init_menu(game_t *game);
 
 //ANIM_ELEMS
 void animate(game_t *game);
@@ -501,6 +534,7 @@ int load_save(raccoonmove_t *move);
 void destroy_game(game_t *game);
 void destroy_time(time_elapsed_t *time);
 void destroy_window(window_t *window);
+void destroy_menu(menu_t *menu);
 
 void init_quest(game_t *game);
 void draw_quest_text(game_t *game);
