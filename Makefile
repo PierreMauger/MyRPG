@@ -89,7 +89,6 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/map/my_itoa.c							\
 				src/map/enemy.c								\
 				src/map/enemy_fight.c						\
-				parallax.c
 
 
 SRC			+=	main.c				\
