@@ -50,9 +50,10 @@ void display_use(raccoonmove_t *move)
         "ressources/sprites/keyboard_key_e.png", NULL);
     sfSprite *my_spr = sfSprite_create();
     sfVector2f pos = {1780, 10};
-    sfSprite_setPosition(my_spr, pos);
 
+    sfSprite_setPosition(my_spr, pos);
     sfSprite_setTexture(my_spr, back, sfTrue);
     sfRenderWindow_drawSprite(move->window, my_spr, NULL);
-    sfTexture_destroy(back), sfSprite_destroy(my_spr);
+    sfTexture_destroy(back);
+    sfSprite_destroy(my_spr);
 }

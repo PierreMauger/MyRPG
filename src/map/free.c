@@ -9,12 +9,9 @@
 
 void free_obs(raccoonmove_t *move)
 {
-    int i = 0;
-
-    while (i != (int)move->obs.index_obs) {
+    for (int i = 0; i != (int)move->obs.index_obs; i++) {
         free(move->obs.obstacle[i]);
         free(move->obs.type[i]);
-        i++;
     }
     free(move->obs.obstacle);
     free(move->obs.type);

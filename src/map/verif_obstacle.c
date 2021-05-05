@@ -56,10 +56,9 @@ static sfVector2f save_move_obs(raccoonmove_t *move, int dir, sfVector2f st)
 
 static int check_obs(raccoonmove_t *move, int dir)
 {
-    int i = 0;
     sfVector2f st = save_move_obs(move, dir, st);
 
-    while (i != (int)move->obs.index_obs) {
+    for (int i = 0; i != (int)move->obs.index_obs; i++) {
         if ((st.x >= move->obs.obstacle[i][0]
             && st.x <= move->obs.obstacle[i][1])
             && (st.y >= move->obs.obstacle[i][2]
@@ -67,7 +66,6 @@ static int check_obs(raccoonmove_t *move, int dir)
             if (check_obs_name(move, i) != 1)
                 return (1);
         }
-        i++;
     }
     move->obs.display_text_next = false;
     move->obs.display_text_back = false;
@@ -79,21 +77,16 @@ void ch_move(raccoonmove_t *move)
 {
     if (move->anim == true)
         return;
-    if (sfKeyboard_isKeyPressed(sfKeyLeft) || sfKeyboard_isKeyPressed(sfKeyQ)) {
+    if (sfKeyboard_isKeyPressed(sfKeyLeft) || sfKeyboard_isKeyPressed(sfKeyQ))
         if (move->raccoon_pos.x >= 0 && check_obs(move, 0) == 0)
             move->raccoon_pos.x -= move->speed;
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyRight)
-        || sfKeyboard_isKeyPressed(sfKeyD)) {
+    if (sfKeyboard_isKeyPressed(sfKeyRight) || sfKeyboard_isKeyPressed(sfKeyD))
         if (move->raccoon_pos.x <= 1850 && check_obs(move, 1) == 0)
             move->raccoon_pos.x += move->speed;
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyUp) || sfKeyboard_isKeyPressed(sfKeyZ)) {
+    if (sfKeyboard_isKeyPressed(sfKeyUp) || sfKeyboard_isKeyPressed(sfKeyZ))
         if (move->raccoon_pos.y >= 0 && check_obs(move, 2) == 0)
             move->raccoon_pos.y -= move->speed;
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyDown) || sfKeyboard_isKeyPressed(sfKeyS)) {
+    if (sfKeyboard_isKeyPressed(sfKeyDown) || sfKeyboard_isKeyPressed(sfKeyS))
         if (move->raccoon_pos.y <= 950 && check_obs(move, 3) == 0)
             move->raccoon_pos.y += move->speed;
-    }
 }

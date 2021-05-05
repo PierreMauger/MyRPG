@@ -9,9 +9,8 @@
 
 int	len(long nb)
 {
-    int	len;
+    int	len = 0;
 
-    len = 0;
     if (nb < 0) {
         nb = nb * -1;
         len++;
@@ -40,9 +39,9 @@ char *my_itoa(int nb)
         str[0] = '-';
         n = n * -1;
     }
-    while (n > 0) {
+    for (; n > 0; i--) {
         str[i] = 48 + (n % 10);
-        n = n / 10, i--;
+        n = n / 10;
     }
     return (str);
 }

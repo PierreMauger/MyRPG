@@ -61,7 +61,7 @@ void chest_open(raccoonmove_t *move)
 
 void climat_map(raccoonmove_t *move, text_t *text)
 {
-    char *buff;
+    char *buff = NULL;
 
     move->pnj.exist = false;
     if (move->climat_change == false) {

@@ -163,7 +163,7 @@ int create_sentence_chest(raccoonmove_t *move, text_t *text);
 void create_sentence_pnj(raccoonmove_t *move, text_t *text);
 void display_mykey(raccoonmove_t *move, int x, int y);
 void check_change_map(raccoonmove_t *move, text_t *text);
-int display_pnj(raccoonmove_t *move);
+void display_pnj(raccoonmove_t *move);
 int load_save(raccoonmove_t *move);
 void check_got_sword(raccoonmove_t *move, text_t *text);
 void climat_map(raccoonmove_t *move, text_t *text);

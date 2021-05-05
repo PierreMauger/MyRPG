@@ -14,7 +14,8 @@ static size_t spl_txt(size_t a, char *str, sfVector2f *pos, sfText *sen)
     if (str[a] == '\0')
         passed++;
     if (str[a] == ' ' && passed == 0) {
-        a++, passed++;
+        a++;
+        passed++;
         pos->y += 55;
     }
     if (str[a - 1] == ' ' && passed == 0) {
@@ -36,12 +37,11 @@ static void display_text(char *str, sfRenderWindow *win, text_t *text, char *t)
     sfText* sen = sfText_create();
     sfVector2f pos = text->pos;
     sfVector2f stock = pos;
-    size_t a = 0;
     char c;
 
     pos.x += 10, sfText_setFont(sen, font);
     sfText_setCharacterSize(sen, text->size_font);
-    while (a < bstrlen(str)) {
+    for (size_t a = 0; a < bstrlen(str);) {
         c = str[a];
         sfText_setString(sen, &c), sfText_setPosition(sen, pos);
         sfRenderWindow_drawText(win, sen, NULL), a++;
@@ -51,10 +51,11 @@ static void display_text(char *str, sfRenderWindow *win, text_t *text, char *t)
             pos.x += 32;
         sfRenderWindow_drawText(win, sen, NULL);
     }
-    sfText_destroy(sen), sfFont_destroy(font);
+    sfText_destroy(sen);
+    sfFont_destroy(font);
 }
 
-static int get_text(char *str, text_t *text, sfRenderWindow *window)
+static void get_text(char *str, text_t *text, sfRenderWindow *window)
 {
     size_t a = 0;
 
@@ -67,19 +68,17 @@ static int get_text(char *str, text_t *text, sfRenderWindow *window)
         sfClock_restart(text->clock);
         text->index = text->index + 1;
     }
-    while (a != text->index) {
+    for (;a != text->index; a++)
         text->save[a] = str[a];
-        a++;
-    }
     text->save[a] = '\0';
     display_text(text->save, window, text, str);
-    return (0);
 }
 
 void text_defil(char *str, text_t *text, sfRenderWindow *window)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
     sfColor color = sfColor_fromRGBA(47, text->color2, text->color, 220);
+
     sfRectangleShape_setSize(rect, text->size_box);
     sfRectangleShape_setPosition(rect, text->pos);
     sfRectangleShape_setFillColor(rect, color);

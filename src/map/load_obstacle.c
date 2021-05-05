@@ -13,16 +13,15 @@ static int split_fill_obs(char *buff, int *i, char **stock)
 
     (*i)++;
     (*stock) = malloc(sizeof(char) * 30);
-    while (buff[*i] != 44 && buff[*i] != '\n') {
+    for (; buff[*i] != 44 && buff[*i] != '\n'; z++) {
         (*stock)[z] = buff[*i];
         (*i)++;
-        z++;
     }
     (*stock)[z] = '\0';
     return (z);
 }
 
-static int get_batoi(raccoonmove_t *move, int *a, char *stock, int *h)
+static void get_batoi(raccoonmove_t *move, int *a, char *stock, int *h)
 {
     char *less_space;
     int sp = 1;
@@ -30,11 +29,8 @@ static int get_batoi(raccoonmove_t *move, int *a, char *stock, int *h)
 
     if (*h != 0) {
         less_space = malloc(sizeof(char) * bstrlen(stock));
-        while (stock[sp] != '\0') {
+        for (; stock[sp] != '\0'; sp++, new++)
             less_space[new] = stock[sp];
-            sp++;
-            new++;
-        }
         less_space[new] = '\0';
         move->obs.obstacle[move->obs.index_obs][*a] = batoi(less_space);
         (*a)++;
@@ -42,15 +38,14 @@ static int get_batoi(raccoonmove_t *move, int *a, char *stock, int *h)
     }
     free(stock);
     *h = 1;
-    return (0);
 }
 
-static int fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
+static void fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
 {
     int a = 0;
     int h = 0;
     int z = 0;
-    char *stock;
+    char *stock = NULL;
 
     while (buff[*i] != '}') {
         while (buff[*i] != ':' && buff[*i] != '}')
@@ -65,31 +60,25 @@ static int fill_obstacle_tab(char *buff, raccoonmove_t *move, int *i)
         get_batoi(move, &a, stock, &h);
         z = 0;
     }
-    return (0);
 }
 
-static int init_obstacle_split(char *buff, raccoonmove_t *move)
+static void init_obstacle_split(char *buff, raccoonmove_t *move)
 {
     int i = 0;
     int a = 0;
 
-    while (buff[i] != '\0') {
+    for (; buff[i] != '\0'; i++)
         if (buff[i] == '}')
             a++;
-        i++;
-    }
     move->obs.obstacle = malloc(sizeof(int *) * a);
     move->obs.type = malloc(sizeof(char *) * a);
-    i = 0;
-    while (buff[i] != '\0') {
+    for (i = 0; buff[i] != '\0'; i++) {
         if (buff[i] == '{') {
             move->obs.obstacle[move->obs.index_obs] = malloc(sizeof(int) * 4);
             fill_obstacle_tab(buff, move, &i);
             move->obs.index_obs = move->obs.index_obs + 1;
         }
-        i++;
     }
-    return (0);
 }
 
 int init_obstacle(raccoonmove_t *move)

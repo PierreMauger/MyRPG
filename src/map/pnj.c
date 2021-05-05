@@ -7,7 +7,7 @@
 
 #include "map.h"
 
-static int create_pnj(raccoonmove_t *move)
+static void create_pnj(raccoonmove_t *move)
 {
     sfVector2f size = {0.2, 0.2};
 
@@ -20,17 +20,15 @@ static int create_pnj(raccoonmove_t *move)
     move->pnj.exist = true;
     move->pnj.last_dir = -1;
     sfSprite_scale(move->pnj.my_sprite, size);
-    return (0);
 }
 
-int display_pnj(raccoonmove_t *move)
+void display_pnj(raccoonmove_t *move)
 {
     sfSprite_setPosition(move->pnj.my_sprite, move->pnj.pnj_pos);
     sfRenderWindow_drawSprite(move->window, move->pnj.my_sprite, NULL);
-    return (0);
 }
 
-static int pnj_path(raccoonmove_t *move, int direction)
+static void pnj_path(raccoonmove_t *move, int direction)
 {
     if (direction > 3) {
         direction = move->pnj.last_dir;
@@ -45,10 +43,9 @@ static int pnj_path(raccoonmove_t *move, int direction)
     }
     else
         move->pnj.last_dir = direction;
-    return (0);
 }
 
-static int move_pnj(raccoonmove_t *move)
+static void move_pnj(raccoonmove_t *move)
 {
     int direction = direction = rand() % 250;
 
@@ -64,10 +61,9 @@ static int move_pnj(raccoonmove_t *move)
         move->pnj.pnj_pos.y += move->pnj.speed_pnj;
     if (move->pnj.last_dir == -1) {
         move->pnj.last_dir = direction;
-        return (0);
+        return;
     }
     pnj_path(move, direction);
-    return (0);
 }
 
 int pnj(raccoonmove_t *move)

@@ -17,6 +17,7 @@ static void load_map(raccoonmove_t *move, char *tex, char *map)
 static int select_map_back(raccoonmove_t *move)
 {
     int p = 0;
+
     if (bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0 && p == 0) {
         load_map(move, "ressources/map/maison.jpg", MAP0);
         move->pnj.exist = false;

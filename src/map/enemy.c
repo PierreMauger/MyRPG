@@ -19,11 +19,10 @@ static void load_pos_enemy(raccoonmove_t *move, int x, int y)
 
 static void load_texture_enemy(raccoonmove_t *move)
 {
-    int x = 0;
     int y = 0;
 
-    while (x != 4) {
-        while (move->enemy[x][y].last != true) {
+    for (int x = 0; x != 4; x++) {
+        for (y = 0; move->enemy[x][y].last != true; y++) {
             move->enemy[x][y].interaction = false;
             move->enemy[x][y].dead = false;
             move->enemy[x][y].my_texture =
@@ -32,10 +31,7 @@ static void load_texture_enemy(raccoonmove_t *move)
             sfSprite_setTexture(move->enemy[x][y].my_sprite,
                 move->enemy[x][y].my_texture, sfTrue);
             load_pos_enemy(move, x, y);
-            y++;
         }
-        x++;
-        y = 0;
     }
 }
 

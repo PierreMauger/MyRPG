@@ -82,9 +82,8 @@ void map_event(raccoonmove_t *move, sfEvent event, text_t *text)
 {
     if (text->display == true)
         my_event_text(event, move->sentence, text, move);
-    if (event.type == sfEvtKeyPressed) {
+    if (event.type == sfEvtKeyPressed)
         k_map(move, text);
-    }
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(move->window);
 }

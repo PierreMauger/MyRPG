@@ -10,7 +10,6 @@
 void check_if_combat_start(game_t *game)
 {
     int x = -1;
-    int y = 0;
 
     if (bstrcmp(game->move->obs.fl_map_obstacle, MAP0) == 0 && x == -1)
         x = 0;
@@ -20,14 +19,13 @@ void check_if_combat_start(game_t *game)
         x = 2;
     if (bstrcmp(game->move->obs.fl_map_obstacle, MAP3) == 0 && x == -1)
         x = 3;
-    while (game->move->enemy[x][y].last == false) {
+    for (int y = 0; game->move->enemy[x][y].last == false; y++) {
         if (game->move->enemy[x][y].interaction == true) {
             game->in_fight = 1;
             game->move->enemy[x][y].dead = true;
             game->move->enemy[x][y].interaction = false;
             game->move->enemy_info.nb_enemy = x + 1;
         }
-        y++;
     }
 }
 
@@ -46,7 +44,6 @@ static int check_hit_enemy(raccoonmove_t *move, int x, int y)
 void check_if_combat(raccoonmove_t *move)
 {
     int x = -1;
-    int y = 0;
 
     if (bstrcmp(move->obs.fl_map_obstacle, MAP0) == 0 && x == -1)
         x = 0;
@@ -56,11 +53,11 @@ void check_if_combat(raccoonmove_t *move)
         x = 2;
     if (bstrcmp(move->obs.fl_map_obstacle, MAP3) == 0 && x == -1)
         x = 3;
-    while (move->enemy[x][y].last == false && move->enemy[x][y].dead == false) {
+    for (int y = 0; move->enemy[x][y].last == false && move->enemy[x][y].dead
+    == false; y++) {
         if (check_hit_enemy(move, x, y) == 1)
             move->enemy[x][y].interaction = true;
         sfRenderWindow_drawSprite(
             move->window, move->enemy[x][y].my_sprite, NULL);
-        y++;
     }
 }
