@@ -13,9 +13,10 @@ void move_bg(sfSprite *spr, int spd, struct game_object *obj)
     sfClock *clock;
     clock = sfClock_create();
     sfTime time;
-    float seconds; 
+    float seconds;
     time = sfClock_getElapsedTime(clock);
     seconds = time.microseconds / 1000000.0f;
+
     if (seconds >= 0) {
         sfSprite_getPosition(spr);
         sfClock_restart(clock);
@@ -35,6 +36,7 @@ struct game_object *create_object(const char *path, sfVector2f pos, sfIntRect r)
     sfSprite_setPosition(sprite, pos);
     sfSprite_setTextureRect(sprite, r);
     struct game_object *obj = malloc(sizeof(struct game_object));
+
     obj->texture = texture;
     obj->sprite = sprite;
     obj->pos = pos;
@@ -79,6 +81,7 @@ struct game_object **obj_n(int nbr_assets)
     sfVector2f pos = {0, 0};
     sfIntRect rect = {0, 0, 1920, 1080};
     struct game_object **tab = malloc(sizeof(struct game_object) * nbr_assets);
+
     tab[0] = create_object("layer06_sky.png", pos, rect);
     tab[1] = create_object("layer05_rocks.png", pos, rect);
     tab[2] = create_object("layer04_clouds.png", pos, rect);

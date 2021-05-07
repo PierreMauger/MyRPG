@@ -12,6 +12,7 @@ sfText *init_font(sfText *txt, sfVector2f pos, char *font, char *text)
 {
     txt = sfText_create();
     sfFont *menu = sfFont_createFromFile(font);
+
     if (!menu)
         return;
     sfText_setPosition(txt, pos);

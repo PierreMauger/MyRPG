@@ -15,6 +15,7 @@ sfText *create_text_btn(sfText *txt, game_t *game, button_t *btn)
     set_color(txt, sfBlack);
     show_font(game, txt);
     sfVector2f pos;
+
     btn->f_rect = sfText_getGlobalBounds(txt);
     btn->text_pos = sfText_getPosition(txt);
     return (txt);
