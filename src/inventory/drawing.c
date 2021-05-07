@@ -25,26 +25,23 @@ void display_stats_sprites(inventory_t *inv, game_t *game)
 void display_stats_texts(game_t *game, inventory_t *inv, item_t *item)
 {
     sfVector2f pos;
-    char *str = bitoa(item->dmg_buff);
 
     sfText_setColor(inv->prompttext, sfWhite);
     pos = sfSprite_getPosition(STATUS_SPRITE[att_p]);
-    pos.x += 10;
-    sfText_setString(inv->prompttext, str);
+    pos.x += 30;
+    sfText_setPosition(inv->prompttext, pos);
+    set_string(inv, item, 1);
     sfRenderWindow_drawText(GET_WINDOW, inv->prompttext, NULL);
-    free(str);
-    str = bitoa(item->def_buff);
     pos = sfSprite_getPosition(STATUS_SPRITE[def_p]);
-    pos.x += 10;
-    sfText_setString(inv->prompttext, str);
+    pos.x += 30;
+    sfText_setPosition(inv->prompttext, pos);
+    set_string(inv, item, 2);
     sfRenderWindow_drawText(GET_WINDOW, inv->prompttext, NULL);
-    free(str);
-    str = bitoa(item->speed_buff);
     pos = sfSprite_getPosition(STATUS_SPRITE[spe_p]);
-    pos.x += 10;
-    sfText_setString(inv->prompttext, str);
+    pos.x += 30;
+    sfText_setPosition(inv->prompttext, pos);
+    set_string(inv, item, 3);
     sfRenderWindow_drawText(GET_WINDOW, inv->prompttext, NULL);
-    free(str);
 }
 
 void display_texts(game_t *game, inventory_t *inv, item_t *item)
