@@ -381,6 +381,7 @@ void destroy_inv(inventory_t *inv);
 void init_prompt_text(inventory_t *inv, game_t *game);
 void display_prompt(inventory_t *inv, game_t *game);
 item_t *get_selected_item(inventory_t *inv);
+void set_string(inventory_t *inv, item_t *item, int id);
 
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);
