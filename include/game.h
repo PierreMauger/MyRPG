@@ -266,10 +266,10 @@ typedef struct {
 } status_t;
 
 typedef struct {
-    int sky;
-    int mont;
-    int tree;
-    int grass;
+    float sky;
+    float mont;
+    float tree;
+    float grass;
 } speed_t;
 
 typedef struct {
@@ -550,5 +550,6 @@ void destroy_quest(quest_t *quest, quest_text_t *quest_text);
 
 void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text,
 game_t *game);
+int menu_loop(game_t *game);
 
 #endif

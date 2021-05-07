@@ -78,8 +78,8 @@ static parallax_t *init_speed_pos_parallax(parallax_t *para, int pos_max)
     para->sprite_tree = sfSprite_create();
     sfSprite_setTexture(
         para->sprite_tree, para->tree, sfFalse);
-    para->speed.sky = 1;
-    para->speed.mont = 2;
+    para->speed.sky = 0.5;
+    para->speed.mont = 1.5;
     para->speed.tree = 3;
     para->speed.grass = 4;
     para->pos_para.sky.x = pos_max;

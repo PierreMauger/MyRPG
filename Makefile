@@ -91,7 +91,8 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/map/enemy_fight.c						\
 				src/inventory/drawing.c						\
 				src/inventory/drawing_utils.c				\
-				parallax.c									\
+				src/menu/parallax.c							\
+				src/menu/menu_loop.c						\
 
 
 SRC			+=	main.c				\
