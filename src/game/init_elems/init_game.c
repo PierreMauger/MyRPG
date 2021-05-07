@@ -17,6 +17,7 @@ void init_game(game_t *game)
     game->in_fight = 0;
     game->in_dialog = 0;
     game->in_inv = false;
+    init_menu(game);
     init_map(game);
     init_fight(game);
     init_quest(game);
