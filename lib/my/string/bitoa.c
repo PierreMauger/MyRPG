@@ -11,7 +11,7 @@ static int get_int_size(int nbr)
 {
     int i = 0;
 
-    if (nbr < 0)
+    if (nbr <= 0)
         i++;
     while (nbr != 0) {
         nbr /= 10;
@@ -23,11 +23,13 @@ static int get_int_size(int nbr)
 char *bitoa(int nbr)
 {
     int len = get_int_size(nbr);
-    char *str = malloc(sizeof(char) * len + 2);
+    char *str = malloc(sizeof(char) * len + 1);
     int i = 0;
 
     if (!str)
         return NULL;
+    if (nbr == 0)
+        str[0] = '0';
     if (nbr < 0) {
         str[get_int_size(nbr) - 1] = '-';
         nbr *= -1;
@@ -38,9 +40,5 @@ char *bitoa(int nbr)
         str[i] = j + '0';
     }
     str[len] = '\0';
-    if (str[0] == '\0') {
-        str[0] = '0';
-        str[1] = '\0';
-    }
     return brevstr(str);
 }
