@@ -30,11 +30,16 @@ inventory_t *init_inventory(game_t *game)
     inv->selecsprite = sfSprite_create();
     inv->equipedtexture = sfTexture_createFromFile(EQU_PATH, NULL);
     inv->equipedsprite = sfSprite_create();
+    inv->promptsprite = sfSprite_create();
+    inv->prompttexture = sfTexture_createFromFile(PROMPT_PATH, NULL);
     inv->pos.x = (sfRenderWindow_getSize(GET_WINDOW).x / 2) - 175;
     inv->pos.y = (sfRenderWindow_getSize(GET_WINDOW).y - 140);
+    inv->prompt = false;
+    init_prompt_text(inv, game);
     sfSprite_setTexture(inv->invsprite, inv->invtexture, sfTrue);
     sfSprite_setTexture(inv->selecsprite, inv->selectexture, sfTrue);
     sfSprite_setTexture(inv->equipedsprite, inv->equipedtexture, sfTrue);
+    sfSprite_setTexture(inv->promptsprite, inv->prompttexture, sfTrue);
     sfSprite_setPosition(inv->invsprite, (sfVector2f){inv->pos.x, inv->pos.y});
     return inv;
 }
@@ -85,6 +90,8 @@ void draw_inventory(game_t *game, inventory_t *inv)
         draw_list(GET_WINDOW, inv->list);
         set_selec_pos(inv);
         sfRenderWindow_drawSprite(GET_WINDOW, inv->selecsprite, NULL);
+        if (inv->prompt && inv->selected < get_item_index(inv->list))
+            display_prompt(inv, game);
         poll_inv_events(game, inv);
         sfRenderWindow_display(GET_WINDOW);
     }

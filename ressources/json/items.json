@@ -2,7 +2,7 @@
  {
     "id": 1,
     "name": "Excalibur",
-    "description": "Thats a lot of DAMAGE",
+    "description": "Thats a lot of DAMAAAGE",
     "path": "ressources/sprites/sword.png",
     "att_buff": 9999,
     "def_buff": 0,
@@ -11,10 +11,37 @@
  {
     "id": 2,
     "name": "Berseker Helmet",
-    "description": "A big nice nordic crafted helmet.",
+    "description": "A big nice nordic helmet",
     "path": "ressources/sprites/helm.png",
-    "att_buff": 0,
-    "def_buff": 500,
+    "att_buff": 10,
+    "def_buff": 50,
     "speed_buff": 0
+ },
+ {
+    "id": 3,
+    "name": "Soft Boots",
+    "description": "Even softer than nikies",
+    "path": "ressources/sprites/boots.png",
+    "att_buff": 10,
+    "def_buff": 50,
+    "speed_buff": 0
+ },
+ {
+   "id": 4,
+   "name": "Tough chestplate",
+   "description": "Solid like a rock",
+   "path": "ressources/sprites/chestplate.png",
+   "att_buff": 5,
+   "def_buff": 100,
+   "speed_buff": 0
+ },
+ {
+   "id": 5,
+   "name": "Basic Sword",
+   "description": "At least you've got one",
+   "path": "ressources/sprites/ecosword.png",
+   "att_buff": 10,
+   "def_buff": 0,
+   "speed_buff": 0
  }
 ]

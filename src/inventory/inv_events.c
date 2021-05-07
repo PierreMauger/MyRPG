@@ -56,6 +56,10 @@ void poll_key_pressed(game_t *game, inventory_t *inv)
         inv->selected -= 1;
     if (game->event.key.code == sfKeyEnter)
         set_equiped(inv, inv->selected);
+    if (game->event.key.code == sfKeyH && inv->prompt == false)
+        inv->prompt = true;
+    else if (game->event.key.code == sfKeyH && inv->prompt == true)
+        inv->prompt = false;
 }
 
 void poll_inv_events(game_t *game, inventory_t *inv)
