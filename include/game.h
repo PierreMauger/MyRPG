@@ -442,6 +442,7 @@ void draw_status_att(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
 void draw_status_def(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
 void draw_status_spe(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
 void draw_status(game_t *game, mons_t *mons);
+void change_background(game_t *game);
 
 //FIGHT_ELEMS
 void atb_increase(mons_t *team);
@@ -551,5 +552,9 @@ void destroy_quest(quest_t *quest, quest_text_t *quest_text);
 void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text,
 game_t *game);
 int menu_loop(game_t *game);
+
+int change_map_back(raccoonmove_t *move, game_t *game);
+int change_map_next(raccoonmove_t *move, text_t *text, game_t *game);
+void check_change_map(raccoonmove_t *move, text_t *text, game_t *game);
 
 #endif

@@ -37,10 +37,10 @@ game_t *game)
         chest_open(move);
 }
 
-void check_change_map(raccoonmove_t *move, text_t *text)
+void check_change_map(raccoonmove_t *move, text_t *text, game_t *game)
 {
     if (move->obs.next_map == true)
-        change_map_next(move, text);
+        change_map_next(move, text, game);
     if (move->obs.back_map == true)
-        change_map_back(move);
+        change_map_back(move, game);
 }

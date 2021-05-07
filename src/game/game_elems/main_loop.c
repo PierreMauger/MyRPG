@@ -10,7 +10,7 @@
 void loop_map(game_t *game)
 {
     if (sfClock_getElapsedTime(game->move->map_clock).microseconds >= 10000) {
-        check_change_map(game->move, game->text);
+        check_change_map(game->move, game->text, game);
         ch_move(game->move);
         pnj(game->move);
         check_if_combat_start(game);
