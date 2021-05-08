@@ -62,12 +62,15 @@ void poll_key_pressed(game_t *game, inventory_t *inv)
         inv->prompt = false;
 }
 
-void poll_inv_events(game_t *game, inventory_t *inv)
+int poll_inv_events(game_t *game, inventory_t *inv)
 {
     while (sfRenderWindow_pollEvent(GET_WINDOW, &game->event)) {
         if (game->event.type == sfEvtKeyPressed)
             poll_key_pressed(game, inv);
-        if (game->event.type == sfEvtClosed)
+        if (game->event.type == sfEvtClosed) {
             sfRenderWindow_close(GET_WINDOW);
+            return (1);
+        }
     }
+    return (0);
 }
