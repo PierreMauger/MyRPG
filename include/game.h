@@ -523,6 +523,7 @@ void init_window(game_t *game);
 sfRectangleShape *init_rectangle(sfVector2f size, sfColor color, int center_x);
 
 //GAME_ELEMS
+void loop_map(game_t *game);
 void main_loop(game_t *game);
 void reset_fight(game_t *game);
 void start_fight(game_t *game);

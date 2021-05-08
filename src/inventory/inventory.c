@@ -85,6 +85,7 @@ void draw_inventory(game_t *game, inventory_t *inv)
     inv->selected = 0;
     while (game->in_inv == true) {
         sfRenderWindow_clear(GET_WINDOW, sfWhite);
+        loop_map(game);
         sfRenderWindow_drawSprite(GET_WINDOW, inv->invsprite, NULL);
         draw_equiped(game, inv);
         draw_list(GET_WINDOW, inv->list);
