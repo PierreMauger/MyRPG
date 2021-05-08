@@ -21,12 +21,31 @@ void loop_map(game_t *game)
     displ_all(GET_WINDOW, game->move, game->text, game);
 }
 
+bool is_item_in_inv(inventory_t *inv, char *name)
+{
+    list_t *temp = inv->list;
+
+    for (; temp != NULL; temp = temp->next) {
+        if (bstrcmp(temp->data->name, name) == 0)
+            return true;
+    }
+    return false;
+}
+
+void check_items_acquierement(game_t *game, inventory_t *inv)
+{
+    if (game->move->item.sword == true &&
+    is_item_in_inv(inv, "Basic Sword") == false)
+        add_item_to_inv(inv, 5);
+    if (game->move->item.boot == true &&
+    is_item_in_inv(inv, "Soft Boots") == false)
+        add_item_to_inv(inv, 3);
+}
+
 void main_loop(game_t *game)
 {
     inventory_t *inv = init_inventory(game);
 
-    add_item_to_inv(inv, 1);
-    add_item_to_inv(inv, 2);
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
         event_loop(game);
         sfRenderWindow_clear(GET_WINDOW, sfWhite);
@@ -38,6 +57,7 @@ void main_loop(game_t *game)
             draw_inventory(game, inv);
         draw_quest_text(game);
         loop_map(game);
+        check_items_acquierement(game, inv);
         sfRenderWindow_display(GET_WINDOW);
     }
     destroy_inv(inv);
