@@ -34,7 +34,7 @@
 #define RACCOON3 "ressources/sprites/raccoon3.png"
 #define RACCOONBOSS "ressources/sprites/raccoonbagar.png"
 #define KEY "ressources/sprites/key.png"
-#define SWORD "ressources/sprites/sword.png"
+#define SWORD "ressources/sprites/ecosword.png"
 #define MAPMAISON "ressources/map/maison.jpg"
 #define MAPPLAGE "ressources/map/plage.jpg"
 #define MAPVILLAGE "ressources/map/village.png"

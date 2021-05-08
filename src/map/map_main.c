@@ -35,7 +35,8 @@ game_t *game)
     sfRenderWindow_clear(window, sfWhite);
     displ_map(window, game);
     anim_all(game);
-    if (move->pnj.exist == true)
+    if (move->pnj.exist == true
+        && bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0)
         display_pnj(move);
     display_mykey(move, 0, 0);
     my_perso(window, move);
