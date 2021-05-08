@@ -8,6 +8,17 @@
 #include "map.h"
 #include "game.h"
 
+void display_mykey(raccoonmove_t *move, int x, int y)
+{
+    sfVector2f pos_key = {1792 + x, 917 + y};
+
+    if (move->item.key == false
+        && bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0) {
+        sfSprite_setPosition(move->key.my_sprite, pos_key);
+        sfRenderWindow_drawSprite(move->window, move->key.my_sprite, NULL);
+    }
+}
+
 static void displ_map(sfRenderWindow *window, game_t *game)
 {
     if (bstrcmp(game->move->obs.fl_map_obstacle, MAP1) == 0)

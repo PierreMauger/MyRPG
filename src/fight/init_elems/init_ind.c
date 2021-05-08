@@ -10,8 +10,8 @@
 void init_turn_arrow(game_t *game)
 {
     game->ind->arr = malloc(sizeof(arrow_t));
-    game->ind->arr->rect = (sfIntRect){0, 0, 40, 80};
-    game->ind->arr->texture = sfTexture_createFromFile(GRASS_IMG, NULL);
+    game->ind->arr->rect = (sfIntRect){0, 0, 48, 64};
+    game->ind->arr->texture = sfTexture_createFromFile(ARROW_IMG, NULL);
     game->ind->arr->sprite = sfSprite_create();
 }
 

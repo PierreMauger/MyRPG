@@ -30,6 +30,8 @@
 #define MAP2 "ressources/json/map2.json"
 #define MAP3 "ressources/json/map3.json"
 #define RACCOON "ressources/sprites/raccoon.png"
+#define RACCOON2 "ressources/sprites/raccoon2.png"
+#define RACCOON3 "ressources/sprites/raccoon3.png"
 #define RACCOONBOSS "ressources/sprites/raccoonbagar.png"
 #define KEY "ressources/sprites/key.png"
 #define SWORD "ressources/sprites/sword.png"
@@ -37,7 +39,14 @@
 #define MAPPLAGE "ressources/map/plage.jpg"
 #define MAPVILLAGE "ressources/map/village.png"
 #define MAPDONJON "ressources/map/donjon.jpg"
-#define PNJ "ressources/sprites/pnj.png"
+#define PNJ1 "ressources/sprites/farm1.png"
+#define PNJ2 "ressources/sprites/farm2.png"
+#define PNJ3 "ressources/sprites/farm3.png"
+#define PNJRUN1 "ressources/sprites/farmrun1.png"
+#define PNJRUN2 "ressources/sprites/farmrun2.png"
+#define PNJRUN3 "ressources/sprites/farmrun3.png"
+#define PNJRUN4 "ressources/sprites/farmrun4.png"
+#define PNJRUN5 "ressources/sprites/farmrun5.png"
 #define FIGHT_MAP1 "ressources/map/fight_forest.jpg"
 #define FIGHT_MAP2 "ressources/map/beach_fight.jpg"
 #define MAP_OBS move->obs.fl_map_obstacle
@@ -73,6 +82,7 @@ typedef struct {
     int last_dir;
     int speed_pnj;
     bool door_open;
+    bool idle;
 } pnj_t;
 
 typedef struct {
@@ -103,6 +113,16 @@ typedef struct {
 } itemmap_t;
 
 typedef struct {
+    sfClock *anim_clock;
+    sfClock *npc_clock;
+    int anim_rac;
+    int anim_npc;
+    int anim_npc_run;
+    int speed_anim;
+    bool idle;
+} anim_rac_t;
+
+typedef struct {
     sfRenderWindow *window;
     sfTexture *my_texture;
     sfSprite *my_sprite;
@@ -119,6 +139,7 @@ typedef struct {
     chest_t chest;
     mykey_t key;
     itemmap_t item;
+    anim_rac_t animrac;
     char **sentence;
     int speed;
     bool climat_change;
@@ -170,5 +191,7 @@ void check_if_combat(raccoonmove_t *move);
 char *get_text_open(char *filepath);
 size_t parser(char *buffer, char *str, int id);
 int check_use_now(raccoonmove_t *move);
+void change_anim_npc(raccoonmove_t *move, int p);
+void change_anim_npc_run(raccoonmove_t *move, int p);
 
 #endif

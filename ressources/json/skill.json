@@ -17,7 +17,7 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "-30% atb",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 2,
@@ -37,7 +37,7 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "Drop enemy Def\n    for 1 turn",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 3,
@@ -57,7 +57,7 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "  Boost ATB and\nSpeed for 2 turns",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 4,
@@ -77,7 +77,7 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "Double hit, first hit\ndrop Att for 1 turn",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 5,
@@ -97,7 +97,7 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "Strong hit and\nboost ATB AOE",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 6,
@@ -117,7 +117,7 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "-50% ATB, slow target",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 7,
@@ -137,7 +137,7 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "Attack one more\ntime if ATB = 0",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 8,
@@ -157,6 +157,6 @@
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "worst attack",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   }
 ]

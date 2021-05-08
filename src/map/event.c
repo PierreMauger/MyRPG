@@ -62,10 +62,14 @@ static void split_k_map(raccoonmove_t *move, text_t *text)
 static void k_map(raccoonmove_t *move, text_t *text)
 {
     if (sfKeyboard_isKeyPressed(sfKeyA)) {
-        if (move->speed == 3)
+        if (move->speed == 3) {
             move->speed *= 2;
-        else
+            move->animrac.speed_anim /= 2;
+        }
+        else {
             move->speed /= 2;
+            move->animrac.speed_anim *= 2;
+        }
     }
     if (sfKeyboard_isKeyPressed(sfKeyL))
         load_save(move);

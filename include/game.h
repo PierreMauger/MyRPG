@@ -54,7 +54,7 @@
 
 #define CURR_ATT game->ind->curr_attack
 #define ARR_RECT game->ind->arr->rect
-#define ARR_ANIM_NB 2
+#define ARR_ANIM_NB 3
 
 #define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p\
 * 0.5 - (bool)elem->status->att_m * 0.5))
@@ -66,7 +66,7 @@
 #define BAR_SIZE (sfVector2f){100, 10}
 
 #define ANIM_TIME 0.3
-#define GRASS_IMG "ressources/sprites/grass.png"
+#define ARROW_IMG "ressources/sprites/arrow.png"
 #define ATT_P_IMG "ressources/sprites/att_p.png"
 #define ATT_M_IMG "ressources/sprites/att_m.png"
 #define DEF_P_IMG "ressources/sprites/def_p.png"
@@ -486,7 +486,7 @@ void init_fight(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
-void init_mons_pos(mons_t *mons, sfVector2f pos);
+void init_mons_pos(mons_t *mons, sfVector2f pos, float size);
 void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 sfRenderStates init_renderstate(sfShader *shader);

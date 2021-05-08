@@ -70,6 +70,7 @@ static int check_obs(raccoonmove_t *move, int dir)
     move->obs.display_text_next = false;
     move->obs.display_text_back = false;
     move->chest.col_chest = false;
+    move->animrac.idle = false;
     return (0);
 }
 
@@ -77,6 +78,7 @@ void ch_move(raccoonmove_t *move)
 {
     if (move->anim == true)
         return;
+    move->animrac.idle = true;
     if (sfKeyboard_isKeyPressed(sfKeyLeft) || sfKeyboard_isKeyPressed(sfKeyQ))
         if (move->raccoon_pos.x >= 0 && check_obs(move, 0) == 0)
             move->raccoon_pos.x -= move->speed;

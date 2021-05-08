@@ -16,10 +16,8 @@ static void load_map(raccoonmove_t *move, char *tex, char *map, game_t *game)
     change_background(game);
 }
 
-static int select_map_back(raccoonmove_t *move, game_t *game)
+static int select_map_back(raccoonmove_t *move, game_t *game, int p)
 {
-    int p = 0;
-
     if (bstrcmp(move->obs.fl_map_obstacle, MAP1) == 0 && p == 0) {
         load_map(move, "ressources/map/maison.jpg", MAP0, game);
         move->pnj.exist = false;
@@ -96,7 +94,7 @@ int change_map_back(raccoonmove_t *move, game_t *game)
     int p = 0;
     sfTexture *save = move->my_texture;
 
-    p = select_map_back(move, game);
+    p = select_map_back(move, game, 0);
     free_obs(move);
     init_obstacle(move);
     if (p == 5) {
