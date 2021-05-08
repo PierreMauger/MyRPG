@@ -54,7 +54,7 @@
 
 #define CURR_ATT game->ind->curr_attack
 #define ARR_RECT game->ind->arr->rect
-#define ARR_ANIM_NB 4
+#define ARR_ANIM_NB 3
 
 #define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p\
 * 0.5 - (bool)elem->status->att_m * 0.5))
