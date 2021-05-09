@@ -45,6 +45,15 @@ void check_items_acquierement(game_t *game, inventory_t *inv)
         add_item_to_inv(inv, 4);
 }
 
+void check_winner(game_t *game, int fight_res)
+{
+    check_map_sound(game->move);
+    if (fight_res == 1)
+        bprintf("you loose!\n");
+    else
+        bprintf("winner !\n");
+}
+
 void main_loop(game_t *game)
 {
     inventory_t *inv = init_inventory(game);
@@ -56,6 +65,7 @@ void main_loop(game_t *game)
         if (game->in_fight) {
             start_fight(game);
             fight_res = fight_loop(game);
+            check_winner(game, fight_res);
         }
         if (game->in_inv && game->set->pause == false)
             draw_inventory(game, inv);

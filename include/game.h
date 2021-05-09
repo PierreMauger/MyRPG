@@ -558,8 +558,8 @@ void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text,
 game_t *game);
 int menu_loop(game_t *game);
 
-int change_map_back(raccoonmove_t *move, game_t *game);
-int change_map_next(raccoonmove_t *move, text_t *text, game_t *game);
+void change_map_back(raccoonmove_t *move, game_t *game);
+void change_map_next(raccoonmove_t *move, text_t *text, game_t *game);
 void check_change_map(raccoonmove_t *move, text_t *text, game_t *game);
 
 #endif

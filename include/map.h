@@ -115,6 +115,12 @@ typedef struct {
 } anim_rac_t;
 
 typedef struct {
+    sfMusic *chest;
+    sfMusic *rain;
+    sfMusic *snow;
+} music_t;
+
+typedef struct {
     sfRenderWindow *window;
     sfTexture *my_texture;
     sfSprite *my_sprite;
@@ -132,6 +138,7 @@ typedef struct {
     mykey_t key;
     itemmap_t item;
     anim_rac_t animrac;
+    music_t music;
     char **sentence;
     int speed;
     bool climat_change;
@@ -185,5 +192,10 @@ size_t parser(char *buffer, char *str, int id);
 int check_use_now(raccoonmove_t *move);
 void change_anim_npc(raccoonmove_t *move, int p);
 void change_anim_npc_run(raccoonmove_t *move, int p);
+void create_mus(char *filepath, sfMusic **music, int loop);
+void music_dest(raccoonmove_t *move, int i);
+void init_music(raccoonmove_t *move);
+void check_map_sound(raccoonmove_t *move);
+void check_map_sound_go(raccoonmove_t *move);
 
 #endif

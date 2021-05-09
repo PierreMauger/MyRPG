@@ -20,6 +20,7 @@ static int reset_text(text_t *text, raccoonmove_t *move)
     text->size_box.x = 800;
     text->display = false;
     move->anim = false;
+    music_dest(move, 0);
     free(text->save);
     free(move->sentence);
     return (0);

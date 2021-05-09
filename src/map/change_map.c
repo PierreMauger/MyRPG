@@ -63,7 +63,7 @@ static void select_map_next(raccoonmove_t *move, text_t *text, game_t *game)
     }
 }
 
-int change_map_next(raccoonmove_t *move, text_t *text, game_t *game)
+void change_map_next(raccoonmove_t *move, text_t *text, game_t *game)
 {
     int n = 1440;
     sfTexture *save = move->my_texture;
@@ -73,21 +73,21 @@ int change_map_next(raccoonmove_t *move, text_t *text, game_t *game)
         (bstrcmp(move->obs.fl_map_obstacle, MAP0) == 0
         && move->item.sword == false)) {
         move->obs.next_map = false;
-        return (0);
+        return;
     }
     select_map_next(move, text, game);
     free_obs(move);
     init_obstacle(move);
+    check_map_sound_go(move);
     if (bstrcmp(move->obs.fl_map_obstacle, MAP3) == 0)
         n = -720, display_change_up(move, save, 0, n);
     else
         display_change_first(move, save, 0, n);
-    move->obs.next_map = false;
+    check_map_sound(move);
     move->obs.display_text_next = false;
-    return (0);
 }
 
-int change_map_back(raccoonmove_t *move, game_t *game)
+void change_map_back(raccoonmove_t *move, game_t *game)
 {
     int o = 0;
     int n = -1440;
@@ -97,13 +97,14 @@ int change_map_back(raccoonmove_t *move, game_t *game)
     p = select_map_back(move, game, 0);
     free_obs(move);
     init_obstacle(move);
+    check_map_sound_go(move);
     if (p == 5) {
         n = 720;
         display_change_down(move, save, o, n);
     }
     else
         display_change_second(move, save, o, n);
+    check_map_sound(move);
     move->obs.back_map = false;
     move->obs.display_text_back = false;
-    return (0);
 }
