@@ -19,7 +19,6 @@ sfText *init_font(sfText *txt, sfVector2f pos, char *font, char *text)
     sfText_setString(txt, text);
     sfText_setFont(txt, menu);
     return (txt);
-    //sfText_destroy(txt);
 }
 
 void set_size_font(sfText *txt, unsigned int size)
@@ -36,4 +35,3 @@ void show_font(game_t *game, sfText *txt)
 {
     sfRenderWindow_drawText(GET_WINDOW, txt, NULL);
 }
-

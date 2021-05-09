@@ -11,11 +11,16 @@
 int main(void)
 {
     game_t *game = malloc(sizeof(game_t));
-    button_t *btn = malloc(sizeof(button_t));
+    sfIntRect rect = {0, 0, 156, 56};
+    button_t **list = list_button(2);
+    list[0] = create_button((sfVector2f){320, 50}, "play_button.jpg", rect);
+    list[1] = create_button((sfVector2f){320, 150}, "play_button.jpg", rect);
+    int menu_return = 0;
 
     init_game(game);
-    menu_loop(game, btn);
-    main_loop(game);
+    menu_return = menu_loop(game, list);
+    if (menu_return != 2)
+        main_loop(game);
     destroy_game(game);
     return 0;
 }
