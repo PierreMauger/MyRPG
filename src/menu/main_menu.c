@@ -47,18 +47,8 @@ obj_t *create_object(const char *path, sfVector2f pos, sfIntRect r)
 void display_menu(game_t *game, button_t **list)
 {
     sfRectangleShape *shape = sfRectangleShape_create();
-    sfVector2f pos_raccoon = {150, 860};
-    sfIntRect rect = {0, 0, 64, 64};
-    sfClock *clock = sfClock_create();
-    sfSprite *sprite = sfSprite_create();
-    sfTexture *texture = sfTexture_createFromFile(
-    "ressources/menu/raccoon.png", &rect);
 
-    sfSprite_setTexture(sprite, texture, sfTrue);
-    sfSprite_setPosition(sprite, pos_raccoon);
     display_shape_block(shape, game, list);
-    move_racoon_menu(game, rect, clock, sprite);
-    sfRenderWindow_drawSprite(GET_WINDOW, sprite, NULL);
 }
 
 void display_shape_block(sfRectangleShape *shape, game_t *game, button_t **list)
