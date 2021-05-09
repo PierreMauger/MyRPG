@@ -23,7 +23,7 @@ static void create_sentence_chest_split(raccoonmove_t *move)
         move->sentence[1] = (char *)parser(buff, "chest2_speak_second", 1);
         move->chest.already_open_second = true;
         move->chest.my_texture = sfTexture_createFromFile
-        ("ressources/sprites/helm.png", NULL);
+        ("ressources/sprites/boots.png", NULL);
         move->item.boot = true;
     }
     free(buff);
