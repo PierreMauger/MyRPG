@@ -48,13 +48,14 @@ void check_items_acquierement(game_t *game, inventory_t *inv)
 void main_loop(game_t *game)
 {
     inventory_t *inv = init_inventory(game);
+    int fight_res = 0;
 
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
         event_loop(game);
         sfRenderWindow_clear(GET_WINDOW, sfWhite);
         if (game->in_fight) {
             start_fight(game);
-            fight_loop(game);
+            fight_res = fight_loop(game);
         }
         if (game->in_inv && game->set->pause == false)
             draw_inventory(game, inv);

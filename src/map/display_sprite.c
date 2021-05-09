@@ -9,21 +9,24 @@
 
 static void change_anim_idle(raccoonmove_t *move)
 {
+    sfIntRect first = {0, 0, 64, 128};
+
     if (sfClock_getElapsedTime(move->animrac.anim_clock).microseconds < 450000)
         return;
     sfTexture_destroy(move->my_texture_rac);
     if (move->animrac.anim_rac == 0 || move->animrac.anim_rac == 1) {
-        move->my_texture_rac = sfTexture_createFromFile(RACCOON, NULL);
+        move->my_texture_rac = sfTexture_createFromFile(RACCOON, &first);
         move->animrac.anim_rac = 2;
     }
     else {
-        move->my_texture_rac = sfTexture_createFromFile(RACCOON3, NULL);
+        first.left += 128;
+        move->my_texture_rac = sfTexture_createFromFile(RACCOON, &first);
         move->animrac.anim_rac = 0;
     }
     sfClock_restart(move->animrac.anim_clock);
 }
 
-static void change_anim(raccoonmove_t *move)
+static void change_anim(raccoonmove_t *move, sfIntRect first)
 {
     if (move->animrac.idle == true) {
         change_anim_idle(move);
@@ -31,15 +34,17 @@ static void change_anim(raccoonmove_t *move)
     }
     sfTexture_destroy(move->my_texture_rac);
     if (move->animrac.anim_rac == 0) {
-        move->my_texture_rac = sfTexture_createFromFile(RACCOON3, NULL);
+        move->my_texture_rac = sfTexture_createFromFile(RACCOON, &first);
         move->animrac.anim_rac = 1;
     }
     else if (move->animrac.anim_rac == 1) {
-        move->my_texture_rac = sfTexture_createFromFile(RACCOON2, NULL);
+        first.left += 128;
+        move->my_texture_rac = sfTexture_createFromFile(RACCOON, &first);
         move->animrac.anim_rac = 2;
     }
     else {
-        move->my_texture_rac = sfTexture_createFromFile(RACCOON, NULL);
+        first.left += 64;
+        move->my_texture_rac = sfTexture_createFromFile(RACCOON, &first);
         move->animrac.anim_rac = 0;
     }
     sfClock_restart(move->animrac.anim_clock);
@@ -47,14 +52,16 @@ static void change_anim(raccoonmove_t *move)
 
 void my_perso(sfRenderWindow *window, raccoonmove_t *move)
 {
+    sfIntRect first = {0, 0, 64, 128};
+
     if (move->anim == true) {
         sfTexture_destroy(move->my_texture_rac);
-        move->my_texture_rac = sfTexture_createFromFile(RACCOON, NULL);
+        move->my_texture_rac = sfTexture_createFromFile(RACCOON, &first);
         move->animrac.anim_rac = 0;
     }
     else if (sfClock_getElapsedTime(move->animrac.anim_clock)
         .microseconds >= move->animrac.speed_anim) {
-        change_anim(move);
+        change_anim(move, first);
     }
     sfSprite_setTexture(move->my_sprite_rac, move->my_texture_rac, sfTrue);
     sfSprite_setPosition(move->my_sprite_rac, move->raccoon_pos);

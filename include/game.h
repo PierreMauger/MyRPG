@@ -458,7 +458,7 @@ void attack_hit(game_t *game, mons_t *target);
 void attack_activation(game_t *game);
 void cooldown_refresh(mons_t *target);
 void cooldown_reduce(game_t *game);
-void fight_loop(game_t *game);
+int fight_loop(game_t *game);
 mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
 void get_xp(mons_t *mons);
@@ -508,6 +508,7 @@ void set_attack_anim_pos(game_t *game, mons_t *target);
 void multi_hit(game_t *game, mons_t *target);
 void target_team(game_t *game);
 void set_attack(game_t *game);
+void set_auto_attack(game_t *game);
 void set_texture_mons(mons_t *mons);
 
 //PARSER

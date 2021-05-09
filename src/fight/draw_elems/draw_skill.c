@@ -11,7 +11,7 @@ void draw_skill_desc(skill_t *temp, game_t *game, int x)
 {
     if (check_collide_skill(game, temp)) {
         sfText_setPosition(temp->desc->text, (sfVector2f){x + 40, 800});
-        sfText_setPosition(temp->desc->cd_text, (sfVector2f){x + 40, 820});
+        sfText_setPosition(temp->desc->cd_text, (sfVector2f){x + 40, 840});
         sfText_setPosition(temp->desc->name_text, (sfVector2f){x + 40, 780});
         sfText_setString(temp->desc->cd_text, bitoa(temp->stat->act_cd));
         sfSprite_setPosition(temp->desc->sprite, (sfVector2f){x - 50, 860});
