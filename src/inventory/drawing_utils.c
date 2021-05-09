@@ -17,6 +17,7 @@ item_t *get_selected_item(inventory_t *inv)
 
 void init_prompt_text(inventory_t *inv, game_t *game)
 {
+    inv->prompt = false;
     inv->prompttext = sfText_create();
     sfText_setFont(inv->prompttext, game->font);
     sfText_setCharacterSize(inv->prompttext, 15);
