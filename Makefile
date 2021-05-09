@@ -103,7 +103,7 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/menu/button_creation.c 					\
 
 
-SRC			+=	main.c				\
+SRC			+=	src/main.c				\
 
 SRC_TEST	=	tests/test_main.c	\
 
