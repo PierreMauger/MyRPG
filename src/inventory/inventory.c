@@ -93,7 +93,8 @@ void draw_inventory(game_t *game, inventory_t *inv)
         sfRenderWindow_drawSprite(GET_WINDOW, inv->selecsprite, NULL);
         if (inv->prompt && inv->selected < get_item_index(inv->list))
             display_prompt(inv, game);
-        poll_inv_events(game, inv);
+        if (poll_inv_events(game, inv) == 1)
+            break;
         sfRenderWindow_display(GET_WINDOW);
     }
 }

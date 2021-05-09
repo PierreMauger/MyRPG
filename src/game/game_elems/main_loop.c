@@ -40,6 +40,9 @@ void check_items_acquierement(game_t *game, inventory_t *inv)
     if (game->move->item.boot == true &&
     is_item_in_inv(inv, "Soft Boots") == false)
         add_item_to_inv(inv, 3);
+    if (game->move->item.key == true &&
+    is_item_in_inv(inv, "Key castle") == false)
+        add_item_to_inv(inv, 4);
 }
 
 void stats_callback(inventory_t *inv, game_t *game)
