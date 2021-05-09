@@ -47,11 +47,18 @@ void check_items_acquierement(game_t *game, inventory_t *inv)
 
 void check_winner(game_t *game, int fight_res)
 {
-    check_map_sound(game->move);
-    if (fight_res == 1)
-        bprintf("you loose!\n");
-    else
-        bprintf("winner !\n");
+    int p = 0;
+
+    if (fight_res == 1) {
+        my_loose(game);
+        p++;
+    }
+    else if (bstrcmp(game->move->obs.fl_map_obstacle, MAP3) == 0) {
+        my_victory(game);
+        p++;
+    }
+    if (p == 0)
+        check_map_sound(game->move);
 }
 
 void main_loop(game_t *game)

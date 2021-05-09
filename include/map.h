@@ -30,7 +30,7 @@
 #define MAP2 "ressources/json/map2.json"
 #define MAP3 "ressources/json/map3.json"
 #define RACCOON "ressources/sprites/raccoon_spritesheet.png"
-#define RACCOONBOSS "ressources/sprites/raccoonbagar.png"
+#define RCBOSS "ressources/sprites/raccoonbagar.png"
 #define KEY "ressources/sprites/key.png"
 #define SWORD "ressources/sprites/ecosword.png"
 #define MAPMAISON "ressources/map/maison.jpg"
@@ -107,6 +107,8 @@ typedef struct {
 typedef struct {
     sfClock *anim_clock;
     sfClock *npc_clock;
+    sfClock *enemy_clock;
+    int anim_ene;
     int anim_rac;
     int anim_npc;
     int anim_npc_run;

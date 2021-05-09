@@ -561,4 +561,7 @@ void change_map_back(raccoonmove_t *move, game_t *game);
 void change_map_next(raccoonmove_t *move, text_t *text, game_t *game);
 void check_change_map(raccoonmove_t *move, text_t *text, game_t *game);
 
+void my_victory(game_t *game);
+void my_loose(game_t *game);
+
 #endif

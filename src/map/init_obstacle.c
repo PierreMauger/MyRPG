@@ -36,6 +36,8 @@ static void init_struct_move_sprite(raccoonmove_t *move)
     sfIntRect first = {0, 0, 64, 128};
 
     init_music(move);
+    move->pnj.idle = false;
+    move->animrac.idle = true;
     move->my_texture = sfTexture_createFromFile(MAPMAISON, NULL);
     move->my_sprite = sfSprite_create();
     sfSprite_setTexture(move->my_sprite, move->my_texture, sfTrue);
@@ -61,13 +63,13 @@ void init_struct_move(raccoonmove_t *move, sfRenderWindow *window)
     move->map_clock = sfClock_create();
     move->animrac.anim_clock = sfClock_create();
     move->animrac.npc_clock = sfClock_create();
+    move->animrac.enemy_clock = sfClock_create();
     move->enemy_info.nb_enemy = 2;
     move->animrac.anim_rac = 0;
     move->animrac.anim_npc = 0;
+    move->animrac.anim_ene = 0;
     move->animrac.anim_npc_run = 0;
     move->animrac.speed_anim = 200000;
-    move->animrac.idle = true;
-    move->pnj.idle = false;
     init_struct_move_set(move);
     init_struct_move_sprite(move);
     init_enemy(move);
