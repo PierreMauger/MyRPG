@@ -93,6 +93,11 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/inventory/drawing_utils.c				\
 				src/menu/parallax.c							\
 				src/menu/menu_loop.c						\
+				src/menu/button_system.c 					\
+				src/menu/main_menu.c 						\
+				src/menu/menu_button_part.c 				\
+				src/menu/system_font.c 						\
+				src/menu/button_creation.c 					\
 
 
 SRC			+=	main.c				\

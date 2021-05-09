@@ -65,9 +65,13 @@ struct game_object **obj_n(int nbr_assets);
 
 sfText *create_text_btn(sfText *txt, game_t *game, button_t *btn);
 
-void display_menu(struct game_object **tab, int nbr_assets, game_t *game);
+void display_menu(game_t *game, button_t *btn);
 
-void display_shape_block(sfRectangleShape *shape, game_t *game, sfText *txt);
+void move_racoon_menu(game_t *game, sfIntRect rect, sfClock *clock, sfSprite *sprite);
+
+void display_shape_block(sfRectangleShape *shape, game_t *game, button_t *btn);
+
+int menu_loop(game_t *game, button_t *btn);
 
 //FONT_TEXTE_PROTO
 sfText *init_font(sfText *txt, sfVector2f pos, char *font, char *text);

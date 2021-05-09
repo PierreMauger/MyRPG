@@ -5,17 +5,8 @@
 ** main
 */
 
-#include "game.h"
+#include <game.h>
 #include <button.h>
-
-void draw_buttons(button_t **list, game_t *game)
-{
-    if (list == NULL || game == NULL)
-        return;
-    for (unsigned int itr = 0; list[itr]; ++itr) {
-        sfRenderWindow_drawSprite(GET_WINDOW, list[itr]->sprite, NULL);
-    }
-}
 
 void set_btn_pos(button_t *btn, sfVector2f pos)
 {

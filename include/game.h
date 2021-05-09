@@ -550,6 +550,5 @@ void destroy_quest(quest_t *quest, quest_text_t *quest_text);
 
 void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text,
 game_t *game);
-int menu_loop(game_t *game);
 
 #endif

@@ -45,35 +45,32 @@ struct game_object *create_object(const char *path, sfVector2f pos, sfIntRect r)
     return (obj);
 }
 
-void display_menu(struct game_object **tab, int nbr_assets, game_t *game)
+void display_menu(game_t *game, button_t *btn)
 {
-    //sfText *txt = create_text_btn(txt, game);
-    sfVector2i mouse = sfMouse_getPositionRenderWindow(GET_WINDOW);
-    for (int i = 0; i < nbr_assets; i++) {
-        move_bg(tab[i]->sprite, tab[i]->speed, tab[i]);
-    }
-    sfVector2f pos = btn->text_pos;
-    for (int j = 0; j < nbr_assets; ++j) {
-        sfRenderWindow_drawSprite(GET_WINDOW, tab[j]->sprite, NULL);
-    }
-    sfRectangleShape *shape;
-    display_shape_block(shape, game, NULL);
-        /*if (mouse.x >= pos.x && mouse.y >= pos.y && mouse.x <= pos.x + 300 && mouse.y <= pos.y + 300)
-            set_color(txt, sfRed);*/
-    /*if (game->event.type == sfEvtMouseButtonPressed)
-        if (game->event.mouseButton.button == sfMouseLeft)
-            if (mouse.x >= pos.x && mouse.y >= pos.y && mouse.x <= pos.x + 300 && mouse.y <= pos.y + 300)
-                exit(0);*/
+    //sfVector2i mouse = sfMouse_getPositionRenderWindow(GET_WINDOW);
+    sfRectangleShape *shape = sfRectangleShape_create();
+    sfVector2f pos_raccoon = {150, 860};
+    sfIntRect rect = {0, 0, 64, 64};
+    sfClock *clock = sfClock_create();
+    sfSprite *sprite = sfSprite_create();
+    sfTexture *texture = sfTexture_createFromFile("ressources/menu/raccoon.png", &rect);
+    sfSprite_setTexture(sprite, texture, sfTrue);
+    sfSprite_setPosition(sprite, pos_raccoon);
+    display_shape_block(shape, game, btn);
+    move_racoon_menu(game, rect, clock, sprite);
+    sfRenderWindow_drawSprite(GET_WINDOW, sprite, NULL);
 }
 
-void display_shape_block(sfRectangleShape *shape, game_t *game, sfText *txt)
+void display_shape_block(sfRectangleShape *shape, game_t *game, button_t *btn)
 {
+    sfIntRect rect = {0, 0, 156, 56};
     shape = sfRectangleShape_create();
     sfRectangleShape_setSize(shape, (sfVector2f){400, 1080});
     sfRectangleShape_setFillColor(shape, (sfColor){255, 255,255, 200});
     sfRectangleShape_setPosition(shape, (sfVector2f){300, 0});
     sfRenderWindow_drawRectangleShape(GET_WINDOW, shape, NULL);
-    //create_text_btn(txt, game);
+    button_t *btn1 = create_button((sfVector2f){320, 50}, "play_button.jpg", rect);
+    draw_button(game, btn1);
 }
 
 struct game_object **obj_n(int nbr_assets)
