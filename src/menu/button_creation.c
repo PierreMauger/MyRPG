@@ -8,7 +8,7 @@
 #include <game.h>
 #include <button.h>
 
-void draw_buttons(button_t **list, game_t *game)
+void draw_buttons(game_t *game, button_t **list)
 {
     if (list == NULL || game == NULL)
         return;
@@ -32,7 +32,7 @@ button_t **list_button(int size_nbr)
 button_t *create_button(sfVector2f pos, char *path, sfIntRect rect)
 {
     button_t *btn = malloc(sizeof(button_t));
-    
+
     if (!btn)
         return (NULL);
     btn->pos = pos;
@@ -47,17 +47,13 @@ button_t *create_button(sfVector2f pos, char *path, sfIntRect rect)
 
 bool is_mouse_on_button(game_t *game, button_t *btn)
 {
-    sfVector2i mouse;
-    sfVector2f tleft;
-    sfVector2f tright;
+    sfFloatRect rect = sfSprite_getGlobalBounds(btn->sprite);
 
     if (!game || !btn)
         return (false);
-    mouse = sfMouse_getPositionRenderWindow(GET_WINDOW);
-    tleft = btn->pos;
-    tright.x = btn->pos.x + btn->rect.width;
-    tright.y = btn->pos.y + btn->rect.height;
-    if (mouse.x < tleft.x || mouse.y < tleft.y)
-        return (false);
-    return (mouse.x < tright.x && mouse.y < tright.y);
+    if (game->mouse_pos.x > rect.left && game->mouse_pos.x < rect.left +
+    rect.width && game->mouse_pos.y > rect.top && game->mouse_pos.y <
+    rect.top + rect.height)
+        return (true);
+    return (false);
 }

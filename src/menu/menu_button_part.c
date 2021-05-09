@@ -10,7 +10,8 @@
 
 sfText *create_text_btn(sfText *txt, game_t *game, button_t *btn)
 {
-    txt = init_font(txt, (sfVector2f){330, 60}, "./ressources/font.ttf", "MENU");
+    txt = init_font(txt, (sfVector2f){330, 60},
+    "./ressources/font.ttf", "MENU");
     set_size_font(txt, 100);
     set_color(txt, sfBlack);
     show_font(game, txt);
@@ -19,7 +20,8 @@ sfText *create_text_btn(sfText *txt, game_t *game, button_t *btn)
     return (txt);
 }
 
-void move_racoon_menu(game_t *game, sfIntRect rect, sfClock *clock, sfSprite *sprite)
+void move_racoon_menu(game_t *game, sfIntRect rect, sfClock *clock,
+sfSprite *sprite)
 {
     sfTime time;
     float seconds;

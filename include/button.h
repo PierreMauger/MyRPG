@@ -46,7 +46,7 @@ button_t **list_button(int size_nbr);
 
 button_t *create_button(sfVector2f pos, char *path, sfIntRect rect);
 
-void draw_buttons(button_t **list, game_t *game);
+void draw_buttons(game_t *game, button_t **list);
 
 void set_btn_pos(button_t *btn, sfVector2f pos);
 
@@ -57,21 +57,22 @@ void set_button_rect(button_t *btn, sfIntRect rect);
 void set_button_color(button_t *btn, sfColor color);
 
 //MENU_PROTO
-void move_bg(sfSprite *spr, int spd, struct game_object *obj);
+void move_bg(sfSprite *spr, int spd, obj_t *obj);
 
-struct game_object *create_object(const char *path, sfVector2f pos, sfIntRect r);
+obj_t *create_object(const char *path, sfVector2f pos, sfIntRect r);
 
-struct game_object **obj_n(int nbr_assets);
+obj_t **obj_n(int nbr_assets);
 
 sfText *create_text_btn(sfText *txt, game_t *game, button_t *btn);
 
-void display_menu(game_t *game, button_t *btn);
+void display_menu(game_t *game, button_t **list);
 
-void move_racoon_menu(game_t *game, sfIntRect rect, sfClock *clock, sfSprite *sprite);
+void move_racoon_menu(game_t *game, sfIntRect rect, sfClock *clock,
+sfSprite *sprite);
 
-void display_shape_block(sfRectangleShape *shape, game_t *game, button_t *btn);
+void display_shape_block(sfRectangleShape *shape, game_t *game, button_t **btn);
 
-int menu_loop(game_t *game, button_t *btn);
+int menu_loop(game_t *game, button_t **btn);
 
 //FONT_TEXTE_PROTO
 sfText *init_font(sfText *txt, sfVector2f pos, char *font, char *text);
