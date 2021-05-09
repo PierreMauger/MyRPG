@@ -55,7 +55,8 @@ void my_loose(game_t *game)
     list[0] = create_button((sfVector2f){320, 200}, EXIT_PATH, rect);
     sfSprite_setTexture(my_sprite, my_texture, sfFalse);
     while (sfRenderWindow_isOpen(GET_WINDOW)) {
-        event_win_screen(game, list);
+        while (sfRenderWindow_pollEvent(GET_WINDOW, &game->event))
+            event_win_screen(game, list);
         sfRenderWindow_clear(GET_WINDOW, sfWhite);
         display_parallax(game);
         display_shape_block(shape, game, list);
