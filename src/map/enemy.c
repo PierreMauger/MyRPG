@@ -26,7 +26,7 @@ static void load_texture_enemy(raccoonmove_t *move)
             move->enemy[x][y].interaction = false;
             move->enemy[x][y].dead = false;
             move->enemy[x][y].my_texture =
-                sfTexture_createFromFile(RACCOONBOSS, NULL);
+                sfTexture_createFromFile(RCBOSS, NULL);
             move->enemy[x][y].my_sprite = sfSprite_create();
             sfSprite_setTexture(move->enemy[x][y].my_sprite,
                 move->enemy[x][y].my_texture, sfTrue);
