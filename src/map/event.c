@@ -72,8 +72,6 @@ static void k_map(raccoonmove_t *move, text_t *text)
             move->animrac.speed_anim *= 2;
         }
     }
-    if (sfKeyboard_isKeyPressed(sfKeyL))
-        load_save(move);
     if (sfKeyboard_isKeyPressed(sfKeyE) && check_pnj_col(move) == 1)
         create_sentence_pnj(move, text);
     if (sfKeyboard_isKeyPressed(sfKeyE) && move->chest.col_chest == true)

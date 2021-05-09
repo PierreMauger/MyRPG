@@ -18,6 +18,8 @@ static int event_menu(game_t *game, button_t **list)
             return 1;
         if (is_mouse_on_button(game, list[1]))
             return 2;
+        if (is_mouse_on_button(game, list[2]))
+            return 3;
     }
     return 0;
 }

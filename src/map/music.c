@@ -60,4 +60,6 @@ void init_music(raccoonmove_t *move)
     move->music.chest = NULL;
     move->music.snow = NULL;
     move->music.rain = NULL;
+    create_mus("ressources/music/theme.ogg", &move->music.theme, 1);
+    sfMusic_setVolume(move->music.theme, 0.5);
 }

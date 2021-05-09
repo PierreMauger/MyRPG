@@ -120,6 +120,7 @@ typedef struct {
     sfMusic *chest;
     sfMusic *rain;
     sfMusic *snow;
+    sfMusic *theme;
 } music_t;
 
 typedef struct {

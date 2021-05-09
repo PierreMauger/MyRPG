@@ -18,6 +18,8 @@ static void destroy_map(game_t *game)
         sfMusic_destroy(game->move->music.rain);
     if (game->move->music.snow != NULL)
         sfMusic_destroy(game->move->music.snow);
+    if (game->move->music.theme != NULL)
+        sfMusic_destroy(game->move->music.theme);
     free_obs(game->move);
     free(game->text);
     free(game->move);
