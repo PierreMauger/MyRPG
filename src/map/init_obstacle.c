@@ -33,10 +33,12 @@ static void init_struct_move_set(raccoonmove_t *move)
 
 static void init_struct_move_sprite(raccoonmove_t *move)
 {
+    sfIntRect first = {0, 0, 64, 128};
+
     move->my_texture = sfTexture_createFromFile(MAPMAISON, NULL);
     move->my_sprite = sfSprite_create();
     sfSprite_setTexture(move->my_sprite, move->my_texture, sfTrue);
-    move->my_texture_rac = sfTexture_createFromFile(RACCOON, NULL);
+    move->my_texture_rac = sfTexture_createFromFile(RACCOON, &first);
     move->my_sprite_rac = sfSprite_create();
     sfSprite_setTexture(move->my_sprite_rac, move->my_texture_rac, sfTrue);
     move->key.my_texture = sfTexture_createFromFile(KEY, NULL);

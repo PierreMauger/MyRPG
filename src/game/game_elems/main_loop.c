@@ -45,12 +45,12 @@ void check_items_acquierement(game_t *game, inventory_t *inv)
         add_item_to_inv(inv, 4);
 }
 
-void stats_callback(inventory_t *inv, game_t *game)
+void stats_callback(inventory_t *inv)
 {
     list_t *temp = inv->list;
 
     for (; temp != NULL; temp = temp->next) {
-        if (temp->data->is_equiped == true)
+        if (temp->data->is_equiped == true) {}
     }
 }
 
