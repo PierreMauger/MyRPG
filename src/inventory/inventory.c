@@ -73,6 +73,7 @@ void add_item_to_inv(inventory_t *inv, int item_id)
 
     data->is_in_inventory = true;
     data->is_equiped = false;
+    data->is_active = false;
     data->index = get_item_index(inv->list);
     data->pos.x = (inv->pos.x + 3.f) + (70 * data->index);
     data->pos.y = inv->pos.y + 3.f;
