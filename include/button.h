@@ -18,6 +18,7 @@
 
 #define PLAY_PATH "ressources/sprites/play_button.png"
 #define EXIT_PATH "ressources/sprites/exit_button.png"
+#define LOAD_PATH "ressources/sprites/load_button.png"
 
 typedef struct button_s {
     sfVector2f pos;
