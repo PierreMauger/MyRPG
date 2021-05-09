@@ -24,13 +24,6 @@ void event_text(game_t *game)
         game->in_dialog = 1;
 }
 
-void event_start_fight(game_t *game)
-{
-    if (game->event.type == sfEvtKeyPressed)
-        if (game->event.key.code == sfKeyF)
-            game->in_fight = 1;
-}
-
 void event_open_inv(game_t *game)
 {
     if (game->event.type == sfEvtKeyPressed)
@@ -47,7 +40,6 @@ void event_loop(game_t *game)
             game->move->anim = false;
         }
         map_event(game->move, game->event, game->text);
-        event_start_fight(game);
         event_text(game);
         event_open_inv(game);
         if (game->event.type == sfEvtClosed)

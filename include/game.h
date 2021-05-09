@@ -532,7 +532,6 @@ void reset_fight(game_t *game);
 void start_fight(game_t *game);
 
 //GET_EVENT
-void event_start_fight(game_t *game);
 void event_loop(game_t *game);
 
 // PAUSE_ELEMS

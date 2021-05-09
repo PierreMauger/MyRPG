@@ -29,8 +29,12 @@ void start_fight(game_t *game)
         return;
     music_dest(game->move, 1);
     game->e_mons = NULL;
-    for (int i = 1; i < game->move->enemy_info.nb_enemy; i++)
-        put_in_mons_list(game, &game->e_mons, buffer, 4);
+    for (int i = 1; i < game->move->enemy_info.nb_enemy; i++) {
+        if (game->move->enemy_info.nb_enemy == 4)
+            put_in_mons_list(game, &game->e_mons, buffer, i + 1);
+        else
+            put_in_mons_list(game, &game->e_mons, buffer, 4);
+    }
     init_all_pos(game);
     reset_fight(game);
     free(buffer);

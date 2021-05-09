@@ -26,7 +26,7 @@ void init_turn_ind(game_t *game)
     game->ind->att_name = sfText_create();
     sfText_setFont(game->ind->att_name, game->font_fight);
     sfText_setCharacterSize(game->ind->att_name, 50);
-    sfText_setColor(game->ind->att_name, sfWhite);
+    sfText_setColor(game->ind->att_name, sfBlack);
     game->ind->ptr_mons = NULL;
     game->ind->ptr_skill = NULL;
     game->ind->team = NULL;

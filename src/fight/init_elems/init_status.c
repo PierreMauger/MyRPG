@@ -46,5 +46,5 @@ void init_status(game_t *game)
     game->status = malloc(sizeof(status_t));
     init_status_texture(game);
     init_status_sprite(game);
-    game->status->text = init_text(game, bstrdup("0"), sfWhite);
+    game->status->text = init_text(game, bstrdup("0"), sfBlack);
 }
