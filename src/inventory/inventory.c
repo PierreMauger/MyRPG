@@ -34,7 +34,6 @@ inventory_t *init_inventory(game_t *game)
     inv->prompttexture = sfTexture_createFromFile(PROMPT_PATH, NULL);
     inv->pos.x = (sfRenderWindow_getSize(GET_WINDOW).x / 2) - 175;
     inv->pos.y = (sfRenderWindow_getSize(GET_WINDOW).y - 140);
-    inv->prompt = false;
     init_prompt_text(inv, game);
     sfSprite_setTexture(inv->invsprite, inv->invtexture, sfTrue);
     sfSprite_setTexture(inv->selecsprite, inv->selectexture, sfTrue);
