@@ -16,7 +16,7 @@ static void create_pnj(raccoonmove_t *move)
     if (stock < 0)
         stock = stock * -1;
     srand(stock);
-    move->pnj.my_texture = sfTexture_createFromFile(PNJ1, NULL);
+    move->pnj.my_texture = sfTexture_createFromFile(PNJ, NULL);
     move->pnj.my_sprite = sfSprite_create();
     sfSprite_setTexture(move->pnj.my_sprite, move->pnj.my_texture, sfTrue);
     move->pnj.pnj_pos.x = (rand() % (600 - 250 + 1)) + 250;
