@@ -81,9 +81,11 @@ void add_item_to_inv(inventory_t *inv, int item_id)
     list_stack(&(inv->list), data);
 }
 
-void draw_inventory(game_t *game, inventory_t *inv)
+int draw_inventory(game_t *game, inventory_t *inv)
 {
     inv->selected = 0;
+    if (!game->in_inv || game->set->pause == true)
+        return 0;
     while (game->in_inv == true) {
         sfRenderWindow_clear(GET_WINDOW, sfWhite);
         loop_map(game);
@@ -95,7 +97,8 @@ void draw_inventory(game_t *game, inventory_t *inv)
         if (inv->prompt && inv->selected < get_item_index(inv->list))
             display_prompt(inv, game);
         if (poll_inv_events(game, inv) == 1)
-            break;
+            return 1;
         sfRenderWindow_display(GET_WINDOW);
     }
+    return 0;
 }

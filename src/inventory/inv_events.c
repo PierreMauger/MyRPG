@@ -69,8 +69,8 @@ int poll_inv_events(game_t *game, inventory_t *inv)
             poll_key_pressed(game, inv);
         if (game->event.type == sfEvtClosed) {
             sfRenderWindow_close(GET_WINDOW);
-            return (1);
+            return 1;
         }
     }
-    return (0);
+    return 0;
 }

@@ -57,8 +57,8 @@ void main_loop(game_t *game)
             start_fight(game);
             fight_res = fight_loop(game);
         }
-        if (game->in_inv && game->set->pause == false)
-            draw_inventory(game, inv);
+        if (draw_inventory(game, inv) == 1)
+            return;
         draw_quest_text(game);
         loop_map(game);
         check_items_acquierement(game, inv);
