@@ -16,6 +16,9 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
+#define PLAY_PATH "ressources/sprites/play_button.png"
+#define EXIT_PATH "ressources/sprites/exit_button.png"
+
 typedef struct button_s {
     sfVector2f pos;
     sfIntRect rect;
