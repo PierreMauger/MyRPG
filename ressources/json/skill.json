@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Tackle",
+    "name": "Bite",
     "nb_hit": 1,
     "coef": [40],
     "target": [0],
@@ -11,33 +11,33 @@
     "status_turn": [0],
     "passive": 0,
     "cooldown": 1,
-    "img": "ressources/sprites/white.png",
+    "img": "ressources/sprites/bite.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
-    "desc": "-30% atb",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc": "Drop ennemy\n  atb by 30%",
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 2,
-    "name": "AOE",
-    "nb_hit": 1,
-    "coef": [30],
-    "target": [0],
-    "aoe": [1],
-    "atb_boost": [0],
-    "status": [4],
-    "status_turn": [1],
+    "name": "Embush",
+    "nb_hit": 2,
+    "coef": [20, 40],
+    "target": [0, 0],
+    "aoe": [1, 1],
+    "atb_boost": [0, 0],
+    "status": [4, 0],
+    "status_turn": [2, 0],
     "passive": 0,
     "cooldown": 3,
-    "img": "ressources/sprites/dirt.png",
+    "img": "ressources/sprites/embush.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
-    "desc": "Drop enemy Def\n    for 1 turn",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc": "Drop enemies Def\n 2 turn and attack",
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 3,
@@ -51,13 +51,13 @@
     "status_turn": [2],
     "passive": 0,
     "cooldown": 4,
-    "img": "ressources/sprites/grass.png",
+    "img": "ressources/sprites/wild_charge.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "  Boost ATB and\nSpeed for 2 turns",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 4,
@@ -71,13 +71,13 @@
     "status_turn": [1, 0],
     "passive": 0,
     "cooldown": 3,
-    "img": "ressources/sprites/dirt.png",
+    "img": "ressources/sprites/wild_charge.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "Double hit, first hit\ndrop Att for 1 turn",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 5,
@@ -91,13 +91,13 @@
     "status_turn": [0, 0],
     "passive": 0,
     "cooldown": 4,
-    "img": "ressources/sprites/grass.png",
+    "img": "ressources/sprites/wild_charge.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "Strong hit and\nboost ATB AOE",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 6,
@@ -111,13 +111,13 @@
     "status_turn": [2],
     "passive": 0,
     "cooldown": 3,
-    "img": "ressources/sprites/dirt.png",
+    "img": "ressources/sprites/wild_charge.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "-50% ATB, slow target",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 7,
@@ -131,17 +131,17 @@
     "status_turn": [0, 0],
     "passive": 1,
     "cooldown": 1,
-    "img": "ressources/sprites/grass.png",
+    "img": "ressources/sprites/wild_charge.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
     "desc": "Attack one more\ntime if ATB = 0",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 8,
-    "name": "Plop",
+    "name": "Scratch",
     "nb_hit": 1,
     "coef": [20],
     "target": [0],
@@ -151,12 +151,12 @@
     "status_turn": [0, 0],
     "passive": 0,
     "cooldown": 1,
-    "img": "ressources/sprites/grass.png",
+    "img": "ressources/sprites/wild_charge.png",
     "anim": "ressources/sprites/slash_anim.png",
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
-    "desc": "worst attack",
-    "desc_img": "ressources/sprites/dirt.png"
+    "desc": "Basic attack",
+    "desc_img": "ressources/sprites/prompt.png"
   }
 ]

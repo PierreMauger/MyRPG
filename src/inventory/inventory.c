@@ -73,6 +73,7 @@ void add_item_to_inv(inventory_t *inv, int item_id)
 
     data->is_in_inventory = true;
     data->is_equiped = false;
+    data->is_active = false;
     data->index = get_item_index(inv->list);
     data->pos.x = (inv->pos.x + 3.f) + (70 * data->index);
     data->pos.y = inv->pos.y + 3.f;
@@ -85,6 +86,7 @@ void draw_inventory(game_t *game, inventory_t *inv)
     inv->selected = 0;
     while (game->in_inv == true) {
         sfRenderWindow_clear(GET_WINDOW, sfWhite);
+        loop_map(game);
         sfRenderWindow_drawSprite(GET_WINDOW, inv->invsprite, NULL);
         draw_equiped(game, inv);
         draw_list(GET_WINDOW, inv->list);
@@ -92,7 +94,8 @@ void draw_inventory(game_t *game, inventory_t *inv)
         sfRenderWindow_drawSprite(GET_WINDOW, inv->selecsprite, NULL);
         if (inv->prompt && inv->selected < get_item_index(inv->list))
             display_prompt(inv, game);
-        poll_inv_events(game, inv);
+        if (poll_inv_events(game, inv) == 1)
+            break;
         sfRenderWindow_display(GET_WINDOW);
     }
 }

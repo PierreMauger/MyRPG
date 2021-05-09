@@ -28,11 +28,11 @@
  },
  {
    "id": 4,
-   "name": "Tough chestplate",
-   "description": "Solid like a rock",
-   "path": "ressources/sprites/chestplate.png",
-   "att_buff": 5,
-   "def_buff": 100,
+   "name": "Key castle",
+   "description": "You can now fight the boss!",
+   "path": "ressources/sprites/key.png",
+   "att_buff": 0,
+   "def_buff": 0,
    "speed_buff": 0
  },
  {

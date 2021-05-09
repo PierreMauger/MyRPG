@@ -22,3 +22,24 @@ void init_prompt_text(inventory_t *inv, game_t *game)
     sfText_setCharacterSize(inv->prompttext, 15);
     sfText_setColor(inv->prompttext, sfWhite);
 }
+
+void set_string(inventory_t *inv, item_t *item, int id)
+{
+    char *str = NULL;
+
+    if (id == 1) {
+        str = bitoa(item->dmg_buff);
+        sfText_setString(inv->prompttext, str);
+        free(str);
+    }
+    if (id == 2) {
+        str = bitoa(item->def_buff);
+        sfText_setString(inv->prompttext, str);
+        free(str);
+    }
+    if (id == 3) {
+        str = bitoa(item->speed_buff);
+        sfText_setString(inv->prompttext, str);
+        free(str);
+    }
+}

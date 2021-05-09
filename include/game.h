@@ -54,7 +54,7 @@
 
 #define CURR_ATT game->ind->curr_attack
 #define ARR_RECT game->ind->arr->rect
-#define ARR_ANIM_NB 2
+#define ARR_ANIM_NB 3
 
 #define GET_ATT(elem) (elem->stat->att * (1 + (bool)elem->status->att_p\
 * 0.5 - (bool)elem->status->att_m * 0.5))
@@ -66,7 +66,7 @@
 #define BAR_SIZE (sfVector2f){100, 10}
 
 #define ANIM_TIME 0.3
-#define GRASS_IMG "ressources/sprites/grass.png"
+#define ARROW_IMG "ressources/sprites/arrow.png"
 #define ATT_P_IMG "ressources/sprites/att_p.png"
 #define ATT_M_IMG "ressources/sprites/att_m.png"
 #define DEF_P_IMG "ressources/sprites/def_p.png"
@@ -333,6 +333,7 @@ typedef struct item {
     sfIntRect rect;
     bool is_in_inventory;
     bool is_equiped;
+    bool is_active;
     int index;
     char *name;
     char *description;
@@ -374,13 +375,15 @@ inventory_t *init_inventory(game_t *game);
 void add_item_to_inv(inventory_t *inv, int item_id);
 item_t *create_item(int id);
 void draw_inventory(game_t *game, inventory_t *inv);
-void poll_inv_events(game_t *game, inventory_t *inv);
+int poll_inv_events(game_t *game, inventory_t *inv);
 void set_selec_pos(inventory_t *inv);
 void draw_equiped(game_t *game, inventory_t *inv);
 void destroy_inv(inventory_t *inv);
 void init_prompt_text(inventory_t *inv, game_t *game);
 void display_prompt(inventory_t *inv, game_t *game);
 item_t *get_selected_item(inventory_t *inv);
+void set_string(inventory_t *inv, item_t *item, int id);
+void stats_callback(inventory_t *inv, game_t *game);
 
 //MENU_ELEMS
 menu_t *main_menu(game_t *game);
@@ -442,6 +445,7 @@ void draw_status_att(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
 void draw_status_def(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
 void draw_status_spe(game_t *game, mons_t *mons, int *temp_x, sfVector2f pos);
 void draw_status(game_t *game, mons_t *mons);
+void change_background(game_t *game);
 
 //FIGHT_ELEMS
 void atb_increase(mons_t *team);
@@ -454,7 +458,7 @@ void attack_hit(game_t *game, mons_t *target);
 void attack_activation(game_t *game);
 void cooldown_refresh(mons_t *target);
 void cooldown_reduce(game_t *game);
-void fight_loop(game_t *game);
+int fight_loop(game_t *game);
 mons_t *kill_func(game_t *game, mons_t *head);
 void check_kill(game_t *game);
 void get_xp(mons_t *mons);
@@ -484,7 +488,7 @@ void init_fight(game_t *game);
 void init_turn_arrow(game_t *game);
 void init_turn_ind(game_t *game);
 void init_mons_skill(game_t *game, mons_t *elem, char *buffer, int id);
-void init_mons_pos(mons_t *mons, sfVector2f pos);
+void init_mons_pos(mons_t *mons, sfVector2f pos, float size);
 void init_all_pos(game_t *game);
 void init_mons(game_t *game);
 sfRenderStates init_renderstate(sfShader *shader);
@@ -504,6 +508,7 @@ void set_attack_anim_pos(game_t *game, mons_t *target);
 void multi_hit(game_t *game, mons_t *target);
 void target_team(game_t *game);
 void set_attack(game_t *game);
+void set_auto_attack(game_t *game);
 void set_texture_mons(mons_t *mons);
 
 //PARSER
@@ -521,6 +526,7 @@ void init_window(game_t *game);
 sfRectangleShape *init_rectangle(sfVector2f size, sfColor color, int center_x);
 
 //GAME_ELEMS
+void loop_map(game_t *game);
 void main_loop(game_t *game);
 void reset_fight(game_t *game);
 void start_fight(game_t *game);
@@ -550,5 +556,9 @@ void destroy_quest(quest_t *quest, quest_text_t *quest_text);
 
 void displ_all(sfRenderWindow *window, raccoonmove_t *move, text_t *text,
 game_t *game);
+
+void change_map_back(raccoonmove_t *move, game_t *game);
+void change_map_next(raccoonmove_t *move, text_t *text, game_t *game);
+void check_change_map(raccoonmove_t *move, text_t *text, game_t *game);
 
 #endif

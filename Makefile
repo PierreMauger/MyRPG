@@ -88,9 +88,11 @@ SRC			=	src/fight/anim_elems/anim_all.c				\
 				src/map/verif_obstacle.c					\
 				src/map/my_itoa.c							\
 				src/map/enemy.c								\
+				src/map/music.c								\
 				src/map/enemy_fight.c						\
 				src/inventory/drawing.c						\
 				src/inventory/drawing_utils.c				\
+				src/inventory/stats.c						\
 				src/menu/parallax.c							\
 				src/menu/menu_loop.c						\
 				src/menu/button_system.c 					\
@@ -112,7 +114,7 @@ OBJ			=	$(SRC:.c=.o)
 
 OBJ_TEST	=	$(SRC_TEST:.c=.o)
 
-CFLAGS		=	-g -L lib/my -I include -lblib -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -Wall -Wextra -W
+CFLAGS		=	-L lib/my -I include -lblib -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -Wall -Wextra -W
 
 CFLAGS_TEST	=	--coverage -lcriterion -I include
 

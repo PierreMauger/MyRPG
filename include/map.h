@@ -29,15 +29,16 @@
 #define MAP1 "ressources/json/map1.json"
 #define MAP2 "ressources/json/map2.json"
 #define MAP3 "ressources/json/map3.json"
-#define RACCOON "ressources/sprites/raccoon.png"
+#define RACCOON "ressources/sprites/raccoon_spritesheet.png"
 #define RACCOONBOSS "ressources/sprites/raccoonbagar.png"
 #define KEY "ressources/sprites/key.png"
-#define SWORD "ressources/sprites/sword.png"
+#define SWORD "ressources/sprites/ecosword.png"
 #define MAPMAISON "ressources/map/maison.jpg"
 #define MAPPLAGE "ressources/map/plage.jpg"
 #define MAPVILLAGE "ressources/map/village.png"
 #define MAPDONJON "ressources/map/donjon.jpg"
-#define PNJ "ressources/sprites/pnj.png"
+#define PNJ "ressources/sprites/farm_spritesheet.png"
+#define PNJRUN "ressources/sprites/farmrun_spritesheet.png"
 #define FIGHT_MAP1 "ressources/map/fight_forest.jpg"
 #define FIGHT_MAP2 "ressources/map/beach_fight.jpg"
 #define MAP_OBS move->obs.fl_map_obstacle
@@ -73,6 +74,7 @@ typedef struct {
     int last_dir;
     int speed_pnj;
     bool door_open;
+    bool idle;
 } pnj_t;
 
 typedef struct {
@@ -103,6 +105,22 @@ typedef struct {
 } itemmap_t;
 
 typedef struct {
+    sfClock *anim_clock;
+    sfClock *npc_clock;
+    int anim_rac;
+    int anim_npc;
+    int anim_npc_run;
+    int speed_anim;
+    bool idle;
+} anim_rac_t;
+
+typedef struct {
+    sfMusic *chest;
+    sfMusic *rain;
+    sfMusic *snow;
+} music_t;
+
+typedef struct {
     sfRenderWindow *window;
     sfTexture *my_texture;
     sfSprite *my_sprite;
@@ -119,6 +137,8 @@ typedef struct {
     chest_t chest;
     mykey_t key;
     itemmap_t item;
+    anim_rac_t animrac;
+    music_t music;
     char **sentence;
     int speed;
     bool climat_change;
@@ -142,8 +162,6 @@ typedef struct {
 void my_init_text(text_t *text);
 void text_defil(char *str, text_t *text, sfRenderWindow *window);
 void init_struct_move(raccoonmove_t *move, sfRenderWindow *window);
-int change_map_back(raccoonmove_t *move);
-int change_map_next(raccoonmove_t *move, text_t *text);
 int init_obstacle(raccoonmove_t *move);
 void free_obs(raccoonmove_t *move);
 void display_change_first(raccoonmove_t *move, sfTexture *save, int o, int n);
@@ -162,7 +180,6 @@ void chest_open(raccoonmove_t *move);
 int create_sentence_chest(raccoonmove_t *move, text_t *text);
 void create_sentence_pnj(raccoonmove_t *move, text_t *text);
 void display_mykey(raccoonmove_t *move, int x, int y);
-void check_change_map(raccoonmove_t *move, text_t *text);
 void display_pnj(raccoonmove_t *move);
 int load_save(raccoonmove_t *move);
 void check_got_sword(raccoonmove_t *move, text_t *text);
@@ -173,5 +190,12 @@ void check_if_combat(raccoonmove_t *move);
 char *get_text_open(char *filepath);
 size_t parser(char *buffer, char *str, int id);
 int check_use_now(raccoonmove_t *move);
+void change_anim_npc(raccoonmove_t *move, int p);
+void change_anim_npc_run(raccoonmove_t *move, int p);
+void create_mus(char *filepath, sfMusic **music, int loop);
+void music_dest(raccoonmove_t *move, int i);
+void init_music(raccoonmove_t *move);
+void check_map_sound(raccoonmove_t *move);
+void check_map_sound_go(raccoonmove_t *move);
 
 #endif

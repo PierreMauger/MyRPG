@@ -7,6 +7,50 @@
 
 #include "map.h"
 
+void change_anim_npc_run(raccoonmove_t *move, int p)
+{
+    sfIntRect first = {0, 0, 91, 182};
+
+    if (move->animrac.anim_npc_run == 0) {
+        move->pnj.my_texture = sfTexture_createFromFile(PNJRUN, &first);
+        move->animrac.anim_npc_run = 1;
+        p++;
+    }
+    if (move->animrac.anim_npc_run == 1 && p == 0) {
+        first.left += 91;
+        move->pnj.my_texture = sfTexture_createFromFile(PNJRUN, &first);
+        move->animrac.anim_npc_run = 2;
+        p++;
+    }
+    if (move->animrac.anim_npc_run == 2 && p == 0) {
+        first.left += 182;
+        move->pnj.my_texture = sfTexture_createFromFile(PNJRUN, &first);
+        move->animrac.anim_npc_run = 0;
+    }
+}
+
+void change_anim_npc(raccoonmove_t *move, int p)
+{
+    sfIntRect first = {0, 0, 91, 182};
+
+    if (move->animrac.anim_npc == 0) {
+        move->pnj.my_texture = sfTexture_createFromFile(PNJ, &first);
+        move->animrac.anim_npc = 1;
+        p++;
+    }
+    if (move->animrac.anim_npc == 1 && p == 0) {
+        first.left += 91;
+        move->pnj.my_texture = sfTexture_createFromFile(PNJ, &first);
+        move->animrac.anim_npc = 2;
+        p++;
+    }
+    if (move->animrac.anim_npc == 2 && p == 0) {
+        first.left += 182;
+        move->pnj.my_texture = sfTexture_createFromFile(PNJ, &first);
+        move->animrac.anim_npc = 0;
+    }
+}
+
 int check_pnj_col(raccoonmove_t *move)
 {
     int x = move->pnj.pnj_pos.x;

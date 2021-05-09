@@ -7,26 +7,30 @@
 
 #include "game.h"
 
-void check_end(game_t *game)
+static int check_end(game_t *game)
 {
     if (game->e_mons == NULL) {
         get_xp(game->p_mons);
         game->in_fight = 0;
     }
     else if (game->p_mons == NULL) {
-        bprintf("you lose");
+        bprintf("You lost\n");
         game->in_fight = 0;
+        return 1;
     }
+    return 0;
 }
 
-void fight_loop(game_t *game)
+int fight_loop(game_t *game)
 {
     while (game->in_fight) {
         event_fight_loop(game);
         if (game->set->pause == false) {
             update_fight(game);
             draw_fight(game);
-            check_end(game);
+            if (check_end(game))
+                return 1;
         }
     }
+    return 0;
 }

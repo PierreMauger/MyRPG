@@ -23,7 +23,7 @@ static void create_sentence_chest_split(raccoonmove_t *move)
         move->sentence[1] = (char *)parser(buff, "chest2_speak_second", 1);
         move->chest.already_open_second = true;
         move->chest.my_texture = sfTexture_createFromFile
-        ("ressources/sprites/helm.png", NULL);
+        ("ressources/sprites/boots.png", NULL);
         move->item.boot = true;
     }
     free(buff);
@@ -49,6 +49,7 @@ int create_sentence_chest(raccoonmove_t *move, text_t *text)
     sfSprite_setTexture(move->chest.my_sprite, move->chest.my_texture, sfTrue);
     pos.x += 70;
     sfSprite_setPosition(move->chest.my_sprite, pos);
+    create_mus("ressources/music/chest.ogg", &move->music.chest, 0);
     text->color2 = 120;
     text->size_box.x = 720;
     return (0);

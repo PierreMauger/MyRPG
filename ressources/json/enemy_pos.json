@@ -2,21 +2,16 @@
 	{
 		"id": 1,
 		"enemy_pos.x": 1450,
-		"enemy_pos.y": 890
-	},
-    {
-		"id": 2,
-		"enemy_pos.x": 1450,
 		"enemy_pos.y": 888
 	},
     {
-		"id": 3,
-		"enemy_pos.x": 400,
-		"enemy_pos.y": 561
+		"id": 2,
+		"enemy_pos.x": 600,
+		"enemy_pos.y": 20
 	},
-    {
-		"id": 4,
-		"enemy_pos.x": 1248,
-		"enemy_pos.y": 561
+	{
+		"id": 3,
+		"enemy_pos.x": 1111,
+		"enemy_pos.y": 275
 	}
 ]

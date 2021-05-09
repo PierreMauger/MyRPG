@@ -29,6 +29,9 @@ void check_turn(game_t *game)
 
 void update_fight(game_t *game)
 {
+    if (game->ind->ptr_mons && game->ind->ptr_mons != game->p_mons &&
+    game->set->attack && !game->set->in_anim)
+        set_auto_attack(game);
     anim_all(game);
     check_multi_hit(game);
     check_passive(game);

@@ -11,7 +11,7 @@ static int get_int_size(int nbr)
 {
     int i = 0;
 
-    if (nbr < 0)
+    if (nbr <= 0)
         i++;
     while (nbr != 0) {
         nbr /= 10;
@@ -28,6 +28,8 @@ char *bitoa(int nbr)
 
     if (!str)
         return NULL;
+    if (nbr == 0)
+        str[0] = '0';
     if (nbr < 0) {
         str[get_int_size(nbr) - 1] = '-';
         nbr *= -1;
