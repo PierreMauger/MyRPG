@@ -88,5 +88,7 @@ int load_save(raccoonmove_t *move)
     buff[ret] = '\0';
     if (parsing_save(buff, move) == 0)
         change_move(move);
+    music_dest(move, 1);
+    check_map_sound(move);
     return (0);
 }

@@ -7,8 +7,12 @@
 
 #include "game.h"
 
-void loop_map(game_t *game)
+void loop_map(game_t *game, int *load)
 {
+    if (*load == 3) {
+        *load = 0;
+        load_save(game->move);
+    }
     if (sfClock_getElapsedTime(game->move->map_clock).microseconds >= 10000) {
         if (game->in_inv == false) {
             check_change_map(game->move, game->text, game);
@@ -61,7 +65,7 @@ void check_winner(game_t *game, int fight_res)
         check_map_sound(game->move);
 }
 
-void main_loop(game_t *game)
+void main_loop(game_t *game, int load)
 {
     inventory_t *inv = init_inventory(game);
     int fight_res = 0;
@@ -77,7 +81,7 @@ void main_loop(game_t *game)
         if (draw_inventory(game, inv) == 1)
             return;
         draw_quest_text(game);
-        loop_map(game);
+        loop_map(game, &load);
         check_items_acquierement(game, inv);
         stats_callback(inv, game);
         sfRenderWindow_display(GET_WINDOW);
