@@ -35,6 +35,7 @@ static void init_struct_move_sprite(raccoonmove_t *move)
 {
     sfIntRect first = {0, 0, 64, 128};
 
+    init_music(move);
     move->my_texture = sfTexture_createFromFile(MAPMAISON, NULL);
     move->my_sprite = sfSprite_create();
     sfSprite_setTexture(move->my_sprite, move->my_texture, sfTrue);

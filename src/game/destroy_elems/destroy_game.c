@@ -12,6 +12,12 @@ static void destroy_map(game_t *game)
     sfTexture_destroy(game->move->my_texture);
     sfSprite_destroy(game->move->my_sprite);
     sfClock_destroy(game->move->map_clock);
+    if (game->move->music.chest != NULL)
+        sfMusic_destroy(game->move->music.chest);
+    if (game->move->music.rain != NULL)
+        sfMusic_destroy(game->move->music.rain);
+    if (game->move->music.snow != NULL)
+        sfMusic_destroy(game->move->music.snow);
     free_obs(game->move);
     free(game->text);
     free(game->move);
