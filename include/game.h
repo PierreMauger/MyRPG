@@ -506,6 +506,7 @@ void set_attack_anim_pos(game_t *game, mons_t *target);
 void multi_hit(game_t *game, mons_t *target);
 void target_team(game_t *game);
 void set_attack(game_t *game);
+void set_auto_attack(game_t *game);
 void set_texture_mons(mons_t *mons);
 
 //PARSER

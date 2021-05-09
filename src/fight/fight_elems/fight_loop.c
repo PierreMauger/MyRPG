@@ -14,7 +14,7 @@ static int check_end(game_t *game)
         game->in_fight = 0;
     }
     else if (game->p_mons == NULL) {
-        bprintf("you lose");
+        bprintf("You lost\n");
         game->in_fight = 0;
         return 1;
     }

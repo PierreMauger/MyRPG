@@ -16,19 +16,19 @@
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
-    "desc": "-30% atb",
+    "desc": "Drop ennemy\n  atb by 30%",
     "desc_img": "ressources/sprites/prompt.png"
   },
   {
     "id": 2,
-    "name": "AOE",
-    "nb_hit": 1,
-    "coef": [30],
-    "target": [0],
-    "aoe": [1],
-    "atb_boost": [0],
-    "status": [4],
-    "status_turn": [1],
+    "name": "Raccon slash",
+    "nb_hit": 2,
+    "coef": [20, 40],
+    "target": [0, 0],
+    "aoe": [1, 1],
+    "atb_boost": [0, 0],
+    "status": [4, 0],
+    "status_turn": [2, 0],
     "passive": 0,
     "cooldown": 3,
     "img": "ressources/sprites/dirt.png",
@@ -36,7 +36,7 @@
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
-    "desc": "Drop enemy Def\n    for 1 turn",
+    "desc": "Drop enemies Def\n 2 turn and attack",
     "desc_img": "ressources/sprites/prompt.png"
   },
   {
@@ -141,7 +141,7 @@
   },
   {
     "id": 8,
-    "name": "Plop",
+    "name": "Scratch",
     "nb_hit": 1,
     "coef": [20],
     "target": [0],
@@ -156,7 +156,7 @@
     "anim_x": 32,
     "anim_y": 88,
     "nb_anim": 4,
-    "desc": "worst attack",
+    "desc": "Basic attack",
     "desc_img": "ressources/sprites/prompt.png"
   }
 ]

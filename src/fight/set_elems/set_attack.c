@@ -31,3 +31,16 @@ void set_attack(game_t *game)
         }
     }
 }
+
+void set_auto_attack(game_t *game)
+{
+    target_team(game);
+    atb_reset(game);
+    game->ind->target = game->p_mons;
+    if (game->ind->ptr_skill->stat->aoe[CURR_ATT] == 1)
+        aoe_hit(game);
+    else
+        set_attack_anim(game);
+    game->ind->ptr_skill->stat->act_cd =
+    game->ind->ptr_skill->stat->ini_cd;
+}
