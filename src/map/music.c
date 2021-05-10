@@ -33,7 +33,6 @@ void check_map_sound(raccoonmove_t *move)
 void create_mus(char *filepath, sfMusic **music, int loop)
 {
     *music = sfMusic_createFromFile(filepath);
-    sfMusic_setVolume(*music, 1);
     if (loop == 1)
         sfMusic_setLoop(*music, sfTrue);
     sfMusic_play(*music);
@@ -61,5 +60,5 @@ void init_music(raccoonmove_t *move)
     move->music.snow = NULL;
     move->music.rain = NULL;
     create_mus("ressources/music/theme.ogg", &move->music.theme, 1);
-    sfMusic_setVolume(move->music.theme, 0.5);
+    sfMusic_setVolume(move->music.theme, (float)50);
 }
