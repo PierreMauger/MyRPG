@@ -48,6 +48,8 @@ void set_selec_pos(inventory_t *inv)
 
 void poll_key_pressed(game_t *game, inventory_t *inv)
 {
+    if (game->event.key.code == sfKeyDash && sfKeyboard_isKeyPressed(sfKeyF9))
+        add_item_to_inv(inv, 1);
     if (game->event.key.code == sfKeyI)
         game->in_inv = false;
     if (game->event.key.code == sfKeyRight && inv->selected < 4)
